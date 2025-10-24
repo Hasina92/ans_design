@@ -1,0 +1,33 @@
+h1 {
+  font-family: "gilroy-heavy";
+  font-size: 100px;
+  color: $yellow;
+  line-height: 100px;
+  span {
+    font-family: "gilroy-heavy";
+  }
+}
+h2 {
+  font-family: "gilroy-heavy";
+  font-size: 48px;
+}
+h3 {
+  font-family: "gilroy-bold";
+  font-size: 24px;
+  color: $gray;
+}
+h4 {
+  font-family: "gilroy-bold";
+  font-size: 24px;
+  color: $dark;
+}
+p.medium {
+  font-family: "gilroy-medium";
+  font-size: 24px;
+  line-height: 29px;
+}
+p.small {
+  font-family: "gilroy-medium";
+  font-size: 18px;
+  line-height: 29px;
+}

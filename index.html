@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="assets/css/fancybox.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>ANS Design</title>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/x-icon">
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="wrapper">
+            <a href="index.html" class="custom-logo-link logo"><img src="assets/img/logo.svg" alt="logo"></a>
+            <nav class="nav-menu">
+                <ul id="menu">
+                    <li class="current-menu-item"><a href="index.html">Accueil</a></li>
+                    <li><a href="catalogue.html">Catalogue</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="devis.html">Devis</a></li>
+                </ul>
+            </nav>
+            <div class="menu-social">
+                <a href="mon-compte.html" class="my-account">
+                    <img src="assets/img/icone_my_account.svg" alt="">
+                    Mon compte
+                </a>
+                <div class="notification">
+                    <a href=""><img src="assets/img/coeur.svg" alt=""></a>
+                    <a href="#mini-cart" class="open-button"><img src="assets/img/pannier-header-icon.svg" alt=""></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- OVERLAY -->
+    <section id="overlay">
+        <!-- MINI CART -->
+        <div class="wrapper" id="wrapper_mini_cart">
+            <div class="header-mini-cart">
+                <h2>Mon Espace</h2>
+                <img src="assets/img/close.svg" alt="" id="close-button">
+            </div>
+            <div class="body-mini-cart">
+                <ul class="tabslink-cart">
+                    <li>
+                        <a href="#panier">Panier <span class="number">(5)</span></a>
+                    </li>
+                    <li>
+                        <a href="#mon_compte">Mon compte</a>
+                    </li>
+                </ul>
+                <div class="container-nav-cart">
+                    <div class="tabscontent-cart" id="panier">
+                    </div>
+                    <div class="tabscontent-cart" id="mon_compte">
+                        <div class="personal-information">
+                            <div class="container-personal-information">
+                                <img src="assets/img/profil.png" alt="" class="profil">
+                                <div class="text-information">
+                                    <h3>Bonjour, Hariniaina</h3>
+                                    <span>Bienvenue dans votre espace.</span>
+                                </div>
+                            </div>
+                            <a href="" class="log-out">
+                                <img src="assets/img/log_out.svg" alt="">
+                            </a>
+                        </div>
+                        <ul class="tabslink-personal-information">
+                            <li>
+                                <a href="#mes_commandes">Mes commandes</a>
+                            </li>
+                            <li>
+                                <a href="#mes_fichiers">Mes fichiers</a>
+                            </li>
+                            <li>
+                                <a href="#mes_devis">Mes devis</a>
+                            </li>
+                            <li>
+                                <a href="#mon_profil">Mon Profil</a>
+                            </li>
+                        </ul>
+                        <div class="tabscontent-personal-information" id="mes_commandes">
+                            <div class="card-commande">
+                                <img src="" alt="" class="img-product">
+                                <div class="info-product">
+                                    <div class="coordonnees-product">
+                                        <div class="date">
+                                            <span>#01024</span>
+                                            <span>10 Oct. 2025</span>
+                                        </div>
+                                        <div class="etat">
+                                            <span>En production</span>
+                                        </div>
+                                    </div>
+                                    <div class="nom-product">
+                                        <span>Flyers A5 1 000 exemplaires</span>
+                                        <span>500 000 Ar</span>
+                                    </div>
+                                    <div class="bouton-product">
+                                        <a href="#suivi" id="open-popup-suivi">Suivre</a>
+                                        <a href="#detail" id="open-popup-detail">Voir les détails</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabscontent-personal-information" id="mes_fichiers">
+
+                        </div>
+                        <div class="tabscontent-personal-information" id="mes_devis">
+
+                        </div>
+                        <div class="tabscontent-personal-information" id="mon_profil">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- SUIVI COMMANDE -->
+        <div class="popup pop-up-suivi-commande">
+            <div class="header-suivi-commande">
+                <h3>
+                    Suivi de la commande #01025
+                </h3>
+                <img src="assets/img/close.svg" alt="" id="close-popup-suivi">
+            </div>
+            <div class="body-suivi-commande">
+                <ul class="etape">
+                    <li class="card-etape" id="recu">
+                        <div class="etape-img">
+                            <img src="assets/img/success.svg" alt="">
+                        </div>
+                        <div class="etape-title">
+                            <h4>Commande réçu</h4>
+                            <span class="date">08/10/25</span>
+                        </div>
+                    </li>
+                    <li class="card-etape" id="verification">
+                        <div class="etape-img">
+                            <img src="assets/img/success.svg" alt="">
+                        </div>
+                        <div class="etape-title">
+                            <h4>Vérification des fichiers</h4>
+                            <span class="date">08/10/25</span>
+                        </div>
+                    </li>
+                    <li class="card-etape" id="production">
+                        <div class="etape-img">
+                            <img src="assets/img/en-production.svg" alt="">
+                        </div>
+                        <div class="etape-title">
+                            <h4>En production</h4>
+                            <span class="date">08/10/25</span>
+                        </div>
+                    </li>
+                    <li class="card-etape" id="expedition">
+                        <div class="etape-img">
+                            <img src="assets/img/expedition.svg" alt="">
+                        </div>
+                        <div class="etape-title">
+                            <h4>Expédition</h4>
+                            <span class="date">08/10/25</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- DETAILS COMMANDE -->
+        <div class="popup pop-up-detail-commande">
+            <div class="header-detail-commande">
+                <h3>Détail de la commande #01025</h3>
+                <img src="assets/img/close.svg" alt="" id="close-popup-detail">
+            </div>
+            <div class="body-detail-commande">
+                <div class="card-recapitulation">
+                    <div class="img-recapitulation">
+                        <img src="" alt="">
+                    </div>
+                    <div class="text-recapitulation">
+                        <h4 id="nom">Flyers A5 1 000 exemplaires</h4>
+                        <span id="description">Papier 350g, Finition mate, Impression recto/verso</span><br>
+                        <span id="prix">500 000 Ariary</span>
+                    </div>
+                </div>
+                <div class="livraison">
+                    <h4>Livraison</h4>
+                    <div class="card-livraison">
+                        <span id="nom">Hariniaina Ratsarafahatra</span><br>
+                        <span id="address">Lot IVA 1844 L Antohomadinika</span><br>
+                        <span id="heure">à 15h00</span>
+                    </div>
+                </div>
+                <div class="paiement">
+                    <h4>Récapitulatif du paiement</h4>
+                    <div class="card-paiement">
+                        <div class="sous-total">
+                            <span>Sous-total</span>
+                            <span>500 000 Ar</span>
+                        </div>
+                        <div class="total-livraison">
+                            <span>Livraison</span>
+                            <span>5 000 Ar</span>
+                        </div>
+                        <div class="tva">
+                            <span>TVA (20%)</span>
+                            <span>10 000 Ar</span>
+                        </div>
+                        <div class="total">
+                            <span>Total</span>
+                            <span>515 000 Ar</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bouton-detail">
+                    <a href="">
+                        <img src="assets/img/upload.svg" alt="">
+                        Télécharger la facture
+                    </a>
+                    <a href="">
+                        <img src="assets/img/support.svg" alt="">
+                        Contacter le support
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- MAIN -->
+    <main>
+        <!-- BANNER -->
+        <section id="banner">
+            <img src="assets/img/fond.png" alt="" class="bg-image">
+            <div class="wrapper">
+                <div class="banner-text">
+                    <h1>#<span class="white">Vouloir la </span> différence</h1>
+                    <p class="medium white">De la création de votre identité visuell au covering de véhicules, nous
+                        donnons vie à vos
+                        projets les plus audacieux.</p>
+                    <div class="banner-btn">
+                        <a href="" class="btn-gradient">Nos Services</a>
+                        <a href="" class="btn-white">Demande devis</a>
+                    </div>
+                </div>
+                <div class="banner-QR">
+                    <img src="assets/img/qr-code.png" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- CLIENTS -->
+        <section id="clients">
+            <div class="wrapper">
+                <span>ILS NOUS FONT CONFIANCE AU QUOTIDIEN</span>
+                <div class="container-logo-client">
+                    <div class="logos-slide">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                    </div>
+                    <div class="logos-slide">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                        <img src="assets/img/logo.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ATOUTS -->
+        <section id="atouts">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Nos Atouts</h2>
+                </div>
+                <div class="inner-title">
+                    <p class="medium">Ce qui fait notre différence et votre satisfaction. Passez votre souris sur
+                        une
+                        carte pour en
+                        savoir plus.</p>
+                </div>
+                <div class="container-atouts t-center">
+                    <div class="card-atout">
+                        <img src="assets/img/icone_atout.svg" alt="">
+                        <span>Production express</span>
+                    </div>
+                    <div class="card-atout">
+                        <img src="assets/img/icone_atout.svg" alt="">
+                        <span>Production express</span>
+                    </div>
+                    <div class="card-atout">
+                        <img src="assets/img/icone_atout.svg" alt="">
+                        <span>Production express</span>
+                    </div>
+                    <div class="card-atout">
+                        <img src="assets/img/icone_atout.svg" alt="">
+                        <span>Production express</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- STATISTIQUES -->
+        <section id="stats">
+            <div class="wrapper">
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">500 000+</span>
+                    <p class="small">Pages imprimées avec une précision optimales</p>
+                </div>
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">2 500+</span>
+                    <p class="small">Projets réalisés avec succès</p>
+                </div>
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">7</span>
+                    <p class="small">Ans d'expertise au service de vos impressions</p>
+                </div>
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">2 000+</span>
+                    <p class="small">Clients fidèles qui nous font confiance</p>
+                </div>
+            </div>
+        </section>
+        <!-- NOS PRODUITS PHARES -->
+        <section id="produits-phares">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Nos Produits Phares</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Nous utilisons des équipements de pointe pour garantir un résultat impeccable à chaque
+                        impression.</p>
+                </div>
+                <ul class="tabslink-produits">
+                    <li>
+                        <a href="#papeterie_1">
+                            Papeterie 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#papeterie_2">
+                            Papeterie 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#papeterie_3">
+                            Papeterie 3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#papeterie_4">
+                            Papeterie 4
+                        </a>
+                    </li>
+                </ul>
+                <div class="container-produit">
+                    <div class="tabscontent-produits" id="papeterie_1">
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabscontent-produits" id="papeterie_2">
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 2</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 2</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 2</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 2</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabscontent-produits" id="papeterie_3">
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 3</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 3</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 3</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 3</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabscontent-produits" id="papeterie_4">
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 4</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 4</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 4</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                        <div class="card-produit">
+                            <a href="" class="link-box"></a>
+                            <img src="assets/img/carte_de_visite.png" alt="">
+                            <h3>Cartes de visite 4</h3>
+                            <span>À partir de <br><b>15 000 Ar</b></span>
+                            <div class="bouton-produit">
+                                <a href="" class="btn-card">Devis</a>
+                                <span class="reduction">-20%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- NOS PACKS -->
+        <section id="packs">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Nos Packs Clé en Main</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Des solutions complètes et économiques, conçues pour répondre à vos besoins spécifiques.
+                        Gagnez du temps et de l'argent.</p>
+                </div>
+                <div class="container-pack">
+                    <div class="card-pack">
+                        <h3>Pack <br><b>Démarrage</b></h3>
+                        <span class="prix">850k Ar</span>
+                        <ul class="description-pack">
+                            <li>Création de logo</li>
+                            <li>500 Cartes de visite</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                        </ul>
+                        <div class="bouton-pack">
+                            <a href="" class="btn-card">Devis</a>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                    <div class="card-pack">
+                        <h3>Pack <br><b>Démarrage</b></h3>
+                        <span class="prix">850k Ar</span>
+                        <ul class="description-pack">
+                            <li>Création de logo</li>
+                            <li>500 Cartes de visite</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                        </ul>
+                        <div class="bouton-pack">
+                            <a href="" class="btn-card">Devis</a>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                    <div class="card-pack">
+                        <h3>Pack <br><b>Démarrage</b></h3>
+                        <span class="prix">850k Ar</span>
+                        <ul class="description-pack">
+                            <li>Création de logo</li>
+                            <li>500 Cartes de visite</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                        </ul>
+                        <div class="bouton-pack">
+                            <a href="" class="btn-card">Devis</a>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                    <div class="card-pack">
+                        <h3>Pack <br><b>Démarrage</b></h3>
+                        <span class="prix">850k Ar</span>
+                        <ul class="description-pack">
+                            <li>Création de logo</li>
+                            <li>500 Cartes de visite</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                            <li>1000 Flyers A6</li>
+                        </ul>
+                        <div class="bouton-pack">
+                            <a href="" class="btn-card">Devis</a>
+                            <span class="reduction">-20%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- NOS REALISATIONS -->
+        <section id="realisations">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Nos Réalisations</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Un aperçu de projets que nous avons eu le plaisir de concrétiser pour nos clients.</p>
+                </div>
+                <ul class="tabslink tabslink-realisations">
+                    <li>
+                        <a href="#realisation_1">
+                            Papeterie 1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#realisation_2">
+                            Papeterie 2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#realisation_3">
+                            Papeterie 3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#realisation_4">
+                            Papeterie 4
+                        </a>
+                    </li>
+                </ul>
+                <div class="container-realisations">
+                    <div class="tabscontent-realisations" id="realisation_1">
+                        <div class="card-realisation">
+                            <a href="" class="link-box"></a>
+                            <div class="realisation-text">
+                                <h3>CDV</h3>
+                                <ul class="liste">
+                                    <li><b>Client :</b> Panagora</li>
+                                    <li><b>nb d'ex :</b> 500 Cartes de visite</li>
+                                    <li><b>delai d'ex :</b> 3 jrs</li>
+                                </ul>
+                            </div>
+                            <div class="realisation-img">
+                                <img src="assets/img/carte_de_visite.png" alt="">
+                            </div>
+                        </div>
+                        <div class="card-realisation">
+                            <a href="" class="link-box"></a>
+                            <div class="realisation-text">
+                                <h3>Flyers</h3>
+                                <ul class="liste">
+                                    <li><b>Client :</b> Panagora</li>
+                                    <li><b>nb d'ex :</b> 500 Cartes de visite</li>
+                                    <li><b>delai d'ex :</b> 3 jrs</li>
+                                </ul>
+                            </div>
+                            <div class="realisation-img">
+                                <img src="assets/img/carte_de_visite.png" alt="">
+                            </div>
+                        </div>
+                        <div class="card-realisation">
+                            <a href="" class="link-box"></a>
+                            <div class="realisation-text">
+                                <h3>Carte Postale</h3>
+                                <ul class="liste">
+                                    <li><b>Client :</b> Panagora</li>
+                                    <li><b>nb d'ex :</b> 500 Cartes de visite</li>
+                                    <li><b>delai d'ex :</b> 3 jrs</li>
+                                </ul>
+                            </div>
+                            <div class="realisation-img">
+                                <img src="assets/img/carte_de_visite.png" alt="">
+                            </div>
+                        </div>
+                        <div class="card-realisation">
+                            <a href="" class="link-box"></a>
+                            <div class="realisation-text">
+                                <h3>Carte Postale</h3>
+                                <ul class="liste">
+                                    <li><b>Client :</b> Panagora</li>
+                                    <li><b>nb d'ex :</b> 500 Cartes de visite</li>
+                                    <li><b>delai d'ex :</b> 3 jrs</li>
+                                </ul>
+                            </div>
+                            <div class="realisation-img">
+                                <img src="assets/img/carte_de_visite.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- STATISTIQUE 2 -->
+        <section id="stats" class="stats-2">
+            <div class="wrapper">
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">98 %</span>
+                    <h3>Projets Livrés à Temps</h3>
+                    <p class="small">Votre planning est notre priorité. Nous nous engageons à respecter les délais
+                        convenus.
+                    </p>
+                </div>
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">50</span>
+                    <h3>Partenaires de Confiance</h3>
+                    <p class="small">Des entreprises et des marques qui nous font confiance pour leur communication.
+                    </p>
+                </div>
+                <div class="card-stat t-center">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                    <span class="nombre">100 %</span>
+                    <h3>Solutions sur Mesure</h3>
+                    <p class="small">Chaque projet est unique et bénéficie d'une approche entièrement personnalisée.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- TECHNOLOGIES -->
+        <section id="technologies">
+            <div class="wrapper t-center">
+                <div class="section-title">
+                    <h2>Nos Technologies</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Nous utilisons des équipements de pointe pour garantir un résultat impeccable à chaque
+                        impression.</p>
+                </div>
+                <div class="container-technologie">
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Impression Offset</h3>
+                        <p class="small">Qualité supérieure pour les grands tirages.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Laser Numérique</h3>
+                        <p class="small">Rapidité et flexibilité pour les petites séries.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Jet d'encre Photo</h3>
+                        <p class="small">Rendu des couleursexceptionnel pour les visuels.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Eco-Solvant</h3>
+                        <p class="small">Durabilité pour les grands formats et l'extérieur.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Marquage</h3>
+                        <p class="small">Personnalisation d'objets et véhicules.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>DTF (Direct-to-Film)</h3>
+                        <p class="small">Marquage textile haute-fidélité toutes couleurs.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Flex & Floc</h3>
+                        <p class="small">Découpe et pose pour textiles, rendu mat ou velours.</p>
+                    </div>
+                    <div class="card-technologie">
+                        <img src="assets/img/elipse-technologie.svg" alt="">
+                        <h3>Plotter Découpe</h3>
+                        <p class="small">Découpe de précision pour stickers et adhésifs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PASSION-->
+        <section id="passion">
+            <div class="wrapper">
+                <div class="passion-text">
+                    <div class="section-title">
+                        <h2>Plus qu'une impression, une <span>passion.</span></h2>
+                    </div>
+                    <div class="inner-title">
+                        <p class="small">Depuis notre création, A.N.S Design Print s'est donné pour mission de
+                            transformer vos
+                            idées en réalité tangible. Nous sommes une équipe de passionnés, experts en design et en
+                            impression, basés au cœur de Madagascar. Nous combinons savoir-faire artisanal et
+                            technologies de pointe pour offrir un résultat qui dépasse vos attentes.</p>
+                    </div>
+                    <ul>
+                        <li><span>Supérieure :</span> Des matériaux choisis avec soin pour un rendu impeccable.</li>
+                        <li><span>Accompagnement Personnalisé : </span> Votre projet est unique, notre service l'est
+                            aussi.</li>
+                    </ul>
+                </div>
+                <div class="passion-img">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- HISTORIQUE -->
+        <section id="historique">
+            <img src="assets/img/fond.png" alt="" class="bg-image">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Notre Histoire</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Les moments clés qui ont façonné notre expertise.</p>
+                </div>
+            </div>
+        </section>
+        <!-- CONTAINER-HISTORIQUE -->
+        <section id="container-historique">
+            <div class="wrapper">
+                <img src="assets/img/separateur-historique.png" alt="" class="separateur-historique">
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2018</h3>
+                        <span>Les Débuts et la Vision</span>
+                        <p>Nous lançons A.N.S Création avec l'ambition de créer une agence tout-en-un, du design à
+                            l'impression.</p>
+                    </div>
+                </div>
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2019-2021</h3>
+                        <span>L’Adaptation à la Crise</span>
+                        <p>Nous pivotons en développant un service d'impression en ligne, renforçant notre capacité
+                            d'innovation.</p>
+                    </div>
+                </div>
+
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2021</h3>
+                        <span>Grand Décollage</span>
+                        <p>Rebranding, fondation de A.N.S.com, et ouverture de notre premier atelier à Antanimora.</p>
+                    </div>
+                </div>
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2022</h3>
+                        <span>Une Fondation Solide</span>
+                        <p>Ouverture de notre siège principal à Ambanidia pour une meilleure accessibilité et relation
+                            client.</p>
+                    </div>
+                </div>
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2024</h3>
+                        <span>Expansion et Diversification</span>
+                        <p>Annexe goodies, lancement de MisiTiako et modernisation de nos équipements.</p>
+                    </div>
+                </div>
+                <div class="card-historique">
+                    <div class="card-historique_item">
+                        <h3>2025</h3>
+                        <span>L'Innovation Digitale</span>
+                        <p>Lancement de notre site web professionnel unique à Madagascar et intégration d'un CRM.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- EQUIPE -->
+        <section id="equipe">
+            <div class="wrapper">
+                <div class="section-title t-center">
+                    <h2>Notre Équipe</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Les visages derrière la qualité et le service A.N.S. Une synergie de talents à votre écoute.
+                    </p>
+                </div>
+                <div class="container-equipe">
+                    <div class="card-equipe">
+                        <div class="equipe-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="equipe-text t-center">
+                            <h3>Andry Rakoto</h3>
+                            <p class="small">CEO & Fondateur</p>
+                        </div>
+                    </div>
+                    <div class="card-equipe">
+                        <div class="equipe-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="equipe-text t-center">
+                            <h3>Andry Rakoto</h3>
+                            <p class="small">CEO & Fondateur</p>
+                        </div>
+                    </div>
+                    <div class="card-equipe">
+                        <div class="equipe-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="equipe-text t-center">
+                            <h3>Andry Rakoto</h3>
+                            <p class="small">CEO & Fondateur</p>
+                        </div>
+                    </div>
+                    <div class="card-equipe">
+                        <div class="equipe-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="equipe-text t-center">
+                            <h3>Andry Rakoto</h3>
+                            <p class="small">CEO & Fondateur</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- MARQUE -->
+        <section id="marque">
+            <div class="wrapper t-center">
+                <div class="section-title">
+                    <h2>Donnez du pouvoir à votre marque.</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Les visages derrière la qualité et le service A.N.S. Une synergie de talents à votre écoute.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- PROCESSUS -->
+        <section id="processus">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Notre Processus, en Détail</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Cliquez sur chaque étape pour découvrir comment nous donnons vie à votre projet avec soin et
+                        précision.</p>
+                </div>
+                <ul class="tabslink-processus">
+                    <li>
+                        <a href="#briefing">Briefing</a>
+                    </li>
+                    <li>
+                        <a href="#devis">Devis</a>
+                    </li>
+                    <li>
+                        <a href="#bat">B.A.T</a>
+                    </li>
+                    <li>
+                        <a href="#préparation">Préparation</a>
+                    </li>
+                    <li>
+                        <a href="#production">Production</a>
+                    </li>
+                    <li>
+                        <a href="#livraison">Livraison</a>
+                    </li>
+                </ul>
+                <div class="tabscontent-processus" id="briefing">
+                    <div class="processus-text">
+                        <div class="section-title">
+                            <h2>On discute, on chiffre</h2>
+                        </div>
+                        <div class="inner-title">
+                            <p>Depuis notre création, A.N.S Design Print s'est donné pour mission de transformer vos
+                                idées en réalité tangible. Nous sommes une équipe de passionnés, experts en design
+                                et en
+                                impression, basés au cœur de Madagascar. Nous combinons savoir-faire artisanal et
+                                technologies de pointe pour offrir un résultat qui dépasse vos attentes.</p>
+                        </div>
+                    </div>
+                    <div class="processus-img">
+                        <img src="" alt="">
+                    </div>
+                </div>
+                <div class="tabscontent-processus" id="devis">
+                    <div class="processus-text">
+                        <div class="section-title">
+                            <h2>Devis</h2>
+                        </div>
+                        <div class="inner-title">
+                            <p>Depuis notre création, A.N.S Design Print s'est donné pour mission de transformer vos
+                                idées en réalité tangible. Nous sommes une équipe de passionnés, experts en design
+                                et en
+                                impression, basés au cœur de Madagascar. Nous combinons savoir-faire artisanal et
+                                technologies de pointe pour offrir un résultat qui dépasse vos attentes.</p>
+                        </div>
+                    </div>
+                    <div class="processus-img">
+                        <img src="" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--FAQ-->
+        <section id="faq">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Questions Fréquentes</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Trouvez ici les réponses aux questions les plus courantes que nous recevons.</p>
+                </div>
+                <div class="accordeon">
+                    <div class="accordeon-content">
+                        <div class="accordeon-title">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression</h3>
+                            <div class="icon">
+                                <img src="assets/img/fleche.svg" alt="" class="fleche">
+                            </div>
+                        </div>
+                        <div class="accordeon-text">
+                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
+                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
+                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
+                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
+                        </div>
+                    </div>
+                    <div class="accordeon-content">
+                        <div class="accordeon-title">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression</h3>
+                            <div class="icon">
+                                <img src="assets/img/fleche.svg" alt="" class="fleche">
+                            </div>
+                        </div>
+                        <div class="accordeon-text">
+                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
+                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
+                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
+                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--CONSEILS-->
+        <section id="conseils">
+            <div class="wrapper">
+                <div class="section-title">
+                    <h2>Nos Derniers Conseils</h2>
+                </div>
+                <div class="inner-title">
+                    <p>Retrouvez nos actualités, astuces et inspirations pour une communication réussie.</p>
+                </div>
+                <div class="container-conseils">
+                    <div class="card-conseil">
+                        <a href="" class="link-box"></a>
+                        <div class="conseil-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="conseil-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
+                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
+                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
+                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
+                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
+                            <a href="#">Lire la suite x</a>
+                        </div>
+                    </div>
+                    <div class="card-conseil">
+                        <a href="" class="link-box"></a>
+                        <div class="conseil-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="conseil-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
+                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
+                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
+                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
+                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
+                            <a href="#">Lire la suite x</a>
+                        </div>
+                    </div>
+                    <div class="card-conseil">
+                        <a href="" class="link-box"></a>
+                        <div class="conseil-img">
+                            <img src="" alt="">
+                        </div>
+                        <div class="conseil-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
+                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
+                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
+                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
+                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
+                            <a href="#">Lire la suite x</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- FORMULAIRE -->
+        <section id="formulaire">
+            <div class="wrapper">
+                <div class="formulaire-text">
+                    <div class="section-title">
+                        <h2>Prêt à lancer
+                            Votre projet ?</h2>
+                    </div>
+                    <div class="inner-title">
+                        <p>Contactez-nous pour discuter de vos idées ou pour toute demande d'information. Notre
+                            équipe est là pour vous accompagner.</p>
+                    </div>
+                    <form action="" method="post">
+                        <input type="text" placeholder="Votre nom.." name="nom">
+                        <input type="text" placeholder="Votre prénom ..." name="prenom">
+                        <textarea name="" id="" placeholder="Votre message ..."></textarea>
+                        <button type="submit" class="btn-card">Envoyez</button>
+                    </form>
+                </div>
+                <div class="formulaire-img">
+
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <div class="wrapper">
+            <div class="container-information">
+                <div class="card-information mail">
+                    <img src="" alt="">
+                    <a href="mailto:ans.designprint.annexe@gmail.com">ans.designprint.annexe@gmail.com</a>
+                    <a href="mailto:ans.designprint.annexe@gmail.com">ans.designprint.annexe@gmail.com</a>
+                </div>
+                <div class="card-information phone">
+                    <img src="" alt="">
+                    <a href="tel:+261346324272">+261 34 63 242 72</a>
+                    <a href="tel:+261346324272">+261 34 63 242 72</a>
+                </div>
+                <div class=" card-information maps">
+                    <img src="" alt="">
+                    <a href="">Ambanidia, Rond Point Hazo tokana</a>
+                    <a href="">Ambanidia, Rond Point Hazo tokana</a>
+                </div>
+                <img src="assets/img/fond.png" alt="" class="bg-image">
+            </div>
+            <div class="container-additional-information">
+                <div class="text-payement">
+                    <h3>Payement sécurisé</h3>
+                    <p class="small">Grâce à nos solutions de paiement en ligne sécurisées, vous bénéficiez d'une
+                        expérience d'achat
+                        fluide et flexible, accessible 24h/24, avec la possibilité de choisir parmi plusieurs options de
+                        règlement, tout en ayant l'assurance que vos transactions sont protégées par les dernières
+                        technologies de sécurité.</p>
+                </div>
+                <div class="img-payement">
+                    <img src="assets/img/telma.png" alt="">
+                    <img src="assets/img/airtel money.png" alt="">
+                    <img src="assets/img/orange money.png" alt="">
+                    <img src="assets/img/visa.png" alt="">
+                </div>
+                <ul class="menu-footer">
+                    <li>
+                        <a href="">A propos</a>
+                    </li>
+                    <li>
+                        <a href="">Services</a>
+                    </li>
+                    <li>
+                        <a href="">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="">Blog</a>
+                    </li>
+                    <li>
+                        <a href="">Devis</a>
+                    </li>
+                </ul>
+                <form action="" method="post" class="subscribe">
+                    <textarea name="" id="" placeholder="Votre message ..."></textarea>
+                    <button type="submit" class="btn-card">Envoyez</button>
+                </form>
+                <ul class="social-icon">
+                    <li>
+                        <a href=""><img src="" alt=""></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="" alt=""></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="" alt=""></a>
+                    </li>
+                    <li>
+                        <a href=""><img src="" alt=""></a>
+                    </li>
+                </ul>
+            </div>
+            <a href="" class="fleche-footer">
+                <img src="assets/img/fleche-footer.svg" alt="">
+            </a>
+        </div>
+    </footer>
+    <script src="assets/libs/jquery/jquery.min.js"></script>
+    <script src="assets/libs/fancybox/fancybox.min.js"></script>
+    <script src="assets/libs/slick/slick.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

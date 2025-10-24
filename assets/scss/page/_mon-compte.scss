@@ -1,0 +1,212 @@
+#mon-compte {
+  .wrapper {
+    padding: 50px 40px;
+    .title {
+      .section-title {
+        h2 {
+          font-family: "gilroy-bold";
+          color: $dark;
+          margin-bottom: 10px;
+        }
+      }
+      .inner-title {
+        p {
+          text-align: left;
+          font-size: 16px;
+        }
+      }
+    }
+    .historique-des-commandes {
+      h3 {
+        color: $dark;
+        margin: 30px 0 20px 0;
+      }
+      .accordeon {
+        @extend %flex;
+        @include flex-direction(column);
+        gap: 20px;
+        .accordeon-card-compte {
+          box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
+          padding: 20px;
+          @include border-radius(20px);
+          &.active .accordeon-content-compte {
+            opacity: 1;
+            max-height: 1000px;
+          }
+          .accordeon-title-compte {
+            @extend %grid;
+            @include align-items(center);
+            @include grid-template-columns(1fr 1fr 1fr 0.1fr);
+            cursor: pointer;
+            .order-detail {
+              h4 {
+                color: $red;
+              }
+              span {
+                color: $gray;
+              }
+            }
+            .order-etat {
+              padding: 10px;
+              @include border-radius(10px);
+              text-align: center;
+              span {
+                font-family: "gilroy-bold";
+              }
+              &.en-attente {
+                background: #fef3c7;
+                span {
+                  color: #92400e;
+                }
+              }
+              &.en-production {
+                background: #d1fae5;
+                span {
+                  color: #065f46;
+                }
+              }
+            }
+            .order-devis {
+              text-align: center;
+              span {
+                font-family: "gilroy-bold";
+              }
+            }
+            .order-arrow {
+              height: 16px;
+              aspect-ratio: 1/1;
+            }
+          }
+          .accordeon-content-compte {
+            @extend .flex-sb;
+            @include align-items(start);
+            gap: 50px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+            max-height: 0;
+            .order-summary {
+              margin-top: 30px;
+              padding: 20px;
+              width: 60%;
+              @include border-radius(10px);
+              border: 1px $gray solid;
+              .header-order-summary {
+                @extend .flex-sb;
+                h5 {
+                  font-family: "gilroy-bold";
+                  font-size: 24px;
+                  color: $dark;
+                }
+                span {
+                  color: $gray;
+                  font-size: 14px;
+                }
+                .order-detail {
+                  text-align: right;
+                }
+              }
+              .body-order-summary {
+                .facture {
+                  margin: 20px 0;
+                  span:nth-of-type(1) {
+                    font-size: 16px;
+                  }
+                  span {
+                    color: $gray;
+                    font-size: 14px;
+                  }
+                  span.name {
+                    color: $dark;
+                    font-size: 16px;
+                    font-family: "gilroy-bold";
+                  }
+                }
+                .devis-table {
+                  width: 100%;
+                  color: #333;
+                  border: 1px solid #ddd;
+                  @include border-radius(10px);
+                  overflow: hidden;
+                  strong {
+                    font-family: "gilroy-bold";
+                    color: $dark;
+                  }
+                  .devis-header {
+                    @extend %grid;
+                    grid-template-columns: 3fr 0.5fr 1fr;
+                    background-color: #f7f7f7;
+                    padding: 12px 16px;
+                    border-bottom: 1px solid #ddd;
+                    .devis-col {
+                      font-family: "gilroy-bold";
+                      color: $dark;
+                    }
+                    .devis-col:not(:first-child) {
+                      text-align: right;
+                    }
+                  }
+                  .devis-row {
+                    @extend %grid;
+                    grid-template-columns: 3fr 0.5fr 1fr;
+                    @include align-items(start);
+                    padding: 12px 16px;
+                    border-bottom: 1px solid #eee;
+                    &:last-child {
+                      border-bottom: none;
+                    }
+                    .devis-col.description {
+                      font-size: 14px;
+                      line-height: 1.4;
+                      .details {
+                        color: $gray;
+                        font-size: 13px;
+                        margin-top: 4px;
+                      }
+                    }
+                    .devis-col.quantite,
+                    .devis-col.total {
+                      text-align: right;
+                      font-size: 14px;
+                    }
+                  }
+                }
+                .devis-summary {
+                  margin-top: 20px;
+                  padding: 0 16px 16px;
+                  font-size: 14px;
+                  width: 40%;
+                  float: right;
+                  .summary-item {
+                    @extend .flex-sb;
+                    margin: 4px 0;
+                  }
+                  .summary-item.total-ttc {
+                    font-size: 15px;
+                    font-weight: 600;
+                    border-top: 1px solid #ddd;
+                    padding-top: 8px;
+                  }
+                }
+              }
+            }
+            .actions_suivis {
+              width: 40%;
+              margin-top: 30px;
+              h5 {
+                font-family: "gilroy-semibold";
+                font-size: 16px;
+                color: $dark;
+                margin-bottom: 20px;
+              }
+              p {
+                color: $gray;
+                font-size: 14px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,217 @@
+// BORDER
+.bo {
+  border: 1px red solid;
+}
+
+// WRAPPER
+[class^="wrapper"] {
+  max-width: 1380px;
+  width: 100%;
+  padding: 0 40px;
+  position: relative;
+  margin: 0 auto;
+
+  @include breakpoint(xs) {
+    padding: 0 20px;
+  }
+}
+
+.wrapper-initial {
+  position: initial;
+}
+
+// FLEXBOX
+%flex {
+  @include flexbox;
+  column-gap: 20px;
+}
+
+.flex {
+  &-sb {
+    @extend %flex;
+    @include justify-content(space-between);
+    @include align-items(center);
+  }
+
+  &-jc {
+    @extend %flex;
+    @include justify-content(center);
+    @include align-items(center);
+  }
+}
+
+// GRID
+%grid {
+  @include grid(20px);
+}
+
+.grid {
+  &-50 {
+    @extend %grid;
+    @include grid-template-columns(1fr 1fr);
+  }
+
+  &-33 {
+    @extend %grid;
+    @include grid-template-columns(1fr 1fr 1fr);
+  }
+
+  &-25 {
+    @extend %grid;
+    @include grid-template-columns(1fr 1fr 1fr 1fr);
+  }
+}
+
+// TEXT-CENTER
+.t-center {
+  * {
+    text-align: center;
+  }
+}
+
+// COLOR WHITE
+.white {
+  * {
+    color: white;
+  }
+}
+
+// SECTION-TITLE
+.section-title {
+}
+
+// INNER-TITLE
+.inner-title {
+  p {
+    color: $gray;
+    font-size: 24px;
+    text-align: center;
+  }
+}
+
+// IMG-COVER
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+//LINK-BOX
+.link-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+//TABS-LINK
+[class^="tabslink"]:not(.tabslink-etape) {
+  margin-top: 60px;
+  @extend .flex-jc;
+  background: #f8f8f8;
+  padding: 0 70px;
+  @include border-radius(30px);
+  li a {
+    padding: 20px;
+    color: $gray;
+    font-family: "gilroy-bold";
+    font-size: 18px;
+    &.active {
+      background: $red;
+      color: $white;
+    }
+  }
+}
+
+//FOND-IMG
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+//SHAPE-DECORATION
+.shape {
+  &-top::after {
+    content: url("assets/img/shape_banner.svg");
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+    z-index: 9;
+    width: 900px;
+  }
+  &-bottom::after {
+    content: url("assets/img/shape_banner.svg");
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    width: 900px;
+  }
+}
+
+//DOTS
+.slick-dots {
+  @extend %flex;
+  @extend .flex-jc;
+}
+
+//POP-UP MINI-CART
+.pop-up-mini-cart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $white;
+  @include border-radius(30px);
+  min-width: 500px;
+  padding: 25px;
+  z-index: 101;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+//POP-UP SINGLE
+.pop-up-single {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $white;
+  @include border-radius(30px);
+  min-width: 500px;
+  padding: 25px;
+  z-index: 101;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease;
+}
+
+//OVERLAY
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  display: none;
+  z-index: 100;
+  &.active {
+    opacity: 1;
+    display: block;
+  }
+}

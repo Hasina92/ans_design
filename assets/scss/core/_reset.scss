@@ -1,0 +1,104 @@
+*::before,
+*::after {
+  @include box-sizing(border-box);
+  @include transition;
+}
+
+* {
+  @include box-sizing(border-box);
+  @include transition;
+  margin: 0;
+  padding: 0;
+  font-family: "gilroy-regular";
+}
+
+.title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  font: normal 18px/35px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  overflow: hidden;
+}
+
+main {
+  display: block;
+
+  section {
+    @extend .py-60;
+  }
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  outline: none;
+  resize: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ol,
+ul {
+  list-style: none;
+
+  li {
+    list-style: none;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  @include transition;
+  display: block;
+}
+
+span {
+  display: inline-block;
+}

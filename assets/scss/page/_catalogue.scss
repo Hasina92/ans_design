@@ -1,0 +1,234 @@
+//BANNER
+#banner-catalogue {
+  padding: 150px 0;
+  position: relative;
+
+  .wrapper {
+    @extend .flex-jc;
+    @include flex-direction(column);
+    h1 {
+      span {
+        color: $white;
+      }
+    }
+
+    p {
+      color: $white;
+      width: 100%;
+      max-width: 874px;
+      padding: 20px;
+    }
+
+    .banner-btn {
+      width: 100%;
+      max-width: 247px;
+      margin: auto;
+    }
+    .calculator {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      width: 63px;
+      height: 63px;
+      background: $white;
+      @extend .flex-jc;
+      @include border-radius(50%);
+      border: 6px solid #e12649;
+    }
+  }
+}
+
+//ETAPES
+#etapes {
+  margin-top: -140px;
+
+  .wrapper {
+    @extend .flex-jc;
+    gap: 60px;
+
+    .card-etapes {
+      box-shadow: 0px 0px 7.5px 0px #0000001a;
+      background: $white;
+      @include border-radius(20px);
+      width: 100%;
+      max-width: 320px;
+      min-height: 195px;
+      padding: 0 15px;
+      @extend .flex-jc;
+      @include flex-direction(column);
+      gap: 10px;
+      .container-img {
+        width: 47px;
+        aspect-ratio: 1/1;
+        overflow: hidden;
+      }
+
+      h3 {
+        color: $dark;
+      }
+
+      p {
+        color: $gray;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+//PRODUITS-PHARES
+#produits-phares-catalogue {
+  position: relative;
+  overflow: visible;
+  &::before {
+    content: url("assets/img/ellipse_client.svg");
+    position: absolute;
+    top: 100px;
+    left: -100px;
+    width: 450px;
+    z-index: -1;
+  }
+
+  .wrapper {
+    @extend .flex-jc;
+    @include flex-direction(column);
+
+    .section-title {
+      h2 {
+        color: $red;
+      }
+    }
+
+    .container-produits_phares {
+      position: relative;
+      margin-top: 50px;
+      max-width: 1200px;
+      .card-produits-phares {
+        margin-left: 20px;
+        width: 100%;
+        max-width: 385px;
+        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        background: $white;
+        @include border-radius(20px);
+        padding: 30px 35px;
+        @extend .flex-jc;
+        @include flex-direction(column);
+
+        .produits-phrares_img {
+          width: 100%;
+          max-width: 300px;
+          height: 125px;
+          overflow: hidden;
+          @extend .flex-jc;
+        }
+
+        h3 {
+          color: $dark;
+          padding-bottom: 18px;
+        }
+
+        a {
+          font-size: 18px;
+        }
+      }
+      .slick-current {
+        background: linear-gradient(90deg, #e20e56 0%, #df3182 100%) !important;
+
+        h3 {
+          color: $white;
+        }
+
+        a {
+          @extend .btn-white;
+        }
+
+        button {
+          @include border-radius(50%);
+        }
+      }
+    }
+
+    .btn-slick {
+      @extend .flex-sb;
+      position: absolute;
+      top: 65%;
+      transform: translateY(-50%);
+      width: 100%;
+
+      .slick-prev-custom,
+      .slick-next-custom {
+        @include border-radius(50%);
+        background: linear-gradient(#e20e56, #df5531);
+        width: 40px;
+        aspect-ratio: 1/1;
+        @extend .flex-jc;
+        cursor: pointer;
+        border: none;
+        img {
+          width: 25px;
+          aspect-ratio: 1/1;
+        }
+      }
+      .slick-prev-custom {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+}
+
+//CATALOGUE
+#catalogue {
+  .wrapper {
+    .section-title {
+      text-align: center;
+
+      h2 {
+        color: $yellow;
+      }
+    }
+
+    .container-catalogue {
+      margin-top: 30px;
+      @extend %grid;
+      @include grid-template-columns(1fr 1fr 1fr 1fr 1fr);
+      gap: 30px;
+
+      .card-catalogue {
+        background: $white;
+        @include border-radius(20px);
+        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        width: 100%;
+        max-width: 246px;
+        overflow: hidden;
+        border: 1px solid transparent;
+        &:hover {
+          transform: translateY(-10px);
+          border: 1px solid $red;
+        }
+        .card-icon-catalogue {
+          background: #ebebeb;
+          width: 100%;
+          padding: 35px;
+          height: 134px;
+          @extend .flex-jc;
+        }
+
+        .card-text-catalogue {
+          padding: 20px;
+
+          h3 {
+            font-size: 18px;
+            color: $dark;
+            padding-bottom: 7px;
+          }
+
+          a {
+            font-family: "gilroy-bold";
+            color: $gray;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,270 @@
+//ETAPE-PAGE
+#etape-page {
+  .wrapper {
+    padding: 50px 40px;
+    .title {
+      @extend %flex;
+      @include align-items(center);
+      img {
+        width: 20px;
+        aspect-ratio: 1/1;
+      }
+      .nav-prev {
+        background: $white;
+        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        padding: 10px;
+        @include border-radius(10px);
+        cursor: pointer;
+      }
+      .section-title {
+        h2 {
+          font-family: "gilroy-bold";
+          color: $dark;
+        }
+      }
+    }
+    .container-config-preview {
+      @extend .flex-sb;
+      @include align-items(start);
+      gap: 50px;
+      margin-top: 50px;
+      .config-tab,
+      .preview-tab {
+        padding: 20px;
+        background: $white;
+        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        @include border-radius(20px);
+      }
+      .config-tab {
+        width: 70%;
+        ul.tabslink-etape {
+          margin-top: 0;
+          @extend .flex-sb;
+          padding-bottom: 30px;
+          border-bottom: 3px solid #e5e7eb;
+          li a {
+            padding: 10px;
+            color: $gray;
+            @include border-radius(10px);
+            font-family: "gilroy-bold";
+            font-size: 16px;
+            @extend .flex-jc;
+            @include flex-direction(column);
+            gap: 10px;
+            min-width: 100px;
+            position: relative;
+            &.completed::after {
+              content: "✓";
+              position: absolute;
+              top: 10px;
+              right: 10px;
+              background: #28a745;
+              color: white;
+              font-size: 12px;
+              font-weight: bold;
+              width: 20px;
+              height: 20px;
+              @include border-radius(5px);
+              @extend .flex-jc;
+              box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            }
+            img {
+              width: 30px;
+              aspect-ratio: 1/1;
+            }
+            &.active {
+              color: $white;
+              background: $red;
+              img {
+                filter: brightness(10);
+              }
+            }
+          }
+        }
+        .tabscontent-etape:not(.quantite) {
+          @extend .grid-25;
+          padding: 30px 0;
+          border-bottom: 3px solid #e5e7eb;
+          .card-etape {
+            padding: 20px;
+            border: 1px solid $gray;
+            @include border-radius(20px);
+            @extend .flex-jc;
+            @include flex-direction(column);
+            cursor: pointer;
+            &.active {
+              border: 1px solid $red;
+              background: $red;
+              h3 {
+                color: $white;
+              }
+            }
+            gap: 20px;
+            .card-img {
+              background: #f3f4f6;
+              min-height: 100px;
+              width: 100%;
+              @extend .flex-jc;
+              @include border-radius(20px);
+              img {
+                width: 50px;
+                aspect-ratio: 1/1;
+              }
+            }
+            h3 {
+              font-size: 14px;
+              font-family: "gilroy-medium";
+              color: $dark;
+            }
+            &:hover {
+              transform: translateY(-10px);
+              border: 1px solid $red;
+            }
+          }
+        }
+        .quantite {
+          padding: 30px 0;
+          @extend %flex;
+          @include flex-direction(column);
+          border-bottom: 3px solid #e5e7eb;
+          h3 {
+            font-size: 18px;
+            color: $dark;
+            font-family: "gilroy-bold";
+            margin-bottom: 10px;
+          }
+          label,
+          input {
+            font-size: 16px;
+            color: $gray;
+            font-family: "gilroy-medium";
+            margin-bottom: 5px;
+          }
+          input[name="quantite"] {
+            padding: 10px;
+            @include border-radius(10px);
+            border: 1px $gray solid;
+            margin: 0;
+          }
+        }
+        .demande-spec {
+          padding-top: 30px;
+          @extend %flex;
+          @include flex-direction(column);
+          label {
+            font-size: 18px;
+            color: $dark;
+            font-family: "gilroy-bold";
+            margin-bottom: 10px;
+          }
+          textarea {
+            font-size: 16px;
+            color: $gray;
+            font-family: "gilroy-medium";
+            padding: 10px;
+            @include border-radius(10px);
+            border: 1px $gray solid;
+            margin: 0;
+          }
+        }
+      }
+      .preview-tab {
+        width: 30%;
+        h3 {
+          font-size: 18px;
+          color: $dark;
+          font-family: "gilroy-bold";
+          padding-bottom: 20px;
+          border-bottom: 3px solid #e5e7eb;
+        }
+        .quote-preview-container {
+          padding: 20px 0;
+          border-bottom: 3px solid #e5e7eb;
+          @extend %flex;
+          @include flex-direction(column);
+          gap: 20px;
+          h4 {
+            font-size: 14px;
+            font-family: "gilroy-bold";
+          }
+          ul {
+            margin-top: 10px;
+            li {
+              @extend .flex-sb;
+              color: $gray;
+              font-size: 12px;
+              &:not(:last-child) {
+                margin-bottom: 5px;
+              }
+            }
+          }
+        }
+        .preview-total {
+          @extend .flex-sb;
+          padding: 20px 0;
+          span {
+            font-family: "gilroy-bold";
+            &:nth-of-type(1) {
+              font-size: 18px;
+              color: $gray;
+            }
+            &:nth-of-type(2) {
+              font-size: 20px;
+              color: $dark;
+            }
+          }
+        }
+        a.btn-yellow {
+          color: $white;
+          @extend .flex-jc;
+          padding: 10px;
+          img {
+            width: 30px;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+}
+
+//OVERLAY
+.pop-up-ajout-panier {
+  @extend .overlay;
+  .pop-up-container {
+    @extend .pop-up-single;
+    min-width: 530px;
+    .header-ajout-panier {
+      @extend .flex-jc;
+      @include flex-direction(column);
+      gap: 20px;
+      img {
+        background: #dcfce7;
+        width: 70px;
+        aspect-ratio: 1/1;
+        @include border-radius(50%);
+        padding: 10px;
+      }
+      h3 {
+        color: $dark;
+      }
+    }
+    .body-ajout-panier {
+      @extend .flex-sb;
+      margin-top: 20px;
+      a.btn {
+        border: 1px $gray solid;
+        color: $gray;
+      }
+      a {
+        width: 50%;
+        text-align: center;
+      }
+    }
+    #close-popup-ajout-panier {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}
