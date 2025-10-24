@@ -1210,6 +1210,7 @@ footer .wrapper .container-information .card-information img {
   -moz-border-radius: 50%;
   background-clip: padding-box;
   margin-bottom: 15px;
+  padding: 20px;
 }
 footer .wrapper .container-information .card-information a {
   font-family: "gilroy-regular";

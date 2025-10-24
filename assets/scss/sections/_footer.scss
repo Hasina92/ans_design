@@ -18,6 +18,7 @@ footer {
           background: $white;
           @include border-radius(50%);
           margin-bottom: 15px;
+          padding: 20px;
         }
         a {
           font-family: "gilroy-regular";
