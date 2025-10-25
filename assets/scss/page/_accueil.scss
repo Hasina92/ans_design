@@ -92,6 +92,14 @@
       .logos-slide {
         animation: slide 20s infinite linear;
         display: inline-flex;
+        @include breakpoint(xs) {
+          animation: slide 10s infinite linear;
+        }
+      }
+      @include breakpoint(xs) {
+        .logos-slide:nth-of-type(2) {
+          display: none;
+        }
       }
       img {
         width: 200px;

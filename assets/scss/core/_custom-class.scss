@@ -86,6 +86,10 @@
     color: $gray;
     font-size: 24px;
     text-align: center;
+    @include breakpoint(xs) {
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 }
 

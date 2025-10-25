@@ -530,6 +530,12 @@ p.small {
   font-size: 24px;
   text-align: center;
 }
+@media (max-width: 600px) {
+  .inner-title p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
 
 .img-cover {
   width: 100%;
@@ -1472,6 +1478,16 @@ footer .wrapper .fleche-footer {
 #clients .wrapper .container-logo-client .logos-slide {
   animation: slide 20s infinite linear;
   display: inline-flex;
+}
+@media (max-width: 600px) {
+  #clients .wrapper .container-logo-client .logos-slide {
+    animation: slide 10s infinite linear;
+  }
+}
+@media (max-width: 600px) {
+  #clients .wrapper .container-logo-client .logos-slide:nth-of-type(2) {
+    display: none;
+  }
 }
 #clients .wrapper .container-logo-client img {
   width: 200px;
