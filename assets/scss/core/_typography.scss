@@ -6,10 +6,20 @@ h1 {
   span {
     font-family: "gilroy-heavy";
   }
+  @include breakpoint(sm) {
+    font-size: 70px;
+  }
+  @include breakpoint(xs) {
+    font-size: 50px;
+    line-height: 50px;
+  }
 }
 h2 {
   font-family: "gilroy-heavy";
   font-size: 48px;
+  @include breakpoint(xs) {
+    font-size: 30px;
+  }
 }
 h3 {
   font-family: "gilroy-bold";
@@ -25,9 +35,15 @@ p.medium {
   font-family: "gilroy-medium";
   font-size: 24px;
   line-height: 29px;
+  @include breakpoint(xs) {
+    font-size: 16px;
+  }
 }
 p.small {
   font-family: "gilroy-medium";
   font-size: 18px;
   line-height: 29px;
+  @include breakpoint(xs) {
+    font-size: 16px;
+  }
 }

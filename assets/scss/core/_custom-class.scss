@@ -113,11 +113,19 @@
   background: #f8f8f8;
   padding: 0 70px;
   @include border-radius(30px);
+  @include breakpoint(xs) {
+    @include flex-wrap(wrap);
+    padding: 0;
+    @include border-radius(0);
+  }
   li a {
     padding: 20px;
     color: $gray;
     font-family: "gilroy-bold";
     font-size: 18px;
+    @include breakpoint(xs) {
+      width: 100%;
+    }
     &.active {
       background: $red;
       color: $white;

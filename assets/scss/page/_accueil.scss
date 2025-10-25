@@ -7,7 +7,10 @@
 
   .wrapper {
     @extend .flex-sb;
-
+    @include breakpoint(xs) {
+      @include flex-direction(column);
+      gap: 20px;
+    }
     .banner-text {
       max-width: 530px;
       width: 100%;
@@ -21,6 +24,9 @@
 
       .banner-btn {
         @extend %flex;
+        @include breakpoint(xs) {
+          @include justify-content(space-between);
+        }
       }
     }
 
@@ -29,6 +35,9 @@
       max-width: 250px;
       @include border-radius(20px);
       overflow: hidden;
+      @include breakpoint(xs) {
+        max-width: 100%;
+      }
     }
   }
 }
@@ -57,10 +66,15 @@
     padding: 40px;
     overflow: hidden;
 
+    @include breakpoint(xs) {
+      @include border-radius(0);
+    }
+
     span {
       color: $gray;
       font-size: 18px;
       font-family: "gilroy-bold";
+      text-align: center;
     }
 
     .container-logo-client {
@@ -97,6 +111,10 @@
     @include flex-direction(column);
     gap: 40px;
 
+    @include breakpoint(xs) {
+      gap: 20px;
+    }
+
     .section-title {
       h2 {
         color: $red;
@@ -117,6 +135,11 @@
       @include justify-content(center);
       gap: 30px;
 
+      @include breakpoint(xs) {
+        gap: 20px;
+        @include flex-wrap(wrap);
+      }
+
       .card-atout {
         padding: 40px;
         @include border-radius(20px);
@@ -126,6 +149,10 @@
         gap: 10px;
         max-width: 246px;
         width: 100%;
+
+        @include breakpoint(xs) {
+          max-width: 100%;
+        }
 
         span {
           font-family: "gilroy-bold";
@@ -147,11 +174,20 @@
     @include justify-content(center);
     @include align-items(flex-start);
 
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      @include flex-direction(column);
+      gap: 20px;
+    }
+
     .card-stat {
       @extend .flex-jc;
       @include flex-direction(column);
       max-width: 246px;
       width: 100%;
+      @include breakpoint(xs) {
+        max-width: 100%;
+      }
 
       .nombre {
         color: $yellow;
@@ -188,9 +224,18 @@
     .container-produit {
       margin-top: 50px;
 
+      @include breakpoint(xs) {
+        width: 100%;
+      }
+
       .tabscontent-produits {
         @extend .grid-25;
         gap: 30px;
+        @include breakpoint(xs) {
+          @include grid-template-columns(1fr);
+          gap: 20px;
+          width: 100%;
+        }
       }
 
       .card-produit {
@@ -203,6 +248,10 @@
         min-width: 246px;
         width: 100%;
         position: relative;
+
+        @include breakpoint(xs) {
+          min-width: 100%;
+        }
 
         span {
           font-family: "gilroy-regular";
@@ -219,7 +268,6 @@
         .bouton-produit {
           @extend .flex-sb;
           width: 100%;
-
           .reduction {
             font-family: "gilroy-bold";
             font-size: 18px;
@@ -240,6 +288,10 @@
     padding: 50px 140px;
     background: #f8f8f8;
     @include border-radius(120px);
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      padding: 40px 20px;
+    }
 
     .section-title {
       h2 {
@@ -258,6 +310,10 @@
       @extend .grid-25;
       margin-top: 50px;
       gap: 30px;
+      @include breakpoint(xs) {
+        @include grid-template-columns(1fr);
+        width: 100%;
+      }
 
       .card-pack {
         padding: 30px 15px;
@@ -297,6 +353,9 @@
             font-size: 12px;
             font-family: "gilroy-regular";
             color: $gray;
+            @include breakpoint(xs) {
+              text-align: center;
+            }
           }
         }
 
@@ -336,10 +395,15 @@
 
     .container-realisations {
       margin-top: 50px;
-
+      @include breakpoint(xs) {
+        width: 100%;
+      }
       .tabscontent-realisations {
         @extend .grid-50;
         gap: 30px;
+        @include breakpoint(xs) {
+          @include grid-template-columns(1fr);
+        }
       }
 
       .card-realisation {
@@ -351,6 +415,9 @@
         @include border-radius(20px);
         box-shadow: 0px 0px 7.5px 0px #0000001a;
         position: relative;
+        @include breakpoint(xs) {
+          @include flex-direction(column);
+        }
 
         .realisation-text {
           h3 {
@@ -389,6 +456,9 @@
       .card-realisation:nth-child(4n + 3),
       .card-realisation:nth-child(4n + 4) {
         @include flex-direction(row-reverse);
+        @include breakpoint(xs) {
+          @include flex-direction(column);
+        }
       }
 
       .card-realisation:nth-child(even) {
@@ -441,6 +511,9 @@
       @extend .grid-25;
       gap: 20px;
       margin-top: 50px;
+      @include breakpoint(xs) {
+        @include grid-template-columns(1fr);
+      }
 
       .card-technologie {
         @extend .flex-jc;
@@ -480,6 +553,12 @@
     box-shadow: 0px 0px 3px 0px #00000029;
     backdrop-filter: blur(50px);
     gap: 50px;
+
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      @include flex-direction(column);
+      padding: 40px 20px;
+    }
 
     .passion-text {
       .section-title {
@@ -524,6 +603,10 @@
       height: 479px;
       @include border-radius(90px);
       background: $yellow;
+      @include breakpoint(xs) {
+        min-width: 100%;
+        @include border-radius(0);
+      }
 
       img {
         width: 100%;
@@ -564,17 +647,27 @@
     padding: 40px 140px;
     box-shadow: 0px 0px 3px 0px #00000029;
     backdrop-filter: blur(50px);
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      padding: 40px 20px;
+    }
     .separateur-historique {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
       max-width: 140px;
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
 
     .card-historique {
       @extend %flex;
-
+      @include breakpoint(sm) {
+        @include justify-content(center);
+        margin-bottom: 20px;
+      }
       &_item {
         background: $white;
         width: 100%;
@@ -582,6 +675,10 @@
         box-shadow: 0px 0px 7.5px 0px #0000001a;
         @include border-radius(20px);
         padding: 26px;
+
+        @include breakpoint(xs) {
+          max-width: 100%;
+        }
 
         h3 {
           color: $yellow;
@@ -601,16 +698,18 @@
       }
     }
 
-    .card-historique:nth-child(odd) {
-      @include justify-content(start);
+    @include breakpoint-up(sm) {
+      .card-historique:nth-child(odd) {
+        @include justify-content(start);
 
-      .card-historique_item {
-        text-align: right;
+        .card-historique_item {
+          text-align: right;
+        }
       }
-    }
 
-    .card-historique:nth-child(even) {
-      @include justify-content(end);
+      .card-historique:nth-child(even) {
+        @include justify-content(end);
+      }
     }
   }
 }
@@ -637,9 +736,17 @@
       gap: 30px;
       margin-top: 50px;
 
+      @include breakpoint(xs) {
+        grid-template-columns: (1fr);
+      }
+
       .card-equipe {
         width: 100%;
         max-width: 244px;
+
+        @include breakpoint(xs) {
+          max-width: 100%;
+        }
 
         .equipe-img {
           height: 238px;
@@ -671,6 +778,10 @@
     background: linear-gradient(#e20e56, #df5531 86.75%);
     @include border-radius(120px);
     padding: 50px 0;
+
+    @include breakpoint(xs) {
+      @include border-radius(0);
+    }
 
     .section-title {
       h2 {
@@ -733,7 +844,9 @@
       @extend .flex-sb;
       margin-top: 55px;
       gap: 32px;
-
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+      }
       .processus-text {
         .section-title {
           h2 {
@@ -754,6 +867,9 @@
         height: 360px;
         background: $yellow;
         @include border-radius(90px);
+        @include breakpoint(xs) {
+          min-width: 100%;
+        }
       }
     }
   }
@@ -767,7 +883,10 @@
     background: #7070700d;
     @include border-radius(120px);
     padding: 75px 140px;
-
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      padding: 40px 20px;
+    }
     .section-title {
       h2 {
         color: $red;
@@ -853,6 +972,10 @@
       gap: 20px;
       margin-top: 50px;
 
+      @include breakpoint(xs) {
+        @include grid-template-columns(1fr);
+      }
+
       .card-conseil {
         position: relative;
         padding: 0;
@@ -908,6 +1031,10 @@
     box-shadow: 0px 0px 7.5px 0px #0000000d;
     padding: 0;
     gap: 30px;
+    @include breakpoint(xs) {
+      @include border-radius(0);
+      @include flex-direction(column);
+    }
 
     .formulaire-text {
       @extend %flex;
@@ -918,6 +1045,10 @@
       .section-title {
         max-width: 337px;
         line-height: 55px;
+        @include breakpoint(xs) {
+          max-width: 100%;
+          line-height: 30px;
+        }
       }
 
       .inner-title {
@@ -937,15 +1068,24 @@
           border: 1px $gray solid;
           padding: 10px 20px;
         }
+        @include breakpoint-up(xs) {
+          input[name="nom"],
+          input[name="prenom"] {
+            width: 49%;
+            display: inline;
+          }
 
-        input[name="nom"],
-        input[name="prenom"] {
-          width: 49%;
-          display: inline;
+          input[name="prenom"] {
+            float: right;
+          }
         }
 
-        input[name="prenom"] {
-          float: right;
+        @include breakpoint(xs) {
+          input[name="nom"],
+          input[name="prenom"] {
+            width: 100%;
+            margin-top: 15px;
+          }
         }
 
         textarea {
