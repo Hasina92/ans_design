@@ -25,11 +25,17 @@ h3 {
   font-family: "gilroy-bold";
   font-size: 24px;
   color: $gray;
+  @include breakpoint(xs) {
+    font-size: 20px;
+  }
 }
 h4 {
   font-family: "gilroy-bold";
   font-size: 24px;
   color: $dark;
+  @include breakpoint(xs) {
+    font-size: 20px;
+  }
 }
 p.medium {
   font-family: "gilroy-medium";
@@ -44,6 +50,12 @@ p.small {
   font-size: 18px;
   line-height: 29px;
   @include breakpoint(xs) {
+    font-size: 16px;
+  }
+}
+
+@include breakpoint(xs) {
+  p {
     font-size: 16px;
   }
 }

@@ -391,11 +391,21 @@ h3 {
   font-size: 24px;
   color: #707070;
 }
+@media (max-width: 600px) {
+  h3 {
+    font-size: 20px;
+  }
+}
 
 h4 {
   font-family: "gilroy-bold";
   font-size: 24px;
   color: #170303;
+}
+@media (max-width: 600px) {
+  h4 {
+    font-size: 20px;
+  }
 }
 
 p.medium {
@@ -420,6 +430,11 @@ p.small {
   }
 }
 
+@media (max-width: 600px) {
+  p {
+    font-size: 16px;
+  }
+}
 .bo {
   border: 1px red solid;
 }
@@ -1373,16 +1388,22 @@ footer .wrapper .fleche-footer {
   flex-direction: column;
   gap: 40px;
 }
+@media (max-width: 600px) {
+  #banner .wrapper .banner-text {
+    gap: 20px;
+  }
+}
 #banner .wrapper .banner-text .white {
   color: #fff;
 }
 @media (max-width: 600px) {
   #banner .wrapper .banner-text .banner-btn {
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    justify-content: space-between;
-    -ms-flex-pack: space-between;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
   }
 }
 #banner .wrapper .banner-QR {
@@ -1974,9 +1995,9 @@ footer .wrapper .fleche-footer {
 @media (max-width: 600px) {
   #passion .wrapper .passion-img {
     min-width: 100%;
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
     background-clip: padding-box;
   }
 }
@@ -2016,9 +2037,9 @@ footer .wrapper .fleche-footer {
 }
 @media (max-width: 600px) {
   #container-historique .wrapper {
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
     background-clip: padding-box;
     padding: 40px 20px;
   }
@@ -2228,6 +2249,10 @@ footer .wrapper .fleche-footer {
 @media (max-width: 600px) {
   #processus .wrapper .tabscontent-processus .processus-img {
     min-width: 100%;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    background-clip: padding-box;
   }
 }
 
@@ -2400,6 +2425,11 @@ footer .wrapper .fleche-footer {
   flex-direction: column;
   gap: 20px;
   padding: 50px;
+}
+@media (max-width: 600px) {
+  #formulaire .wrapper .formulaire-text {
+    padding: 20px;
+  }
 }
 #formulaire .wrapper .formulaire-text .section-title {
   max-width: 337px;
