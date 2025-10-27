@@ -2,6 +2,9 @@
 #etape-page {
   .wrapper {
     padding: 50px 40px;
+    @include breakpoint(xs) {
+      padding: 40px 20px;
+    }
     .title {
       @extend %flex;
       @include align-items(center);
@@ -28,6 +31,10 @@
       @include align-items(start);
       gap: 50px;
       margin-top: 50px;
+
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+      }
       .config-tab,
       .preview-tab {
         padding: 20px;
@@ -37,6 +44,9 @@
       }
       .config-tab {
         width: 70%;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
         ul.tabslink-etape {
           margin-top: 0;
           @extend .flex-sb;
@@ -53,30 +63,44 @@
             gap: 10px;
             min-width: 100px;
             position: relative;
-            &.completed::after {
-              content: "✓";
-              position: absolute;
-              top: 10px;
-              right: 10px;
-              background: #28a745;
-              color: white;
-              font-size: 12px;
-              font-weight: bold;
-              width: 20px;
-              height: 20px;
-              @include border-radius(5px);
-              @extend .flex-jc;
-              box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            @include breakpoint(sm) {
+              font-size: 0;
+            }
+            @include breakpoint(xs) {
+              padding: 0;
+              min-width: auto;
+            }
+            @include breakpoint-up(xs) {
+              &.completed::after {
+                content: "✓";
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: #28a745;
+                color: white;
+                font-size: 12px;
+                font-weight: bold;
+                width: 20px;
+                height: 20px;
+                @include border-radius(5px);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+              }
             }
             img {
               width: 30px;
               aspect-ratio: 1/1;
             }
-            &.active {
-              color: $white;
-              background: $red;
-              img {
-                filter: brightness(10);
+            @include breakpoint-up(xs) {
+              &.active {
+                color: $white;
+                background: $red;
+                img {
+                  filter: brightness(10);
+                }
               }
             }
           }
@@ -85,6 +109,9 @@
           @extend .grid-25;
           padding: 30px 0;
           border-bottom: 3px solid #e5e7eb;
+          @include breakpoint(sm) {
+            @include grid-template-columns(1fr 1fr);
+          }
           .card-etape {
             padding: 20px;
             border: 1px solid $gray;
@@ -170,6 +197,9 @@
       }
       .preview-tab {
         width: 30%;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
         h3 {
           font-size: 18px;
           color: $dark;

@@ -4,6 +4,15 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("sticky", window.scrollY > 0);
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const burgerMenu = document.getElementById("burgerMenu");
+  const menu = document.querySelector(".nav-menu");
+  burgerMenu.addEventListener("click", function () {
+    menu.style.left = menu.style.left === "0px" ? "-80%" : "0px";
+    burgerMenu.classList.toggle("active");
+  });
+});
+
 //TABS-LINK
 jQuery(document).ready(function ($) {
   function initTabs(group) {

@@ -1,6 +1,9 @@
 #mon-compte {
   .wrapper {
     padding: 50px 40px;
+    @include breakpoint(xs) {
+      padding: 0 20px;
+    }
     .title {
       .section-title {
         h2 {
@@ -38,6 +41,9 @@
             @include align-items(center);
             @include grid-template-columns(1fr 1fr 1fr 0.1fr);
             cursor: pointer;
+            @include breakpoint(xs) {
+              @include grid-template-columns(1fr 1fr 0.1fr);
+            }
             .order-detail {
               h4 {
                 color: $red;
@@ -50,6 +56,9 @@
               padding: 10px;
               @include border-radius(10px);
               text-align: center;
+              @include breakpoint(xs) {
+                display: none;
+              }
               span {
                 font-family: "gilroy-bold";
               }
@@ -85,14 +94,28 @@
             transition: max-height 0.4s ease, opacity 0.3s ease;
             opacity: 0;
             max-height: 0;
+
+            @include breakpoint(sm) {
+              @include flex-direction(column);
+              gap: 0;
+            }
+
             .order-summary {
               margin-top: 30px;
               padding: 20px;
               width: 60%;
               @include border-radius(10px);
               border: 1px $gray solid;
+              @include breakpoint(sm) {
+                width: 100%;
+                border: none;
+                padding: 0;
+              }
               .header-order-summary {
                 @extend .flex-sb;
+                @include breakpoint(xs) {
+                  @include flex-direction(column);
+                }
                 h5 {
                   font-family: "gilroy-bold";
                   font-size: 24px;
@@ -104,6 +127,9 @@
                 }
                 .order-detail {
                   text-align: right;
+                  @include breakpoint(xs) {
+                    text-align: center;
+                  }
                 }
               }
               .body-order-summary {
@@ -177,6 +203,10 @@
                   font-size: 14px;
                   width: 40%;
                   float: right;
+                  @include breakpoint(xs) {
+                    width: 100%;
+                    float: none;
+                  }
                   .summary-item {
                     @extend .flex-sb;
                     margin: 4px 0;
@@ -193,6 +223,9 @@
             .actions_suivis {
               width: 40%;
               margin-top: 30px;
+              @include breakpoint(sm) {
+                width: 100%;
+              }
               h5 {
                 font-family: "gilroy-semibold";
                 font-size: 16px;

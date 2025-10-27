@@ -9,6 +9,12 @@ footer {
       padding: 40px 140px;
       @extend .shape-top;
       @include border-radius(120px 120px 0 0);
+
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+        gap: 50px;
+        @include border-radius(50px);
+      }
       .card-information {
         @extend .flex-jc;
         @include flex-direction(column);
@@ -35,15 +41,33 @@ footer {
       @extend .flex-sb;
       gap: 50px;
       padding: 40px;
+
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+      }
+
+      @include breakpoint(xs) {
+        padding: 40px 0;
+      }
+
       .text-payement {
         h3 {
           color: $red;
           margin-bottom: 10px;
+          @include breakpoint(xs) {
+            text-align: center;
+          }
         }
         p {
           color: $gray;
           line-height: 24px;
           max-width: 387px;
+          @include breakpoint(sm) {
+            max-width: 100%;
+          }
+          @include breakpoint(xs) {
+            text-align: center;
+          }
         }
       }
       .img-payement {
@@ -80,6 +104,9 @@ footer {
       }
       form.subscribe {
         min-width: 350px;
+        @include breakpoint(xs) {
+          min-width: 100%;
+        }
         textarea {
           width: 100%;
           color: $gray;
@@ -97,6 +124,9 @@ footer {
         @extend %flex;
         @include flex-direction(column);
         gap: 20px;
+        @include breakpoint(sm) {
+          @include flex-direction(row);
+        }
         li a {
           background: #e12948;
           width: 40px;

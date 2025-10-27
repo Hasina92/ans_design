@@ -46,6 +46,10 @@
     @extend .flex-jc;
     gap: 60px;
 
+    @include breakpoint(xs) {
+      @include flex-direction(column);
+    }
+
     .card-etapes {
       box-shadow: 0px 0px 7.5px 0px #0000001a;
       background: $white;
@@ -194,6 +198,14 @@
       @include grid-template-columns(1fr 1fr 1fr 1fr 1fr);
       gap: 30px;
 
+      @include breakpoint(sm) {
+        @include grid-template-columns(1fr 1fr 1fr);
+      }
+
+      @include breakpoint(xs) {
+        @include grid-template-columns(1fr);
+      }
+
       .card-catalogue {
         background: $white;
         @include border-radius(20px);
@@ -203,6 +215,9 @@
         overflow: hidden;
         border: 1px solid transparent;
         position: relative;
+        @include breakpoint(xs) {
+          max-width: 100%;
+        }
         &:hover {
           transform: translateY(-10px);
           border: 1px solid $red;
@@ -244,6 +259,9 @@
           z-index: 2;
           cursor: pointer;
           opacity: 0;
+          @include breakpoint(sm) {
+            opacity: 1;
+          }
           &:hover {
             transform: scale(1.1);
             img {

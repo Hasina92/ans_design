@@ -11,6 +11,29 @@ header {
     @extend .flex-sb;
     padding: 20px 40px;
 
+    @include breakpoint(sm) {
+      .nav-menu {
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -70%;
+        width: 70%;
+        background: $red;
+        display: flex;
+        @include align-items(center);
+        @include justify-content(start);
+        z-index: 100;
+        ul {
+          @include flex-direction(column);
+          gap: 30px !important;
+          margin-left: 50px;
+          li a {
+            color: $white;
+          }
+        }
+      }
+    }
+
     * {
       color: $gray;
       font-family: "gilroy-bold";
@@ -26,19 +49,21 @@ header {
       @extend %flex;
       gap: 70px;
 
-      li.current-menu-item {
-        a {
-          position: relative;
-          padding-bottom: 5px;
-          &::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 2px;
-            background: $gray;
+      @include breakpoint-up(sm) {
+        li.current-menu-item {
+          a {
+            position: relative;
+            padding-bottom: 5px;
+            &::after {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 30px;
+              height: 2px;
+              background: $gray;
+            }
           }
         }
       }
@@ -52,6 +77,9 @@ header {
 
       .my-account {
         @extend %flex;
+        @include breakpoint(md) {
+          display: none;
+        }
       }
 
       .notification {
@@ -59,11 +87,31 @@ header {
         @include justify-content(center);
         gap: 15px;
 
+        @include breakpoint(sm) {
+          img {
+            filter: brightness(0);
+          }
+        }
+
         img {
           width: 20px;
           aspect-ratio: 1/1;
           &:hover {
             filter: brightness(0) invert(0);
+          }
+        }
+        #burgerMenu {
+          display: none;
+          transform: scale(1.3);
+          transform-origin: center;
+          @include breakpoint(sm) {
+            display: block;
+          }
+        }
+        #my-account {
+          display: none;
+          @include breakpoint(sm) {
+            display: block;
           }
         }
       }
@@ -83,6 +131,9 @@ header {
     float: right;
     padding: 0;
     transform: translateX(100%);
+    @include breakpoint(sm) {
+      width: 100%;
+    }
     &.active {
       transform: translateX(0%);
     }
@@ -112,6 +163,7 @@ header {
         padding: 7px;
         @include border-radius(21px);
         margin: 10px 28px;
+        @include flex-wrap(nowrap);
         li {
           width: 50%;
           text-align: center;
