@@ -258,6 +258,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//SCROLL-TOP
 document.querySelectorAll('a[href^="."]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
@@ -268,6 +269,34 @@ document.querySelectorAll('a[href^="."]').forEach((anchor) => {
         behavior: "smooth",
         block: "start",
       });
+    }
+  });
+});
+
+// POP-UP DÉTAIL CATALOGUE
+document.addEventListener("DOMContentLoaded", () => {
+  const openButtons = document.querySelectorAll(".open-popup-detail-catalogue");
+  const popup = document.querySelector(".pop-up-detail-catalogue");
+  const closeButton = popup.querySelector(".close-popup-detail-catalogue");
+
+  if (!popup || !openButtons.length) return;
+
+  // Ouvrir la popup
+  openButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      popup.classList.add("active");
+    });
+  });
+
+  // Fermer via la croix
+  closeButton.addEventListener("click", () => {
+    popup.classList.remove("active");
+  });
+
+  // Fermer en cliquant à l’extérieur du contenu
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.remove("active");
     }
   });
 });
