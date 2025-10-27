@@ -221,6 +221,7 @@ $(document).ready(function () {
   });
 });
 
+//ACCORDEON COMMANDE
 document.addEventListener("DOMContentLoaded", () => {
   const accordeonTitles = document.querySelectorAll(".accordeon-title-compte");
 
@@ -254,5 +255,19 @@ document.addEventListener("DOMContentLoaded", () => {
         if (arrow) arrow.style.transform = "rotate(180deg)";
       }
     });
+  });
+});
+
+document.querySelectorAll('a[href^="."]').forEach((anchor) => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   });
 });
