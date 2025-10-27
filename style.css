@@ -1301,8 +1301,9 @@ footer .wrapper .container-additional-information .text-payement p {
   max-width: 387px;
 }
 footer .wrapper .container-additional-information .img-payement img {
-  max-width: 120px;
   height: 50px;
+  width: 100%;
+  object-fit: contain;
 }
 footer .wrapper .container-additional-information ul.menu-footer {
   -webkit-flex-direction: column;
@@ -1366,6 +1367,7 @@ footer .wrapper .container-additional-information ul.social-icon li a {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   background-clip: padding-box;
+  padding: 10px;
 }
 footer .wrapper .fleche-footer {
   position: absolute;

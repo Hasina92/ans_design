@@ -49,8 +49,9 @@ footer {
       .img-payement {
         @extend .grid-50;
         img {
-          max-width: 120px;
           height: 50px;
+          width: 100%;
+          object-fit: contain;
         }
       }
       ul.menu-footer {
@@ -102,6 +103,7 @@ footer {
           aspect-ratio: 1/1;
           @include border-radius(50%);
           @extend .flex-jc;
+          padding: 10px;
         }
       }
     }
