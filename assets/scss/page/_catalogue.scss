@@ -83,6 +83,9 @@
 #produits-phares-catalogue {
   position: relative;
   overflow: visible;
+  @include breakpoint(sm) {
+    overflow: hidden;
+  }
   &::before {
     content: url("assets/img/ellipse_client.svg");
     position: absolute;
@@ -218,11 +221,13 @@
         @include breakpoint(xs) {
           max-width: 100%;
         }
-        &:hover {
-          transform: translateY(-10px);
-          border: 1px solid $red;
-          .view-detail-popup {
-            opacity: 1;
+        @include breakpoint-up(sm) {
+          &:hover {
+            transform: translateY(-10px);
+            border: 1px solid $red;
+            .view-detail-popup {
+              opacity: 1;
+            }
           }
         }
         .card-icon-catalogue {

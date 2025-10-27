@@ -47,6 +47,9 @@
             .order-detail {
               h4 {
                 color: $red;
+                @include breakpoint(xs) {
+                  font-size: 18px;
+                }
               }
               span {
                 color: $gray;

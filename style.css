@@ -2737,6 +2737,11 @@ footer .wrapper .fleche-footer {
   position: relative;
   overflow: visible;
 }
+@media (max-width: 768px) {
+  #produits-phares-catalogue {
+    overflow: hidden;
+  }
+}
 #produits-phares-catalogue::before {
   content: url("assets/img/ellipse_client.svg");
   position: absolute;
@@ -2869,12 +2874,14 @@ footer .wrapper .fleche-footer {
     max-width: 100%;
   }
 }
-#catalogue .wrapper .container-catalogue .card-catalogue:hover {
-  transform: translateY(-10px);
-  border: 1px solid #df4d34;
-}
-#catalogue .wrapper .container-catalogue .card-catalogue:hover .view-detail-popup {
-  opacity: 1;
+@media (min-width: 768px) {
+  #catalogue .wrapper .container-catalogue .card-catalogue:hover {
+    transform: translateY(-10px);
+    border: 1px solid #df4d34;
+  }
+  #catalogue .wrapper .container-catalogue .card-catalogue:hover .view-detail-popup {
+    opacity: 1;
+  }
 }
 #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue {
   background: #ebebeb;
@@ -2998,6 +3005,11 @@ footer .wrapper .fleche-footer {
   font-family: "gilroy-bold";
   color: #170303;
 }
+@media (max-width: 600px) {
+  #etape-page .wrapper .title .section-title h2 {
+    font-size: 22px;
+  }
+}
 #etape-page .wrapper .container-config-preview {
   -webkit-align-items: start;
   -moz-align-items: start;
@@ -3059,11 +3071,12 @@ footer .wrapper .fleche-footer {
 @media (max-width: 768px) {
   #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a {
     font-size: 0;
+    gap: 0;
   }
 }
 @media (max-width: 600px) {
   #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a {
-    padding: 0;
+    padding: 10px;
     min-width: auto;
   }
 }
@@ -3093,14 +3106,12 @@ footer .wrapper .fleche-footer {
   width: 30px;
   aspect-ratio: 1/1;
 }
-@media (min-width: 600px) {
-  #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a.active {
-    color: #fff;
-    background: #df4d34;
-  }
-  #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a.active img {
-    filter: brightness(10);
-  }
+#etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a.active {
+  color: #fff;
+  background: #df4d34;
+}
+#etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a.active img {
+  filter: brightness(10);
 }
 #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) {
   padding: 30px 0;
@@ -3125,6 +3136,11 @@ footer .wrapper .fleche-footer {
   flex-direction: column;
   cursor: pointer;
   gap: 20px;
+}
+@media (max-width: 600px) {
+  #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape {
+    padding: 10px;
+  }
 }
 #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape.active {
   border: 1px solid #df4d34;
@@ -3151,9 +3167,11 @@ footer .wrapper .fleche-footer {
   font-family: "gilroy-medium";
   color: #170303;
 }
-#etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape:hover {
-  transform: translateY(-10px);
-  border: 1px solid #df4d34;
+@media (min-width: 768px) {
+  #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape:hover {
+    transform: translateY(-10px);
+    border: 1px solid #df4d34;
+  }
 }
 #etape-page .wrapper .container-config-preview .config-tab .quantite {
   padding: 30px 0;
@@ -3369,6 +3387,11 @@ footer .wrapper .fleche-footer {
 }
 #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-title-compte .order-detail h4 {
   color: #df4d34;
+}
+@media (max-width: 600px) {
+  #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-title-compte .order-detail h4 {
+    font-size: 18px;
+  }
 }
 #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-title-compte .order-detail span {
   color: #707070;

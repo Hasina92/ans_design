@@ -23,6 +23,9 @@
         h2 {
           font-family: "gilroy-bold";
           color: $dark;
+          @include breakpoint(xs) {
+            font-size: 22px;
+          }
         }
       }
     }
@@ -66,9 +69,10 @@
             text-align: center;
             @include breakpoint(sm) {
               font-size: 0;
+              gap: 0;
             }
             @include breakpoint(xs) {
-              padding: 0;
+              padding: 10px;
               min-width: auto;
             }
             @include breakpoint-up(xs) {
@@ -94,13 +98,11 @@
               width: 30px;
               aspect-ratio: 1/1;
             }
-            @include breakpoint-up(xs) {
-              &.active {
-                color: $white;
-                background: $red;
-                img {
-                  filter: brightness(10);
-                }
+            &.active {
+              color: $white;
+              background: $red;
+              img {
+                filter: brightness(10);
               }
             }
           }
@@ -119,6 +121,9 @@
             @extend .flex-jc;
             @include flex-direction(column);
             cursor: pointer;
+            @include breakpoint(xs) {
+              padding: 10px;
+            }
             &.active {
               border: 1px solid $red;
               background: $red;
@@ -143,9 +148,11 @@
               font-family: "gilroy-medium";
               color: $dark;
             }
-            &:hover {
-              transform: translateY(-10px);
-              border: 1px solid $red;
+            @include breakpoint-up(sm) {
+              &:hover {
+                transform: translateY(-10px);
+                border: 1px solid $red;
+              }
             }
           }
         }
