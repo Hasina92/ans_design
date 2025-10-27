@@ -823,13 +823,18 @@ header {
 header .wrapper {
   padding: 20px 40px;
 }
+@media (max-width: 600px) {
+  header .wrapper {
+    padding: 20px;
+  }
+}
 @media (max-width: 768px) {
   header .wrapper .nav-menu {
     height: 100vh;
     position: fixed;
     top: 0;
     left: -70%;
-    width: 70%;
+    width: 60%;
     background: #df4d34;
     display: flex;
     -webkit-align-items: center;
@@ -3311,7 +3316,7 @@ footer .wrapper .fleche-footer {
 }
 @media (max-width: 600px) {
   #mon-compte .wrapper {
-    padding: 0 20px;
+    padding: 40px 20px;
   }
 }
 #mon-compte .wrapper .title .section-title h2 {

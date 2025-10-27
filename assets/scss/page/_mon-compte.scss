@@ -2,7 +2,7 @@
   .wrapper {
     padding: 50px 40px;
     @include breakpoint(xs) {
-      padding: 0 20px;
+      padding: 40px 20px;
     }
     .title {
       .section-title {

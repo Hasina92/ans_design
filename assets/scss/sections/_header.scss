@@ -11,13 +11,17 @@ header {
     @extend .flex-sb;
     padding: 20px 40px;
 
+    @include breakpoint(xs) {
+      padding: 20px;
+    }
+
     @include breakpoint(sm) {
       .nav-menu {
         height: 100vh;
         position: fixed;
         top: 0;
         left: -70%;
-        width: 70%;
+        width: 60%;
         background: $red;
         display: flex;
         @include align-items(center);
