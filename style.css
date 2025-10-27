@@ -2772,7 +2772,7 @@ footer .wrapper .fleche-footer {
   font-size: 24px;
   color: #170303;
 }
-.pop-up-detail-catalogue .pop-up-container .header-detail-catalogue #close-popup-detail-catalogue {
+.pop-up-detail-catalogue .pop-up-container .header-detail-catalogue .close-popup-detail-catalogue {
   cursor: pointer;
 }
 .pop-up-detail-catalogue .pop-up-container .body-detail-catalogue {
