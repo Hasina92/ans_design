@@ -118,6 +118,17 @@ header {
             display: block;
           }
         }
+        .closeIcon {
+          display: none;
+        }
+        .active {
+          .burgerIcon {
+            display: none;
+          }
+          .closeIcon {
+            display: block;
+          }
+        }
       }
     }
   }

@@ -945,6 +945,15 @@ header .wrapper .menu-social .notification #my-account {
     display: block;
   }
 }
+header .wrapper .menu-social .notification .closeIcon {
+  display: none;
+}
+header .wrapper .menu-social .notification .active .burgerIcon {
+  display: none;
+}
+header .wrapper .menu-social .notification .active .closeIcon {
+  display: block;
+}
 
 #overlay .wrapper {
   background: #ebebeb;
