@@ -184,8 +184,7 @@ header {
         margin: 10px 28px;
         @include flex-wrap(nowrap);
         @include breakpoint(xs) {
-          margin: 0;
-          @include border-radius(0);
+          margin: 20px;
         }
         li {
           width: 50%;
@@ -194,6 +193,7 @@ header {
         li a {
           padding: 10px 35px;
           @include border-radius(16px);
+          flex-wrap: nowrap;
           &.active {
             background: linear-gradient(#e20e56, #df5531);
           }
@@ -309,6 +309,9 @@ header {
               .bouton-product {
                 @extend .flex-sb;
                 gap: 3px;
+                @include breakpoint(xs) {
+                  @include flex-direction(column);
+                }
                 a {
                   width: 50%;
                   font-size: 12px;
@@ -318,6 +321,9 @@ header {
                   background: #e8e8e8;
                   color: #3b3b3b;
                   font-family: "gilroy-bold";
+                  @include breakpoint(xs) {
+                    width: 100%;
+                  }
                   &:hover {
                     background: $red;
                     color: $white;

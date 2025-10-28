@@ -1013,11 +1013,7 @@ header .wrapper .menu-social .notification .active .closeIcon {
 }
 @media (max-width: 600px) {
   #overlay .wrapper .body-mini-cart ul.tabslink-cart {
-    margin: 0;
-    border-radius: 0;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    background-clip: padding-box;
+    margin: 20px;
   }
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li {
@@ -1030,6 +1026,7 @@ header .wrapper .menu-social .notification .active .closeIcon {
   -webkit-border-radius: 16px;
   -moz-border-radius: 16px;
   background-clip: padding-box;
+  flex-wrap: nowrap;
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li a.active {
   background: linear-gradient(#e20e56, #df5531);
@@ -1157,6 +1154,14 @@ header .wrapper .menu-social .notification .active .closeIcon {
 #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .info-product .bouton-product {
   gap: 3px;
 }
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .info-product .bouton-product {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+}
 #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .info-product .bouton-product a {
   width: 50%;
   font-size: 12px;
@@ -1169,6 +1174,11 @@ header .wrapper .menu-social .notification .active .closeIcon {
   background: #e8e8e8;
   color: #3b3b3b;
   font-family: "gilroy-bold";
+}
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .info-product .bouton-product a {
+    width: 100%;
+  }
 }
 #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .info-product .bouton-product a:hover {
   background: #df4d34;
