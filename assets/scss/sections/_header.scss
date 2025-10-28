@@ -193,7 +193,9 @@ header {
         li a {
           padding: 10px 35px;
           @include border-radius(16px);
-          flex-wrap: nowrap;
+          @include breakpoint(xs) {
+            font-size: 14px;
+          }
           &.active {
             background: linear-gradient(#e20e56, #df5531);
           }
@@ -244,6 +246,10 @@ header {
             background: $white;
             text-align: center;
             font-size: 16px;
+            @include breakpoint(xs) {
+              font-size: 14px;
+              padding: 10px;
+            }
             &.active {
               background: linear-gradient(#e20e56, #df5531);
             }

@@ -1026,7 +1026,11 @@ header .wrapper .menu-social .notification .active .closeIcon {
   -webkit-border-radius: 16px;
   -moz-border-radius: 16px;
   background-clip: padding-box;
-  flex-wrap: nowrap;
+}
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart ul.tabslink-cart li a {
+    font-size: 14px;
+  }
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li a.active {
   background: linear-gradient(#e20e56, #df5531);
@@ -1086,6 +1090,12 @@ header .wrapper .menu-social .notification .active .closeIcon {
   background: #fff;
   text-align: center;
   font-size: 16px;
+}
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information li a {
+    font-size: 14px;
+    padding: 10px;
+  }
 }
 #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information li a.active {
   background: linear-gradient(#e20e56, #df5531);
