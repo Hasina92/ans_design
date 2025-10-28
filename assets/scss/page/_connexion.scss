@@ -1,8 +1,7 @@
 #banner-connexion {
   margin-bottom: 50px;
-  height: 100vh;
-  @extend .flex-jc;
   position: relative;
+  padding: 100px 20px;
 
   .wrapper {
     @extend .flex-jc;
@@ -23,6 +22,7 @@
         li a {
           padding: 10px 35px;
           @include border-radius(20px);
+          font-size: 18px;
         }
       }
       .tabscontent-connexion {
@@ -46,10 +46,16 @@
         }
         .lost-password {
           @extend .flex-sb;
-          margin-top: 10px;
-          a {
+          margin-top: 20px;
+          a,
+          span {
             color: $gray;
             font-size: 14px;
+          }
+          .remember {
+            @extend %flex;
+            @include align-items(center);
+            gap: 7px;
           }
         }
       }

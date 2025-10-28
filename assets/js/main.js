@@ -215,6 +215,11 @@ popupHandler(
   ".pop-up-ajout-panier",
   "#close-popup-ajout-panier"
 );
+popupHandler(
+  "#open-popup-reset-password",
+  ".pop-up-reset-password",
+  "#close-popup-reset-password"
+);
 
 //SLICK
 $(document).ready(function () {
@@ -310,3 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+document
+  .getElementById("resetPassword")
+  .addEventListener("submit", function (e) {
+    e.preventDefault(); // Empêche le rechargement de la page
+  });
