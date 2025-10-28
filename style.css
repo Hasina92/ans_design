@@ -1011,6 +1011,15 @@ header .wrapper .menu-social .notification .active .closeIcon {
   -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart ul.tabslink-cart {
+    margin: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    background-clip: padding-box;
+  }
+}
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li {
   width: 50%;
   text-align: center;
@@ -1066,6 +1075,11 @@ header .wrapper .menu-social .notification .active .closeIcon {
   gap: 10px;
   background: transparent;
 }
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information {
+    margin: 20px;
+  }
+}
 #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information li a {
   padding: 15px;
   border-radius: 10px;
@@ -1088,6 +1102,11 @@ header .wrapper .menu-social .notification .active .closeIcon {
   margin: 50px;
   padding: 15px;
   box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.0705882353);
+}
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande {
+    margin: 20px;
+  }
 }
 #overlay .wrapper .body-mini-cart #mon_compte #mes_commandes .card-commande .img-product {
   width: 105px;

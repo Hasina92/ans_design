@@ -183,6 +183,10 @@ header {
         @include border-radius(21px);
         margin: 10px 28px;
         @include flex-wrap(nowrap);
+        @include breakpoint(xs) {
+          margin: 0;
+          @include border-radius(0);
+        }
         li {
           width: 50%;
           text-align: center;
@@ -231,6 +235,9 @@ header {
           @extend .grid-50;
           gap: 10px;
           background: transparent;
+          @include breakpoint(xs) {
+            margin: 20px;
+          }
           li a {
             padding: 15px;
             @include border-radius(10px);
@@ -250,6 +257,9 @@ header {
             margin: 50px;
             padding: 15px;
             box-shadow: 0px 3px 3px 0px #00000012;
+            @include breakpoint(xs) {
+              margin: 20px;
+            }
             .img-product {
               width: 105px;
               aspect-ratio: 1/1;
