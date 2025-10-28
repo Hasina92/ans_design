@@ -854,11 +854,15 @@ header .wrapper {
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
-    gap: 30px !important;
+    gap: 20px !important;
     margin-left: 50px;
+    width: 100%;
   }
   header .wrapper .nav-menu ul li a {
     color: #fff;
+    padding: 10px 0;
+    display: inline-block;
+    width: 100%;
   }
 }
 header .wrapper * {
