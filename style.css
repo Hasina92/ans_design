@@ -1013,7 +1013,8 @@ header .wrapper .menu-social .notification .active .closeIcon {
 }
 @media (max-width: 600px) {
   #overlay .wrapper .body-mini-cart ul.tabslink-cart {
-    margin: 20px;
+    margin: 10px;
+    padding: 0;
   }
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li {
