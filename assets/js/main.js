@@ -39,6 +39,7 @@ jQuery(document).ready(function ($) {
     "processus",
     "cart",
     "personal-information",
+    "connexion",
   ].forEach(initTabs);
 });
 
