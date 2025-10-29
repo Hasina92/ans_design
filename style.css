@@ -620,7 +620,7 @@ p.small {
 }
 
 .pop-up-mini-cart, #overlay .pop-up-detail-commande, #overlay .pop-up-suivi-commande {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -647,7 +647,7 @@ p.small {
 }
 
 .pop-up-single, .pop-up-reset-password .pop-up-container, .pop-up-ajout-panier .pop-up-container, .pop-up-detail-catalogue .pop-up-container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

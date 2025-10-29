@@ -177,7 +177,7 @@
 
 //POP-UP MINI-CART
 .pop-up-mini-cart {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -200,7 +200,7 @@
 
 //POP-UP SINGLE
 .pop-up-single {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
