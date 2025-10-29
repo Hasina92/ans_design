@@ -3921,8 +3921,18 @@ footer .wrapper .fleche-footer {
   background-clip: padding-box;
   padding: 10px;
 }
+@media (max-width: 768px) {
+  .pop-up-reset-password .pop-up-container .header-reset-password img {
+    width: 50px;
+  }
+}
 .pop-up-reset-password .pop-up-container .header-reset-password h3 {
   color: #170303;
+}
+@media (max-width: 768px) {
+  .pop-up-reset-password .pop-up-container .header-reset-password h3 {
+    font-size: 18px;
+  }
 }
 .pop-up-reset-password .pop-up-container .body-reset-password {
   margin-top: 20px;
@@ -3932,13 +3942,17 @@ footer .wrapper .fleche-footer {
   color: #707070;
 }
 .pop-up-reset-password .pop-up-container .body-reset-password a {
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 .pop-up-reset-password .pop-up-container #close-popup-reset-password {
   position: absolute;
   top: 20px;
   right: 20px;
+}
+
+.banner-blog h1 {
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */
