@@ -212,6 +212,9 @@
   opacity: 1;
   visibility: visible;
   transition: opacity 0.4s ease;
+  @include breakpoint(sm) {
+    min-width: 90%;
+  }
 }
 
 //OVERLAY
