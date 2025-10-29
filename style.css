@@ -694,6 +694,11 @@ p.small {
   font-family: "gilroy-bold";
   border: none;
 }
+@media (max-width: 600px) {
+  [class^=btn] {
+    padding: 10px;
+  }
+}
 
 .btn-gradient {
   background: linear-gradient(to right, #ffa127, #df5531);
@@ -1388,6 +1393,7 @@ header .wrapper .menu-social .notification .active .closeIcon {
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    gap: 10px;
   }
 }
 #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail a {
@@ -3090,6 +3096,11 @@ footer .wrapper .fleche-footer {
 .pop-up-detail-catalogue .pop-up-container .body-detail-catalogue .text-detail-catalogue p {
   color: #707070;
 }
+@media (max-width: 768px) {
+  .pop-up-detail-catalogue .pop-up-container .body-detail-catalogue .text-detail-catalogue p {
+    font-size: 16px;
+  }
+}
 .pop-up-detail-catalogue .pop-up-container .body-detail-catalogue .text-detail-catalogue a.btn-card {
   text-align: center;
   margin-top: 20px;
@@ -3415,6 +3426,11 @@ footer .wrapper .fleche-footer {
 .pop-up-ajout-panier .pop-up-container {
   min-width: 530px;
 }
+@media (max-width: 768px) {
+  .pop-up-ajout-panier .pop-up-container {
+    min-width: 90%;
+  }
+}
 .pop-up-ajout-panier .pop-up-container .header-ajout-panier {
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
@@ -3432,11 +3448,30 @@ footer .wrapper .fleche-footer {
   background-clip: padding-box;
   padding: 10px;
 }
+@media (max-width: 768px) {
+  .pop-up-ajout-panier .pop-up-container .header-ajout-panier img {
+    width: 50px;
+  }
+}
 .pop-up-ajout-panier .pop-up-container .header-ajout-panier h3 {
   color: #170303;
 }
+@media (max-width: 768px) {
+  .pop-up-ajout-panier .pop-up-container .header-ajout-panier h3 {
+    font-size: 18px;
+  }
+}
 .pop-up-ajout-panier .pop-up-container .body-ajout-panier {
   margin-top: 20px;
+}
+@media (max-width: 768px) {
+  .pop-up-ajout-panier .pop-up-container .body-ajout-panier {
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 .pop-up-ajout-panier .pop-up-container .body-ajout-panier a.btn {
   border: 1px #707070 solid;
@@ -3445,6 +3480,11 @@ footer .wrapper .fleche-footer {
 .pop-up-ajout-panier .pop-up-container .body-ajout-panier a {
   width: 50%;
   text-align: center;
+}
+@media (max-width: 768px) {
+  .pop-up-ajout-panier .pop-up-container .body-ajout-panier a {
+    width: 100%;
+  }
 }
 .pop-up-ajout-panier .pop-up-container #close-popup-ajout-panier {
   position: absolute;

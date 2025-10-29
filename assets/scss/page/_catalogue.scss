@@ -324,6 +324,9 @@
       .text-detail-catalogue {
         p {
           color: $gray;
+          @include breakpoint(sm) {
+            font-size: 16px;
+          }
         }
         a.btn-card {
           text-align: center;

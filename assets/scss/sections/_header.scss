@@ -520,6 +520,7 @@ header {
         margin-top: 10px;
         @include breakpoint(sm) {
           @include flex-direction(column);
+          gap: 10px;
         }
         a {
           width: 50%;

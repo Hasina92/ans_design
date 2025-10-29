@@ -271,6 +271,9 @@
   .pop-up-container {
     @extend .pop-up-single;
     min-width: 530px;
+    @include breakpoint(sm) {
+      min-width: 90%;
+    }
     .header-ajout-panier {
       @extend .flex-jc;
       @include flex-direction(column);
@@ -281,14 +284,24 @@
         aspect-ratio: 1/1;
         @include border-radius(50%);
         padding: 10px;
+        @include breakpoint(sm) {
+          width: 50px;
+        }
       }
       h3 {
         color: $dark;
+        @include breakpoint(sm) {
+          font-size: 18px;
+        }
       }
     }
     .body-ajout-panier {
       @extend .flex-sb;
       margin-top: 20px;
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+        gap: 10px;
+      }
       a.btn {
         border: 1px $gray solid;
         color: $gray;
@@ -296,6 +309,9 @@
       a {
         width: 50%;
         text-align: center;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
       }
     }
     #close-popup-ajout-panier {

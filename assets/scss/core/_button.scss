@@ -3,6 +3,9 @@
   @include border-radius(30px);
   font-family: "gilroy-bold";
   border: none;
+  @include breakpoint(xs) {
+    padding: 10px;
+  }
 }
 
 // BTN
