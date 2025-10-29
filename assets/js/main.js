@@ -316,8 +316,9 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+//RESET PASSWORD
 document
   .getElementById("resetPassword")
   .addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêche le rechargement de la page
+    e.preventDefault();
   });

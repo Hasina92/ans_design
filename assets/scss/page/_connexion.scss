@@ -1,64 +1,87 @@
 #banner-connexion {
   margin-bottom: 50px;
   position: relative;
-  padding: 100px 20px;
-
   .wrapper {
-    @extend .flex-jc;
-    @include flex-direction(column);
+    @extend .flex-sb;
 
-    .container-connexion {
-      background: $white;
-      padding: 50px;
-      @include border-radius(20px);
+    .container-connexion-text {
+      padding: 70px 0;
       .section-title {
         h2 {
-          color: $red;
-        }
-      }
-      ul.tabslink-connexion {
-        padding: 10px;
-        margin: 0;
-        li a {
-          padding: 10px 35px;
-          @include border-radius(20px);
-          font-size: 18px;
-        }
-      }
-      .tabscontent-connexion {
-        min-width: 356px;
-        form {
-          @extend %flex;
-          @include flex-direction(column);
-          gap: 10px;
-          width: 100%;
-          margin-top: 20px;
-          input {
-            padding: 15px 20px;
-            text-align: left;
-            border: 1px #f8f8f8 solid;
-            @include border-radius(20px);
-          }
-          button {
-            color: $white;
-            padding: 10px;
-          }
-        }
-        .lost-password {
-          @extend .flex-sb;
-          margin-top: 20px;
-          a,
+          color: $white;
           span {
-            color: $gray;
-            font-size: 14px;
-          }
-          .remember {
-            @extend %flex;
-            @include align-items(center);
-            gap: 7px;
+            color: $yellow;
+            font-family: inherit;
           }
         }
       }
+      .container-connexion-form {
+        background: $white;
+        padding: 50px;
+        @include border-radius(20px);
+        margin-top: 50px;
+
+        .section-title {
+          h2 {
+            color: $red;
+          }
+        }
+        ul.tabslink-connexion {
+          padding: 10px;
+          margin: 0;
+          li a {
+            padding: 10px 35px;
+            @include border-radius(20px);
+            font-size: 18px;
+          }
+        }
+        .tabscontent-connexion {
+          min-width: 356px;
+          form {
+            @extend %flex;
+            @include flex-direction(column);
+            gap: 10px;
+            width: 100%;
+            margin-top: 20px;
+            input {
+              padding: 15px 20px;
+              text-align: left;
+              border: 1px #f8f8f8 solid;
+              @include border-radius(20px);
+            }
+            button {
+              color: $white;
+              padding: 10px;
+            }
+          }
+          .lost-password {
+            @extend .flex-sb;
+            margin-top: 20px;
+            a,
+            span {
+              color: $gray;
+              font-size: 14px;
+            }
+            .remember {
+              @extend %flex;
+              @include align-items(center);
+              gap: 7px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .container-connexion-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   }
 }
