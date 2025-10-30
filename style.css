@@ -992,7 +992,7 @@ header .wrapper .menu-social .notification .active .closeIcon {
   float: right;
   padding: 0;
   transform: translateX(100%);
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 @media (max-width: 768px) {
   #overlay .wrapper {
