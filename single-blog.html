@@ -238,58 +238,136 @@
     <!-- MAIN -->
     <main>
         <!-- BANNER BLOG -->
-        <section id="banner-catalogue" class="scrolltop banner-blog">
+        <section id="banner-catalogue" class="scrolltop banner-single-blog">
             <img src="assets/img/fond.png" alt="" class="bg-image">
             <div class="wrapper t-center">
-                <h1>Nos Derniers Conseils</h1>
-                <p class="medium white">Retrouvez nos actualités, astuces et inspirations pour une communication
-                    réussie.</p>
+                <div class="section-title">
+                    <h2>Quels types de fichiers accepterez-vous pour l'impression</h2>
+                </div>
+                <div class="date">
+                    <span>30/10/25</span>
+                </div>
             </div>
         </section>
-        <!--CONSEILS-->
-        <section id="conseils">
+        <!--SINGLE BLOG-->
+        <section id="single-blog">
             <div class="wrapper">
-                <div class="container-conseils">
-                    <div class="card-conseil">
+                <div class="container-single-blog">
+                    <div class="single-blog-img">
+                        <img src="assets/img/banner_mon_compte.png" alt="">
+                    </div>
+                    <div class="single-blog-text">
+                        <p>
+                            Pour garantir une impression de haute qualité et éviter toute altération de vos visuels,
+                            nous recommandons des fichiers respectant certains formats et paramètres techniques. Voici
+                            les types de fichiers que nous acceptons et nos conseils pour préparer vos documents.
+                        </p>
+
+                        <h3>📁 Formats de fichiers acceptés</h3>
+                        <ul>
+                            <li>
+                                <strong>PDF (recommandé ✅)</strong><br>
+                                Format idéal pour l’impression professionnelle. Il préserve les polices, les couleurs et
+                                la mise en page.<br>
+                                👉 Conseil : assurez-vous que les polices sont bien <strong>incorporées</strong> et que
+                                le fichier est en <strong>CMJN (Cyan, Magenta, Jaune, Noir)</strong>.
+                            </li>
+                            <li>
+                                <strong>AI / EPS (Adobe Illustrator)</strong><br>
+                                Formats vectoriels parfaits pour les logos, icônes et éléments graphiques.<br>
+                                👉 Pensez à <strong>vectoriser les textes</strong> et à <strong>joindre les images
+                                    liées</strong>.
+                            </li>
+                            <li>
+                                <strong>PSD (Adobe Photoshop)</strong><br>
+                                Convient aux visuels complexes ou comportant des effets.<br>
+                                👉 Résolution minimale recommandée : <strong>300 DPI</strong> à la taille d’impression
+                                réelle.
+                            </li>
+                            <li>
+                                <strong>JPG / JPEG</strong><br>
+                                Format image compressé, pratique mais à utiliser avec précaution.<br>
+                                👉 Utilisez uniquement des images <strong>haute résolution (300 DPI)</strong> et en
+                                <strong>CMJN</strong>.
+                            </li>
+                            <li>
+                                <strong>PNG</strong><br>
+                                Accepté pour les visuels avec fond transparent.<br>
+                                👉 Attention : le PNG ne gère pas le CMJN, donc privilégiez-le pour des <strong>aperçus
+                                    web ou maquettes</strong>.
+                            </li>
+                        </ul>
+
+                        <h3>🎨 Spécifications techniques</h3>
+                        <ul>
+                            <li><strong>Résolution minimale :</strong> 300 DPI</li>
+                            <li><strong>Mode colorimétrique :</strong> CMJN (et non RVB)</li>
+                            <li><strong>Fond perdu (bleed) :</strong> 3 à 5 mm de chaque côté</li>
+                            <li><strong>Zone de sécurité :</strong> gardez les textes à 5 mm du bord de coupe</li>
+                            <li><strong>Format final :</strong> à la taille exacte du produit commandé (ex. : A4, carte
+                                de visite 85x55 mm, etc.)</li>
+                        </ul>
+
+                        <h3>⚠️ Formats non recommandés</h3>
+                        <p>Nous n’acceptons pas les formats suivants pour l’impression directe :</p>
+                        <ul>
+                            <li>Word (.doc / .docx)</li>
+                            <li>PowerPoint (.ppt)</li>
+                            <li>Publisher (.pub)</li>
+                            <li>Images basse résolution (inférieure à 150 DPI)</li>
+                        </ul>
+                        <p>Ces formats peuvent provoquer des décalages ou des pertes de qualité lors de la conversion en
+                            PDF.</p>
+
+                        <h3>💡 Astuce de pro</h3>
+                        <ol>
+                            <li>Vérifiez la <strong>taille finale</strong> et les <strong>marges de sécurité</strong>.
+                            </li>
+                            <li>Contrôlez que vos textes soient bien <strong>vectorisés</strong>.</li>
+                            <li>Enregistrez votre fichier en <strong>PDF haute qualité pour l’impression</strong>.</li>
+                            <li>Si vous avez un doute, <strong>demandez un bon à tirer (BAT)</strong> avant le lancement
+                                de la production.</li>
+                        </ol>
+
+                        <h3>📤 Envoi de vos fichiers</h3>
+                        <p>
+                            Vous pouvez téléverser vos fichiers directement lors de la commande sur notre site.<br>
+                            Si votre fichier dépasse la taille autorisée, vous pouvez nous l’envoyer via :
+                        </p>
+                        <ul>
+                            <li><strong>WeTransfer</strong></li>
+                            <li><strong>Google Drive</strong></li>
+                            <li>ou tout autre lien de téléchargement direct</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="other-blog">
+                    <h2>Articles Récents</h2>
+                    <div class="card-other-blog">
                         <a href="single-blog.html" class="link-box"></a>
-                        <div class="conseil-img">
-                            <img src="" alt="">
+                        <div class="card-img">
+                            <img src="assets/img/banner_mon_compte.png" alt="">
                         </div>
-                        <div class="conseil-text">
-                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
-                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
-                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
-                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
-                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
-                            <a href="single-blog.html">Lire la suite x</a>
+                        <div class="card-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression</h3>
                         </div>
                     </div>
-                    <div class="card-conseil">
+                    <div class="card-other-blog">
                         <a href="single-blog.html" class="link-box"></a>
-                        <div class="conseil-img">
-                            <img src="" alt="">
+                        <div class="card-img">
+                            <img src="assets/img/banner_mon_compte.png" alt="">
                         </div>
-                        <div class="conseil-text">
-                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
-                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
-                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
-                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
-                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
-                            <a href="single-blog.html">Lire la suite x</a>
+                        <div class="card-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression</h3>
                         </div>
                     </div>
-                    <div class="card-conseil">
+                    <div class="card-other-blog">
                         <a href="single-blog.html" class="link-box"></a>
-                        <div class="conseil-img">
-                            <img src="" alt="">
+                        <div class="card-img">
+                            <img src="assets/img/banner_mon_compte.png" alt="">
                         </div>
-                        <div class="conseil-text">
-                            <h3>Quels types de fichiers accepterez-vous pour l'impression </h3>
-                            <p>Nous préférons les fichiers PDF haute résolution (300 dpi) avec fonds perdus de 3mm.
-                                Nous acceptons également les fichiers sources comme AI (Illustrator), PSD
-                                (Photoshop), et EPS. Notre assistant IA en ligne peut vous aider à vérifier et
-                                corriger vos fichiers avant la commande pour un résultat optimal.</p>
-                            <a href="single-blog.html">Lire la suite x</a>
+                        <div class="card-text">
+                            <h3>Quels types de fichiers accepterez-vous pour l'impression</h3>
                         </div>
                     </div>
                 </div>
