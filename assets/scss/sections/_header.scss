@@ -226,8 +226,11 @@ header {
             @extend %flex;
             @include flex-direction(column);
             gap: 10px;
+            @include breakpoint(xs) {
+              gap: 5px;
+            }
             .name {
-              font-size: 14px;
+              font-size: 18px;
               color: $yellow;
             }
             .price {

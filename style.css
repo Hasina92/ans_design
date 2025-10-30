@@ -1089,8 +1089,13 @@ header .wrapper .menu-social .notification .active .closeIcon {
   flex-direction: column;
   gap: 10px;
 }
+@media (max-width: 600px) {
+  #overlay .wrapper .body-mini-cart #panier .card-cart .card-text {
+    gap: 5px;
+  }
+}
 #overlay .wrapper .body-mini-cart #panier .card-cart .card-text .name {
-  font-size: 14px;
+  font-size: 18px;
   color: #f5bf2a;
 }
 #overlay .wrapper .body-mini-cart #panier .card-cart .card-text .price {
