@@ -98,6 +98,9 @@
           width: 200px;
           overflow: hidden;
           @include border-radius(20px);
+          @include breakpoint(xs) {
+            height: 80px;
+          }
         }
         .card-text {
           h3 {
