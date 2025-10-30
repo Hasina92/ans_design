@@ -247,6 +247,12 @@ body {
   padding: 0;
 }
 
+@media (max-width: 768px) {
+  section {
+    overflow: hidden;
+  }
+}
+
 main {
   display: block;
 }
