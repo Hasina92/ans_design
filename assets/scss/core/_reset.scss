@@ -35,9 +35,7 @@ body {
 }
 
 section {
-  @include breakpoint(sm) {
-    overflow: hidden;
-  }
+  overflow: hidden;
 }
 
 main {
