@@ -26,7 +26,7 @@
         margin-top: 50px;
 
         @include breakpoint(sm) {
-          padding: 20px 10px;
+          padding: 20px;
         }
 
         .section-title {
@@ -42,6 +42,10 @@
             padding: 10px 35px;
             @include border-radius(20px);
             font-size: 18px;
+            @include breakpoint(sm) {
+              padding: 10px 20px;
+              font-size: 16px;
+            }
           }
         }
         .tabscontent-connexion {
