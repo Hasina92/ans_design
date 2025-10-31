@@ -38,6 +38,8 @@
           padding: 10px;
           margin: 0;
           flex-wrap: nowrap;
+          @include border-radius(20px);
+
           li a {
             padding: 10px 35px;
             @include border-radius(20px);
@@ -69,6 +71,11 @@
           .lost-password {
             @extend .flex-sb;
             margin-top: 20px;
+            @include breakpoint(sm) {
+              @include flex-direction(column-reverse);
+              gap: 5px;
+              margin-top: 10px;
+            }
             a,
             span {
               color: $gray;

@@ -3924,6 +3924,10 @@ footer .wrapper .fleche-footer {
   padding: 10px;
   margin: 0;
   flex-wrap: nowrap;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background-clip: padding-box;
 }
 #banner-connexion .wrapper .container-connexion-text .container-connexion-form ul.tabslink-connexion li a {
   padding: 10px 35px;
@@ -3963,6 +3967,16 @@ footer .wrapper .fleche-footer {
 }
 #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password {
   margin-top: 20px;
+}
+@media (max-width: 768px) {
+  #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password {
+    -webkit-flex-direction: column-reverse;
+    -moz-flex-direction: column-reverse;
+    -ms-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+    gap: 5px;
+    margin-top: 10px;
+  }
 }
 #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password a,
 #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password span {
