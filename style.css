@@ -4196,13 +4196,6 @@ footer .wrapper .fleche-footer {
   -moz-border-radius: 20px;
   background-clip: padding-box;
 }
-@media (min-width: 768px) {
-  #single-blog .wrapper .other-blog {
-    position: sticky;
-    top: 80px;
-    left: 0;
-  }
-}
 @media (max-width: 768px) {
   #single-blog .wrapper .other-blog {
     width: 100%;

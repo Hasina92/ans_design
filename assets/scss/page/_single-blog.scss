@@ -78,11 +78,6 @@
       box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
       padding: 20px;
       @include border-radius(20px);
-      @include breakpoint-up(sm) {
-        position: sticky;
-        top: 80px;
-        left: 0;
-      }
       @include breakpoint(sm) {
         width: 100%;
       }
