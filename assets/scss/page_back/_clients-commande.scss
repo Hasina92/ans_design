@@ -1,0 +1,310 @@
+.main-panels {
+  .panel-clients {
+    background: $white;
+    width: 30%;
+    @include border-radius(20px);
+    padding: 20px;
+    .panel-header {
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+    }
+    #clientListContainer {
+      a {
+        border: 1px $gray solid;
+        padding: 10px;
+        margin-bottom: 10px;
+        @include border-radius(10px);
+        color: #170303;
+      }
+    }
+    .nom-client {
+      border-top: 1px solid gray;
+      padding-top: 10px;
+      input {
+        font-family: "Gilroy-SemiBold";
+        color: $gray;
+        padding: 10px;
+        border: 1px solid gray;
+        @include border-radius(10px);
+        width: 100%;
+      }
+    }
+  }
+  .panel-commande {
+    width: 70%;
+    background: $white;
+    .container-commande {
+      @extend .flex-sb;
+      h3 {
+        font-family: "Gilroy-bold";
+        color: $dark;
+      }
+      .commande {
+        @extend %flex;
+        .total,
+        .depensé {
+          border: 1px solid $gray;
+          padding: 10px 15px 10px 10px;
+          @include border-radius(10px);
+          span {
+            font-family: "Gilroy-bold";
+            color: $dark;
+            font-size: 20px;
+          }
+          p {
+            color: $gray;
+            font-family: "Gilroy-SemiBold";
+          }
+        }
+      }
+    }
+    .container-historique {
+      margin-top: 20px;
+      h4 {
+        font-family: "Gilroy-bold";
+        color: $gray;
+      }
+      .container-btn-historique {
+        @extend %flex;
+        margin-top: 10px;
+        a {
+          background: $white;
+          @include border-radius(10px);
+          border: 2px solid gray;
+          padding: 5px 10px;
+          font-family: "Gilroy-SemiBold";
+          color: $dark;
+          &:hover {
+            background: $red;
+            color: $white;
+          }
+        }
+      }
+    }
+    table {
+      @include border-radius(20px);
+      overflow: hidden;
+      width: 100%;
+      box-shadow: 0px 0px 7.5px 0px #0000001a;
+      background: $white;
+      @include border-radius(20px0);
+      margin-top: 20px;
+
+      th {
+        background: #0a1352;
+        font-family: "Gilroy-regular";
+        padding: 15px;
+        color: $white;
+        font-size: 10px;
+      }
+      tr {
+        td {
+          padding: 10px;
+          font-size: 15px;
+          font-family: "Gilroy-regular";
+          border-bottom: 1px solid #000;
+          &:nth-of-type(1) {
+            font-family: "Gilroy-bold";
+          }
+        }
+        .details-btn {
+          background: $red;
+          color: $white;
+          padding: 8px;
+          @include border-radius(10px);
+          border: none;
+        }
+      }
+    }
+  }
+}
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #4f4f4fa8;
+  height: 100vh;
+  width: 100vw;
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    @include border-radius(20px);
+    .modal-header {
+      h2 {
+        font-size: 20px;
+      }
+    }
+    .modal-close {
+      display: inline;
+      float: right;
+      background: transparent;
+      border: none;
+      transform: scale(2);
+    }
+    .modal-body-columns {
+      @extend .flex-sb;
+      @include align-items(flex-start);
+      margin-top: 10px;
+      .modal-column-left {
+        .modal-panel {
+          &:nth-child(2) {
+            label {
+              font-family: "Gilroy-SemiBold";
+              color: $gray;
+            }
+            .modal-input {
+              border: 1px solid $gray;
+              width: 100%;
+              padding: 10px 0 10px 10px;
+              @include border-radius(10px);
+              font-family: "Gilroy-regular";
+              color: $dark;
+              margin-top: 5px;
+            }
+          }
+          &:nth-child(3) {
+            margin-top: 10px;
+            .modal-textarea {
+              width: 100%;
+              font-family: "Gilroy-regular";
+              color: $gray;
+              @include border-radius(10px);
+              padding: 5px 5px 50px 5px;
+              margin-top: 5px;
+            }
+          }
+          .modal-subtitle {
+            color: #083caa;
+            font-family: "Gilroy-bold";
+            font-size: 18px;
+          }
+          .info-grid {
+            border: 2px solid gray;
+            padding: 10px;
+            @include border-radius(10px);
+            background: #f9f9f9;
+            margin-top: 5px;
+
+            span {
+              font-family: "Gilroy-SemiBold";
+              color: $gray;
+              padding-top: 5px;
+            }
+            .name {
+              color: $yellow;
+            }
+            strong {
+              font-family: "Gilroy-SemiBold";
+            }
+            .total-info-grid {
+              background: $gray;
+              @include border-radius(20px);
+              padding: 5px 10px 10px 10px;
+              margin-top: 10px;
+              span,
+              strong {
+                color: white;
+              }
+            }
+          }
+          .modal-checkbox-wrapper {
+            margin-top: 10px;
+            label {
+              color: #061d6e;
+              font-family: "Gilroy-SemiBold";
+              font-size: 15px;
+            }
+          }
+        }
+      }
+      .modal-column-right {
+        .modal-panel {
+          margin-top: 10px;
+          .modal-subtitle {
+            color: #083caa;
+            font-family: "Gilroy-bold";
+            font-size: 18px;
+          }
+          .timeline {
+            @extend %flex;
+            gap: 10px;
+            flex-direction: column;
+            .completed {
+              @extend .flex-sb;
+              background: #e8ffdb;
+              @include border-radius(10px);
+              padding: 10px;
+              margin-top: 5px;
+              .timeline-content {
+                strong {
+                  font-family: "Gilroy-bold";
+                  color: $dark;
+                }
+                .timeline-btn {
+                  background: #c2e5ae;
+                  padding: 8px;
+                  @include border-radius(10px);
+                  border: none;
+                  font-family: "Gilroy-SemiBold";
+                  color: #6c9f82;
+                  font-size: 12px;
+                }
+              }
+
+              .timeline-icon {
+                border: 1px solid $dark;
+                @include border-radius(50%);
+                padding-left: 7px;
+                width: 27px;
+                height: 27px;
+              }
+            }
+            .timeline-item {
+              background: #f9f9f9;
+              padding: 10px;
+              border: 1px solid #d6cecd;
+              @include border-radius(10px);
+              .timeline-content {
+                .timeline-btn {
+                  background: #c2e5ae;
+                  padding: 8px;
+                  @include border-radius(10px);
+                  border: none;
+                  font-family: "Gilroy-SemiBold";
+                  color: #6c9f82;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+          .modal-textarea {
+            width: 100%;
+            padding: 5px 5px 50px 5px;
+            border: 1px solid $gray;
+            @include border-radius(10px);
+            background: $white;
+            margin-top: 5px;
+          }
+        }
+      }
+    }
+    .modal-footer {
+      .modal-save-btn {
+        background: linear-gradient(to bottom, #e1254a, #e04b36);
+        border: none;
+        @include border-radius(10px);
+        padding: 10px 70px;
+        color: $white;
+        margin-top: 5px;
+        font-family: "Gilroy-SemiBold";
+      }
+    }
+  }
+}

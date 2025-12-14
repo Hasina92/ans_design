@@ -1,0 +1,204 @@
+#checkout {
+  .wrapper {
+    padding: 50px 40px;
+    @include breakpoint(xs) {
+      padding: 50px 20px;
+    }
+    .section-title {
+      h2 {
+        font-family: "gilroy-bold";
+        color: $dark;
+        @include breakpoint(xs) {
+          font-size: 22px;
+        }
+      }
+    }
+    .container-checkout {
+      @extend .flex-sb;
+      @include align-items(start);
+      gap: 50px;
+
+      @include breakpoint(sm) {
+        @include flex-direction(column-reverse);
+        gap: 20px;
+      }
+      .client-info {
+        width: 50%;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
+        .checkout-section {
+          margin: 40px auto;
+          padding: 30px;
+          background: $white;
+          @include border-radius(20px);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          @include breakpoint(sm) {
+            margin: 0px auto;
+          }
+          @include breakpoint(xs) {
+            padding: 20px;
+          }
+          .checkout-form .form-group {
+            margin-bottom: 20px;
+          }
+          .checkout-form label {
+            display: block;
+            margin-bottom: 6px;
+            font-family: "gilroy-bold";
+            color: $gray;
+            font-size: 18px;
+          }
+          .checkout-form label span {
+            color: $red;
+          }
+          .checkout-form input,
+          .checkout-form select,
+          .checkout-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            @include border-radius(10px);
+            font-size: 15px;
+            transition: all 0.3s ease;
+          }
+
+          .checkout-form input:focus,
+          .checkout-form select:focus,
+          .checkout-form textarea:focus {
+            border-color: $red;
+            outline: none;
+          }
+          .hidden {
+            display: none;
+          }
+        }
+      }
+      .resume-produit {
+        margin: 40px auto;
+        padding: 30px;
+        background: $white;
+        @include border-radius(20px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        width: 50%;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
+        @include breakpoint(xs) {
+          padding: 20px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+        .container-resume-produit {
+          .card-resume-produit,
+          .total-resume-produit,
+          .livraison-resume-produit {
+            @extend .flex-sb;
+            @include align-items(center);
+            padding: 10px 0;
+            .info-resume-produit {
+              @extend %flex;
+              @include align-items(center);
+              .img-resume-produit {
+                height: 100px;
+                aspect-ratio: 1/1;
+                overflow: hidden;
+                @include border-radius(10px);
+                border: 1px $gray solid;
+                @include breakpoint(xs) {
+                  display: none;
+                }
+                img {
+                  object-fit: contain;
+                  height: 100%;
+                  width: 100%;
+                }
+              }
+              .text-resume-produit {
+                @extend %flex;
+                @include flex-direction(column);
+                .nom {
+                  color: $yellow;
+                  font-family: "gilroy-bold";
+                }
+                .quantite {
+                  font-family: "gilroy-semibold";
+                }
+              }
+            }
+            .total,
+            .prix-total {
+              font-family: "gilroy-bold";
+              font-size: 20px;
+              color: $red;
+            }
+          }
+          .prix-resume-produit,
+          .livraison-resume-produit {
+            span {
+              font-family: "gilroy-bold";
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pop-up-validation-commande {
+  @extend .overlay;
+  .pop-up-container {
+    @extend .pop-up-single;
+    min-width: 530px;
+    @include breakpoint(sm) {
+      min-width: 90%;
+    }
+    .header-validation-commande {
+      @extend .flex-jc;
+      @include flex-direction(column);
+      gap: 20px;
+      img {
+        background: #dcfce7;
+        width: 70px;
+        aspect-ratio: 1/1;
+        @include border-radius(50%);
+        padding: 10px;
+        @include breakpoint(sm) {
+          width: 50px;
+        }
+      }
+      h3 {
+        color: $dark;
+        @include breakpoint(sm) {
+          font-size: 18px;
+        }
+      }
+    }
+    .body-validation-commande {
+      @extend .flex-sb;
+      margin-top: 20px;
+      @include breakpoint(sm) {
+        @include flex-direction(column);
+        gap: 10px;
+      }
+      a.btn {
+        border: 1px $gray solid;
+        color: $gray;
+      }
+      a {
+        width: 50%;
+        text-align: center;
+        border: 1px $red solid;
+        @include breakpoint(sm) {
+          width: 100%;
+        }
+      }
+    }
+    #close-popup-validation-commande {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.panel {
+  margin-top: 40px;
+  h3 {
+    font-family: "Gilroy-bold";
+  }
+  .container-produit {
+    @extend %grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+    input[type="number"] {
+      margin-top: 5px;
+      @include border-radius(10px);
+      font-family: "Gilroy-regular";
+      color: $gray;
+      border: 2px solid $gray;
+    }
+  }
+
+  label {
+    font-family: "Gilroy-bold";
+  }
+  .input,
+  textarea {
+    font-family: "Gilroy-regular";
+    color: $gray;
+    margin-top: 5px;
+    @include border-radius(10px);
+    border: 2px solid $gray;
+  }
+  #caracteristiques-container {
+    .caracteristique-item {
+      @extend %flex;
+      gap: 15px;
+      align-items: center;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+      padding: 15px;
+      @include border-radius(5px);
+      input,
+      textarea {
+        font-family: "Gilroy-regular";
+        color: $gray;
+        @include border-radius(10px);
+        border: 2px solid $gray;
+        padding: 15px !important;
+        margin: 0;
+      }
+      input {
+        width: 40% !important;
+      }
+      textarea {
+        width: 60% !important;
+        padding-bottom: 0 !important;
+      }
+    }
+  }
+}

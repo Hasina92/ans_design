@@ -1,12 +1,14 @@
 // BANNER
 #banner {
-  padding: 150px 0;
-  position: relative;
-
-  @extend .shape-bottom;
-
+  margin: 100px auto;
+  padding: 0;
   .wrapper {
     @extend .flex-sb;
+    position: relative;
+    padding: 70px 70px 80px 70px;
+    @extend .shape-bottom;
+    overflow: hidden;
+    @include border-radius(30px);
     @include breakpoint(xs) {
       @include flex-direction(column);
       gap: 20px;
@@ -54,20 +56,25 @@
   overflow: visible;
 
   &::before {
-    content: url("assets/img/ellipse_client.svg");
+    content: "";
     position: absolute;
     top: -200px;
     left: -300px;
     width: 645px;
+    height: 645px;
+    background-image: url("assets/img/ellipse_client.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40px);
     z-index: -1;
   }
 
   .wrapper {
     @extend .flex-jc;
     @include flex-direction(column);
+    max-width: 100vw;
     gap: 50px;
-    @include border-radius(0px 0px 120px 120px);
-    background: $white;
+    background: transparent;
     padding: 40px;
     overflow: hidden;
 
@@ -145,8 +152,9 @@
 
     .container-atouts {
       @extend %flex;
-      @include justify-content(center);
-      gap: 30px;
+      @include justify-content(space-between);
+      gap: 20px;
+      width: 100%;
 
       @include breakpoint(xs) {
         gap: 20px;
@@ -156,12 +164,39 @@
       .card-atout {
         padding: 40px;
         @include border-radius(20px);
-        box-shadow: 0px 0px 7.5px 0px #00000026;
+        box-shadow: 0px 0px 20px 0px #00000026;
         @extend .flex-jc;
         @include flex-direction(column);
         gap: 10px;
-        max-width: 246px;
         width: 100%;
+        position: relative;
+        overflow: hidden;
+        &:hover {
+          transform: translateY(-10px);
+          .card-hover {
+            opacity: 1;
+          }
+        }
+        .card-hover {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: 1;
+          background: $red;
+          @extend .flex-jc;
+          padding: 40px;
+          opacity: 0;
+          p {
+            color: $white;
+            font-family: "gilroy-bold";
+          }
+        }
+        img {
+          width: 40px;
+          aspect-ratio: 1/1;
+        }
 
         @include breakpoint(xs) {
           max-width: 100%;
@@ -169,7 +204,7 @@
 
         span {
           font-family: "gilroy-bold";
-          font-size: 24px;
+          font-size: 20px;
           color: $gray;
         }
       }
@@ -180,13 +215,13 @@
 // STATISTIQUES
 #stats {
   .wrapper {
-    background: linear-gradient(180deg, #e20e56 26.25%, #df5531 84.96%);
-    @include border-radius(120px);
+    background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
+    @include border-radius(200px);
     padding: 50px 40px;
     @extend %flex;
     @include justify-content(center);
     @include align-items(flex-start);
-
+    gap: 80px;
     @include breakpoint(xs) {
       @include border-radius(0);
       @include flex-direction(column);
@@ -198,8 +233,13 @@
       @include flex-direction(column);
       max-width: 246px;
       width: 100%;
+      gap: 15px;
       @include breakpoint(xs) {
         max-width: 100%;
+      }
+
+      img {
+        height: 37px;
       }
 
       .nombre {
@@ -211,6 +251,212 @@
       p {
         color: $white;
       }
+    }
+  }
+}
+
+// TEMOIGNAGES
+#temoignages {
+  position: relative;
+  .wrapper {
+    @extend .flex-jc;
+    @include flex-direction(column);
+    gap: 40px;
+    overflow: hidden !important;
+    .section-title {
+      h2 {
+        color: $yellow;
+      }
+    }
+    .container-temoignages {
+      .slick-center {
+        transform: scale(1.1) !important;
+      }
+      .slick-slide {
+        transform: scale(0.9);
+      }
+      .card-temoignage {
+        @extend %flex;
+        @include flex-direction(column);
+        @include align-items(center);
+        max-width: 400px;
+        width: 100% !important;
+        max-height: 400px;
+        height: 100% !important;
+        padding: 30px;
+        margin: 50px 0;
+        @include border-radius(20px);
+        box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
+        background: $white;
+        &:not(:last-child) {
+          margin-right: 50px;
+        }
+        .profil {
+          width: 100px;
+          aspect-ratio: 1/1;
+          background: $yellow;
+          @include border-radius(50%);
+          overflow: hidden;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+        .note {
+          @extend .flex-jc;
+          gap: 10px;
+          padding: 20px 0;
+          img {
+            width: 24px;
+            aspect-ratio: 1/1;
+          }
+        }
+        .avis {
+          text-align: center;
+          color: $gray;
+        }
+        .voir-plus {
+          text-decoration: underline;
+        }
+        .nom {
+          font-family: "gilroy-bold";
+          padding: 20px 0 5px 0;
+        }
+        .poste {
+          color: $red;
+        }
+      }
+    }
+    .btn-slick {
+      @extend .flex-sb;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+
+      .slick-prev-custom,
+      .slick-next-custom {
+        @include border-radius(50%);
+        background: linear-gradient(#e20e56, #df5531);
+        width: 40px;
+        aspect-ratio: 1/1;
+        @extend .flex-jc;
+        cursor: pointer;
+        border: none;
+        img {
+          width: 25px;
+          aspect-ratio: 1/1;
+        }
+      }
+      .slick-prev-custom {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .slick-dots {
+      @extend .flex-jc;
+
+      button {
+        font-size: 0;
+        width: 20px;
+        height: 20px;
+        @include border-radius(50%);
+        border: none;
+        background: #bcbcbc;
+        @include breakpoint-up(sm) {
+          &:hover {
+            background: linear-gradient(#e20e56, #df5531);
+          }
+        }
+      }
+
+      .slick-active {
+        button {
+          background: linear-gradient(#e20e56, #df5531);
+        }
+      }
+    }
+    #open-popup-temoignages {
+      margin-bottom: 20px;
+    }
+  }
+}
+//DEVIS TEMOIGNAGES
+.pop-up-temoignages {
+  @extend .overlay;
+  .pop-up-container {
+    @extend .pop-up-single;
+    min-width: 530px;
+    padding: 50px;
+    @include breakpoint(sm) {
+      min-width: 90%;
+    }
+    .header-devis-temoignages {
+      @extend .flex-jc;
+      h3 {
+        color: $dark;
+        @include breakpoint(sm) {
+          font-size: 18px;
+        }
+      }
+    }
+    .body-devis-temoignages {
+      form {
+        @extend %flex;
+        @include flex-direction(column);
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
+        input,
+        textarea,
+        label {
+          padding: 15px 20px;
+          text-align: left;
+          border: 1px #e5e7eb solid;
+          @include border-radius(10px);
+        }
+        .rating {
+          direction: rtl;
+          @extend %flex;
+          @include justify-content(center);
+          gap: 5px;
+
+          input {
+            display: none;
+          }
+
+          label {
+            font-size: 28px;
+            color: #ccc;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            padding: 10px 15px;
+          }
+
+          label:hover,
+          label:hover ~ label {
+            color: $yellow;
+          }
+
+          input:checked ~ label {
+            color: $yellow;
+          }
+        }
+
+        textarea {
+          height: 100px;
+        }
+        button {
+          @include border-radius(10px);
+        }
+      }
+    }
+    #close-popup-temoignages {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
   }
 }
@@ -255,15 +501,55 @@
         @extend .flex-jc;
         @include flex-direction(column);
         gap: 10px;
-        padding: 0 15px 15px 15px;
-        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        padding: 30px 20px;
+        box-shadow: 0px 0px 20px 0px #0000001a;
         @include border-radius(20px);
         min-width: 246px;
         width: 100%;
         position: relative;
+        overflow: hidden;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
+          z-index: -1;
+          opacity: 0;
+        }
+        &:hover {
+          transform: translateY(-10px);
+
+          * {
+            color: $white;
+          }
+          b {
+            color: $yellow;
+          }
+          .bouton-produit {
+            a {
+              background: $white;
+              color: $red;
+            }
+            .reduction {
+              color: $yellow;
+            }
+          }
+        }
+        &:hover::after {
+          opacity: 1;
+        }
 
         @include breakpoint(xs) {
           min-width: 100%;
+        }
+
+        img {
+          width: 100%;
+          height: 130px;
+          object-fit: cover;
         }
 
         span {
@@ -298,8 +584,8 @@
     @extend .t-center;
     @extend .flex-jc;
     @include flex-direction(column);
-    padding: 50px 140px;
     background: #f8f8f8;
+    padding: 50px;
     @include border-radius(120px);
     @include breakpoint(xs) {
       @include border-radius(0);
@@ -323,6 +609,7 @@
       @extend .grid-25;
       margin-top: 50px;
       gap: 30px;
+      width: 100%;
       @include breakpoint(xs) {
         @include grid-template-columns(1fr);
         width: 100%;
@@ -330,48 +617,97 @@
 
       .card-pack {
         padding: 30px 15px;
-        box-shadow: 0px 0px 7.5px 0px #0000000d;
+        box-shadow: 0px 0px 20px 0px #0000000d;
         @include border-radius(20px);
-        min-width: 250px;
         background: $white;
         font-size: 18px;
         @extend %flex;
         @include flex-direction(column);
+        @include justify-content(space-between);
         gap: 20px;
-
-        h3 {
-          font-family: "gilroy-regular";
-          color: $gray;
-
-          b {
-            font-family: "gilroy-extrabold";
-            font-size: 24px;
-            color: $red;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
+          z-index: -1;
+          opacity: 0;
+        }
+        &:hover {
+          transform: translateY(-10px);
+          li,
+          h3,
+          .prix {
+            color: $white !important;
           }
-        }
-
-        .prix {
-          color: $dark;
-          font-family: "gilroy-extrabold";
-        }
-
-        ul.description-pack {
-          @extend %flex;
-          @include flex-direction(column);
-          gap: 10px;
-          padding: 0 30px;
-
-          li {
-            text-align: left;
-            font-size: 12px;
-            font-family: "gilroy-regular";
-            color: $gray;
-            @include breakpoint(xs) {
-              text-align: center;
+          b {
+            color: $yellow !important;
+          }
+          .bouton-pack {
+            a {
+              background: $white;
+              color: $red;
+            }
+            .reduction {
+              color: $yellow;
             }
           }
         }
+        &:hover::after {
+          opacity: 1;
+        }
+        .text-pack {
+          @extend %flex;
+          @include flex-direction(column);
+          gap: 20px;
+          h3 {
+            font-family: "gilroy-regular";
+            color: $gray;
 
+            b {
+              font-family: "gilroy-extrabold";
+              font-size: 24px;
+              color: $red;
+            }
+          }
+
+          .prix {
+            color: $dark;
+            font-family: "gilroy-extrabold";
+          }
+
+          ul.description-pack {
+            @extend %flex;
+            @include flex-direction(column);
+            gap: 10px;
+            padding: 0 30px;
+            list-style: none;
+            margin-bottom: 8px;
+            position: relative;
+
+            li {
+              text-align: left;
+              font-size: 12px;
+              font-family: "gilroy-regular";
+              color: $gray;
+              &::before {
+                content: "✔";
+                color: #4caf50;
+                font-weight: bold;
+                margin-right: 8px;
+              }
+              @include breakpoint(xs) {
+                text-align: center;
+              }
+            }
+          }
+        }
         .bouton-pack {
           @extend .flex-sb;
           width: 100%;
@@ -427,7 +763,12 @@
         background: $white;
         @include border-radius(20px);
         box-shadow: 0px 0px 7.5px 0px #0000001a;
+        border: 1px $white solid;
         position: relative;
+        &:hover {
+          border: 1px $red solid;
+          transform: translateY(-10px);
+        }
         @include breakpoint(xs) {
           @include flex-direction(column);
         }
@@ -488,12 +829,22 @@
 // STATISTIQUES 2
 .stats-2 {
   .wrapper {
+    gap: 30px !important;
+    background: linear-gradient(
+      90deg,
+      #e94f35 26.25%,
+      #e50051 84.96%
+    ) !important;
     .card-stat {
       @extend %flex;
       @include flex-direction(column);
-      gap: 10px;
-      min-width: 300px;
-
+      max-width: 350px !important;
+      @include breakpoint-up(sm) {
+        &:not(:last-child) {
+          border-right: 1px $white solid;
+          padding-right: 30px;
+        }
+      }
       h3 {
         color: $white;
       }
@@ -535,6 +886,16 @@
         box-shadow: 0px 0px 7.5px 0px #0000001a;
         padding: 20px 10px;
         @include border-radius(20px);
+        position: relative;
+        border: 1px $white solid;
+        &:hover {
+          border: 1px $red solid;
+          transform: translateY(-10px);
+        }
+        img {
+          width: 40px;
+          aspect-ratio: 1/1;
+        }
 
         &:nth-child(even) {
           h3 {
@@ -551,6 +912,60 @@
           color: $gray;
         }
       }
+    }
+  }
+}
+// POPUP TECHNOLOGIES
+.pop-up-technologie {
+  @extend .overlay;
+  .pop-up-container {
+    @extend .pop-up-single;
+    max-width: 500px;
+    background: #f8f9fa;
+    padding: 50px 20px;
+    .header-technologie {
+      @extend .flex-jc;
+      @include flex-direction(column);
+      gap: 10px;
+      .icone-img {
+        width: 60px;
+        aspect-ratio: 1/1;
+        background: $yellow;
+        padding: 20px;
+        @include border-radius(10px);
+        img {
+          filter: brightness(10);
+        }
+      }
+      h3 {
+        color: $yellow;
+        font-family: "gilroy-extrabold";
+      }
+      p {
+        color: $dark;
+        text-align: center;
+      }
+    }
+    .body-technologie {
+      margin-top: 20px;
+      @extend %flex;
+      @include flex-direction(column);
+
+      @include border-radius(20px);
+      li {
+        color: $gray;
+        b {
+          font-family: "gilroy-bold";
+          display: inline-block;
+          margin-bottom: 10px;
+          color: $dark;
+        }
+      }
+    }
+    #close-popup-technologie {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
   }
 }
@@ -574,6 +989,7 @@
     }
 
     .passion-text {
+      width: 100%;
       .section-title {
         h2 {
           span {
@@ -612,17 +1028,19 @@
     }
 
     .passion-img {
-      min-width: 50%;
+      width: 100%;
       height: 479px;
       @include border-radius(90px);
       background: $yellow;
+      overflow: hidden;
       @include breakpoint(xs) {
         min-width: 100%;
         @include border-radius(20px);
       }
-
       img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
     }
   }
@@ -658,8 +1076,11 @@
     background: #ffffff94;
     @include border-radius(120px);
     padding: 40px 140px;
-    box-shadow: 0px 0px 3px 0px #00000029;
+    box-shadow: 0px 0px 20px 0px #00000029;
     backdrop-filter: blur(50px);
+    position: relative;
+    --afterHeight: 100%;
+    overflow: hidden;
     @include breakpoint(xs) {
       @include border-radius(20px);
       padding: 40px 20px;
@@ -677,6 +1098,13 @@
 
     .card-historique {
       @extend %flex;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      &.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
       @include breakpoint(sm) {
         @include justify-content(center);
         margin-bottom: 20px;
@@ -685,10 +1113,13 @@
         background: $white;
         width: 100%;
         max-width: 425px;
-        box-shadow: 0px 0px 7.5px 0px #0000001a;
+        padding: 30px 20px;
+        box-shadow: 0px 0px 20px 0px #0000001a;
         @include border-radius(20px);
         padding: 26px;
-
+        &:hover {
+          transform: scale(1.05);
+        }
         @include breakpoint(xs) {
           max-width: 100%;
         }
@@ -756,7 +1187,16 @@
       .card-equipe {
         width: 100%;
         max-width: 244px;
-
+        &:hover {
+          .equipe-img {
+            &::before {
+              opacity: 0.5;
+            }
+            .info-membre {
+              top: 50%;
+            }
+          }
+        }
         @include breakpoint(xs) {
           max-width: 100%;
         }
@@ -767,6 +1207,38 @@
           @include border-radius(72px);
           box-shadow: 0px 0px 3px 0px #00000029;
           backdrop-filter: blur(50px);
+          overflow: hidden;
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $dark;
+            opacity: 0;
+          }
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
+          .info-membre {
+            position: absolute;
+            top: 150%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px $white solid;
+            @extend %flex;
+            gap: 10px;
+            padding: 10px;
+            @include border-radius(20px);
+            img {
+              filter: brightness(10);
+              height: 25px;
+            }
+          }
         }
 
         .equipe-text {
@@ -784,11 +1256,60 @@
     }
   }
 }
-
+// POPUP EQUIPE
+.pop-up-info-equipe {
+  @extend .overlay;
+  .pop-up-container {
+    background: #f2f4f3;
+    @extend .pop-up-single;
+    max-width: 500px;
+    padding: 50px 20px;
+    .header-info-equipe {
+      @extend .flex-jc;
+      overflow: hidden;
+      .nom_poste {
+        @extend %flex;
+        @include flex-direction(column);
+        @include align-items(center);
+        background: $white;
+        padding: 20px;
+        @include border-radius(30px);
+        width: fit-content;
+        gap: 10px;
+        h3 {
+          color: $yellow;
+        }
+        img {
+          background: $yellow;
+          width: 200px;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+          @include border-radius(20px);
+        }
+        span.poste {
+          color: $red;
+          font-family: "gilroy-bold";
+        }
+      }
+    }
+    .body-info-equipe {
+      margin-top: 20px;
+      ul li {
+        color: $dark;
+        margin-bottom: 10px;
+      }
+    }
+    #close-popup-info-equipe {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+  }
+}
 //MARQUE
 #marque {
   .wrapper {
-    background: linear-gradient(#e20e56, #df5531 86.75%);
+    background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
     @include border-radius(120px);
     padding: 50px 0;
 
@@ -833,21 +1354,42 @@
     ul.tabslink-processus {
       @extend %flex;
       margin-top: 60px;
-      gap: 20px;
+      gap: 0;
       background: transparent;
-
+      position: relative;
+      width: 1300px;
+      cursor: grab;
+      &::before {
+        content: url("assets/img/separateur-processus.svg");
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1300px;
+      }
       li {
+        padding: 20px 30px;
+        position: relative;
+        z-index: 1;
         a {
           font-size: 18px;
-          padding: 15px 30px;
+          padding: 15px;
           color: $gray;
           background: $white;
-          box-shadow: 0px 0px 7.5px 0px #0000001a;
-          @include border-radius(20px);
-
+          box-shadow: 0px 0px 20px 0px #0000001a;
+          @include border-radius(30px);
+          @extend %flex;
+          gap: 10px;
+          width: 228px;
+          @extend .flex-jc;
+          &:hover {
+            transform: translateY(-10px);
+          }
           &.active {
-            background: linear-gradient(#df5531, #e20e56);
+            background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
             color: $white;
+            img {
+              filter: brightness(10);
+            }
           }
         }
       }
@@ -1002,6 +1544,12 @@
           height: 178px;
           background: #707070;
           margin-bottom: 15px;
+          overflow: hidden;
+          img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+          }
         }
 
         .conseil-text {
@@ -1119,8 +1667,7 @@
           padding: 15px 20px;
           font-family: "gilroy-bold";
           font-size: 18px;
-          @include border-radius(20px);
-          background: linear-gradient(180deg, #e20e56 20%, #df5531 90%);
+          background: linear-gradient(90deg, #e94f35 26.25%, #e50051 84.96%);
         }
       }
     }
@@ -1129,6 +1676,12 @@
       min-width: 404px;
       background: #f3f3f3;
       @include border-radius(0 60px 0 60px);
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 }

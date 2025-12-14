@@ -77,6 +77,24 @@
                   color: #065f46;
                 }
               }
+              &.validation {
+                background: #d1e9ff;
+                span {
+                  color: #49a5ff;
+                }
+              }
+              &.livree {
+                background: #ddffc9;
+                span {
+                  color: #678f3d;
+                }
+              }
+              &.annule {
+                background: #ffb2b2;
+                span {
+                  color: #ff4d96;
+                }
+              }
             }
             .order-devis {
               text-align: center;

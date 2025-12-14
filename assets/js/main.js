@@ -13,26 +13,37 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-//TABS-LINK
+// TABS-LINK
 jQuery(document).ready(function ($) {
   function initTabs(group) {
     const $links = $(`.tabslink-${group} a`);
     const $contents = $(`.tabscontent-${group}`);
 
-    $contents.hide().first().show();
+    // Ajouter classe animation
+    $contents.addClass("tabs-content-anim");
+
+    // Afficher le premier
+    $contents.hide().removeClass("show");
+    $contents.first().show().addClass("show");
+
     $links.removeClass("active").first().addClass("active");
 
     $links.on("click", function (e) {
       e.preventDefault();
       const target = $(this).attr("href");
 
-      $contents.hide();
-      $(target).show();
+      // Masquer tous les contenus
+      $contents.removeClass("show").hide();
 
+      // Afficher celui cliqué avec fondu
+      $(target).fadeIn(200).addClass("show");
+
+      // Lien actif
       $links.removeClass("active");
       $(this).addClass("active");
     });
   }
+
   [
     "produits",
     "realisations",
@@ -211,6 +222,11 @@ popupHandler(
   "#close-popup-detail"
 );
 popupHandler(
+  "#open-popup-devis",
+  ".pop-up-devis-commande",
+  "#close-popup-devis-commande"
+);
+popupHandler(
   "#open-popup-ajout-panier",
   ".pop-up-ajout-panier",
   "#close-popup-ajout-panier"
@@ -220,8 +236,28 @@ popupHandler(
   ".pop-up-reset-password",
   "#close-popup-reset-password"
 );
+popupHandler(
+  "#open-popup-validation-commande",
+  ".pop-up-validation-commande",
+  "#close-popup-validation-commande"
+);
+popupHandler(
+  "#open-popup-info-equipe",
+  ".pop-up-info-equipe",
+  "#close-popup-info-equipe"
+);
+popupHandler(
+  "#open-popup-technologie",
+  ".pop-up-technologie",
+  "#close-popup-technologie"
+);
+popupHandler(
+  "#open-popup-temoignages",
+  ".pop-up-temoignages",
+  "#close-popup-temoignages"
+);
 
-//SLICK
+//SLICK PRODUITS
 $(document).ready(function () {
   $(".produits-slick").slick({
     infinite: true,
@@ -233,6 +269,59 @@ $(document).ready(function () {
     centerMode: true,
     prevArrow: $(".slick-prev-custom"),
     nextArrow: $(".slick-next-custom"),
+  });
+});
+
+//SLICK TEMOIGNAGES
+$(document).ready(function () {
+  $(".container-temoignages").slick({
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    variableWidth: true,
+    arrows: true,
+    dots: false,
+    centerMode: true,
+    prevArrow: $(".slick-prev-custom"),
+    nextArrow: $(".slick-next-custom"),
+  });
+});
+
+//SLICK IMAGE PASSION
+$(document).ready(function () {
+  $(".slick-image").slick({
+    infinite: true,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  });
+});
+
+//SLICK TABSLINK PROCESSUS
+$(document).ready(function () {
+  // INITIALISATION SLICK
+  var $processus = $(".tabslink-processus");
+
+  $processus.slick({
+    infinite: false,
+    slidesToShow: 4, // 4 étapes visibles
+    slidesToScroll: 1,
+    arrows: false,
+    dots: false,
+    speed: 700,
+  });
+
+  // CLIC SUR UNE ÉTAPE
+  $(".tabslink-processus li").on("click", function (e) {
+    e.preventDefault(); // empêche le scroll vers les ancres
+
+    let index = $(this).index(); // position de l'étape cliquée
+
+    $processus.slick("slickGoTo", index);
   });
 });
 
@@ -314,6 +403,210 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.classList.remove("active");
     }
   });
+});
+
+// METHODE DE PAIEMENT
+document.addEventListener("DOMContentLoaded", function () {
+  const payment = document.getElementById("payment");
+  const operators = document.getElementById("mobile-operators");
+  const operatorSelect = document.getElementById("operateur");
+
+  const telmaInput = document.getElementById("input-telma");
+  const airtelInput = document.getElementById("input-airtel");
+  const orangeInput = document.getElementById("input-orange");
+
+  if (!payment || !operators || !operatorSelect) return;
+
+  // Affiche les opérateurs si "mobile-money" est sélectionné
+  payment.addEventListener("change", function () {
+    if (this.value === "mobile-money") {
+      operators.classList.remove("hidden");
+    } else {
+      operators.classList.add("hidden");
+      operatorSelect.value = "";
+      hideAllOperatorInputs();
+    }
+  });
+
+  // Quand un opérateur est choisi
+  operatorSelect.addEventListener("change", function () {
+    hideAllOperatorInputs(); // cache tout avant d’afficher le bon champ
+
+    switch (this.value) {
+      case "telma":
+        telmaInput.classList.remove("hidden");
+        break;
+      case "airtel":
+        airtelInput.classList.remove("hidden");
+        break;
+      case "orange":
+        orangeInput.classList.remove("hidden");
+        break;
+    }
+  });
+
+  // Fonction utilitaire pour cacher tous les champs
+  function hideAllOperatorInputs() {
+    telmaInput.classList.add("hidden");
+    airtelInput.classList.add("hidden");
+    orangeInput.classList.add("hidden");
+  }
+});
+
+//CARD HISTORIQUE
+const cards = document.querySelectorAll(".card-historique");
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        // Si tu veux que l’animation ne se joue qu'une fois :
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.2, // visible à 20%
+  }
+);
+
+cards.forEach((card) => observer.observe(card));
+
+//ANIMATION LIGNE HISTORIQUE
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animation de la ligne
+  const path = document.querySelector("#timeline path");
+  const length = path.getTotalLength();
+
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
+
+  gsap.to(path, {
+    strokeDashoffset: 0,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#timeline",
+      start: "top 80%",
+      end: "bottom 20%",
+      scrub: 1.5,
+    },
+  });
+
+  // Animation des cercles
+  const circles = document.querySelectorAll("#timeline circle");
+
+  gsap.set(circles, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+
+  gsap.to(circles, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.6,
+    stagger: 0.3, // décalage entre chaque cercle
+    ease: "power1.out",
+    scrollTrigger: {
+      trigger: "#timeline",
+      start: "top 70%",
+      end: "bottom 20%",
+      scrub: 1.5,
+    },
+  });
+});
+
+//COMPTEUR
+gsap.registerPlugin(ScrollTrigger);
+
+function animateCounter(element) {
+  let finalValue = parseInt(element.textContent.replace(/\D/g, ""));
+  let hasPlus = element.textContent.includes("+");
+  let hasSpace = element.textContent.includes(" ");
+
+  gsap.fromTo(
+    element,
+    { innerText: 0 },
+    {
+      innerText: finalValue,
+      duration: 2,
+      ease: "power1.out",
+      scrollTrigger: {
+        trigger: element, // déclenchement quand le compteur entre dans la vue
+        start: "top 90%", // quand le haut du compteur atteint 90% de la fenêtre
+        toggleActions: "play none none none", // s'active une seule fois
+      },
+      snap: { innerText: 1 },
+      onUpdate: function () {
+        let val = Math.floor(element.innerText);
+        if (hasSpace) {
+          val = val.toLocaleString("fr-FR");
+        }
+        if (hasPlus) {
+          val += "+";
+        }
+        element.textContent = val;
+      },
+    }
+  );
+}
+
+// On sélectionne tous les compteurs
+document.querySelectorAll(".nombre").forEach((num) => {
+  animateCounter(num);
+});
+
+//SEARCH TRIGGER
+
+// === Variables ===
+const searchIcon = document.getElementById("search-icon");
+const searchContainer = document.getElementById("search-container");
+const searchInput = document.getElementById("search-produit");
+const resultsBox = document.getElementById("resultats-produit");
+
+// === Afficher / Masquer la barre de recherche au clic sur l'icône ===
+searchIcon.addEventListener("click", function () {
+  if (searchContainer.style.display === "block") {
+    searchContainer.style.display = "none";
+  } else {
+    searchContainer.style.display = "block";
+    searchInput.focus(); // met le focus sur le champ
+  }
+});
+
+// === Recherche en direct (AJAX) ===
+searchInput.addEventListener("keyup", function () {
+  let query = this.value.trim();
+
+  // Si le champ est vide, on vide les résultats
+  if (query.length === 0) {
+    resultsBox.innerHTML = "";
+    return;
+  }
+
+  // Requête AJAX
+  fetch("search-produit.php?q=" + encodeURIComponent(query))
+    .then((res) => res.text())
+    .then((html) => {
+      resultsBox.innerHTML = html;
+    });
+});
+
+// === Redirection vers etape.php au clic sur un résultat ===
+document.addEventListener("click", function (e) {
+  const item = e.target.closest(".result-produit-item");
+  if (item) {
+    let id = item.getAttribute("data-id");
+    window.location.href = "etape.php?id=" + id;
+  }
+});
+
+// === Masquer la recherche si clic en dehors de l'icône ou du container ===
+document.addEventListener("click", function (e) {
+  if (
+    !e.target.closest("#search-icon") &&
+    !e.target.closest("#search-container")
+  ) {
+    searchContainer.style.display = "none";
+  }
 });
 
 //RESET PASSWORD

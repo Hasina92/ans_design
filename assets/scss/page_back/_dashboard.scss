@@ -1,0 +1,129 @@
+.main-content {
+  width: 90%;
+  margin: 20px;
+  * {
+    border: none !important;
+  }
+  .page-header {
+    background: $white;
+    box-shadow: 0px 0px 7.5px 0px #0000001a;
+    @include border-radius(20px);
+    padding: 10px 20px;
+    h1 {
+      color: $red;
+      font-family: "Gilroy-black";
+      font-size: 40px;
+    }
+  }
+  .cards-container {
+    @extend .flex-sb;
+    margin-top: 40px;
+    .card {
+      box-shadow: 0px 0px 7.5px 0px #0000001a;
+      padding: 20px;
+      @include border-radius(20px);
+      min-width: 250px;
+      h2 {
+        font-family: "Gilroy-black";
+        font-size: 30px;
+      }
+      p {
+        font-family: "Gilroy-regular";
+        font-size: 15px;
+      }
+      &.blue {
+        background: $white;
+        h2 {
+          color: #f14e6f;
+        }
+      }
+      &.green {
+        background: $white;
+        h2 {
+          color: #f14e6f;
+        }
+      }
+      &.yellow {
+        background: $yellow;
+        h2,
+        p {
+          color: $white;
+        }
+      }
+      &.red {
+        background: $red;
+        h2,
+        p {
+          color: $white;
+        }
+      }
+    }
+  }
+  .main-panels {
+    @extend .flex-sb;
+    @include align-items(stretch);
+    margin-top: 40px;
+
+    .panel-fichier {
+      @extend %flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30%;
+      background: $white;
+      @include border-radius(20px);
+      box-shadow: 0px 0px 7.5px 0px #0000001a;
+      padding: 20px;
+      .panel-body {
+        ul {
+          background: #fff5d9;
+          @include border-radius(20px);
+          li {
+            font-family: "gilroy-regular";
+            strong {
+              font-family: "Gilroy-bold";
+              color: $yellow;
+            }
+          }
+        }
+      }
+      .panel-footer {
+        a {
+          color: $red;
+        }
+      }
+    }
+    .panel-commande {
+      background: $white;
+      width: 70%;
+      box-shadow: 0px 0px 7.5px 0px #0000001a;
+      @include border-radius(20px);
+      padding: 20px;
+      .panel-body {
+        table {
+          @include border-radius(20px);
+          overflow: hidden;
+          width: 100%;
+          box-shadow: 0px 0px 7.5px 0px #0000001a;
+          background: $white;
+          @include border-radius(20px0);
+          margin-top: 20px;
+
+          th {
+            background: #d5cfcf;
+            font-family: "Gilroy-regular";
+            padding: 15px;
+          }
+          tr {
+            td {
+              padding: 10px;
+              border-bottom: 1px solid #000;
+              &:nth-of-type(1) {
+                font-family: "Gilroy-bold";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

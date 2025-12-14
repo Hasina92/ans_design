@@ -52,7 +52,8 @@
         }
         ul.tabslink-etape {
           margin-top: 0;
-          @extend .flex-sb;
+          @extend %flex;
+          @include justify-content(space-around);
           padding-bottom: 30px;
           border-bottom: 3px solid #e5e7eb;
           li a {
@@ -309,6 +310,7 @@
       a {
         width: 50%;
         text-align: center;
+        border: 1px $red solid;
         @include breakpoint(sm) {
           width: 100%;
         }

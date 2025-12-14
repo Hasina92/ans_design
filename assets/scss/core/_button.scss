@@ -3,6 +3,10 @@
   @include border-radius(30px);
   font-family: "gilroy-bold";
   border: none;
+  z-index: 2;
+  &:hover {
+    transform: scale(1.05);
+  }
   @include breakpoint(xs) {
     padding: 10px;
   }
@@ -11,15 +15,14 @@
 // BTN
 .btn {
   &-gradient {
-    background: linear-gradient(to right, #ffa127, #df5531);
+    background: linear-gradient(to right, #f39433, #ffcd1c);
     color: $white;
   }
 
   &-card {
-    @include border-radius(10px);
     padding: 10px;
     width: 100%;
-    background: linear-gradient(88.3deg, #df5531 114.35%, #ffa127 22.97%);
+    background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
     color: $white;
   }
 

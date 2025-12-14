@@ -19,12 +19,12 @@ footer {
         @extend .flex-jc;
         @include flex-direction(column);
         img {
-          width: 82px;
+          width: 50px;
           aspect-ratio: 1/1;
           background: $white;
           @include border-radius(50%);
           margin-bottom: 15px;
-          padding: 20px;
+          padding: 10px;
         }
         a {
           font-family: "gilroy-regular";
@@ -120,27 +120,35 @@ footer {
           margin-top: 10px;
         }
       }
-      ul.social-icon {
-        @extend %flex;
-        @include flex-direction(column);
-        gap: 20px;
-        @include breakpoint(sm) {
-          @include flex-direction(row);
-        }
-        li a {
-          background: #e12948;
-          width: 40px;
-          aspect-ratio: 1/1;
-          @include border-radius(50%);
-          @extend .flex-jc;
-          padding: 10px;
-        }
-      }
     }
     .fleche-footer {
       position: absolute;
       bottom: 10px;
       right: 10px;
+      background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
+      padding: 10px;
+      img {
+        filter: brightness(10);
+      }
+    }
+    ul.social-icon-footer {
+      @extend %flex;
+      @include flex-direction(column);
+      gap: 20px;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      @include breakpoint(sm) {
+        @include flex-direction(row);
+      }
+      li a {
+        background: #e12948;
+        width: 40px;
+        aspect-ratio: 1/1;
+        @include border-radius(50%);
+        @extend .flex-jc;
+        padding: 10px;
+      }
     }
   }
 }

@@ -115,8 +115,9 @@
   margin-top: 60px;
   @extend .flex-jc;
   background: #f8f8f8;
-  padding: 0 70px;
-  @include border-radius(30px);
+  @include border-radius(50px);
+  padding: 10px;
+  flex-wrap: wrap;
   @include breakpoint(xs) {
     @include flex-wrap(wrap);
     padding: 0;
@@ -127,14 +128,27 @@
     color: $gray;
     font-family: "gilroy-bold";
     font-size: 18px;
+    padding: 20px 70px;
+    @include border-radius(30px);
     @include breakpoint(xs) {
       width: 100%;
     }
     &.active {
-      background: $red;
+      background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
       color: $white;
     }
   }
+}
+
+.tabs-content-anim {
+  opacity: 0;
+  transition: opacity 1s ease;
+  display: none;
+}
+
+.tabs-content-anim.show {
+  opacity: 1;
+  display: block;
 }
 
 //FOND-IMG
@@ -145,6 +159,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  object-fit: cover;
 }
 
 //SHAPE-DECORATION

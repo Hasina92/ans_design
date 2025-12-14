@@ -1,0 +1,30 @@
+.panel {
+  table {
+    @include border-radius(20px);
+    overflow: hidden;
+    width: 100%;
+    box-shadow: 0px 0px 7.5px 0px #0000001a;
+    background: $white;
+    @include border-radius(20px0);
+    margin-top: 20px;
+    text-align: left;
+
+    th {
+      background: #d5cfcf;
+      font-family: "Gilroy-regular";
+      padding: 15px;
+    }
+    tr {
+      td {
+        padding: 10px;
+        border-bottom: 1px solid #000;
+        &:nth-of-type(1) {
+          font-family: "Gilroy-bold";
+        }
+        a {
+          color: $red;
+        }
+      }
+    }
+  }
+}
