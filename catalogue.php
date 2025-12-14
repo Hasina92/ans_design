@@ -74,7 +74,7 @@ include 'header.php';
             </div>
         </div>
     </section>
-    
+
     <!-- PRODUITS PHARES -->
     <section id="produits-phares-catalogue">
         <div class="wrapper">
