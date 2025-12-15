@@ -44,7 +44,6 @@ $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <table style="width:100%; border-collapse: collapse; margin-top:20px;">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom</th>
                 <th>Actif</th>
                 <th>Actions</th>
@@ -58,7 +57,6 @@ $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php else: ?>
                 <?php foreach ($technologies as $tech): ?>
                     <tr>
-                        <td><?= $tech['id'] ?></td>
                         <td><?= htmlspecialchars($tech['nom']) ?></td>
                         <td><?= $tech['actif'] ? 'Oui' : 'Non' ?></td>
                         <td style="display: flex; gap: 20px; border: none; width: 100px;">

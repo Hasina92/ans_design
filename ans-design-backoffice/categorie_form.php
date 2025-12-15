@@ -1,6 +1,6 @@
 <?php
 $pageTitle = 'Catégorie';
-$currentPage = 'categories';
+$currentPage = 'categories_produits';
 require_once 'includes/header.php';
 require_once 'config/db.php';
 require_once 'includes/header.php';

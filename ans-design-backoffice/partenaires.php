@@ -105,14 +105,12 @@ $logos = $pdo->query("SELECT * FROM clients_logos ORDER BY ordre ASC")->fetchAll
 <div class="panel" style="margin-top:20px;">
     <table border="1" cellpadding="10" cellspacing="0" style="border-collapse:collapse; width:100%;">
         <tr>
-            <th>ID</th>
             <th>Entreprise</th>
             <th>Logo</th>
             <th>Actions</th>
         </tr>
         <?php foreach ($logos as $l): ?>
             <tr>
-                <td><?= $l['id'] ?></td>
                 <td><?= htmlspecialchars($l['entreprise']) ?></td>
                 <td>
                     <?php if ($l['logo']): ?>

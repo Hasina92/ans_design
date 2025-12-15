@@ -6088,7 +6088,10 @@ footer .wrapper ul.social-icon-footer li a {
   padding: 50px;
   margin-bottom: 50px;
 }
-.formulaire_ajout input,
+.formulaire_ajout label {
+  font-family: "gilroy-bold";
+}
+.formulaire_ajout input:not([type=checkbox]),
 .formulaire_ajout textarea {
   width: 100%;
   padding: 10px;
