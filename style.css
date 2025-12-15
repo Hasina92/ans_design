@@ -2673,7 +2673,7 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-align: center;
   align-items: center;
   gap: 50px;
-  padding: 15px 25px;
+  padding: 25px;
   background: #fff;
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -2717,7 +2717,12 @@ footer .wrapper ul.social-icon-footer li a {
   font-family: "gilroy-bold";
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-img {
-  min-width: 250px;
+  width: 250px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background-clip: padding-box;
+  overflow: hidden;
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-img img {
   width: 100%;

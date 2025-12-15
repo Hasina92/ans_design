@@ -468,8 +468,8 @@ include 'header.php';
                                     </div>
 
                                     <div class="realisation-img">
-                                        <?php if (!empty($r['image']) && file_exists("upload/" . $r['image'])): ?>
-                                            <img src="upload/<?= $r['image'] ?>" alt="">
+                                        <?php if (!empty($r['image']) && file_exists("ans-design-backoffice/upload/" . $r['image'])): ?>
+                                            <img src="ans-design-backoffice/upload/<?= $r['image'] ?>" alt="">
                                         <?php endif; ?>
                                     </div>
                                 </div>
