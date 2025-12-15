@@ -176,15 +176,42 @@ function mini_cart() {
 
 mini_cart();
 
+function checkCaracteristiquesCompletes() {
+  const selections = document.querySelectorAll(".card-etape.active");
+  const caracTabs = document.querySelectorAll(
+    ".tabscontent-etape:not(.quantite)"
+  );
+  const quantite = document.querySelector("input[name='quantite']");
+
+  // Vérifier chaque caractéristique
+  if (selections.length < caracTabs.length) {
+    alert("Veuillez sélectionner toutes les caractéristiques.");
+    return false;
+  }
+
+  // Vérifier quantité
+  if (!quantite || quantite.value <= 0) {
+    alert("Veuillez renseigner une quantité valide.");
+    return false;
+  }
+
+  return true;
+}
+
 //POP-UP SUIVI COMMANDE
-function popupHandler(openSelector, popupSelector, closeSelector) {
+// POP-UP HANDLER (avec validation optionnelle)
+function popupHandler(
+  openSelector,
+  popupSelector,
+  closeSelector,
+  beforeOpen = null
+) {
   const openBtn = document.querySelector(openSelector);
   const popup = document.querySelector(popupSelector);
   const closeBtn = document.querySelector(closeSelector);
 
   if (!openBtn || !popup || !closeBtn) return;
 
-  // Fonction pour fermer toutes les pop-ups ouvertes
   function closeAllPopups() {
     document.querySelectorAll(".popup.active").forEach((p) => {
       p.classList.remove("active");
@@ -192,17 +219,23 @@ function popupHandler(openSelector, popupSelector, closeSelector) {
   }
 
   // Ouvrir la pop-up
-  openBtn.addEventListener("click", () => {
-    closeAllPopups(); // 🔹 Ferme les autres avant d'ouvrir la nouvelle
+  openBtn.addEventListener("click", (e) => {
+    // 🔒 Validation AVANT ouverture
+    if (beforeOpen && beforeOpen() === false) {
+      e.preventDefault();
+      return;
+    }
+
+    closeAllPopups();
     popup.classList.add("active");
   });
 
-  // Fermer via le bouton
+  // Fermer via bouton
   closeBtn.addEventListener("click", () => {
     popup.classList.remove("active");
   });
 
-  // Fermer en cliquant en dehors du contenu
+  // Fermer en cliquant à l’extérieur
   popup.addEventListener("click", (e) => {
     if (e.target === popup) {
       popup.classList.remove("active");
@@ -216,41 +249,51 @@ popupHandler(
   ".pop-up-suivi-commande",
   "#close-popup-suivi"
 );
+
 popupHandler(
   "#open-popup-detail",
   ".pop-up-detail-commande",
   "#close-popup-detail"
 );
+
 popupHandler(
   "#open-popup-devis",
   ".pop-up-devis-commande",
   "#close-popup-devis-commande"
 );
+
+// 🛒 AJOUT PANIER AVEC VALIDATION
 popupHandler(
   "#open-popup-ajout-panier",
   ".pop-up-ajout-panier",
-  "#close-popup-ajout-panier"
+  "#close-popup-ajout-panier",
+  checkCaracteristiquesCompletes
 );
+
 popupHandler(
   "#open-popup-reset-password",
   ".pop-up-reset-password",
   "#close-popup-reset-password"
 );
+
 popupHandler(
   "#open-popup-validation-commande",
   ".pop-up-validation-commande",
   "#close-popup-validation-commande"
 );
+
 popupHandler(
   "#open-popup-info-equipe",
   ".pop-up-info-equipe",
   "#close-popup-info-equipe"
 );
+
 popupHandler(
   "#open-popup-technologie",
   ".pop-up-technologie",
   "#close-popup-technologie"
 );
+
 popupHandler(
   "#open-popup-temoignages",
   ".pop-up-temoignages",

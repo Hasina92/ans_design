@@ -30,8 +30,8 @@ if (isset($_SESSION['user_id'])) {
         <div class="body-mini-cart">
             <ul class="tabslink-cart">
                 <li>
-                    <?php 
-                        $count = isset($_SESSION['panier']) ? count($_SESSION['panier']) : 0;
+                    <?php
+                    $count = isset($_SESSION['panier']) ? count($_SESSION['panier']) : 0;
                     ?>
                     <a href="#panier">Panier <span class="number">(<?php echo $count; ?>)</span></a>
                 </li>
@@ -57,15 +57,18 @@ if (isset($_SESSION['user_id'])) {
                                     <div class="card-text">
                                         <h3 class="name">
                                             <?php echo htmlspecialchars($item['nom']); ?>
-                                            <span style="font-size: 0.8em; color: #666;">(x<?php echo $item['quantite']; ?>)</span>
+                                            <span
+                                                style="font-size: 0.8em; color: #666;">(x<?php echo $item['quantite']; ?>)</span>
                                         </h3>
                                         <!-- Affichage des options choisies (facultatif mais utile) -->
                                         <ul style="font-size: 0.7em; color: #888; margin-bottom: 5px;">
-                                            <?php foreach($item['options'] as $key => $val): ?>
+                                            <?php foreach ($item['options'] as $key => $val): ?>
                                                 <li><?php echo htmlspecialchars($key . ': ' . $val); ?></li>
                                             <?php endforeach; ?>
                                         </ul>
-                                        <span class="price"><?php echo number_format($item['prix_base'] * $item['quantite'], 0, ',', ' '); ?> Ar</span>
+                                        <span
+                                            class="price"><?php echo number_format($item['prix_base'] * $item['quantite'], 0, ',', ' '); ?>
+                                            Ar</span>
                                     </div>
                                     <div class="remove" data-index="<?php echo $index; ?>" style="cursor:pointer;">
                                         <img src="assets/img/close.svg" alt="Supprimer">
@@ -85,7 +88,7 @@ if (isset($_SESSION['user_id'])) {
                 <div class="tabscontent-cart" id="mon_compte">
                     <div class="personal-information">
                         <div class="container-personal-information">
-                            <img src="assets/img/profil.png" alt="" class="profil">
+                            <img src="assets/img/profil_user.svg" alt="" class="profil">
                             <div class="text-information">
                                 <h3>Bonjour, <?php echo htmlspecialchars($user_info['nom_complet']); ?></h3>
                                 <span>Bienvenue dans votre espace.</span>
@@ -117,31 +120,39 @@ if (isset($_SESSION['user_id'])) {
                                                 <span>#<?php echo htmlspecialchars($cmd['numero_commande'] ?? $cmd['id']); ?></span>
                                                 <span><?php echo date('d M. Y', strtotime($cmd['date_commande'])); ?></span>
                                             </div>
-                                            <div class="etat">
-                                                <!-- Vous pouvez ajouter une classe CSS dynamique selon le statut -->
-                                                <span><?php echo htmlspecialchars($cmd['statut']); ?></span>
+                                            <?php
+                                            $statuts = [
+                                                'En attente' => 'en-attente',
+                                                'En production' => 'en-production',
+                                                'Validation' => 'validation',
+                                                'Livrée' => 'livree',
+                                                'Annulé' => 'annule',
+                                            ];
+
+                                            // Sécurité si statut inconnu
+                                            $etat_class = $statuts[$cmd['statut']] ?? 'en-attente';
+                                            ?>
+                                            <div class="etat <?= $etat_class ?>">
+                                                <span><?= htmlspecialchars($cmd['statut']); ?></span>
                                             </div>
                                         </div>
                                         <div class="nom-product">
                                             <span><?php echo htmlspecialchars($cmd['titre_produit']); ?></span>
                                             <span><?php echo number_format($cmd['total_ttc'], 0, ',', ' '); ?> Ar</span>
                                         </div>
-                                        <div class="bouton-product">
-                                            <!-- Bouton SUIVRE avec data-attributes -->
-                                            <a href="#suivi" class="open-popup-suivi-trigger" 
-                                               data-id="<?php echo $cmd['id']; ?>"
-                                               data-ref="<?php echo htmlspecialchars($cmd['numero_commande'] ?? $cmd['id']); ?>"
-                                               data-statut="<?php echo htmlspecialchars($cmd['statut']); ?>"
-                                               data-date="<?php echo date('d/m/y', strtotime($cmd['date_commande'])); ?>">
-                                               Suivre
+                                        <!-- <div class="bouton-product">
+                                            <a href="#suivi" class="open-popup-suivi-trigger"
+                                                data-id="<?php echo $cmd['id']; ?>"
+                                                data-ref="<?php echo htmlspecialchars($cmd['numero_commande'] ?? $cmd['id']); ?>"
+                                                data-statut="<?php echo htmlspecialchars($cmd['statut']); ?>"
+                                                data-date="<?php echo date('d/m/y', strtotime($cmd['date_commande'])); ?>">
+                                                Suivre
                                             </a>
-
-                                            <!-- Bouton DETAILS avec data-id pour AJAX -->
-                                            <a href="#detail" class="open-popup-detail-trigger" 
-                                               data-id="<?php echo $cmd['id']; ?>">
-                                               Voir les détails
+                                            <a href="#detail" class="open-popup-detail-trigger"
+                                                data-id="<?php echo $cmd['id']; ?>">
+                                                Voir les détails
                                             </a>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -167,19 +178,27 @@ if (isset($_SESSION['user_id'])) {
                 <!-- On ajoute des IDs pour les cibler en JS -->
                 <li class="card-etape" id="etape-recu">
                     <div class="etape-img"><img src="assets/img/success.svg" alt=""></div>
-                    <div class="etape-title"><h4>Commande reçue</h4><span class="date" id="date-recu">--/--/--</span></div>
+                    <div class="etape-title">
+                        <h4>Commande reçue</h4><span class="date" id="date-recu">--/--/--</span>
+                    </div>
                 </li>
                 <li class="card-etape" id="etape-verification">
                     <div class="etape-img"><img src="assets/img/success.svg" alt=""></div>
-                    <div class="etape-title"><h4>Vérification</h4><span class="date">--/--/--</span></div>
+                    <div class="etape-title">
+                        <h4>Vérification</h4><span class="date">--/--/--</span>
+                    </div>
                 </li>
                 <li class="card-etape" id="etape-production">
                     <div class="etape-img"><img src="assets/img/en-production.svg" alt=""></div>
-                    <div class="etape-title"><h4>En production</h4><span class="date">--/--/--</span></div>
+                    <div class="etape-title">
+                        <h4>En production</h4><span class="date">--/--/--</span>
+                    </div>
                 </li>
                 <li class="card-etape" id="etape-expedition">
                     <div class="etape-img"><img src="assets/img/expedition.svg" alt=""></div>
-                    <div class="etape-title"><h4>Expédition</h4><span class="date">--/--/--</span></div>
+                    <div class="etape-title">
+                        <h4>Expédition</h4><span class="date">--/--/--</span>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -212,7 +231,8 @@ if (isset($_SESSION['user_id'])) {
                     <h4>Récapitulatif</h4>
                     <div class="card-paiement">
                         <div class="sous-total"><span>Sous-total</span><span id="detail-sous-total"></span></div>
-                        <div class="total-livraison"><span>Livraison</span><span>0 Ar</span></div> <!-- A dynamiser si besoin -->
+                        <div class="total-livraison"><span>Livraison</span><span>0 Ar</span></div>
+                        <!-- A dynamiser si besoin -->
                         <div class="tva"><span>TVA (20%)</span><span id="detail-tva"></span></div>
                         <div class="total"><span>Total</span><span id="detail-total-ttc"></span></div>
                     </div>

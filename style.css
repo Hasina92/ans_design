@@ -5645,7 +5645,7 @@ footer .wrapper ul.social-icon-footer li a {
 
 .main-panels .panel-clients {
   background: #fff;
-  width: 30%;
+  width: 20%;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -5682,7 +5682,7 @@ footer .wrapper ul.social-icon-footer li a {
   width: 100%;
 }
 .main-panels .panel-commande {
-  width: 70%;
+  width: 80% !important;
   background: #fff;
 }
 .main-panels .panel-commande .container-commande h3 {

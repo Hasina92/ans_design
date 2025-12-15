@@ -77,7 +77,8 @@ if (isset($_GET['client_id'])) {
         <div class="panel-body" id="clientListContainer">
             <!-- On affiche la liste des utilisateurs -->
             <?php foreach ($users_as_clients as $user): ?>
-                <a href="clients_commandes.php?client_id=<?php echo $user['id']; ?>" style="...">
+                <a href="clients_commandes.php?client_id=<?php echo $user['id']; ?>"
+                    style="padding:20px; background: #fff; box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843); border-radius: 10px;">
                     <strong><?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?></strong>
                     <br>
                     <!-- MODIFICATION : On affiche la société si elle existe -->
@@ -133,14 +134,28 @@ if (isset($_GET['client_id'])) {
                 <tbody>
                     <?php foreach ($commandes_client as $cmd): ?>
                         <tr>
-                            <td>#<?php echo htmlspecialchars($cmd['id']); ?></td>
-                            <td><?php echo date('Y-m-d', strtotime($cmd['date_commande'])); ?></td>
-                            <td><span
-                                    class="status <?php echo getStatusClass($cmd['statut']); ?>"><?php echo htmlspecialchars($cmd['statut']); ?></span>
+                            <td>#<?= htmlspecialchars($cmd['id']); ?></td>
+                            <td><?= date('Y-m-d', strtotime($cmd['date_commande'])); ?></td>
+                            <td>
+                                <span class="status <?= getStatusClass($cmd['statut']); ?>">
+                                    <?= htmlspecialchars($cmd['statut']); ?>
+                                </span>
                             </td>
-                            <td><?php echo htmlspecialchars($cmd['articles_details']); ?></td>
-                            <td><?php echo number_format($cmd['total_ttc'], 2, ',', ' '); ?> €</td>
-                            <td><button class="details-btn" data-commande-id="<?php echo $cmd['id']; ?>">Détails</button></td>
+                            <td><?= htmlspecialchars($cmd['articles_details']); ?></td>
+                            <td><?= number_format($cmd['total_ttc'], 2, ',', ' '); ?> €</td>
+                            <td>
+                                <!-- Bouton Détails -->
+                                <button class="details-btn" data-commande-id="<?= $cmd['id']; ?>"
+                                    style="background: #FDC420;">Détails</button>
+
+                                <!-- Bouton Supprimer -->
+                                <form method="POST" style="display:inline;"
+                                    onsubmit="return confirm('⚠️ Supprimer définitivement cette commande ?');">
+                                    <input type="hidden" name="delete_commande_id" value="<?= $cmd['id']; ?>">
+                                    <button type="submit" class="delete-btn"
+                                        style="background: #DF4D34; padding: 8px; color:#fff; border-radius:10px">Supprimer</button>
+                                </form>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

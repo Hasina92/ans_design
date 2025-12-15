@@ -1,7 +1,7 @@
 .main-panels {
   .panel-clients {
     background: $white;
-    width: 30%;
+    width: 20%;
     @include border-radius(20px);
     padding: 20px;
     .panel-header {
@@ -33,7 +33,7 @@
     }
   }
   .panel-commande {
-    width: 70%;
+    width: 80% !important;
     background: $white;
     .container-commande {
       @extend .flex-sb;
