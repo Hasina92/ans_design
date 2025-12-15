@@ -1,8 +1,8 @@
 <?php
-$host = '127.0.0.1';
-$dbname = 'ans_design';
-$user = 'root';
-$pass = ''; 
+$host = 'localhost';  
+$dbname = 'nemo5160_ans_design';
+$user = 'nemo5160_ans_design-admin';
+$pass = '.;k)lp+K5+sL'; 
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
