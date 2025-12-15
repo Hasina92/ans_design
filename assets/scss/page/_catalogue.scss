@@ -139,9 +139,10 @@
         .produits-phrares_img {
           width: 100%;
           max-width: 300px;
-          height: 125px;
+          height: 150px;
           overflow: hidden;
           @extend .flex-jc;
+          @include border-radius(20px);
         }
 
         h3 {

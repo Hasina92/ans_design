@@ -2177,10 +2177,7 @@ footer .wrapper ul.social-icon-footer li a {
   text-align: center;
 }
 #temoignages .wrapper .container-temoignages .slick-center {
-  transform: scale(1.1) !important;
-}
-#temoignages .wrapper .container-temoignages .slick-slide {
-  transform: scale(0.9);
+  transform: scale(1.1);
 }
 #temoignages .wrapper .container-temoignages .card-temoignage {
   -webkit-flex-direction: column;
@@ -2194,8 +2191,7 @@ footer .wrapper ul.social-icon-footer li a {
   align-items: center;
   max-width: 400px;
   width: 100% !important;
-  max-height: 400px;
-  height: 100% !important;
+  height: 400px;
   padding: 30px;
   margin: 50px 0;
   border-radius: 20px;
@@ -2211,7 +2207,7 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #temoignages .wrapper .container-temoignages .card-temoignage:not(:last-child) {
-  margin-right: 50px;
+  margin-right: 60px;
 }
 #temoignages .wrapper .container-temoignages .card-temoignage .profil {
   width: 100px;
@@ -2391,11 +2387,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #produits-phares .wrapper .container-produit {
   margin-top: 50px;
-}
-@media (max-width: 600px) {
-  #produits-phares .wrapper .container-produit {
-    width: 100%;
-  }
+  width: 100%;
 }
 #produits-phares .wrapper .container-produit .tabscontent-produits {
   gap: 30px;
@@ -2413,6 +2405,11 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: space-between;
   gap: 10px;
   padding: 30px 20px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
@@ -2464,6 +2461,9 @@ footer .wrapper ul.social-icon-footer li a {
   width: 100%;
   height: 130px;
   object-fit: contain;
+}
+#produits-phares .wrapper .container-produit .card-produit h3 {
+  font-size: 20px;
 }
 #produits-phares .wrapper .container-produit .card-produit span {
   font-family: "gilroy-regular";
@@ -2693,10 +2693,16 @@ footer .wrapper ul.social-icon-footer li a {
     -moz-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    gap: 20px;
   }
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text {
   width: 50%;
+}
+@media (max-width: 600px) {
+  #realisations .wrapper .container-realisations .card-realisation .realisation-text {
+    width: 100%;
+  }
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text h3 {
   color: #f5bf2a;
@@ -2728,6 +2734,11 @@ footer .wrapper ul.social-icon-footer li a {
   background-clip: padding-box;
   overflow: hidden;
   background: #f8f8f8;
+}
+@media (max-width: 600px) {
+  #realisations .wrapper .container-realisations .card-realisation .realisation-img {
+    width: 100%;
+  }
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-img img {
   width: 100%;
@@ -3790,8 +3801,12 @@ footer .wrapper ul.social-icon-footer li a {
 #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img {
   width: 100%;
   max-width: 300px;
-  height: 125px;
+  height: 150px;
   overflow: hidden;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background-clip: padding-box;
 }
 #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares h3 {
   color: #170303;
@@ -5367,7 +5382,7 @@ footer .wrapper ul.social-icon-footer li a {
 .main-content .page-header h1 {
   color: #df4d34;
   font-family: "Gilroy-black";
-  font-size: 40px;
+  font-size: 30px;
 }
 .main-content .cards-container {
   margin-top: 40px;

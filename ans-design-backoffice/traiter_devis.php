@@ -22,17 +22,14 @@ if (!$devis) {
 </div>
 
 <div class="panel">
-    <p><strong>Nom :</strong> <?= htmlspecialchars($devis['nom']); ?></p>
-    <p><strong>Email :</strong> <?= htmlspecialchars($devis['email']); ?></p>
-    <p><strong>Téléphone :</strong> <?= htmlspecialchars($devis['telephone']); ?></p>
-    <p><strong>Message :</strong><br><?= nl2br(htmlspecialchars($devis['message'])); ?></p>
-    <p><strong>Date :</strong> <?= $devis['date_creation']; ?></p>
+    <p style="padding:5px 0;"><strong>Nom :</strong> <?= htmlspecialchars($devis['nom']); ?></p>
+    <p style="padding:5px 0;"><strong>Email :</strong> <?= htmlspecialchars($devis['email']); ?></p>
+    <p style="padding:5px 0;"><strong>Téléphone :</strong> <?= htmlspecialchars($devis['telephone']); ?></p>
+    <p style="padding:5px 0;"><strong>Message :</strong><br><?= nl2br(htmlspecialchars($devis['message'])); ?></p>
+    <p style="padding:5px 0;"><strong>Date :</strong> <?= $devis['date_creation']; ?></p>
 
     <hr>
-
-    <h2>Mettre à jour la demande</h2>
-
-    <form method="post" action="update_devis.php" class="formulaire_ajout">
+    <form method="post" action="update_devis.php" class="formulaire_ajout" style="padding:10px 0;">
         <input type="hidden" name="id" value="<?= $devis['id'] ?>">
 
         <label>Statut :</label><br>
@@ -49,6 +46,6 @@ if (!$devis) {
 
         <br><br>
 
-        <button type="submit" class="btn-red">Mettre à jour</button>
+        <button type="submit">Mettre à jour</button>
     </form>
 </div>

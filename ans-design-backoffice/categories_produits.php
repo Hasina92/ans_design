@@ -21,7 +21,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="panel">
     <table border="1" cellspacing="0" cellpadding="10" width="100%">
         <tr>
-            <th>ID</th>
             <th>Nom</th>
             <th>Slug</th>
             <th>Actions</th>
@@ -29,7 +28,6 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         <?php foreach ($categories as $cat): ?>
             <tr>
-                <td><?= $cat['id'] ?></td>
                 <td><?= htmlspecialchars($cat['nom']) ?></td>
                 <td><?= htmlspecialchars($cat['slug']) ?></td>
                 <td style="display: flex; gap: 20px; border: none; width: 100px;">

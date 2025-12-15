@@ -98,14 +98,23 @@ include 'header.php';
             ?>
 
             <div class="container-logo-client">
-                <?php foreach ($logos as $logo): ?>
-                    <?php if (!empty($logo['logo'])): ?>
-                        <img src="ans-design-backoffice/assets/img/<?= htmlspecialchars($logo['logo']) ?>"
-                            alt="<?= htmlspecialchars($logo['entreprise']) ?>">
-                    <?php endif; ?>
-                <?php endforeach; ?>
+                <div class="logos-slide">
+                    <?php foreach ($logos as $logo): ?>
+                        <?php if (!empty($logo['logo'])): ?>
+                            <img src="ans-design-backoffice/assets/img/<?= htmlspecialchars($logo['logo']) ?>"
+                                alt="<?= htmlspecialchars($logo['entreprise']) ?>">
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="logos-slide">
+                    <?php foreach ($logos as $logo): ?>
+                        <?php if (!empty($logo['logo'])): ?>
+                            <img src="ans-design-backoffice/assets/img/<?= htmlspecialchars($logo['logo']) ?>"
+                                alt="<?= htmlspecialchars($logo['entreprise']) ?>">
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                </div>
             </div>
-        </div>
     </section>
     <!-- ATOUTS -->
     <section id="atouts">
@@ -324,7 +333,6 @@ include 'header.php';
             </div>
             <div class="container-pack">
                 <div class="card-pack">
-                    <a href="" class="link-box"></a>
                     <div class="text-pack">
                         <h3>PACK SANTATRA <br><b>Starter</b></h3>
                         <span class="prix">150 000 Ar</span>
@@ -341,7 +349,6 @@ include 'header.php';
                     </div>
                 </div>
                 <div class="card-pack">
-                    <a href="" class="link-box"></a>
                     <div class="text-pack">
                         <h3>PACK SAHY<br><b>Booster / Startup</b></h3>
                         <span class="prix">350 000 Ar</span>
@@ -359,7 +366,6 @@ include 'header.php';
                     </div>
                 </div>
                 <div class="card-pack">
-                    <a href="" class="link-box"></a>
                     <div class="text-pack">
                         <h3>PACK SIDINA<br><b>Business / PME</b></h3>
                         <span class="prix">1 200 000 Ar</span>

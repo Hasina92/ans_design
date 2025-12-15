@@ -273,10 +273,7 @@
     }
     .container-temoignages {
       .slick-center {
-        transform: scale(1.1) !important;
-      }
-      .slick-slide {
-        transform: scale(0.9);
+        transform: scale(1.1);
       }
       .card-temoignage {
         @extend %flex;
@@ -284,8 +281,7 @@
         @include align-items(center);
         max-width: 400px;
         width: 100% !important;
-        max-height: 400px;
-        height: 100% !important;
+        height: 400px;
         padding: 30px;
         margin: 50px 0;
         @include border-radius(20px);
@@ -295,7 +291,7 @@
           max-width: 300px;
         }
         &:not(:last-child) {
-          margin-right: 50px;
+          margin-right: 60px;
         }
         .profil {
           width: 100px;
@@ -488,10 +484,7 @@
 
     .container-produit {
       margin-top: 50px;
-
-      @include breakpoint(xs) {
-        width: 100%;
-      }
+      width: 100%;
 
       .tabscontent-produits {
         @extend .grid-25;
@@ -506,6 +499,7 @@
       .card-produit {
         @extend %flex;
         @include flex-direction(column);
+        @include justify-content(space-between);
         gap: 10px;
         padding: 30px 20px;
         box-shadow: 0px 0px 20px 0px #0000001a;
@@ -556,6 +550,10 @@
           width: 100%;
           height: 130px;
           object-fit: contain;
+        }
+
+        h3 {
+          font-size: 20px;
         }
 
         span {
@@ -777,10 +775,14 @@
         }
         @include breakpoint(xs) {
           @include flex-direction(column);
+          gap: 20px;
         }
 
         .realisation-text {
           width: 50%;
+          @include breakpoint(xs) {
+            width: 100%;
+          }
           h3 {
             color: $yellow;
             font-family: "gilroy-extrabold";
@@ -811,6 +813,9 @@
           @include border-radius(20px);
           overflow: hidden;
           background: #f8f8f8;
+          @include breakpoint(xs) {
+            width: 100%;
+          }
           img {
             width: 100%;
             height: 100%;
