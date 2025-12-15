@@ -99,10 +99,10 @@ include 'header.php';
 
             <div class="container-logo-client">
                 <?php foreach ($logos as $logo): ?>
-                        <?php if (!empty($logo['logo'])): ?>
-                                <img src="ans-design-backoffice/assets/img/<?= htmlspecialchars($logo['logo']) ?>"
-                                    alt="<?= htmlspecialchars($logo['entreprise']) ?>">
-                        <?php endif; ?>
+                    <?php if (!empty($logo['logo'])): ?>
+                        <img src="ans-design-backoffice/assets/img/<?= htmlspecialchars($logo['logo']) ?>"
+                            alt="<?= htmlspecialchars($logo['entreprise']) ?>">
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -190,24 +190,24 @@ include 'header.php';
             </div>
             <div class="container-temoignages">
                 <?php foreach ($temoignages as $t): ?>
-                        <div class="card-temoignage">
-                            <div class="profil">
-                                <?php if ($t['photo']): ?>
-                                        <img src="uploads/temoignages/<?= htmlspecialchars($t['photo']) ?>"
-                                            alt="<?= htmlspecialchars($t['prenom']) ?>">
-                                <?php else: ?>
-                                        <img src="assets/img/default-user.png" alt="<?= htmlspecialchars($t['prenom']) ?>">
-                                <?php endif; ?>
-                            </div>
-                            <div class="note">
-                                <?php for ($i = 1; $i <= 5; $i++): ?>
-                                        <img src="assets/img/star-<?= $i <= $t['note'] ? 'actif' : 'inactif' ?>.svg" alt="">
-                                <?php endfor; ?>
-                            </div>
-                            <p class="avis"><?= nl2br(htmlspecialchars($t['avis'])) ?></p>
-                            <span class="nom"><?= htmlspecialchars($t['prenom']) ?></span>
-                            <span class="poste"><?= htmlspecialchars($t['poste']) ?></span>
+                    <div class="card-temoignage">
+                        <div class="profil">
+                            <?php if ($t['photo']): ?>
+                                <img src="uploads/temoignages/<?= htmlspecialchars($t['photo']) ?>"
+                                    alt="<?= htmlspecialchars($t['prenom']) ?>">
+                            <?php else: ?>
+                                <img src="assets/img/default-user.png" alt="<?= htmlspecialchars($t['prenom']) ?>">
+                            <?php endif; ?>
                         </div>
+                        <div class="note">
+                            <?php for ($i = 1; $i <= 5; $i++): ?>
+                                <img src="assets/img/star-<?= $i <= $t['note'] ? 'actif' : 'inactif' ?>.svg" alt="">
+                            <?php endfor; ?>
+                        </div>
+                        <p class="avis"><?= nl2br(htmlspecialchars($t['avis'])) ?></p>
+                        <span class="nom"><?= htmlspecialchars($t['prenom']) ?></span>
+                        <span class="poste"><?= htmlspecialchars($t['poste']) ?></span>
+                    </div>
                 <?php endforeach; ?>
             </div>
 
@@ -261,51 +261,51 @@ include 'header.php';
             <!-- ONGLES PAPETERIES (CATÉGORIES) -->
             <ul class="tabslink-produits">
                 <?php foreach ($categories as $index => $cat): ?>
-                        <li>
-                            <a href="#cat_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
-                                <?= htmlspecialchars($cat['nom']) ?>
-                            </a>
-                        </li>
+                    <li>
+                        <a href="#cat_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+                            <?= htmlspecialchars($cat['nom']) ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
 
             <div class="container-produit">
 
                 <?php foreach ($categories as $index => $cat): ?>
-                        <div class="tabscontent-produits <?= $index === 0 ? 'active' : '' ?>" id="cat_<?= $cat['id'] ?>">
+                    <div class="tabscontent-produits <?= $index === 0 ? 'active' : '' ?>" id="cat_<?= $cat['id'] ?>">
 
-                            <?php if (empty($produitsParCategorie[$cat['id']])): ?>
-                                    <p>Aucun produit phare dans cette catégorie.</p>
-                            <?php else: ?>
+                        <?php if (empty($produitsParCategorie[$cat['id']])): ?>
+                            <p>Aucun produit phare dans cette catégorie.</p>
+                        <?php else: ?>
 
-                                    <?php foreach ($produitsParCategorie[$cat['id']] as $p): ?>
-                                            <div class="card-produit">
+                            <?php foreach ($produitsParCategorie[$cat['id']] as $p): ?>
+                                <div class="card-produit">
 
-                                                <a href="produit.php?id=<?= $p['id'] ?>" class="link-box"></a>
+                                    <a href="etape.php?id=<?= $p['id']; ?>" class="link-box"></a>
 
-                                                <img src="uploads/produits/<?= htmlspecialchars($p['image']) ?>"
-                                                    alt="<?= htmlspecialchars($p['nom']) ?>">
+                                    <img src="uploads/produits/<?= htmlspecialchars($p['image']) ?>"
+                                        alt="<?= htmlspecialchars($p['nom']) ?>">
 
-                                                <h3><?= htmlspecialchars($p['nom']) ?></h3>
+                                    <h3><?= htmlspecialchars($p['nom']) ?></h3>
 
-                                                <span>
-                                                    À partir de <br>
-                                                    <b><?= number_format($p['prix_base'], 0, ',', ' ') ?> Ar</b>
-                                                </span>
+                                    <span>
+                                        À partir de <br>
+                                        <b><?= number_format($p['prix_base'], 0, ',', ' ') ?> Ar</b>
+                                    </span>
 
-                                                <div class="bouton-produit">
-                                                    <a href="devis.php?produit=<?= $p['id'] ?>" class="btn-card">Devis</a>
+                                    <div class="bouton-produit">
+                                        <a href="etape.php?id=<?= $p['id']; ?>" class="btn-card">Devis</a>
 
-                                                    <?php if (!empty($p['reduction'])): ?>
-                                                            <span class="reduction">-<?= intval($p['reduction']) ?>%</span>
-                                                    <?php endif; ?>
-                                                </div>
+                                        <?php if (!empty($p['reduction'])): ?>
+                                            <span class="reduction">-<?= intval($p['reduction']) ?>%</span>
+                                        <?php endif; ?>
+                                    </div>
 
-                                            </div>
-                                    <?php endforeach; ?>
+                                </div>
+                            <?php endforeach; ?>
 
-                            <?php endif; ?>
-                        </div>
+                        <?php endif; ?>
+                    </div>
                 <?php endforeach; ?>
 
             </div>
@@ -429,53 +429,53 @@ include 'header.php';
             <!-- Onglets dynamiques -->
             <ul class="tabslink tabslink-realisations">
                 <?php foreach ($categories as $index => $cat): ?>
-                        <li>
-                            <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
-                                <?= htmlspecialchars($cat['titre']) ?>
-                            </a>
-                        </li>
+                    <li>
+                        <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+                            <?= htmlspecialchars($cat['titre']) ?>
+                        </a>
+                    </li>
                 <?php endforeach; ?>
             </ul>
 
             <!-- Contenu des réalisations -->
             <div class="container-realisations">
                 <?php foreach ($categories as $index => $cat): ?>
-                        <div class="tabscontent-realisations <?= $index === 0 ? 'active' : '' ?>"
-                            id="realisation_<?= $cat['id'] ?>">
-                            <?php
-                            $realisations = $all_realisations[$cat['id']] ?? [];
-                            if (empty($realisations)) {
-                                echo "<p>Aucune réalisation pour cette catégorie.</p>";
-                            } else {
-                                foreach ($realisations as $r): ?>
-                                            <div class="card-realisation">
-                                                <div class="realisation-text">
-                                                    <h3><?= htmlspecialchars($r['titre']) ?></h3>
+                    <div class="tabscontent-realisations <?= $index === 0 ? 'active' : '' ?>"
+                        id="realisation_<?= $cat['id'] ?>">
+                        <?php
+                        $realisations = $all_realisations[$cat['id']] ?? [];
+                        if (empty($realisations)) {
+                            echo "<p>Aucune réalisation pour cette catégorie.</p>";
+                        } else {
+                            foreach ($realisations as $r): ?>
+                                <div class="card-realisation">
+                                    <div class="realisation-text">
+                                        <h3><?= htmlspecialchars($r['titre']) ?></h3>
 
-                                                    <ul class="liste">
-                                                        <?php if (!empty($r['client'])): ?>
-                                                                <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
-                                                        <?php endif; ?>
+                                        <ul class="liste">
+                                            <?php if (!empty($r['client'])): ?>
+                                                <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
+                                            <?php endif; ?>
 
-                                                        <?php if (!empty($r['nombre_ex'])): ?>
-                                                                <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
-                                                        <?php endif; ?>
+                                            <?php if (!empty($r['nombre_ex'])): ?>
+                                                <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
+                                            <?php endif; ?>
 
-                                                        <?php if (!empty($r['delai_ex'])): ?>
-                                                                <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
-                                                        <?php endif; ?>
-                                                    </ul>
-                                                </div>
+                                            <?php if (!empty($r['delai_ex'])): ?>
+                                                <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
+                                            <?php endif; ?>
+                                        </ul>
+                                    </div>
 
-                                                <div class="realisation-img">
-                                                    <?php if (!empty($r['image']) && file_exists("upload/" . $r['image'])): ?>
-                                                            <img src="upload/<?= $r['image'] ?>" alt="">
-                                                    <?php endif; ?>
-                                                </div>
-                                            </div>
-                                    <?php endforeach;
-                            } ?>
-                        </div>
+                                    <div class="realisation-img">
+                                        <?php if (!empty($r['image']) && file_exists("upload/" . $r['image'])): ?>
+                                            <img src="upload/<?= $r['image'] ?>" alt="">
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            <?php endforeach;
+                        } ?>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -515,15 +515,15 @@ include 'header.php';
             </div>
             <div class="container-technologie">
                 <?php foreach ($technologies as $tech): ?>
-                        <div class="card-technologie">
-                            <!-- Chaque carte pointe vers son popup -->
-                            <a href="#" class="link-box open-popup-tech"
-                                data-popup-id="popup-technologie-<?= $tech['id'] ?>"></a>
-                            <img src="uploads/technologies/<?= htmlspecialchars($tech['image']) ?>"
-                                alt="<?= htmlspecialchars($tech['nom']) ?>">
-                            <h3><?= htmlspecialchars($tech['nom']) ?></h3>
-                            <p class="small"><?= htmlspecialchars($tech['description_courte']) ?></p>
-                        </div>
+                    <div class="card-technologie">
+                        <!-- Chaque carte pointe vers son popup -->
+                        <a href="#" class="link-box open-popup-tech"
+                            data-popup-id="popup-technologie-<?= $tech['id'] ?>"></a>
+                        <img src="uploads/technologies/<?= htmlspecialchars($tech['image']) ?>"
+                            alt="<?= htmlspecialchars($tech['nom']) ?>">
+                        <h3><?= htmlspecialchars($tech['nom']) ?></h3>
+                        <p class="small"><?= htmlspecialchars($tech['description_courte']) ?></p>
+                    </div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -531,43 +531,43 @@ include 'header.php';
 
     <!-- POP-UP TECHNOLOGIES -->
     <?php foreach ($technologies as $tech): ?>
-            <section class="popup pop-up-technologie" id="popup-technologie-<?= $tech['id'] ?>">
-                <div class="pop-up-container">
-                    <div class="header-technologie">
-                        <div class="icone-img">
-                            <img src="uploads/technologies/<?= htmlspecialchars($tech['image']) ?>"
-                                alt="<?= htmlspecialchars($tech['nom']) ?>">
-                        </div>
-                        <h3><?= htmlspecialchars($tech['nom']) ?></h3>
-                        <p><?= htmlspecialchars($tech['description_courte']) ?></p>
+        <section class="popup pop-up-technologie" id="popup-technologie-<?= $tech['id'] ?>">
+            <div class="pop-up-container">
+                <div class="header-technologie">
+                    <div class="icone-img">
+                        <img src="uploads/technologies/<?= htmlspecialchars($tech['image']) ?>"
+                            alt="<?= htmlspecialchars($tech['nom']) ?>">
                     </div>
-                    <div class="body-technologie">
-                        <?php
-                        $description = $tech['description_longue'] ?: "Aucune information détaillée disponible.";
+                    <h3><?= htmlspecialchars($tech['nom']) ?></h3>
+                    <p><?= htmlspecialchars($tech['description_courte']) ?></p>
+                </div>
+                <div class="body-technologie">
+                    <?php
+                    $description = $tech['description_longue'] ?: "Aucune information détaillée disponible.";
 
-                        // Convertir les lignes en tableau
-                        $lines = preg_split("/\r\n|\n|\r/", $description);
+                    // Convertir les lignes en tableau
+                    $lines = preg_split("/\r\n|\n|\r/", $description);
 
-                        echo "<ul>";
-                        foreach ($lines as $line) {
-                            $line = trim($line);
-                            if ($line !== '') {
-                                // Mettre en gras le texte avant ":" si présent
-                                if (strpos($line, ':') !== false) {
-                                    list($key, $value) = explode(':', $line, 2);
-                                    echo "<li><b>" . htmlspecialchars($key, ENT_QUOTES) . ":</b>" . htmlspecialchars($value, ENT_QUOTES) . "</li>";
-                                } else {
-                                    echo "<li>" . htmlspecialchars($line, ENT_QUOTES) . "</li>";
-                                }
+                    echo "<ul>";
+                    foreach ($lines as $line) {
+                        $line = trim($line);
+                        if ($line !== '') {
+                            // Mettre en gras le texte avant ":" si présent
+                            if (strpos($line, ':') !== false) {
+                                list($key, $value) = explode(':', $line, 2);
+                                echo "<li><b>" . htmlspecialchars($key, ENT_QUOTES) . ":</b>" . htmlspecialchars($value, ENT_QUOTES) . "</li>";
+                            } else {
+                                echo "<li>" . htmlspecialchars($line, ENT_QUOTES) . "</li>";
                             }
                         }
-                        echo "</ul>";
-                        ?>
-                    </div>
-                    <a href="#close" class="close-popup" id="close-popup-technologie"><img src="assets/img/close.svg"
-                            alt="Fermer"></a>
+                    }
+                    echo "</ul>";
+                    ?>
                 </div>
-            </section>
+                <a href="#close" class="close-popup" id="close-popup-technologie"><img src="assets/img/close.svg"
+                        alt="Fermer"></a>
+            </div>
+        </section>
     <?php endforeach; ?>
 
     <!-- PASSION-->
@@ -711,47 +711,47 @@ include 'header.php';
             <div class="container-equipe">
 
                 <?php if (empty($members)): ?>
-                        <p>Aucun membre pour le moment.</p>
+                    <p>Aucun membre pour le moment.</p>
 
                 <?php else: ?>
-                        <?php foreach ($members as $m): ?>
-                                <div class="card-equipe">
+                    <?php foreach ($members as $m): ?>
+                        <div class="card-equipe">
 
-                                    <!-- Photo + icônes -->
-                                    <div class="equipe-img">
+                            <!-- Photo + icônes -->
+                            <div class="equipe-img">
 
-                                        <?php if (!empty($m['photo'])): ?>
-                                                <img src="ans-design-backoffice/upload/<?= htmlspecialchars($m['photo']) ?>"
-                                                    alt="<?= htmlspecialchars($m['nom']) ?>">
-                                        <?php else: ?>
-                                                <img src="assets/img/default-user.png" alt="<?= htmlspecialchars($m['nom']) ?>">
-                                        <?php endif; ?>
+                                <?php if (!empty($m['photo'])): ?>
+                                    <img src="ans-design-backoffice/upload/<?= htmlspecialchars($m['photo']) ?>"
+                                        alt="<?= htmlspecialchars($m['nom']) ?>">
+                                <?php else: ?>
+                                    <img src="assets/img/default-user.png" alt="<?= htmlspecialchars($m['nom']) ?>">
+                                <?php endif; ?>
 
-                                        <div class="info-membre">
+                                <div class="info-membre">
 
-                                            <!-- Icône email (si email existe) -->
-                                            <?php if (!empty($m['email'])): ?>
-                                                    <a href="mailto:<?= htmlspecialchars($m['email']) ?>" target="_blank">
-                                                        <img src="assets/img/mail.svg" alt="Mail">
-                                                    </a>
-                                            <?php endif; ?>
+                                    <!-- Icône email (si email existe) -->
+                                    <?php if (!empty($m['email'])): ?>
+                                        <a href="mailto:<?= htmlspecialchars($m['email']) ?>" target="_blank">
+                                            <img src="assets/img/mail.svg" alt="Mail">
+                                        </a>
+                                    <?php endif; ?>
 
-                                            <!-- Icône popup info -->
-                                            <a href="#" class="open-popup-equipe" data-popup-id="popup-equipe-<?= $m['id'] ?>">
-                                                <img src="assets/img/question-mark.svg" alt="Info">
-                                            </a>
-
-                                        </div>
-                                    </div>
-
-                                    <!-- Nom + Poste -->
-                                    <div class="equipe-text t-center">
-                                        <h3><?= htmlspecialchars($m['nom']) ?></h3>
-                                        <p class="small"><?= htmlspecialchars($m['poste']) ?></p>
-                                    </div>
+                                    <!-- Icône popup info -->
+                                    <a href="#" class="open-popup-equipe" data-popup-id="popup-equipe-<?= $m['id'] ?>">
+                                        <img src="assets/img/question-mark.svg" alt="Info">
+                                    </a>
 
                                 </div>
-                        <?php endforeach; ?>
+                            </div>
+
+                            <!-- Nom + Poste -->
+                            <div class="equipe-text t-center">
+                                <h3><?= htmlspecialchars($m['nom']) ?></h3>
+                                <p class="small"><?= htmlspecialchars($m['poste']) ?></p>
+                            </div>
+
+                        </div>
+                    <?php endforeach; ?>
                 <?php endif; ?>
 
             </div>
@@ -760,40 +760,40 @@ include 'header.php';
 
     <!-- POP-UP EQUIPE -->
     <?php foreach ($members as $m): ?>
-            <section class="popup pop-up-info-equipe" id="popup-equipe-<?= $m['id'] ?>">
-                <div class="pop-up-container">
-                    <div class="header-info-equipe">
-                        <div class="nom_poste">
-                            <img src="<?= !empty($m['photo']) ? 'ans-design-backoffice/upload/' . htmlspecialchars($m['photo']) : 'assets/img/default-user.png' ?>"
-                                alt="<?= htmlspecialchars($m['nom']) ?>">
-                            <h3><?= htmlspecialchars($m['nom']) ?></h3>
-                            <span class="poste"><?= htmlspecialchars($m['poste']) ?></span>
-                        </div>
+        <section class="popup pop-up-info-equipe" id="popup-equipe-<?= $m['id'] ?>">
+            <div class="pop-up-container">
+                <div class="header-info-equipe">
+                    <div class="nom_poste">
+                        <img src="<?= !empty($m['photo']) ? 'ans-design-backoffice/upload/' . htmlspecialchars($m['photo']) : 'assets/img/default-user.png' ?>"
+                            alt="<?= htmlspecialchars($m['nom']) ?>">
+                        <h3><?= htmlspecialchars($m['nom']) ?></h3>
+                        <span class="poste"><?= htmlspecialchars($m['poste']) ?></span>
                     </div>
-                    <div class="body-info-equipe">
-                        <?php
-                        $description = $m['description'] ?: "Aucune description disponible.";
-
-                        // Séparer par les sauts de ligne
-                        $lines = preg_split("/\r\n|\n|\r/", $description);
-
-                        // Si au moins une ligne, créer une liste
-                        if (!empty($lines)) {
-                            echo "<ul>";
-                            foreach ($lines as $line) {
-                                $line = trim($line);
-                                if ($line !== '') {
-                                    echo "<li>" . htmlspecialchars($line) . "</li>";
-                                }
-                            }
-                            echo "</ul>";
-                        }
-                        ?>
-                    </div>
-                    <a href="#close" class="close-popup" id="close-popup-info-equipe"><img src="assets/img/close.svg"
-                            alt="Fermer"></a>
                 </div>
-            </section>
+                <div class="body-info-equipe">
+                    <?php
+                    $description = $m['description'] ?: "Aucune description disponible.";
+
+                    // Séparer par les sauts de ligne
+                    $lines = preg_split("/\r\n|\n|\r/", $description);
+
+                    // Si au moins une ligne, créer une liste
+                    if (!empty($lines)) {
+                        echo "<ul>";
+                        foreach ($lines as $line) {
+                            $line = trim($line);
+                            if ($line !== '') {
+                                echo "<li>" . htmlspecialchars($line) . "</li>";
+                            }
+                        }
+                        echo "</ul>";
+                    }
+                    ?>
+                </div>
+                <a href="#close" class="close-popup" id="close-popup-info-equipe"><img src="assets/img/close.svg"
+                        alt="Fermer"></a>
+            </div>
+        </section>
     <?php endforeach; ?>
 
     <!-- MARQUE -->
@@ -1253,25 +1253,25 @@ include 'header.php';
             <div class="container-conseils">
                 <?php $articles = $pdo->query("SELECT * FROM blog ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC); ?>
                 <?php foreach ($articles as $a): ?>
-                        <div class="card-conseil">
+                    <div class="card-conseil">
 
-                            <!-- Lien vers single post -->
-                            <a href="single-blog.php?id=<?= $a['id'] ?>" class="link-box"></a>
+                        <!-- Lien vers single post -->
+                        <a href="single-blog.php?id=<?= $a['id'] ?>" class="link-box"></a>
 
-                            <div class="conseil-img">
-                                <img src="ans-design-backoffice/upload/<?= $a['image'] ?>" alt="">
-                            </div>
-
-                            <div class="conseil-text">
-                                <h3><?= htmlspecialchars($a['titre']) ?></h3>
-
-                                <!-- Extrait -->
-                                <p><?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...</p>
-
-                                <a href="single-blog.php?id=<?= $a['id'] ?>">Lire la suite →</a>
-                            </div>
-
+                        <div class="conseil-img">
+                            <img src="ans-design-backoffice/upload/<?= $a['image'] ?>" alt="">
                         </div>
+
+                        <div class="conseil-text">
+                            <h3><?= htmlspecialchars($a['titre']) ?></h3>
+
+                            <!-- Extrait -->
+                            <p><?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...</p>
+
+                            <a href="single-blog.php?id=<?= $a['id'] ?>">Lire la suite →</a>
+                        </div>
+
+                    </div>
                 <?php endforeach; ?>
 
             </div>

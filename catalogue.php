@@ -99,7 +99,7 @@ include 'header.php';
 
                             <h3><?= htmlspecialchars($p['nom']) ?></h3>
 
-                            <a href="devis.php?produit=<?= $p['id'] ?>" class="btn-3d">
+                            <a href="etape.php?id=<?= $p['id']; ?>" class="btn-3d">
                                 Faire un devis
                             </a>
 
