@@ -96,11 +96,16 @@
     overflow: hidden;
   }
   &::before {
-    content: url("assets/img/ellipse_client.svg");
+    content: "";
     position: absolute;
-    top: 100px;
-    left: -100px;
-    width: 450px;
+    top: 0px;
+    left: -300px;
+    width: 645px;
+    height: 645px;
+    background-image: url("assets/img/ellipse_client.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40px);
     z-index: -1;
   }
 
@@ -325,7 +330,7 @@
       }
       .img-detail-catalogue {
         height: 261px;
-        width: 300px;
+        min-width: 300px;
         background: $red;
         @include border-radius(20px);
         object-fit: cover;

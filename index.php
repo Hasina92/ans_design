@@ -815,25 +815,26 @@ include 'header.php';
             </div>
             <ul class="tabslink-processus">
                 <li>
-                    <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> Écoute </a>
+                    <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Écoute</span> </a>
                 </li>
                 <li>
-                    <a href="#prix"> <img src="assets/img/creation.svg" alt=""> Prix </a>
+                    <a href="#prix"> <img src="assets/img/price.svg" alt=""> <span>Prix</span> </a>
                 </li>
                 <li>
-                    <a href="#validation"> <img src="assets/img/production.svg" alt=""> Validation </a>
+                    <a href="#validation"> <img src="assets/img/creation.svg" alt=""> <span>Validation</span> </a>
                 </li>
                 <li>
-                    <a href="#verification"> <img src="assets/img/livraison.svg" alt=""> Vérification </a>
+                    <a href="#verification"> <img src="assets/img/verification.svg" alt=""> <span>Vérification</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="#fabrication"> <img src="assets/img/livraison.svg" alt=""> Fabrication </a>
+                    <a href="#fabrication"> <img src="assets/img/production.svg" alt=""> <span>Fabrication</span> </a>
                 </li>
                 <li>
-                    <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> Finition</a>
+                    <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> <span>Finition</span></a>
                 </li>
                 <li>
-                    <a href="#transport"> <img src="assets/img/livraison.svg" alt=""> Transport</a>
+                    <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Transport</span></a>
                 </li>
             </ul>
             <div class="tabscontent-processus" id="ecoute">

@@ -74,7 +74,6 @@ header {
       @include justify-content(center);
       @include align-items(center);
       gap: 40px;
-
       .my-account {
         @extend %flex;
         color: #b2b2b2;
@@ -124,12 +123,15 @@ header {
       }
       //SEARCH TRIGGER
       #search-container {
-        display: none; /* masqué par défaut */
+        display: none;
         position: absolute;
         top: 50px;
         right: 0;
         width: 350px;
         margin-top: 10px;
+        @include breakpoint(xs) {
+          width: 100%;
+        }
       }
 
       #search-produit {

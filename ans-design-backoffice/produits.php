@@ -18,20 +18,43 @@ if (isset($_GET['delete'])) {
 }
 
 /* ============================
-   RECHERCHE DE PRODUITS
+   FILTRE ET RECHERCHE
    ============================ */
-$search = '';
-if (isset($_GET['search'])) {
-    $search = trim($_GET['search']);
-}
+$search = $_GET['search'] ?? '';
+$categoryFilter = $_GET['category'] ?? '';
+$order = $_GET['order'] ?? 'ASC';
+$order = strtoupper($order) === 'DESC' ? 'DESC' : 'ASC';
+
+/* ============================
+   Récupérer les catégories
+   ============================ */
+$categoriesStmt = $pdo->query("SELECT * FROM categories ORDER BY nom ASC");
+$categories = $categoriesStmt->fetchAll(PDO::FETCH_ASSOC);
+
+/* ============================
+   Construire la requête dynamique
+   ============================ */
+$sql = "SELECT p.*, c.nom AS categorie_nom 
+        FROM produits p 
+        LEFT JOIN categories c ON p.categorie_id = c.id 
+        WHERE 1";
+
+$params = [];
 
 if ($search !== '') {
-    $stmt = $pdo->prepare("SELECT * FROM produits WHERE nom LIKE ? ORDER BY nom ASC");
-    $stmt->execute(["%$search%"]);
-} else {
-    $stmt = $pdo->query("SELECT * FROM produits ORDER BY nom ASC");
+    $sql .= " AND p.nom LIKE ?";
+    $params[] = "%$search%";
 }
 
+if ($categoryFilter !== '' && is_numeric($categoryFilter)) {
+    $sql .= " AND p.categorie_id = ?";
+    $params[] = $categoryFilter;
+}
+
+$sql .= " ORDER BY p.nom $order";
+
+$stmt = $pdo->prepare($sql);
+$stmt->execute($params);
 $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -44,11 +67,26 @@ $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
             + Créer un nouveau produit
         </a>
 
-        <!-- FORMULAIRE DE RECHERCHE -->
-        <form method="get" style="display: flex;">
+        <!-- FORMULAIRE DE RECHERCHE ET FILTRE -->
+        <form method="get" style="display: flex; gap: 10px; flex-wrap: wrap;">
             <input type="text" name="search" placeholder="Rechercher un produit..."
                 value="<?php echo htmlspecialchars($search); ?>"
                 style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+
+            <select name="category" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <option value="">Toutes les catégories</option>
+                <?php foreach ($categories as $cat): ?>
+                    <option value="<?= $cat['id'] ?>" <?= $categoryFilter == $cat['id'] ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($cat['nom']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+
+            <select name="order" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                <option value="ASC" <?= $order == 'ASC' ? 'selected' : '' ?>>Nom A → Z</option>
+                <option value="DESC" <?= $order == 'DESC' ? 'selected' : '' ?>>Nom Z → A</option>
+            </select>
+
             <button type="submit"
                 style="padding: 10px 20px; background-color: #3498DB; color: white; border: none; border-radius: 5px; cursor: pointer;">
                 Rechercher
@@ -64,8 +102,15 @@ $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </p>
 <?php endif; ?>
 
-<?php if ($search !== ''): ?>
-    <p style="margin: 10px 0;">Résultats de la recherche pour : <strong><?php echo htmlspecialchars($search); ?></strong>
+<?php if ($search !== '' || $categoryFilter !== ''): ?>
+    <p style="margin: 10px 0;">
+        <?php if ($search !== ''): ?>
+            Résultats de la recherche pour : <strong><?php echo htmlspecialchars($search); ?></strong>
+        <?php endif; ?>
+        <?php if ($categoryFilter !== '' && is_numeric($categoryFilter)): ?>
+            Catégorie filtrée :
+            <strong><?php echo htmlspecialchars($categories[array_search($categoryFilter, array_column($categories, 'id'))]['nom']); ?></strong>
+        <?php endif; ?>
     </p>
 <?php endif; ?>
 
@@ -73,8 +118,8 @@ $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <table>
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nom du Produit</th>
+                <th>Catégorie</th>
                 <th>Prix de base</th>
                 <th>Actif</th>
                 <th>Phare</th>
@@ -91,8 +136,8 @@ $produits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <?php foreach ($produits as $produit): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($produit['id']); ?></td>
                     <td><?php echo htmlspecialchars($produit['nom']); ?></td>
+                    <td><?php echo htmlspecialchars($produit['categorie_nom']); ?></td>
                     <td><?php echo number_format($produit['prix_base'], 2, ',', ' '); ?> ariary</td>
                     <td><?php echo $produit['actif'] ? 'Oui' : 'Non'; ?></td>
                     <td><?php echo $produit['produit_phare'] ? '⭐ Oui' : '—'; ?></td>

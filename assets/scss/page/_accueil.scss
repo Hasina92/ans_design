@@ -12,6 +12,8 @@
     @include breakpoint(xs) {
       @include flex-direction(column);
       gap: 20px;
+      padding: 50px 30px 60px 30px;
+      @include border-radius(0);
     }
     .banner-text {
       max-width: 530px;
@@ -266,6 +268,7 @@
     .section-title {
       h2 {
         color: $yellow;
+        text-align: center;
       }
     }
     .container-temoignages {
@@ -288,12 +291,15 @@
         @include border-radius(20px);
         box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
         background: $white;
+        @include breakpoint(xs) {
+          max-width: 300px;
+        }
         &:not(:last-child) {
           margin-right: 50px;
         }
         .profil {
           width: 100px;
-          aspect-ratio: 1/1;
+          height: 100px;
           background: $yellow;
           @include border-radius(50%);
           overflow: hidden;
@@ -498,7 +504,7 @@
       }
 
       .card-produit {
-        @extend .flex-jc;
+        @extend %flex;
         @include flex-direction(column);
         gap: 10px;
         padding: 30px 20px;
@@ -944,6 +950,7 @@
       p {
         color: $dark;
         text-align: center;
+        font-family: "gilroy-bold";
       }
     }
     .body-technologie {
@@ -952,12 +959,15 @@
       @include flex-direction(column);
 
       @include border-radius(20px);
+      ul li:has(> b) {
+        margin-bottom: 10px;
+      }
       li {
         color: $gray;
+        line-height: 25px;
         b {
           font-family: "gilroy-bold";
           display: inline-block;
-          margin-bottom: 10px;
           color: $dark;
         }
       }
@@ -1359,12 +1369,18 @@
       position: relative;
       width: 1300px;
       cursor: grab;
+      @include breakpoint(xs) {
+        width: 100%;
+      }
       &::before {
         content: url("assets/img/separateur-processus.svg");
         position: absolute;
         top: 0;
         left: 0;
         width: 1300px;
+        @include breakpoint(xs) {
+          display: none;
+        }
       }
       li {
         padding: 20px 30px;
@@ -1381,6 +1397,10 @@
           gap: 10px;
           width: 228px;
           @extend .flex-jc;
+          @include breakpoint(xs) {
+            width: 50px;
+            @include border-radius(0);
+          }
           &:hover {
             transform: translateY(-10px);
           }
@@ -1390,6 +1410,15 @@
             img {
               filter: brightness(10);
             }
+          }
+          span {
+            font-family: inherit;
+            @include breakpoint(xs) {
+              display: none;
+            }
+          }
+          img {
+            width: 24px;
           }
         }
       }

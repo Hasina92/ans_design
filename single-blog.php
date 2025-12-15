@@ -1,7 +1,7 @@
 <?php
 $page = 'blog';
 require_once 'ans-design-backoffice/config/db.php';
-require_once 'init_user.php'; 
+require_once 'init_user.php';
 $articles = $pdo->query("SELECT * FROM blog ORDER BY id DESC")->fetchAll(PDO::FETCH_ASSOC);
 include 'header.php';
 
@@ -74,6 +74,7 @@ $recent_articles = $recent->fetchAll(PDO::FETCH_ASSOC);
                 <!-- ARTICLES RÉCENTS -->
                 <div class="other-blog">
                     <h2>Articles Récents</h2>
+                    <?php $articles = array_slice($articles, 0, 5); ?>
                     <?php foreach ($articles as $a): ?>
                         <div class="card-other-blog">
                             <a href="single-blog.php?id=<?= $a['id'] ?>" class="link-box"></a>
