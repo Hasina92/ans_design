@@ -1232,6 +1232,7 @@
           backdrop-filter: blur(50px);
           overflow: hidden;
           position: relative;
+          @extend .flex-jc;
           &::before {
             content: "";
             position: absolute;
@@ -1243,7 +1244,7 @@
             opacity: 0;
           }
           img {
-            height: 100%;
+            height: auto;
             width: 100%;
             object-fit: cover;
           }
