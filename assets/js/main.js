@@ -277,12 +277,6 @@ popupHandler(
 );
 
 popupHandler(
-  "#open-popup-validation-commande",
-  ".pop-up-validation-commande",
-  "#close-popup-validation-commande"
-);
-
-popupHandler(
   "#open-popup-info-equipe",
   ".pop-up-info-equipe",
   "#close-popup-info-equipe"

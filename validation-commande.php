@@ -138,7 +138,7 @@ include 'header.php';
 
 
                             <!-- Bouton -->
-                            <button type="submit" class="btn-red" id="open-popup-validation-commande">Valider la
+                            <button type="submit" class="btn-red">Valider la
                                 commande</button>
                         </form>
                     </section>
@@ -220,22 +220,6 @@ include 'header.php';
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!-- POP-UP AJOUT AU PANIER -->
-    <section class="popup pop-up-validation-commande">
-        <div class="pop-up-container">
-            <div class="header-validation-commande">
-                <img src="assets/img/check.svg" alt="">
-                <h3>
-                    Votre commande a été validée
-                </h3>
-            </div>
-            <div class="body-validation-commande">
-                <a href="mon-compte.php" class="btn-red">Voir la commande</a>
-                <a href="catalogue.php" class="btn">Continuer mes achats</a>
-            </div>
-            <a href="#close" id="close-popup-validation-commande"><img src="assets/img/close.svg" alt=""></a>
         </div>
     </section>
 </main>

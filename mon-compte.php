@@ -71,10 +71,11 @@ try {
 
             <?php
             if (isset($_SESSION['success_message'])) {
-                echo '<div class="success-message" style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 5px; margin-bottom: 20px;">' . $_SESSION['success_message'] . '</div>';
+                echo '<div class="success-message" style="background-color: #d4edda; color: #155724; padding: 15px; margin-top: 10px; border-radius: 5px; margin-bottom: 20px; font-family: gilroy-bold;">' . htmlspecialchars($_SESSION['success_message']) . '</div>';
                 unset($_SESSION['success_message']);
             }
             ?>
+
 
             <div class="historique-des-commandes">
                 <h3>Historique des commandes</h3>
