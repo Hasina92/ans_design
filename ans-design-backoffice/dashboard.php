@@ -69,11 +69,11 @@ $dernieres_commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="cards-container">
     <div class="card blue">
-        <h2><?php echo number_format($ca_jour, 2, ',', ' '); ?> €</h2>
+        <h2><?php echo number_format($ca_jour, 0, ',', ' '); ?> AR</h2>
         <p>Chiffre d'Affaires (Jour)</p>
     </div>
     <div class="card green">
-        <h2><?php echo number_format($ca_mois, 2, ',', ' '); ?> €</h2>
+        <h2><?php echo number_format($ca_mois, 0, ',', ' '); ?> AR</h2>
         <p>Chiffre d'Affaires (Mois)</p>
     </div>
     <div class="card yellow">
@@ -108,7 +108,7 @@ $dernieres_commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endif; ?>
             </div>
         </div>
-        <div class="panel-footer">
+        <div class="panel-footer" style="margin-top: 20px; text-decoration: underline; color: #DF4D34;">
             <a href="validation_fichiers.php">Voir l'interface de validation &rarr;</a>
         </div>
     </div>

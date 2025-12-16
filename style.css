@@ -2000,7 +2000,9 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #clients .wrapper .container-logo-client img {
+  height: 100px;
   width: 200px;
+  object-fit: contain;
   margin: 0 40px;
 }
 @keyframes slide {

@@ -73,7 +73,7 @@ $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!-- La partie HTML n'a presque pas besoin de changements, sauf une petite correction -->
 
 <div class="page-header">
-    <h1>Validation des fichiers Clients</h1>
+    <h1>Validation du commande du client</h1>
 </div>
 
 <div class="main-panels">

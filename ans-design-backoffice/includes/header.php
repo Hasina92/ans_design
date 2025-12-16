@@ -43,7 +43,7 @@ $avis_a_valider_count = $stmt_avis->fetch(PDO::FETCH_ASSOC)['count'] ?? 0;
                         <li>
                             <a href="validation_fichiers.php"
                                 class="<?php echo ($currentPage == 'validation') ? 'active' : ''; ?>">
-                                Validation fichiers
+                                Validation de commande
                                 <?php // On affiche le badge seulement si le compteur est supérieur à zéro ?>
                                 <?php if ($fichiers_a_valider_count > 0): ?>
                                     <span class="badge"><?php echo $fichiers_a_valider_count; ?></span>
