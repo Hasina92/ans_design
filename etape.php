@@ -142,7 +142,7 @@ include 'header.php';
                     </div>
                     <div class="preview-total">
                         <span>Total HT</span>
-                        <span><?php echo number_format($produit['prix_base'], 2, ',', ' '); ?> €</span>
+                        <span><?php echo number_format($produit['prix_base'], 0, ',', ' '); ?> AR</span>
                         <span>Sur Devis</span>
                     </div>
                     <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">

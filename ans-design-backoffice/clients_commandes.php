@@ -8,7 +8,7 @@ require_once 'includes/functions.php';
 // --- MODIFICATIONS CI-DESSOUS ---
 
 // Récupérer la liste de tous les utilisateurs avec le rôle 'client'
-$stmt_users = $pdo->query("SELECT id, nom, prenom, societe FROM users WHERE role = 'client' ORDER BY nom, prenom");
+$stmt_users = $pdo->query("SELECT id, nom, prenom, email, telephone, societe  FROM users WHERE role = 'client' ORDER BY nom, prenom");
 $users_as_clients = $stmt_users->fetchAll(PDO::FETCH_ASSOC);
 
 // Gérer la sélection d'un utilisateur
@@ -18,7 +18,7 @@ if (isset($_GET['client_id'])) {
     $client_id = $_GET['client_id'];
 
     // Infos de l'utilisateur (au lieu du client)
-    $stmt = $pdo->prepare("SELECT id, nom, prenom, email, societe FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone, societe  FROM users WHERE id = ?");
     $stmt->execute([$client_id]);
     $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -91,31 +91,45 @@ if (isset($_GET['client_id'])) {
         <?php if ($user_details): ?>
             <div class="container-commande">
                 <div>
-                    <h3><?php echo htmlspecialchars($user_details['prenom'] . ' ' . $user_details['nom']); ?></h3>
-                    <p><?php echo htmlspecialchars($user_details['societe'] ?? 'Particulier'); ?></p>
+                    <h3 style="color:#FDC420">
+                        <?php echo htmlspecialchars($user_details['prenom'] . ' ' . $user_details['nom']); ?>
+                    </h3>
+                    <p style="font-family: 'gilroy-bold';">
+                        <?php echo htmlspecialchars($user_details['societe'] ?? 'Particulier'); ?>
+                    </p>
                     <!-- On retire la société, qui n'est pas dans la table `users` -->
-                    <small><?php echo htmlspecialchars($user_details['email']); ?> |
-                        <?php echo htmlspecialchars($user_details['telephone'] ?? 'N/A'); ?></small>
+                    <small style="display: flex; gap: 10px; margin-top: 5px;">
+                        <a href="mailto:<?= htmlspecialchars($user_details['email']); ?>" style="color: #DF4D34;">
+                            <?= htmlspecialchars($user_details['email']); ?>
+                        </a>
+                        <a href="tel:<?= preg_replace('/[^0-9+]/', '', $user_details['telephone'] ?? ''); ?>"
+                            style="color: #DF4D34;">
+                            <?= htmlspecialchars($user_details['telephone'] ?? 'N/A'); ?>
+                        </a>
+                    </small>
                 </div>
                 <div class="commande">
                     <div class="total">
-                        <p>Total Commandes</p>
+                        <p style="color:#FDC420">Total Commandes</p>
                         <span><?php echo $user_details['total_commandes']; ?></span>
                     </div>
                     <div class="depensé">
-                        <p>Total Dépensé</p>
+                        <p style="color:#FDC420">Total Dépensé</p>
                         <span
-                            style="font-size: 1.5em; font-weight: bold;"><?php echo number_format($user_details['total_depense'] ?? 0, 2, ',', ' '); ?>
-                            €</span>
+                            style="font-size: 1.5em; font-weight: bold;"><?php echo number_format($user_details['total_depense'] ?? 0, 0, ',', ' '); ?>
+                            AR</span>
                     </div>
                 </div>
             </div>
             <div class="container-historique">
                 <h4>Historique des commandes (<?php echo count($commandes_client); ?>)</h4>
                 <div class="container-btn-historique">
-                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>">Tous</a>
-                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=Livrée">Livrée</a>
-                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=En production">En
+                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>"
+                        style="font-family: 'gilroy-bold';">Tous</a>
+                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=Livrée"
+                        style="font-family: 'gilroy-bold';">Livrée</a>
+                    <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=En production"
+                        style="font-family: 'gilroy-bold';">En
                         production</a>
                 </div>
 
@@ -123,12 +137,12 @@ if (isset($_GET['client_id'])) {
             <table>
                 <thead>
                     <tr>
-                        <th>ID COMMANDE</th>
-                        <th>DATE</th>
-                        <th>STATUT</th>
-                        <th>ARTICLES</th>
-                        <th>TOTAL CA</th>
-                        <th>ACTION</th>
+                        <th style="text-align: left;">ID COMMANDE</th>
+                        <th style="text-align: left;">DATE</th>
+                        <th style="text-align: left;">STATUT</th>
+                        <th style="text-align: left;">ARTICLES</th>
+                        <th style="text-align: left;">TOTAL CA</th>
+                        <th style="text-align: left;">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -142,19 +156,11 @@ if (isset($_GET['client_id'])) {
                                 </span>
                             </td>
                             <td><?= htmlspecialchars($cmd['articles_details']); ?></td>
-                            <td><?= number_format($cmd['total_ttc'], 2, ',', ' '); ?> €</td>
+                            <td><?= number_format($cmd['total_ttc'], 0, ',', ' '); ?> AR</td>
                             <td>
                                 <!-- Bouton Détails -->
                                 <button class="details-btn" data-commande-id="<?= $cmd['id']; ?>"
                                     style="background: #FDC420;">Détails</button>
-
-                                <!-- Bouton Supprimer -->
-                                <form method="POST" style="display:inline;"
-                                    onsubmit="return confirm('⚠️ Supprimer définitivement cette commande ?');">
-                                    <input type="hidden" name="delete_commande_id" value="<?= $cmd['id']; ?>">
-                                    <button type="submit" class="delete-btn"
-                                        style="background: #DF4D34; padding: 8px; color:#fff; border-radius:10px">Supprimer</button>
-                                </form>
                             </td>
                         </tr>
                     <?php endforeach; ?>
