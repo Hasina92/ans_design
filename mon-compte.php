@@ -21,7 +21,12 @@ try {
     // Vous devrez peut-être ajouter une requête pour l'adresse si elle est dans une autre table
 
     // 2. Récupérer toutes les commandes de l'utilisateur
-    $stmt_commandes = $pdo->prepare("SELECT * FROM commandes WHERE client_id = ? ORDER BY date_commande DESC");
+    $stmt_commandes = $pdo->prepare("
+    SELECT id, numero_commande, date_commande, statut, total_ttc, notes_client, date_realisation_estimee, methode_paiement 
+    FROM commandes 
+    WHERE client_id = ? 
+    ORDER BY date_commande DESC
+");
     $stmt_commandes->execute([$client_id]);
     $commandes_data = $stmt_commandes->fetchAll(PDO::FETCH_ASSOC);
 
@@ -127,6 +132,15 @@ try {
                                                 <span
                                                     class="location"><?php /* echo htmlspecialchars($user_info['adresse']); */ ?></span>
                                             </div>
+                                            <div class="facture">
+                                                <span>Methode de paiement :</span><br>
+                                                <span
+                                                    class="name"><?php echo htmlspecialchars($commande['methode_paiement']); ?></span>
+                                                <br>
+                                                <!-- Adaptez ici si vous avez l'adresse dans la table `users` -->
+                                                <span
+                                                    class="location"><?php /* echo htmlspecialchars($user_info['adresse']); */ ?></span>
+                                            </div>
                                             <div class="devis-table">
                                                 <!-- ... (le reste de l'affichage de la table des articles est identique et correct) ... -->
                                                 <?php foreach ($commande['articles'] as $article): ?>
@@ -155,6 +169,23 @@ try {
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if (!empty($commande['notes_client']) || !empty($commande['date_realisation_estimee'])): ?>
+                                        <div class="actions_suivis">
+                                            <?php if (!empty($commande['notes_client'])): ?>
+                                                <h5>Message pour votre commande</h5>
+                                                <p>
+                                                    <?php echo nl2br(htmlspecialchars($commande['notes_client'])); ?>
+                                                </p>
+                                            <?php endif; ?>
+
+                                            <?php if (!empty($commande['date_realisation_estimee'])): ?>
+                                                <h5>Date de finition</h5>
+                                                <p>
+                                                    <?php echo nl2br(htmlspecialchars($commande['date_realisation_estimee'])); ?>
+                                                </p>
+                                            <?php endif; ?>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         <?php endforeach; ?>

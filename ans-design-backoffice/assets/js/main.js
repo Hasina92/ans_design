@@ -116,9 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 <div class="timeline-content">
                                                     <strong>Validation Fichier (PAO)</strong><br>
                                                     <small>Action requise.</small><br>
-                                                    <button class="timeline-btn">Marquer comme fait</button>
                                                 </div>
-                                                <div class="timeline-icon">✓</div>
                                             </div>
 <div class="timeline-item">
     <div class="timeline-icon"></div>

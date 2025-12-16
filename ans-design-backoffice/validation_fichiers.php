@@ -82,15 +82,20 @@ $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <h3>Commandes à Valider (<?php echo count($commandes_a_valider); ?>)</h3>
         </div>
         <div class="panel-body">
-            <?php foreach ($commandes_a_valider as $cmd): ?>
-                <a href="validation_fichiers.php?commande_id=<?php echo $cmd['id']; ?>" <?php echo (isset($_GET['commande_id']) && $_GET['commande_id'] == $cmd['id']) ? 'background-color:#fcf3cf;' : ''; ?>">
-                    <strong>#<?php echo htmlspecialchars($cmd['id']); ?>
-                        <?php echo htmlspecialchars($cmd['prenom'] . ' ' . $cmd['nom']); ?></strong>
-                    <br>
-                    <small><?php echo htmlspecialchars($cmd['description']); ?></small>
-                </a>
-            <?php endforeach; ?>
-        </div>
+    <?php if (empty($commandes_a_valider)): ?>
+        <p style="padding: 15px; color: #555;">Aucune commande en attente de validation.</p>
+    <?php else: ?>
+        <?php foreach ($commandes_a_valider as $cmd): ?>
+            <a href="validation_fichiers.php?commande_id=<?php echo $cmd['id']; ?>" 
+               <?php echo (isset($_GET['commande_id']) && $_GET['commande_id'] == $cmd['id']) ? 'style="background-color:#fcf3cf;"' : ''; ?>>
+                <strong>#<?php echo htmlspecialchars($cmd['id']); ?>
+                    <?php echo htmlspecialchars($cmd['prenom'] . ' ' . $cmd['nom']); ?></strong>
+                <br>
+                <small><?php echo htmlspecialchars($cmd['description']); ?></small>
+            </a>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</div>
     </div>
     <div class="panel-commande">
         <?php if ($commande_details): ?>
@@ -104,7 +109,7 @@ $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <p class="gray"><?php echo htmlspecialchars($commande_details['article_desc']); ?></p>
                 </div>
                 <div class="number">
-                    <?php echo number_format($commande_details['total_ttc'], 2, ',', ' '); ?> €
+                    <?php echo number_format($commande_details['total_ttc'], 0, ',', ' '); ?> AR
                 </div>
             </div>
 

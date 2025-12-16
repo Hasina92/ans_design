@@ -239,6 +239,45 @@ include 'header.php';
         </div>
     </section>
 </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const paymentSelect = document.getElementById("payment");
+        const livraisonBlock = document.querySelector(".livraison-resume-produit");
+        const totalBlock = document.querySelector(".total-resume-produit .prix-total");
+
+        function updateLivraison() {
+            if (paymentSelect.value === "recuperation") {
+                // Masquer le bloc livraison
+                if (livraisonBlock) livraisonBlock.style.display = "none";
+
+                // Recalculer le total sans les frais de livraison
+                let sousTotal = <?php echo $sous_total_commande; ?>;
+                document.querySelector(".total-resume-produit .prix-total").textContent =
+                    sousTotal > 0 ? sousTotal.toLocaleString('fr-FR') + " AR" : "Sur Devis";
+            } else {
+                // Afficher le bloc livraison
+                if (livraisonBlock) livraisonBlock.style.display = "flex";
+
+                // Recalculer le total avec les frais de livraison
+                let sousTotal = <?php echo $sous_total_commande; ?>;
+                let livraison = <?php echo $frais_livraison; ?>;
+                let total = sousTotal + livraison;
+                if (<?php echo $la_commande_est_sur_devis ? 'true' : 'false'; ?>) {
+                    totalBlock.textContent = "Sur Devis";
+                } else {
+                    totalBlock.textContent = total.toLocaleString('fr-FR') + " AR";
+                }
+            }
+        }
+
+        if (paymentSelect) {
+            paymentSelect.addEventListener("change", updateLivraison);
+            // Appel initial pour masquer si déjà sélectionné
+            updateLivraison();
+        }
+    });
+</script>
+
 <?php
 include 'footer.php';
 ?>

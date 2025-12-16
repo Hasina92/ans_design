@@ -117,7 +117,8 @@ if (isset($_GET['client_id'])) {
                 <div class="commande">
                     <div class="total">
                         <p style="color:#FDC420">Total Commandes</p>
-                        <span><?php echo $user_details['total_commandes']; ?></span>
+                        <span style="font-size: 1.5em; font-weight: bold;"><?php echo $user_details['total_commandes']; ?>
+                        </span>
                     </div>
                     <div class="depensé">
                         <p style="color:#FDC420">Total Dépensé</p>
