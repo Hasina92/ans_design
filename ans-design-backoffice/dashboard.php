@@ -137,7 +137,7 @@ $dernieres_commandes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <td><span
                                     class="status <?php echo getStatusClass($cmd['statut']); ?>"><?php echo htmlspecialchars($cmd['statut']); ?></span>
                             </td>
-                            <td><?php echo number_format($cmd['total_ttc'], 2, ',', ' '); ?> €</td>
+                            <td><?php echo number_format($cmd['total_ttc'], 0, ',', ' '); ?> AR</td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

@@ -182,7 +182,8 @@
             margin: 0;
           }
         }
-        .demande-spec {
+        .demande-spec,
+        .fichier-spec {
           padding-top: 30px;
           @extend %flex;
           @include flex-direction(column);

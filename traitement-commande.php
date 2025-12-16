@@ -1,18 +1,21 @@
 <?php
 session_start();
 require_once 'ans-design-backoffice/config/db.php';
-require_once 'init_user.php'; 
+require_once 'init_user.php';
 
 // --- SÉCURITÉ ET VALIDATION ---
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: catalogue.php'); exit();
+    header('Location: catalogue.php');
+    exit();
 }
 if (!isset($_SESSION['user_id'])) {
     $_SESSION['error_message'] = "Vous devez être connecté pour passer une commande.";
-    header('Location: connexion.php'); exit();
+    header('Location: connexion.php');
+    exit();
 }
 if (empty($_SESSION['panier'])) {
-    header('Location: catalogue.php'); exit();
+    header('Location: catalogue.php');
+    exit();
 }
 
 try {
@@ -24,7 +27,8 @@ try {
     $frais_livraison = 10000;
 
     foreach ($_SESSION['panier'] as $article) {
-        if ($article['prix_base'] == 0) $la_commande_est_sur_devis = true;
+        if ($article['prix_base'] == 0)
+            $la_commande_est_sur_devis = true;
         $total_commande += $article['prix_base'] * $article['quantite'];
     }
 
@@ -33,7 +37,7 @@ try {
     } else {
         $total_commande = 0;
     }
-    
+
     $numero_commande = strtoupper(uniqid('CMD-'));
     $details_paiement = '';
     if ($_POST['payment'] === 'mobile-money') {
@@ -48,7 +52,7 @@ try {
         foreach ($_POST['demande_article'] as $i => $note) {
             $note = trim($note);
             if ($note !== '') {
-                $notes_production .= "Article ".($i+1)." : ".$note."\n";
+                $notes_production .= "Article " . ($i + 1) . " : " . $note . "\n";
             }
         }
     }
@@ -70,7 +74,7 @@ try {
         ':details' => $details_paiement,
         ':notes' => $notes_production,
     ]);
-    
+
     $commande_id = $pdo->lastInsertId();
 
     // --- 3. INSÉRER ARTICLES ET OPTIONS (inchangé, c'était déjà correct) ---
@@ -85,7 +89,7 @@ try {
             ':qte' => $article['quantite'],
             ':prix' => $article['prix_base']
         ]);
-        
+
         $article_id = $pdo->lastInsertId();
 
         if (!empty($article['options'])) {

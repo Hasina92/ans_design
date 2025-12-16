@@ -417,7 +417,7 @@ require_once 'init_user.php';
 </script>
 
 <script>
-    document.querySelector("#form-devis").addEventListener("submit", function(e){
+    document.querySelector("#form-devis").addEventListener("submit", function (e) {
         e.preventDefault();
 
         let form = new FormData(this);
@@ -426,19 +426,19 @@ require_once 'init_user.php';
             method: "POST",
             body: form
         })
-        .then(r => r.json())
-        .then(data => {
-            const msg = document.getElementById("msg-devis");
+            .then(r => r.json())
+            .then(data => {
+                const msg = document.getElementById("msg-devis");
 
-            if (data.success) {
-                msg.style.color = "green";
-                msg.innerHTML = data.message;
-                this.reset();
-            } else {
-                msg.style.color = "red";
-                msg.innerHTML = data.message;
-            }
-        });
+                if (data.success) {
+                    msg.style.color = "green";
+                    msg.innerHTML = data.message;
+                    this.reset();
+                } else {
+                    msg.style.color = "red";
+                    msg.innerHTML = data.message;
+                }
+            });
     });
 </script>
 

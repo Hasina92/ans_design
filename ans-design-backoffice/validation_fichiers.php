@@ -115,7 +115,7 @@ $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- Le reste de votre code HTML est parfait et n'a pas besoin d'être modifié -->
 
-            <div class="panel-body">
+            <div class="panel-body" style="display: flex;">
                 <div style="text-align:center; padding:20px; border:1px solid #eee; border-radius:8px; margin-bottom:20px;">
                     <?php if (!empty($commande_details['chemin_fichier'])): ?>
                         <img src="<?php echo htmlspecialchars($commande_details['chemin_fichier']); ?>" alt="Aperçu fichier"
@@ -129,7 +129,6 @@ $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <p>Aucun fichier associé.</p>
                     <?php endif; ?>
                 </div>
-
                 <form method="POST">
                     <input type="hidden" name="commande_id" value="<?php echo $commande_details['id']; ?>">
                     <h4>Message de Retour Client</h4>

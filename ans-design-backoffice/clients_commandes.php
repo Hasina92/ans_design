@@ -95,48 +95,49 @@ if (isset($_GET['client_id'])) {
     </div>
     <div class="panel-commande">
         <?php if ($user_details): ?>
-            <div class="container-commande">
+            <div class="container-commande" style="display: flex; align-items: flex-start;">
                 <div>
-                    <h3 style="color:#FDC420">
+                    <h3>
                         <?php echo htmlspecialchars($user_details['prenom'] . ' ' . $user_details['nom']); ?>
                     </h3>
-                    <p style="font-family: 'gilroy-bold';">
+                    <p style="font-family: 'gilroy-bold'; color:#FDC420">
                         <?php echo htmlspecialchars($user_details['societe'] ?? 'Particulier'); ?>
                     </p>
-                    <!-- On retire la société, qui n'est pas dans la table `users` -->
-                    <small style="display: flex; gap: 10px; margin-top: 5px;">
-                        <a href="mailto:<?= htmlspecialchars($user_details['email']); ?>" style="color: #DF4D34;">
-                            <?= htmlspecialchars($user_details['email']); ?>
-                        </a>
-                        <a href="tel:<?= preg_replace('/[^0-9+]/', '', $user_details['telephone'] ?? ''); ?>"
-                            style="color: #DF4D34;">
-                            <?= htmlspecialchars($user_details['telephone'] ?? 'N/A'); ?>
-                        </a>
-                    </small>
                 </div>
                 <div class="commande">
-                    <div class="total">
-                        <p style="color:#FDC420">Total Commandes</p>
+                    <div class="total" style="padding: 10px 20px; border: 1px #707070 solid !important;">
+                        <p style="color:#707070">Total Commandes</p>
                         <span style="font-size: 1.5em; font-weight: bold;"><?php echo $user_details['total_commandes']; ?>
                         </span>
                     </div>
-                    <div class="depensé">
-                        <p style="color:#FDC420">Total Dépensé</p>
+                    <div class="depensé" style="padding: 10px 20px; border: 1px #707070 solid !important;">
+                        <p style="color:#707070">Total Dépensé</p>
                         <span
-                            style="font-size: 1.5em; font-weight: bold;"><?php echo number_format($user_details['total_depense'] ?? 0, 0, ',', ' '); ?>
+                            style="font-size: 1.5em; font-weight: bold; color: #DF4D34;"><?php echo number_format($user_details['total_depense'] ?? 0, 0, ',', ' '); ?>
                             AR</span>
                     </div>
                 </div>
+                <!-- On retire la société, qui n'est pas dans la table `users` -->
+                <small>
+                    <a href="mailto:<?= htmlspecialchars($user_details['email']); ?>"
+                        style="color: #DF4D34; font-size: 18px; font-family: 'gilroy-bold';">
+                        <?= htmlspecialchars($user_details['email']); ?>
+                    </a>
+                    <a href="tel:<?= preg_replace('/[^0-9+]/', '', $user_details['telephone'] ?? ''); ?>"
+                        style="color: #DF4D34; font-size: 18px; font-family: 'gilroy-bold';">
+                        <?= htmlspecialchars($user_details['telephone'] ?? 'N/A'); ?>
+                    </a>
+                </small>
             </div>
             <div class="container-historique">
                 <h4>Historique des commandes (<?php echo count($commandes_client); ?>)</h4>
                 <div class="container-btn-historique">
                     <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>"
-                        style="font-family: 'gilroy-bold';">Tous</a>
+                        style="font-family: 'gilroy-bold'; padding: 10px 20px; border: 1px #170303 solid !important;">Tous</a>
                     <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=Livrée"
-                        style="font-family: 'gilroy-bold';">Livrée</a>
+                        style="font-family: 'gilroy-bold'; padding: 10px 20px; border: 1px #170303 solid !important;">Livrée</a>
                     <a href="clients_commandes.php?client_id=<?php echo $client_id; ?>&statut=En production"
-                        style="font-family: 'gilroy-bold';">En
+                        style="font-family: 'gilroy-bold'; padding: 10px 20px; border: 1px #170303 solid !important;">En
                         production</a>
                 </div>
 
