@@ -120,14 +120,34 @@ document.addEventListener("DOMContentLoaded", function () {
                                                 </div>
                                                 <div class="timeline-icon">✓</div>
                                             </div>
-                                            <div class="timeline-item">
-                                                <div class="timeline-icon"></div>
-                                                <div class="timeline-content">
-                                                    <strong>Paiement Avance</strong><br>
-                                                    <small>Action requise.</small><br>
-                                                    <button class="timeline-btn">Marquer comme fait</button>
-                                                </div>
-                                            </div>
+<div class="timeline-item">
+    <div class="timeline-icon"></div>
+    <div class="timeline-content">
+        <strong>Paiement</strong><br>
+        <small>
+            Méthode :
+            <strong>${(function () {
+              switch (data.methode_paiement) {
+                case "mobile-money":
+                  return "Mobile Money";
+                case "livraison":
+                  return "Paiement à la livraison";
+                case "recuperation":
+                  return "Point de vente";
+                default:
+                  return data.methode_paiement || "Non définie";
+              }
+            })()}</strong>
+        </small>
+        ${
+          data.details_paiement
+            ? `<br><small>Détails : ${data.details_paiement}</small>`
+            : ""
+        }
+    </div>
+</div>
+
+
                                             <div class="timeline-item">
                                                 <div class="timeline-icon"></div>
                                                 <div class="timeline-content">

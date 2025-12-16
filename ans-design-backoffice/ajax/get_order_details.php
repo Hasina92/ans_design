@@ -15,6 +15,7 @@ $stmt = $pdo->prepare("
         c.id, c.statut, c.total_ttc, c.notes_client, c.avis_client, 
         c.notes_production, c.notes_sav, 
         c.publier_avis,
+        c.methode_paiement, c.details_paiement,
         u.nom, u.prenom, u.societe,
         GROUP_CONCAT(CONCAT(ca.description, ' (x', ca.quantite, ')') SEPARATOR ' • ') AS articles_details
     FROM commandes c
@@ -23,6 +24,7 @@ $stmt = $pdo->prepare("
     WHERE c.id = ?
     GROUP BY c.id
 ");
+
 $stmt->execute([$commande_id]);
 $details = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -33,6 +35,6 @@ if (!$details) {
 }
 
 header('Content-Type: application/json');
-$details['publier_avis'] = (bool)$details['publier_avis'];
+$details['publier_avis'] = (bool) $details['publier_avis'];
 echo json_encode($details);
 ?>

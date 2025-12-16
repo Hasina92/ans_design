@@ -32,32 +32,38 @@ if (isset($_GET['client_id'])) {
 
         // Historique des commandes de l'utilisateur (identique, juste on utilise son ID)
         $sql_commandes = "
-            SELECT 
-                c.id, 
-                c.date_commande, 
-                c.statut, 
-                c.total_ttc,
-                GROUP_CONCAT(CONCAT(ca.description, ' (x', ca.quantite, ')') SEPARATOR ' • ') AS articles_details
-            FROM commandes c
-            LEFT JOIN commande_articles ca ON c.id = ca.commande_id
-            WHERE c.client_id = ?
-        ";
+        SELECT 
+            c.id,
+            c.date_commande,
+            c.statut,
+            c.total_ttc,
+            c.methode_paiement,
+            c.details_paiement,
+            GROUP_CONCAT(
+                CONCAT(ca.description, ' (x', ca.quantite, ')')
+                SEPARATOR ' • '
+            ) AS articles_details
+        FROM commandes c
+        LEFT JOIN commande_articles ca ON c.id = ca.commande_id
+        WHERE c.client_id = ?
+    ";
 
         $params = [$client_id];
 
-        if (isset($_GET['statut']) && !empty($_GET['statut'])) {
+        if (!empty($_GET['statut'])) {
             $sql_commandes .= " AND c.statut = ?";
             $params[] = $_GET['statut'];
         }
 
         $sql_commandes .= "
-            GROUP BY c.id
-            ORDER BY c.date_commande DESC
-        ";
+        GROUP BY c.id
+        ORDER BY c.date_commande DESC
+    ";
 
         $stmt = $pdo->prepare($sql_commandes);
         $stmt->execute($params);
         $commandes_client = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
     }
 }
 ?>
