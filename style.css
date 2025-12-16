@@ -5796,6 +5796,7 @@ footer .wrapper ul.social-icon-footer li a {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   background-clip: padding-box;
+  min-width: 700px;
 }
 .modal-overlay .modal-content .modal-header h2 {
   font-size: 20px;
@@ -5814,6 +5815,9 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-align: flex-start;
   align-items: flex-start;
   margin-top: 10px;
+}
+.modal-overlay .modal-content .modal-body-columns .modal-column-left {
+  width: 100%;
 }
 .modal-overlay .modal-content .modal-body-columns .modal-column-left .modal-panel:nth-child(2) label {
   font-family: "Gilroy-SemiBold";
@@ -5891,6 +5895,9 @@ footer .wrapper ul.social-icon-footer li a {
   color: #061d6e;
   font-family: "Gilroy-SemiBold";
   font-size: 15px;
+}
+.modal-overlay .modal-content .modal-body-columns .modal-column-right {
+  width: 100%;
 }
 .modal-overlay .modal-content .modal-body-columns .modal-column-right .modal-panel {
   margin-top: 10px;

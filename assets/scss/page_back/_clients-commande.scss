@@ -136,6 +136,7 @@
     background: white;
     padding: 50px;
     @include border-radius(20px);
+    min-width: 700px;
     .modal-header {
       h2 {
         font-size: 20px;
@@ -153,6 +154,7 @@
       @include align-items(flex-start);
       margin-top: 10px;
       .modal-column-left {
+        width: 100%;
         .modal-panel {
           &:nth-child(2) {
             label {
@@ -225,6 +227,7 @@
         }
       }
       .modal-column-right {
+        width: 100%;
         .modal-panel {
           margin-top: 10px;
           .modal-subtitle {
