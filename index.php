@@ -220,11 +220,8 @@ include 'header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
-
-            <div class="btn-slick">
-                <button class="slick-prev-custom"><img src="assets/img/arrow.svg" alt=""></button>
-                <button class="slick-next-custom"><img src="assets/img/arrow.svg" alt=""></button>
-            </div>
+            <button class="slick-prev-custom"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-next-custom"><img src="assets/img/arrow.svg" alt=""></button>
             <a href="#temoignages" class="btn-gradient" id="open-popup-temoignages">Laissez un avis</a>
         </div>
     </section>

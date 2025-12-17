@@ -351,34 +351,33 @@
         }
       }
     }
-    .btn-slick {
-      @extend .flex-sb;
+
+    .slick-prev-custom,
+    .slick-next-custom {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 100%;
-      padding: 0;
-
-      .slick-prev-custom,
-      .slick-next-custom {
-        @include border-radius(50%);
-        background: linear-gradient(#e20e56, #df5531);
-        width: 40px;
+      left: 0;
+      @include border-radius(50%);
+      background: linear-gradient(#e20e56, #df5531);
+      width: 40px;
+      aspect-ratio: 1/1;
+      @extend .flex-jc;
+      cursor: pointer;
+      border: none;
+      img {
+        width: 25px;
         aspect-ratio: 1/1;
-        @extend .flex-jc;
-        cursor: pointer;
-        border: none;
-        img {
-          width: 25px;
-          aspect-ratio: 1/1;
-        }
-      }
-      .slick-prev-custom {
-        img {
-          transform: rotate(180deg);
-        }
       }
     }
+    .slick-prev-custom {
+      right: 0;
+      left: initial;
+      img {
+        transform: rotate(180deg);
+      }
+    }
+
     .slick-dots {
       @extend .flex-jc;
 
