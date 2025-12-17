@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = trim($_POST['email_register'] ?? '');
         $telephone = trim($_POST['phone_register'] ?? '');
         $societe = trim($_POST['societe_register'] ?? '');
+        $adresse = trim($_POST['adresse_register'] ?? '');
         $password = trim($_POST['password_register'] ?? '');
         $password_confirm = trim($_POST['password_confirm'] ?? '');
 
@@ -103,16 +104,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
                 $insert = $pdo->prepare("
-                    INSERT INTO users (nom, prenom, email, telephone, societe, password_hash, role)
-                    VALUES (?, ?, ?, ?, ?, ?, 'client')
-                ");
+                INSERT INTO users (nom, prenom, email, telephone, societe, adresse, password_hash, role)
+                VALUES (?, ?, ?, ?, ?, ?, ?, 'client')
+            ");
                 $insert->execute([
                     $nom,
                     $prenom,
                     $email,
                     $telephone,
                     $societe,
-                    $password_hash
+                    $adresse,       // <-- ici correspond à la colonne adresse
+                    $password_hash  // <-- mot de passe
                 ]);
 
                 // Auto-login après inscription
@@ -121,6 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['prenom'] = $prenom;
                 $_SESSION['telephone'] = $telephone;
                 $_SESSION['societe'] = $societe;
+                $_SESSION['adresse'] = $adresse;
                 $_SESSION['role'] = 'client';
 
                 header("Location: mon-compte.php");
@@ -178,6 +181,7 @@ include 'header.php';
                             <input type="text" name="prenom" placeholder="Votre prénom" required>
                             <input type="email" name="email_register" placeholder="Votre email" required>
                             <input type="text" name="phone_register" placeholder="Votre numéro de téléphone">
+                            <input type="text" name="adresse_register" placeholder="Votre adresse">
                             <input type="text" name="societe_register" placeholder="Votre société">
                             <input type="password" name="password_register" placeholder="Votre mot de passe" required>
                             <input type="password" name="password_confirm" placeholder="Confirmez votre mot de passe"

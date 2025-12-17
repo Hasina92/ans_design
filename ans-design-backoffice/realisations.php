@@ -41,6 +41,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $client = $_POST['client'];
     $nombre_ex = $_POST['nombre_ex'];
     $delai = $_POST['delai'];
+    $date_realisation = $_POST['date_realisation'] ?? date('Y');
+    $logoName = $_POST['old_logo'] ?? null;
+    if (!empty($_FILES['logo']['name'])) {
+        $logoName = time() . "_logo_" . basename($_FILES['logo']['name']);
+        move_uploaded_file($_FILES['logo']['tmp_name'], "upload/" . $logoName);
+    }
+
+
 
     $imageName = $_POST['old_image'] ?? null;
     if (!empty($_FILES['image']['name'])) {
@@ -50,12 +58,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($id) {
         // Modification
-        $stmt = $pdo->prepare("UPDATE realisations SET titre=?, client=?, nombre_ex=?, delai_ex=?, image=? WHERE id=?");
-        $stmt->execute([$titre, $client, $nombre_ex, $delai, $imageName, $id]);
+        $stmt = $pdo->prepare("
+        UPDATE realisations 
+        SET titre=?, client=?, nombre_ex=?, delai_ex=?, image=?, logo=?, date_realisation=?
+        WHERE id=?
+    ");
+
+        $stmt->execute([
+            $titre,
+            $client,
+            $nombre_ex,
+            $delai,
+            $imageName,
+            $logoName,
+            $date_realisation,
+            $id
+        ]);
+
     } else {
         // Ajout
-        $stmt = $pdo->prepare("INSERT INTO realisations (categorie_id, titre, client, nombre_ex, delai_ex, image) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$categorie_id, $titre, $client, $nombre_ex, $delai, $imageName]);
+        $stmt = $pdo->prepare("
+        UPDATE realisations 
+        SET titre=?, client=?, nombre_ex=?, delai_ex=?, image=?, logo=?, date_realisation=?
+        WHERE id=?
+    ");
+
+        $stmt->execute([
+            $titre,
+            $client,
+            $nombre_ex,
+            $delai,
+            $imageName,
+            $logoName,
+            $date_realisation,
+            $id
+        ]);
+
     }
 
     header("Location: realisations.php?categorie_id=" . $categorie_id);
@@ -87,6 +125,9 @@ $realisations = $stmt->fetchAll();
             <label>Titre :</label><br>
             <input type="text" name="titre" id="titre" required><br><br>
 
+            <label>Logo :</label><br>
+            <input type="file" name="logo" id="logo"><br><br>
+
             <label>Client :</label><br>
             <input type="text" name="client" id="client"><br><br>
 
@@ -95,6 +136,10 @@ $realisations = $stmt->fetchAll();
 
             <label>Délai :</label><br>
             <input type="text" name="delai" id="delai"><br><br>
+
+            <label>Année de réalisation :</label><br>
+            <input type="number" name="date_realisation" id="date_realisation" min="2000" max="2100"><br><br>
+
 
             <label>Image :</label><br>
             <input type="file" name="image" id="image"><br><br>
@@ -111,6 +156,8 @@ $realisations = $stmt->fetchAll();
         <table border="1" cellpadding="10">
             <tr>
                 <th>Titre</th>
+                <th>Logo</th>
+                <th>Année</th>
                 <th>Client</th>
                 <th>Nombre d'ex</th>
                 <th>Délai</th>
@@ -121,6 +168,13 @@ $realisations = $stmt->fetchAll();
             <?php foreach ($realisations as $r): ?>
                 <tr>
                     <td><?= htmlspecialchars($r['titre']) ?></td>
+                    <td>
+                        <?php if (!empty($r['logo'])): ?>
+                            <img src="upload/<?= htmlspecialchars($r['logo']) ?>" width="60">
+                        <?php endif; ?>
+                    </td>
+
+                    <td><?= htmlspecialchars($r['date_realisation']) ?></td>
                     <td><?= htmlspecialchars($r['client']) ?></td>
                     <td><?= htmlspecialchars($r['nombre_ex']) ?></td>
                     <td><?= htmlspecialchars($r['delai_ex']) ?></td>
@@ -135,13 +189,17 @@ $realisations = $stmt->fetchAll();
                             style="padding: 10px 20px; background-color: #DF4D34; color: white; border-radius: 5px; text-decoration: none;">
                             Supprimer
                         </a>
-                        <button type="button" onclick="editRealisation(<?= $r['id'] ?>,
-                                                     '<?= addslashes(htmlspecialchars($r['titre'])) ?>',
-                                                     '<?= addslashes(htmlspecialchars($r['client'])) ?>',
-                                                     '<?= addslashes(htmlspecialchars($r['nombre_ex'])) ?>',
-                                                     '<?= addslashes(htmlspecialchars($r['delai_ex'])) ?>',
-                                                     '<?= addslashes(htmlspecialchars($r['image'])) ?>')"
-                            style="padding: 10px 20px; background-color: #2ECC71; color: white; border-radius: 5px;">
+                        <button type="button" onclick="editRealisation(
+  <?= $r['id'] ?>,
+  '<?= addslashes($r['titre']) ?>',
+  '<?= addslashes($r['client']) ?>',
+  '<?= addslashes($r['nombre_ex']) ?>',
+  '<?= addslashes($r['delai_ex']) ?>',
+  '<?= addslashes($r['image']) ?>',
+  '<?= addslashes($r['logo']) ?>',
+  '<?= $r['date_realisation'] ?>'
+)
+" style="padding: 10px 20px; background-color: #2ECC71; color: white; border-radius: 5px;">
                             Modifier
                         </button>
                     </td>
@@ -159,6 +217,8 @@ $realisations = $stmt->fetchAll();
         document.getElementById('submitBtn').textContent = 'Ajouter';
         document.getElementById('real_id').value = '';
         document.getElementById('titre').value = '';
+        document.getElementById('date_realisation').value = date;
+        document.getElementById('old_logo').value = logo;
         document.getElementById('client').value = '';
         document.getElementById('nombre_ex').value = '';
         document.getElementById('delai').value = '';

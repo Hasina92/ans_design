@@ -8,7 +8,7 @@ require_once 'includes/functions.php';
 // --- MODIFICATIONS CI-DESSOUS ---
 
 // Récupérer la liste de tous les utilisateurs avec le rôle 'client'
-$stmt_users = $pdo->query("SELECT id, nom, prenom, email, telephone, societe  FROM users WHERE role = 'client' ORDER BY nom, prenom");
+$stmt_users = $pdo->query("SELECT id, nom, prenom, email, telephone, adresse, societe  FROM users WHERE role = 'client' ORDER BY nom, prenom");
 $users_as_clients = $stmt_users->fetchAll(PDO::FETCH_ASSOC);
 
 // Gérer la sélection d'un utilisateur
@@ -18,7 +18,7 @@ if (isset($_GET['client_id'])) {
     $client_id = $_GET['client_id'];
 
     // Infos de l'utilisateur (au lieu du client)
-    $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone, societe  FROM users WHERE id = ?");
+    $stmt = $pdo->prepare("SELECT id, nom, prenom, email, telephone, adresse, societe  FROM users WHERE id = ?");
     $stmt->execute([$client_id]);
     $user_details = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -127,6 +127,9 @@ if (isset($_GET['client_id'])) {
                         style="color: #DF4D34; font-size: 18px; font-family: 'gilroy-bold';">
                         <?= htmlspecialchars($user_details['telephone'] ?? 'N/A'); ?>
                     </a>
+                    <span style="color: #DF4D34; font-size: 18px; font-family: 'gilroy-bold'">
+                        <?= htmlspecialchars($user_details['adresse'] ?? 'N/A'); ?>
+                    </span>
                 </small>
             </div>
             <div class="container-historique">

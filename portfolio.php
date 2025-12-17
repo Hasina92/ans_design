@@ -40,25 +40,29 @@ include 'header.php';
   ?>
 
   <!-- NOS REALISATIONS -->
-  <section id="realisations" class="realisations-page">
+  <section id="realisations">
     <div class="wrapper">
       <div class="section-title">
-        <h2>Nos Réalisations</h2>
+        <h2>Projets Signés</h2>
       </div>
       <div class="inner-title">
-        <p>Un aperçu de projets que nous avons eu le plaisir de concrétiser pour nos clients.</p>
+        <p>Un aperçu des projets que nous avons concrétisés pour nos clients</p>
       </div>
 
       <!-- Onglets dynamiques -->
-      <ul class="tabslink tabslink-realisations">
-        <?php foreach ($categories as $index => $cat): ?>
-          <li>
-            <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
-              <?= htmlspecialchars($cat['titre']) ?>
-            </a>
-          </li>
-        <?php endforeach; ?>
-      </ul>
+      <div class="container-btn-slick">
+        <button class="slick-prev-custom"><img src="assets/img/arrow.svg" alt=""></button>
+        <ul class="tabslink tabslink-realisations">
+          <?php foreach ($categories as $index => $cat): ?>
+            <li>
+              <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+                <?= htmlspecialchars($cat['titre']) ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+        <button class="slick-next-custom"><img src="assets/img/arrow.svg" alt=""></button>
+      </div>
 
       <!-- Contenu des réalisations -->
       <div class="container-realisations">
@@ -72,21 +76,33 @@ include 'header.php';
               foreach ($realisations as $r): ?>
                 <div class="card-realisation">
                   <div class="realisation-text">
-                    <h3><?= htmlspecialchars($r['titre']) ?></h3>
-
-                    <ul class="liste">
-                      <?php if (!empty($r['client'])): ?>
-                        <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
+                    <div class="logo_realisation">
+                      <?php if (!empty($r['logo'])): ?>
+                        <img src="ans-design-backoffice/upload/<?= htmlspecialchars($r['logo']) ?>" alt="">
                       <?php endif; ?>
+                    </div>
+                    <div>
+                      <h3><?= htmlspecialchars($r['titre']) ?></h3>
 
-                      <?php if (!empty($r['nombre_ex'])): ?>
-                        <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
-                      <?php endif; ?>
+                      <ul class="liste">
+                        <?php if (!empty($r['client'])): ?>
+                          <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
+                        <?php endif; ?>
 
-                      <?php if (!empty($r['delai_ex'])): ?>
-                        <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
+                        <?php if (!empty($r['nombre_ex'])): ?>
+                          <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
+                        <?php endif; ?>
+
+                        <?php if (!empty($r['delai_ex'])): ?>
+                          <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
+                        <?php endif; ?>
+                      </ul>
+                    </div>
+                    <div class="date_realisation">
+                      <?php if (!empty($r['date_realisation'])): ?>
+                        <span><?= htmlspecialchars($r['date_realisation']) ?></span>
                       <?php endif; ?>
-                    </ul>
+                    </div>
                   </div>
 
                   <div class="realisation-img">

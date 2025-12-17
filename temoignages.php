@@ -5,11 +5,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $prenom = $_POST['prenom'];
     $poste = $_POST['poste'] ?? '';
+    $entreprise = $_POST['entreprise'] ?? '';
     $avis = $_POST['avis'];
-    $note = isset($_POST['note']) ? (int)$_POST['note'] : 5;
+    $note = isset($_POST['note']) ? (int) $_POST['note'] : 5;
 
     $photo = null;
-    $uploadDir = __DIR__ . '/uploads/temoignages/';  // <-- CHEMIN ABSOLU ✔
+    $uploadDir = __DIR__ . '/uploads/temoignages/';
 
     if (!file_exists($uploadDir)) {
         mkdir($uploadDir, 0777, true);
@@ -26,9 +27,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $stmt = $pdo->prepare("INSERT INTO temoignages (prenom, poste, avis, note, photo, valide)
-                           VALUES (?, ?, ?, ?, ?, 0)");
-    $stmt->execute([$prenom, $poste, $avis, $note, $photo]);
+    $stmt = $pdo->prepare("
+        INSERT INTO temoignages (prenom, poste, entreprise, avis, note, photo, valide)
+        VALUES (?, ?, ?, ?, ?, ?, 0)
+    ");
+
+    $stmt->execute([
+        $prenom,
+        $poste,
+        $entreprise,
+        $avis,
+        $note,
+        $photo
+    ]);
 
     header("Location: index.php#temoignages");
     exit;

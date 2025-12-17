@@ -7,47 +7,64 @@ $technologie = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? null;
 
-    // Récupérer l'image précédente si existante
+    // Récupérer les images précédentes si existantes
     $image_name = $_POST['old_image'] ?? null;
+    $image_tech_name = $_POST['old_image_tech'] ?? null;
 
-    // Upload d'une nouvelle image si fournie
+    // Upload d'une nouvelle image principale
     if (!empty($_FILES['image']['name']) && $_FILES['image']['error'] === 0) {
         $upload_dir = __DIR__ . '/../uploads/technologies/';
         if (!is_dir($upload_dir))
             mkdir($upload_dir, 0777, true);
 
         $ext = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $file_name = uniqid('tech_') . '.' . $ext;
+        $image_name = uniqid('tech_') . '.' . $ext;
 
-        move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $file_name);
-        $image_name = $file_name;
+        move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $image_name);
+    }
+
+    // Upload d'une nouvelle image_technologie
+    if (!empty($_FILES['image_technologie']['name']) && $_FILES['image_technologie']['error'] === 0) {
+        $upload_dir = __DIR__ . '/../uploads/technologies/';
+        if (!is_dir($upload_dir))
+            mkdir($upload_dir, 0777, true);
+
+        $ext = pathinfo($_FILES['image_technologie']['name'], PATHINFO_EXTENSION);
+        $image_tech_name = uniqid('techimg_') . '.' . $ext;
+
+        move_uploaded_file($_FILES['image_technologie']['tmp_name'], $upload_dir . $image_tech_name);
     }
 
     // INSERT ou UPDATE
     if ($id) {
-        $stmt = $pdo->prepare("UPDATE technologies SET nom=?, description_courte=?, description_longue=?, image=?, actif=?, ordre=? WHERE id=?");
+        $stmt = $pdo->prepare("UPDATE technologies 
+            SET nom=?, description_courte=?, description_longue=?, image=?, image_technologie=?, actif=?, ordre=? 
+            WHERE id=?");
         $stmt->execute([
             $_POST['nom'],
             $_POST['desc_courte'],
             $_POST['desc_longue'],
             $image_name,
+            $image_tech_name,
             $_POST['actif'] ?? 0,
             $_POST['ordre'] ?? 0,
             $id
         ]);
     } else {
-        $stmt = $pdo->prepare("INSERT INTO technologies (nom, description_courte, description_longue, image, actif, ordre) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO technologies 
+            (nom, description_courte, description_longue, image, image_technologie, actif, ordre) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->execute([
             $_POST['nom'],
             $_POST['desc_courte'],
             $_POST['desc_longue'],
             $image_name,
+            $image_tech_name,
             $_POST['actif'] ?? 1,
             $_POST['ordre'] ?? 0
         ]);
     }
 
-    // Redirection après succès
     header('Location: technologies.php?success=1');
     exit();
 }
@@ -70,32 +87,40 @@ require_once 'includes/header.php';
 <form method="POST" enctype="multipart/form-data" class="formulaire_ajout">
     <input type="hidden" name="id" value="<?= $technologie['id'] ?? '' ?>">
     <input type="hidden" name="old_image" value="<?= htmlspecialchars($technologie['image'] ?? '') ?>">
+    <input type="hidden" name="old_image_tech" value="<?= htmlspecialchars($technologie['image_technologie'] ?? '') ?>">
 
     <div>
         <label for="nom">Nom de la Technologie</label>
-        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($technologie['nom'] ?? '') ?>" required
-            style="width:100%; padding:10px; margin-top:5px; border-radius:5px;">
+        <input type="text" id="nom" name="nom" value="<?= htmlspecialchars($technologie['nom'] ?? '') ?>" required>
     </div>
 
     <div style="margin-top:15px;">
         <label for="desc_courte">Description Courte</label>
-        <textarea id="desc_courte" name="desc_courte" rows="2"
-            style="width:100%; padding:10px; border-radius:5px;"><?= htmlspecialchars($technologie['description_courte'] ?? '') ?></textarea>
+        <textarea id="desc_courte" name="desc_courte"
+            rows="2"><?= htmlspecialchars($technologie['description_courte'] ?? '') ?></textarea>
     </div>
 
     <div style="margin-top:15px;">
         <label for="desc_longue">Description Longue</label>
-        <textarea id="desc_longue" name="desc_longue" rows="4"
-            style="width:100%; padding:10px; border-radius:5px;"><?= htmlspecialchars($technologie['description_longue'] ?? '') ?></textarea>
+        <textarea id="desc_longue" name="desc_longue"
+            rows="4"><?= htmlspecialchars($technologie['description_longue'] ?? '') ?></textarea>
     </div>
 
     <div style="margin-top:15px;">
-        <label for="image">Image</label>
-        <input type="file" id="image" name="image" accept="image/*" style="width:100%; padding:10px;">
+        <label for="image">Icone</label>
+        <input type="file" id="image" name="image" accept="image/*">
         <?php if (!empty($technologie['image'])): ?>
             <p>Image actuelle :</p>
-            <img src="../uploads/technologies/<?= htmlspecialchars($technologie['image']) ?>"
-                alt="<?= htmlspecialchars($technologie['nom']) ?>" style="max-width:150px; border-radius:5px;">
+            <img src="../uploads/technologies/<?= htmlspecialchars($technologie['image']) ?>" width="150">
+        <?php endif; ?>
+    </div>
+
+    <div style="margin-top:15px;">
+        <label for="image_technologie">Image de la technologie</label>
+        <input type="file" id="image_technologie" name="image_technologie" accept="image/*">
+        <?php if (!empty($technologie['image_technologie'])): ?>
+            <p>Image actuelle :</p>
+            <img src="../uploads/technologies/<?= htmlspecialchars($technologie['image_technologie']) ?>" width="150">
         <?php endif; ?>
     </div>
 
@@ -106,15 +131,11 @@ require_once 'includes/header.php';
 
     <div style="margin-top:15px;">
         <label for="ordre">Ordre d'affichage</label>
-        <input type="number" id="ordre" name="ordre" value="<?= htmlspecialchars($technologie['ordre'] ?? 0) ?>"
-            style="width:100px; padding:5px;">
+        <input type="number" id="ordre" name="ordre" value="<?= htmlspecialchars($technologie['ordre'] ?? 0) ?>">
     </div>
 
     <div style="margin-top:25px; text-align:right;">
-        <button type="submit"
-            style="padding:12px 25px; background-color:#2ECC71; color:white; border:none; border-radius:5px; cursor:pointer; font-size:1em;">
-            <?= $technologie ? 'Mettre à jour' : 'Ajouter' ?>
-        </button>
+        <button type="submit"><?= $technologie ? 'Mettre à jour' : 'Ajouter' ?></button>
     </div>
 </form>
 

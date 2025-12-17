@@ -462,9 +462,10 @@ p.small {
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .livraison-resume-produit .info-resume-produit .text-resume-produit, #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .card-resume-produit .info-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .total-resume-produit .info-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .livraison-resume-produit .info-resume-produit, #banner-reset-password .wrapper .container-reset-password form, #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password .remember, #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion form, #banner-connexion .wrapper .container-connexion-text, #mon-compte .wrapper .historique-des-commandes .accordeon, #etape-page .wrapper .container-config-preview .preview-tab .quote-preview-container, #etape-page .wrapper .container-config-preview .config-tab .demande-spec,
-#etape-page .wrapper .container-config-preview .config-tab .fichier-spec, #etape-page .wrapper .container-config-preview .config-tab .quantite, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape, #etape-page .wrapper .title, #formulaire .wrapper .formulaire-text, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper ul.tabslink-processus, .pop-up-info-equipe .pop-up-container .header-info-equipe .nom_poste, #equipe .wrapper .container-equipe .card-equipe .equipe-img .info-membre, #container-historique .wrapper .card-historique, .pop-up-technologie .pop-up-container .body-technologie, .stats-2 .wrapper .card-stat, #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste, #packs .wrapper .container-pack .card-pack .text-pack ul.description-pack, #packs .wrapper .container-pack .card-pack .text-pack, #packs .wrapper .container-pack .card-pack, #produits-phares .wrapper .container-produit .card-produit, .pop-up-temoignages .pop-up-container .body-devis-temoignages form .rating, .pop-up-temoignages .pop-up-container .body-devis-temoignages form, #temoignages .wrapper .container-temoignages .card-temoignage, #stats .wrapper, #atouts .wrapper .container-atouts, #banner .wrapper .banner-text .banner-btn, #banner .wrapper .banner-text, footer .wrapper ul.social-icon-footer, footer .wrapper .container-additional-information ul.menu-footer, .pop-up-devis-commande .pop-up-container .body-devis-commande form, #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail a, #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape, #overlay .pop-up-suivi-commande .body-suivi-commande .etape, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information, #overlay .wrapper .body-mini-cart #panier .card-cart .card-text, #overlay .wrapper .body-mini-cart #panier, header .wrapper .menu-social .notification, header .wrapper .menu-social .my-account, header .wrapper .menu-social, header .wrapper #menu, .slick-dots, .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
-#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #conseils .wrapper, #faq .wrapper, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper, .pop-up-temoignages .pop-up-container .header-devis-temoignages, #temoignages .wrapper .slick-dots, #temoignages .wrapper .btn-slick .slick-prev-custom,
-#temoignages .wrapper .btn-slick .slick-next-custom, #temoignages .wrapper .container-temoignages .card-temoignage .note, #temoignages .wrapper, #stats .wrapper .card-stat, #atouts .wrapper .container-atouts .card-atout .card-hover, #atouts .wrapper .container-atouts .card-atout, #atouts .wrapper, #clients .wrapper, footer .wrapper ul.social-icon-footer li a, footer .wrapper .container-information .card-information, footer .wrapper .container-information, .pop-up-devis-commande .pop-up-container .header-devis-commande, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape .etape-img, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information .profil, [class^=tabslink]:not(.tabslink-etape), .flex-sb, .main-wrapper, .modal-overlay .modal-content .modal-body-columns .modal-column-right .modal-panel .timeline .completed, .modal-overlay .modal-content .modal-body-columns, .main-panels .panel-commande .container-commande, .main-content .main-panels, .main-content .cards-container, #single-blog .wrapper .other-blog .card-other-blog, #single-blog .wrapper, .pop-up-validation-commande .pop-up-container .body-validation-commande, #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .card-resume-produit,
+#etape-page .wrapper .container-config-preview .config-tab .fichier-spec, #etape-page .wrapper .container-config-preview .config-tab .quantite, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape, #etape-page .wrapper .title, #formulaire .wrapper .formulaire-text, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper ul.tabslink-processus, .pop-up-info-equipe .pop-up-container .header-info-equipe .nom_poste, #equipe .wrapper .container-equipe .card-equipe .equipe-img .info-membre, #container-historique .wrapper .card-historique, .pop-up-technologie .pop-up-container .body-technologie, .stats-2 .wrapper .card-stat, #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste, #realisations .wrapper .container-realisations .card-realisation .realisation-text, #realisations .wrapper .container-btn-slick, #packs .wrapper .container-pack .card-pack .text-pack ul.description-pack, #packs .wrapper .container-pack .card-pack .text-pack, #packs .wrapper .container-pack .card-pack, #produits-phares .wrapper .container-produit .card-produit, .pop-up-temoignages .pop-up-container .body-devis-temoignages form .rating, .pop-up-temoignages .pop-up-container .body-devis-temoignages form, #temoignages .wrapper .container-temoignages .card-temoignage, #stats .wrapper, #atouts .wrapper .container-atouts, #banner .wrapper .banner-text .banner-btn, #banner .wrapper .banner-text, footer .wrapper ul.social-icon-footer, footer .wrapper .container-additional-information ul.menu-footer, .pop-up-devis-commande .pop-up-container .body-devis-commande form, #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail a, #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape, #overlay .pop-up-suivi-commande .body-suivi-commande .etape, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information, #overlay .wrapper .body-mini-cart #panier .card-cart .card-text, #overlay .wrapper .body-mini-cart #panier, header .wrapper .menu-social .notification, header .wrapper .menu-social .my-account, header .wrapper .menu-social, header .wrapper #menu, .slick-dots, .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
+#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #conseils .wrapper, #faq .wrapper, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper .container-btn-slick .slick-prev-custom,
+#realisations .wrapper .container-btn-slick .slick-next-custom, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper, .pop-up-temoignages .pop-up-container .header-devis-temoignages, #temoignages .wrapper .slick-dots, #temoignages .wrapper .btn-slick .slick-prev-custom,
+#temoignages .wrapper .btn-slick .slick-next-custom, #temoignages .wrapper .container-temoignages .card-temoignage .note, #temoignages .wrapper .container-temoignages .card-temoignage .profil, #temoignages .wrapper, #stats .wrapper .card-stat, #atouts .wrapper .container-atouts .card-atout .card-hover, #atouts .wrapper .container-atouts .card-atout, #atouts .wrapper, #clients .wrapper, footer .wrapper ul.social-icon-footer li a, footer .wrapper .container-information .card-information, footer .wrapper .container-information, .pop-up-devis-commande .pop-up-container .header-devis-commande, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape .etape-img, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information .profil, [class^=tabslink]:not(.tabslink-etape), .flex-sb, .main-wrapper, .modal-overlay .modal-content .modal-body-columns .modal-column-right .modal-panel .timeline .completed, .modal-overlay .modal-content .modal-body-columns, .main-panels .panel-commande .container-commande, .main-content .main-panels, .main-content .cards-container, #single-blog .wrapper .other-blog .card-other-blog, #single-blog .wrapper, .pop-up-validation-commande .pop-up-container .body-validation-commande, #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .card-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .total-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .livraison-resume-produit, #checkout .wrapper .container-checkout, .pop-up-reset-password .pop-up-container .body-reset-password, #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .body-order-summary .devis-summary .summary-item, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .header-order-summary, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte, .pop-up-ajout-panier .pop-up-container .body-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab .preview-total, #etape-page .wrapper .container-config-preview .preview-tab .quote-preview-container ul li, #etape-page .wrapper .container-config-preview, .pop-up-detail-catalogue .pop-up-container .body-detail-catalogue, .pop-up-detail-catalogue .pop-up-container .header-detail-catalogue, #produits-phares-catalogue .wrapper .btn-slick, #formulaire .wrapper, #faq .wrapper .accordeon .accordeon-content .accordeon-title, #processus .wrapper .tabscontent-processus, #passion .wrapper, #realisations .wrapper .container-realisations .card-realisation, #packs .wrapper .container-pack .card-pack .bouton-pack, #produits-phares .wrapper .container-produit .card-produit .bouton-produit, #temoignages .wrapper .btn-slick, #banner .wrapper, footer .wrapper .container-additional-information, #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail, #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement .sous-total,
 #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement .total-livraison,
@@ -496,8 +497,9 @@ p.small {
   align-items: center;
 }
 .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
-#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #conseils .wrapper, #faq .wrapper, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper, .pop-up-temoignages .pop-up-container .header-devis-temoignages, #temoignages .wrapper .slick-dots, #temoignages .wrapper .btn-slick .slick-prev-custom,
-#temoignages .wrapper .btn-slick .slick-next-custom, #temoignages .wrapper .container-temoignages .card-temoignage .note, #temoignages .wrapper, #stats .wrapper .card-stat, #atouts .wrapper .container-atouts .card-atout .card-hover, #atouts .wrapper .container-atouts .card-atout, #atouts .wrapper, #clients .wrapper, footer .wrapper ul.social-icon-footer li a, footer .wrapper .container-information .card-information, footer .wrapper .container-information, .pop-up-devis-commande .pop-up-container .header-devis-commande, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape .etape-img, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information .profil, .slick-dots, [class^=tabslink]:not(.tabslink-etape) {
+#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #conseils .wrapper, #faq .wrapper, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper .container-btn-slick .slick-prev-custom,
+#realisations .wrapper .container-btn-slick .slick-next-custom, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper, .pop-up-temoignages .pop-up-container .header-devis-temoignages, #temoignages .wrapper .slick-dots, #temoignages .wrapper .btn-slick .slick-prev-custom,
+#temoignages .wrapper .btn-slick .slick-next-custom, #temoignages .wrapper .container-temoignages .card-temoignage .note, #temoignages .wrapper .container-temoignages .card-temoignage .profil, #temoignages .wrapper, #stats .wrapper .card-stat, #atouts .wrapper .container-atouts .card-atout .card-hover, #atouts .wrapper .container-atouts .card-atout, #atouts .wrapper, #clients .wrapper, footer .wrapper ul.social-icon-footer li a, footer .wrapper .container-information .card-information, footer .wrapper .container-information, .pop-up-devis-commande .pop-up-container .header-devis-commande, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape .etape-img, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information .profil, .slick-dots, [class^=tabslink]:not(.tabslink-etape) {
   -webkit-justify-content: center;
   -moz-justify-content: center;
   -ms-justify-content: center;
@@ -510,7 +512,7 @@ p.small {
   align-items: center;
 }
 
-.panel .container-produit, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .body-order-summary .devis-table .devis-row, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .body-order-summary .devis-table .devis-header, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-title-compte, #catalogue .wrapper .container-catalogue, .grid-25, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite), #equipe .wrapper .container-equipe, #technologies .wrapper .container-technologie, #packs .wrapper .container-pack, #produits-phares .wrapper .container-produit .tabscontent-produits, .grid-33, #conseils .wrapper .container-conseils, .grid-50, #realisations .wrapper .container-realisations .tabscontent-realisations, footer .wrapper .container-additional-information .img-payement, #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information {
+.panel .container-produit, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .body-order-summary .devis-table .devis-row, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-content-compte .order-summary .body-order-summary .devis-table .devis-header, #mon-compte .wrapper .historique-des-commandes .accordeon .accordeon-card-compte .accordeon-title-compte, #catalogue .wrapper .container-catalogue, .grid-25, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite), #technologies .wrapper .container-technologie, #packs .wrapper .container-pack, #produits-phares .wrapper .container-produit .tabscontent-produits, .grid-33, #conseils .wrapper .container-conseils, .grid-50, #realisations .wrapper .container-realisations .tabscontent-realisations, footer .wrapper .container-additional-information .img-payement, #overlay .wrapper .body-mini-cart #mon_compte ul.tabslink-personal-information {
   display: grid;
   display: -ms-grid;
   gap: 20px;
@@ -524,7 +526,7 @@ p.small {
   -ms-grid-columns: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.grid-25, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite), #equipe .wrapper .container-equipe, #technologies .wrapper .container-technologie, #packs .wrapper .container-pack, #produits-phares .wrapper .container-produit .tabscontent-produits {
+.grid-25, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite), #technologies .wrapper .container-technologie, #packs .wrapper .container-pack, #produits-phares .wrapper .container-produit .tabscontent-produits {
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -1686,9 +1688,9 @@ footer .wrapper .container-information {
   position: relative;
   overflow: hidden;
   padding: 40px 140px;
-  border-radius: 120px 120px 0 0;
-  -webkit-border-radius: 120px 120px 0 0;
-  -moz-border-radius: 120px 120px 0 0;
+  border-radius: 30px 30px 0 0;
+  -webkit-border-radius: 30px 30px 0 0;
+  -moz-border-radius: 30px 30px 0 0;
   background-clip: padding-box;
 }
 @media (max-width: 768px) {
@@ -1711,7 +1713,7 @@ footer .wrapper .container-information .card-information {
   flex-direction: column;
 }
 footer .wrapper .container-information .card-information img {
-  width: 50px;
+  width: 40px;
   aspect-ratio: 1/1;
   background: #fff;
   border-radius: 50%;
@@ -1943,12 +1945,25 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #clients::before {
   content: "";
-  position: absolute;
-  top: -200px;
-  left: -300px;
-  width: 645px;
-  height: 645px;
-  background-image: url("assets/img/ellipse_client.svg");
+  position: fixed;
+  top: 0;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background-image: url("assets/img/ellipse_client_red.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(40px);
+  z-index: -1;
+}
+#clients::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  background-image: url("assets/img/ellipse_client_yellow.svg");
   background-size: cover;
   background-repeat: no-repeat;
   filter: blur(40px);
@@ -1959,7 +1974,6 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  max-width: 100vw;
   gap: 50px;
   background: transparent;
   padding: 40px;
@@ -2044,6 +2058,7 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-pack: space-between;
   gap: 20px;
   width: 100%;
+  overflow: hidden;
 }
 @media (max-width: 600px) {
   #atouts .wrapper .container-atouts {
@@ -2069,6 +2084,8 @@ footer .wrapper ul.social-icon-footer li a {
   width: 100%;
   position: relative;
   overflow: hidden;
+  background: #fff;
+  margin: 20px;
 }
 #atouts .wrapper .container-atouts .card-atout:hover {
   transform: translateY(-10px);
@@ -2108,9 +2125,9 @@ footer .wrapper ul.social-icon-footer li a {
 
 #stats .wrapper {
   background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
-  border-radius: 200px;
-  -webkit-border-radius: 200px;
-  -moz-border-radius: 200px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
   background-clip: padding-box;
   padding: 50px 40px;
   -webkit-justify-content: center;
@@ -2181,6 +2198,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #temoignages .wrapper .container-temoignages .slick-center {
   transform: scale(1.1);
+  opacity: 1 !important;
 }
 #temoignages .wrapper .container-temoignages .card-temoignage {
   -webkit-flex-direction: column;
@@ -2192,7 +2210,7 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  max-width: 400px;
+  max-width: 390px;
   width: 100% !important;
   height: 400px;
   padding: 30px;
@@ -2203,6 +2221,7 @@ footer .wrapper ul.social-icon-footer li a {
   background-clip: padding-box;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
   background: #fff;
+  opacity: 0.5;
 }
 @media (max-width: 600px) {
   #temoignages .wrapper .container-temoignages .card-temoignage {
@@ -2214,7 +2233,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #temoignages .wrapper .container-temoignages .card-temoignage .profil {
   width: 100px;
-  height: 100px;
+  aspect-ratio: 1/1;
   background: #f5bf2a;
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -2223,7 +2242,7 @@ footer .wrapper ul.social-icon-footer li a {
   overflow: hidden;
 }
 #temoignages .wrapper .container-temoignages .card-temoignage .profil img {
-  width: 100%;
+  width: auto;
   height: 100%;
   object-fit: cover;
 }
@@ -2254,6 +2273,7 @@ footer .wrapper ul.social-icon-footer li a {
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
+  padding: 0;
 }
 #temoignages .wrapper .btn-slick .slick-prev-custom,
 #temoignages .wrapper .btn-slick .slick-next-custom {
@@ -2494,9 +2514,9 @@ footer .wrapper ul.social-icon-footer li a {
   flex-direction: column;
   background: #f8f8f8;
   padding: 50px;
-  border-radius: 120px;
-  -webkit-border-radius: 120px;
-  -moz-border-radius: 120px;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
   background-clip: padding-box;
 }
 @media (max-width: 600px) {
@@ -2652,6 +2672,43 @@ footer .wrapper ul.social-icon-footer li a {
   max-width: 560px;
   width: 100%;
 }
+#realisations .wrapper .container-btn-slick {
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 50px;
+}
+#realisations .wrapper .container-btn-slick ul.tabslink-realisations {
+  width: 1300px;
+  margin: 0;
+}
+@media (max-width: 600px) {
+  #realisations .wrapper .container-btn-slick ul.tabslink-realisations {
+    width: 100%;
+  }
+}
+#realisations .wrapper .container-btn-slick .slick-prev-custom,
+#realisations .wrapper .container-btn-slick .slick-next-custom {
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  background-clip: padding-box;
+  background: linear-gradient(#e20e56, #df5531);
+  width: 40px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  border: none;
+}
+#realisations .wrapper .container-btn-slick .slick-prev-custom img,
+#realisations .wrapper .container-btn-slick .slick-next-custom img {
+  width: 25px;
+  aspect-ratio: 1/1;
+}
+#realisations .wrapper .container-btn-slick .slick-prev-custom img {
+  transform: rotate(180deg);
+}
 #realisations .wrapper .container-realisations {
   margin-top: 50px;
 }
@@ -2662,6 +2719,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #realisations .wrapper .container-realisations .tabscontent-realisations {
   gap: 30px;
+  overflow: hidden;
 }
 @media (max-width: 600px) {
   #realisations .wrapper .container-realisations .tabscontent-realisations {
@@ -2670,11 +2728,11 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #realisations .wrapper .container-realisations .card-realisation {
-  -webkit-align-items: center;
-  -moz-align-items: center;
-  -ms-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
+  -webkit-align-items: stretch;
+  -moz-align-items: stretch;
+  -ms-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
   gap: 50px;
   padding: 25px;
   background: #fff;
@@ -2683,12 +2741,18 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 20px;
   background-clip: padding-box;
   box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
-  border: 1px #fff solid;
   position: relative;
+  margin: 20px;
 }
 #realisations .wrapper .container-realisations .card-realisation:hover {
-  border: 1px #df4d34 solid;
   transform: translateY(-10px);
+  background: #f5bf2a;
+}
+#realisations .wrapper .container-realisations .card-realisation:hover * {
+  color: #fff !important;
+}
+#realisations .wrapper .container-realisations .card-realisation:hover img.logo_realisation {
+  filter: brightness(10) invert(0);
 }
 @media (max-width: 600px) {
   #realisations .wrapper .container-realisations .card-realisation {
@@ -2701,11 +2765,25 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text {
   width: 50%;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  -ms-justify-content: space-between;
+  justify-content: space-between;
+  -ms-flex-pack: space-between;
 }
 @media (max-width: 600px) {
   #realisations .wrapper .container-realisations .card-realisation .realisation-text {
     width: 100%;
   }
+}
+#realisations .wrapper .container-realisations .card-realisation .realisation-text .logo_realisation img {
+  max-width: 100px;
+  height: 40px;
+  object-fit: contain;
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text h3 {
   color: #f5bf2a;
@@ -2726,6 +2804,9 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste li b {
   color: #170303;
+  font-family: "gilroy-bold";
+}
+#realisations .wrapper .container-realisations .card-realisation .realisation-text .date_realisation span {
   font-family: "gilroy-bold";
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-img {
@@ -2828,8 +2909,12 @@ footer .wrapper ul.social-icon-footer li a {
   border: 1px #fff solid;
 }
 #technologies .wrapper .container-technologie .card-technologie:hover {
-  border: 1px #df4d34 solid;
   transform: translateY(-10px);
+  background: #f5bf2a;
+}
+#technologies .wrapper .container-technologie .card-technologie:hover * {
+  color: #fff;
+  filter: brightness(10) invert(0);
 }
 #technologies .wrapper .container-technologie .card-technologie img {
   width: 40px;
@@ -2845,9 +2930,11 @@ footer .wrapper ul.social-icon-footer li a {
 #technologies .wrapper .container-technologie .card-technologie p {
   color: #707070;
 }
+#technologies .wrapper .container-technologie .card-technologie:nth-child(even):hover {
+  background: #df4d34;
+}
 
 .pop-up-technologie .pop-up-container {
-  max-width: 500px;
   background: #f8f9fa;
   padding: 50px 20px;
 }
@@ -2882,10 +2969,12 @@ footer .wrapper ul.social-icon-footer li a {
 }
 .pop-up-technologie .pop-up-container .body-technologie {
   margin-top: 20px;
-  -webkit-flex-direction: column;
-  -moz-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 50px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -2902,6 +2991,20 @@ footer .wrapper ul.social-icon-footer li a {
   font-family: "gilroy-bold";
   display: inline-block;
   color: #170303;
+}
+.pop-up-technologie .pop-up-container .body-technologie .img_technologie {
+  width: 300px;
+  height: 300px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  background-clip: padding-box;
+  overflow: hidden;
+}
+.pop-up-technologie .pop-up-container .body-technologie .img_technologie img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
 }
 .pop-up-technologie .pop-up-container #close-popup-technologie {
   position: absolute;
@@ -3125,17 +3228,13 @@ footer .wrapper ul.social-icon-footer li a {
   margin: auto;
 }
 #equipe .wrapper .container-equipe {
-  gap: 30px;
+  width: 1300px;
   margin-top: 50px;
-}
-@media (max-width: 600px) {
-  #equipe .wrapper .container-equipe {
-    grid-template-columns: 1fr;
-  }
 }
 #equipe .wrapper .container-equipe .card-equipe {
   width: 100%;
-  max-width: 244px;
+  max-width: 310px;
+  margin: 0 10px;
 }
 #equipe .wrapper .container-equipe .card-equipe:hover .equipe-img::before {
   opacity: 0.5;
@@ -3203,7 +3302,6 @@ footer .wrapper ul.social-icon-footer li a {
 }
 
 .pop-up-info-equipe .pop-up-container {
-  background: #f2f4f3;
   max-width: 500px;
   padding: 50px 20px;
 }
@@ -3261,9 +3359,9 @@ footer .wrapper ul.social-icon-footer li a {
 
 #marque .wrapper {
   background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
-  border-radius: 120px;
-  -webkit-border-radius: 120px;
-  -moz-border-radius: 120px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
   background-clip: padding-box;
   padding: 50px 0;
 }
@@ -3407,6 +3505,9 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 
+#faq {
+  margin: 60px 0;
+}
 #faq .wrapper {
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
@@ -3418,6 +3519,10 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 120px;
   background-clip: padding-box;
   padding: 75px 140px;
+  /* Largeur de la scrollbar */
+  /* Piste de la scrollbar */
+  /* Bouton de scroll (la "thumb") */
+  /* Optionnel : au hover */
 }
 @media (max-width: 600px) {
   #faq .wrapper {
@@ -3435,8 +3540,27 @@ footer .wrapper ul.social-icon-footer li a {
   width: 100%;
   max-width: 553px;
 }
+#faq .wrapper ::-webkit-scrollbar {
+  width: 12px; /* vertical scrollbar */
+  height: 12px; /* horizontal scrollbar */
+}
+#faq .wrapper ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+#faq .wrapper ::-webkit-scrollbar-thumb {
+  background-color: #df4d34; /* couleur du curseur */
+  border-radius: 6px;
+  border: 3px solid #f0f0f0; /* pour créer un effet de marge */
+}
+#faq .wrapper ::-webkit-scrollbar-thumb:hover {
+  background-color: #f5bf2a;
+}
 #faq .wrapper .accordeon {
   margin-top: 41px;
+  height: 450px;
+  overflow-y: hidden;
+  overflow-y: scroll;
 }
 #faq .wrapper .accordeon .accordeon-content {
   padding: 30px 40px;
@@ -3487,6 +3611,10 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  /* Largeur de la scrollbar */
+  /* Piste de la scrollbar */
+  /* Bouton de scroll (la "thumb") */
+  /* Optionnel : au hover */
 }
 #conseils .wrapper .section-title h2 {
   color: #f5bf2a;
@@ -3495,9 +3623,28 @@ footer .wrapper ul.social-icon-footer li a {
   color: #707070;
   max-width: 622px;
 }
+#conseils .wrapper ::-webkit-scrollbar {
+  width: 12px; /* vertical scrollbar */
+  height: 12px; /* horizontal scrollbar */
+}
+#conseils .wrapper ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+#conseils .wrapper ::-webkit-scrollbar-thumb {
+  background-color: #df4d34; /* couleur du curseur */
+  border-radius: 6px;
+  border: 3px solid #f0f0f0; /* pour créer un effet de marge */
+}
+#conseils .wrapper ::-webkit-scrollbar-thumb:hover {
+  background-color: #f5bf2a;
+}
 #conseils .wrapper .container-conseils {
   gap: 20px;
   margin-top: 50px;
+  height: 600px;
+  overflow-y: hidden;
+  overflow-y: scroll;
 }
 @media (max-width: 600px) {
   #conseils .wrapper .container-conseils {
@@ -3514,6 +3661,8 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 20px;
   background-clip: padding-box;
   overflow: hidden;
+  height: 315px;
+  margin: 0 20px;
 }
 #conseils .wrapper .container-conseils .card-conseil .conseil-img {
   width: 100%;
@@ -3858,17 +4007,42 @@ footer .wrapper ul.social-icon-footer li a {
   transform: rotate(180deg);
 }
 
+#catalogue .wrapper {
+  /* Largeur de la scrollbar */
+  /* Piste de la scrollbar */
+  /* Bouton de scroll (la "thumb") */
+  /* Optionnel : au hover */
+}
 #catalogue .wrapper .section-title {
   text-align: center;
 }
 #catalogue .wrapper .section-title h2 {
   color: #f5bf2a;
 }
+#catalogue .wrapper ::-webkit-scrollbar {
+  width: 12px; /* vertical scrollbar */
+  height: 12px; /* horizontal scrollbar */
+}
+#catalogue .wrapper ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+#catalogue .wrapper ::-webkit-scrollbar-thumb {
+  background-color: #df4d34; /* couleur du curseur */
+  border-radius: 6px;
+  border: 3px solid #f0f0f0; /* pour créer un effet de marge */
+}
+#catalogue .wrapper ::-webkit-scrollbar-thumb:hover {
+  background-color: #f5bf2a;
+}
 #catalogue .wrapper .container-catalogue {
   margin-top: 30px;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  gap: 30px;
+  gap: 0;
+  height: 500px;
+  overflow-y: hidden;
+  overflow-y: scroll;
 }
 @media (max-width: 768px) {
   #catalogue .wrapper .container-catalogue {
@@ -3889,11 +4063,11 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 20px;
   background-clip: padding-box;
   box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
-  width: 100%;
-  max-width: 246px;
   overflow: hidden;
   border: 1px solid transparent;
   position: relative;
+  min-height: 300px;
+  margin: 10px !important;
 }
 @media (max-width: 600px) {
   #catalogue .wrapper .container-catalogue .card-catalogue {
@@ -3961,6 +4135,10 @@ footer .wrapper ul.social-icon-footer li a {
   filter: brightness(0);
 }
 
+.pop-up-detail-catalogue .pop-up-container {
+  max-width: 800px;
+  width: 100%;
+}
 .pop-up-detail-catalogue .pop-up-container .header-detail-catalogue {
   -webkit-align-items: center;
   -moz-align-items: center;

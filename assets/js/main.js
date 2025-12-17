@@ -309,6 +309,19 @@ $(document).ready(function () {
   });
 });
 
+//SLICK EQUIPE
+$(document).ready(function () {
+  $(".container-equipe").slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    variableWidth: true,
+    arrows: false,
+    dots: false,
+    centerMode: false,
+  });
+});
+
 //SLICK TEMOIGNAGES
 $(document).ready(function () {
   $(".container-temoignages").slick({
@@ -335,6 +348,21 @@ $(document).ready(function () {
     speed: 1000,
     autoplay: true,
     autoplaySpeed: 3000,
+  });
+});
+
+//SLICK TABSLINK REALISATION
+$(document).ready(function () {
+  $(".tabslink-realisations").slick({
+    infinite: false,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: false,
+    variableWidth: true,
+    autoplay: false,
+    prevArrow: $(".slick-prev-custom"),
+    nextArrow: $(".slick-next-custom"),
   });
 });
 

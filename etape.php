@@ -131,6 +131,10 @@ include 'header.php';
                         <input type="number" name="quantite">
                     </div>
                     <div class="demande-spec">
+                        <label for="demande">Votre fichier</label>
+                        <input type="file" name="images[]" id="images" multiple accept="image/*">
+                    </div>
+                    <div class="demande-spec">
                         <label for="demande">Votre demande personnalisée</label>
                         <textarea name="demande" id="" placeholder="Ex: Papier cartonné irisé 280g..."></textarea>
                     </div>

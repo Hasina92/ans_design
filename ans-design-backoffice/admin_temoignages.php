@@ -36,36 +36,53 @@ if (isset($_GET['action']) && isset($_GET['id'])) {
    2) AJOUT DE TEMOIGNAGE DEPUIS BACKOFFICE
    ========================================================== */
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['prenom'])) {
+
     $prenom = trim($_POST['prenom']);
     $poste = trim($_POST['poste'] ?? '');
+    $entreprise = trim($_POST['entreprise'] ?? '');
     $avis = trim($_POST['avis'] ?? '');
     $note = (int) ($_POST['note'] ?? 5);
     $photo = null;
 
-    // Upload de la photo
     if (isset($_FILES['photo']) && $_FILES['photo']['error'] === UPLOAD_ERR_OK) {
+
         $ext = strtolower(pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION));
-        $photo = uniqid('temo_') . '.' . $ext;
+        $allowed = ['jpg', 'jpeg', 'png', 'webp'];
 
-        $uploadDir = __DIR__ . '/../uploads/temoignages/';
-        if (!is_dir($uploadDir))
-            mkdir($uploadDir, 0755, true);
+        if (in_array($ext, $allowed)) {
 
-        move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $photo);
+            $photo = uniqid('temo_') . '.' . $ext;
+            $uploadDir = __DIR__ . '/../uploads/temoignages/';
+
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            move_uploaded_file($_FILES['photo']['tmp_name'], $uploadDir . $photo);
+        }
     }
 
-    // Valider automatiquement ?
     $valide = isset($_POST['valide']) ? 1 : 0;
 
     $stmt = $pdo->prepare("
-        INSERT INTO temoignages (prenom, poste, avis, note, photo, valide)
-        VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO temoignages (prenom, poste, entreprise, avis, note, photo, valide)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
     ");
-    $stmt->execute([$prenom, $poste, $avis, $note, $photo, $valide]);
+
+    $stmt->execute([
+        $prenom,
+        $poste,
+        $entreprise,
+        $avis,
+        $note,
+        $photo,
+        $valide
+    ]);
 
     header('Location: admin_temoignages.php?added=1');
     exit;
 }
+
 
 /* ==========================================================
    3) RECUPERATION DES TEMOIGNAGES
@@ -104,6 +121,9 @@ $temoignages = $pdo->query("
         <label>Poste</label><br>
         <input type="text" name="poste"><br><br>
 
+        <label>Entreprise</label><br>
+        <input type="text" name="entreprise"><br><br>
+
         <label>Avis</label><br>
         <textarea name="avis" rows="4" required></textarea><br><br>
 
@@ -135,6 +155,7 @@ $temoignages = $pdo->query("
             <tr>
                 <th>Prénom</th>
                 <th>Poste</th>
+                <th>Entreprise</th>
                 <th>Avis</th>
                 <th>Note</th>
                 <th>Photo</th>
@@ -147,6 +168,7 @@ $temoignages = $pdo->query("
                 <tr>
                     <td><?= htmlspecialchars($t['prenom']) ?></td>
                     <td><?= htmlspecialchars($t['poste']) ?></td>
+                    <td><?= htmlspecialchars($t['entreprise']) ?></td>
                     <td style="max-width:400px;"><?= nl2br(htmlspecialchars($t['avis'])) ?></td>
                     <td><?= intval($t['note']) ?></td>
 

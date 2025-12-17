@@ -8,13 +8,17 @@ require_once 'config/db.php';
 if (isset($_GET['delete'])) {
     $idDelete = intval($_GET['delete']);
 
-    // On récupère le nom de l'image pour supprimer le fichier si existant
-    $stmtImg = $pdo->prepare("SELECT image FROM technologies WHERE id = ?");
+    // On récupère le nom des images pour supprimer les fichiers si existants
+    $stmtImg = $pdo->prepare("SELECT image, image_technologie FROM technologies WHERE id = ?");
     $stmtImg->execute([$idDelete]);
-    $techImg = $stmtImg->fetchColumn();
+    $techImages = $stmtImg->fetch(PDO::FETCH_ASSOC);
 
-    if ($techImg && file_exists(__DIR__ . '/../uploads/technologies/' . $techImg)) {
-        unlink(__DIR__ . '/../uploads/technologies/' . $techImg);
+    if ($techImages['image'] && file_exists(__DIR__ . '/../uploads/technologies/' . $techImages['image'])) {
+        unlink(__DIR__ . '/../uploads/technologies/' . $techImages['image']);
+    }
+
+    if ($techImages['image_technologie'] && file_exists(__DIR__ . '/../uploads/technologies/' . $techImages['image_technologie'])) {
+        unlink(__DIR__ . '/../uploads/technologies/' . $techImages['image_technologie']);
     }
 
     $stmtDel = $pdo->prepare("DELETE FROM technologies WHERE id = ?");
@@ -32,19 +36,22 @@ $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <div class="page-header" style="display: flex; justify-content: space-between; align-items: center;">
     <h1>Technologies</h1>
     <a href="technologies_form.php" class="btn-green"
-        style="padding: 10px 20px; background-color: #2ECC71; color: white; text-decoration: none; border-radius: 5px; border: none; font-size: 16px;">+
-        Ajouter une
-        Technologie</a>
+        style="padding: 10px 20px; background-color: #2ECC71; color: white; text-decoration: none; border-radius: 5px; font-size: 16px;">
+        + Ajouter une Technologie
+    </a>
 </div>
 
 <?php if (isset($_GET['deleted'])): ?>
     <p class="success">Technologie supprimée avec succès !</p>
 <?php endif; ?>
+
 <div class="panel">
     <table style="width:100%; border-collapse: collapse; margin-top:20px;">
         <thead>
             <tr>
                 <th>Nom</th>
+                <th>Icone</th>
+                <th>Image de la technologie</th>
                 <th>Actif</th>
                 <th>Actions</th>
             </tr>
@@ -52,19 +59,34 @@ $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <tbody>
             <?php if (empty($technologies)): ?>
                 <tr>
-                    <td colspan="6" style="text-align:center;">Aucune technologie trouvée.</td>
+                    <td colspan="5" style="text-align:center;">Aucune technologie trouvée.</td>
                 </tr>
             <?php else: ?>
                 <?php foreach ($technologies as $tech): ?>
                     <tr>
                         <td><?= htmlspecialchars($tech['nom']) ?></td>
+                        <td>
+                            <?php if (!empty($tech['image'])): ?>
+                                <img src="../uploads/technologies/<?= htmlspecialchars($tech['image']) ?>" width="80" alt="">
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if (!empty($tech['image_technologie'])): ?>
+                                <img src="../uploads/technologies/<?= htmlspecialchars($tech['image_technologie']) ?>" width="80"
+                                    alt="">
+                            <?php endif; ?>
+                        </td>
                         <td><?= $tech['actif'] ? 'Oui' : 'Non' ?></td>
-                        <td style="display: flex; gap: 20px; border: none; width: 100px;">
+                        <td style="display: flex; gap: 10px;">
                             <a href="technologies_form.php?id=<?= $tech['id'] ?>"
-                                style="padding: 10px 20px; background-color: #2ECC71; color: white; text-decoration: none; border-radius: 5px; border: none; font-size: 16px;">Modifier</a>
+                                style="padding: 5px 10px; background-color: #2ECC71; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">
+                                Modifier
+                            </a>
                             <a href="technologies.php?delete=<?= $tech['id'] ?>"
                                 onclick="return confirm('Voulez-vous vraiment supprimer cette technologie ?');"
-                                style="padding: 10px 20px; background-color: #DF4D34; color: white; text-decoration: none; border-radius: 5px; border: none; font-size: 16px;">Supprimer</a>
+                                style="padding: 5px 10px; background-color: #DF4D34; color: white; text-decoration: none; border-radius: 5px; font-size: 14px;">
+                                Supprimer
+                            </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -72,6 +94,7 @@ $technologies = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 </div>
+
 <?php
 require_once 'includes/footer.php';
 ?>

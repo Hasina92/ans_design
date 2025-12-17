@@ -8,7 +8,7 @@ footer {
       overflow: hidden;
       padding: 40px 140px;
       @extend .shape-top;
-      @include border-radius(120px 120px 0 0);
+      @include border-radius(30px 30px 0 0);
 
       @include breakpoint(sm) {
         @include flex-direction(column);
@@ -19,7 +19,7 @@ footer {
         @extend .flex-jc;
         @include flex-direction(column);
         img {
-          width: 50px;
+          width: 40px;
           aspect-ratio: 1/1;
           background: $white;
           @include border-radius(50%);

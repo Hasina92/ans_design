@@ -13,18 +13,64 @@ try {
 }
 // --- FIN DU BLOC À AJOUTER ---
 
+/* ==========================================
+   PRODUITS PHARES (via checkbox backoffice)
+   ========================================== */
+try {
+    $stmt = $pdo->prepare("
+        SELECT id, nom, description, prix_base, image, reduction
+        FROM produits
+        WHERE actif = 1
+          AND produit_phare = 1
+        ORDER BY id DESC
+        LIMIT 8
+    ");
+    $stmt->execute();
+    $produitsPhares = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+    $produitsPhares = [];
+}
+
+/* ==========================================
+   TECHNOLOGIES (inchangé)
+   ========================================== */
+$stmtTech = $pdo->query("
+    SELECT *
+    FROM technologies
+    WHERE actif = 1
+    ORDER BY ordre ASC
+");
+$technologies = $stmtTech->fetchAll(PDO::FETCH_ASSOC);
+
 /* ==================================================
-   PRODUITS PHARES (SANS CATÉGORIES)
+   CATÉGORIES (PAPETERIES)
    ================================================== */
-$stmt = $pdo->prepare("
-    SELECT id, nom, image
+$stmtCat = $pdo->prepare("
+    SELECT id, nom
+    FROM categories
+    ORDER BY nom ASC
+");
+$stmtCat->execute();
+$categories = $stmtCat->fetchAll(PDO::FETCH_ASSOC);
+
+/* ==================================================
+   PRODUITS PHARES PAR CATÉGORIE
+   ================================================== */
+$produitsParCategorie = [];
+
+$stmtProd = $pdo->prepare("
+    SELECT id, nom, prix_base, image, reduction
     FROM produits
     WHERE actif = 1
       AND produit_phare = 1
+      AND categorie_id = ?
     ORDER BY id DESC
 ");
-$stmt->execute();
-$produitsPhares = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($categories as $cat) {
+    $stmtProd->execute([$cat['id']]);
+    $produitsParCategorie[$cat['id']] = $stmtProd->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>
 
 <?php $page = 'catalogue'; ?>
@@ -75,48 +121,64 @@ include 'header.php';
         </div>
     </section>
 
-    <!-- PRODUITS PHARES -->
-    <section id="produits-phares-catalogue">
+    <!-- NOS PRODUITS PHARES -->
+    <section id="produits-phares">
         <div class="wrapper">
 
             <div class="section-title">
-                <h2>Nos produits phares</h2>
+                <h2>Nos Produits Phares</h2>
             </div>
 
-            <div class="container-produits_phares produits-slick">
+            <!-- ONGLES PAPETERIES (CATÉGORIES) -->
+            <ul class="tabslink-produits">
+                <?php foreach ($categories as $index => $cat): ?>
+                    <li>
+                        <a href="#cat_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+                            <?= htmlspecialchars($cat['nom']) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
 
-                <?php if (empty($produitsPhares)): ?>
-                    <p>Aucun produit phare pour le moment.</p>
-                <?php else: ?>
+            <div class="container-produit">
 
-                    <?php foreach ($produitsPhares as $p): ?>
-                        <div class="card-produits-phares">
+                <?php foreach ($categories as $index => $cat): ?>
+                    <div class="tabscontent-produits <?= $index === 0 ? 'active' : '' ?>" id="cat_<?= $cat['id'] ?>">
 
-                            <div class="produits-phrares_img">
-                                <img src="uploads/produits/<?= htmlspecialchars($p['image']) ?>"
-                                    alt="<?= htmlspecialchars($p['nom']) ?>">
-                            </div>
+                        <?php if (empty($produitsParCategorie[$cat['id']])): ?>
+                            <p>Aucun produit phare dans cette catégorie.</p>
+                        <?php else: ?>
 
-                            <h3><?= htmlspecialchars($p['nom']) ?></h3>
+                            <?php foreach ($produitsParCategorie[$cat['id']] as $p): ?>
+                                <div class="card-produit">
 
-                            <a href="etape.php?id=<?= $p['id']; ?>" class="btn-3d">
-                                Faire un devis
-                            </a>
+                                    <a href="etape.php?id=<?= $p['id']; ?>" class="link-box"></a>
 
-                        </div>
-                    <?php endforeach; ?>
+                                    <img src="uploads/produits/<?= htmlspecialchars($p['image']) ?>"
+                                        alt="<?= htmlspecialchars($p['nom']) ?>">
 
-                <?php endif; ?>
+                                    <h3><?= htmlspecialchars($p['nom']) ?></h3>
 
-            </div>
+                                    <span>
+                                        À partir de <br>
+                                        <b><?= number_format($p['prix_base'], 0, ',', ' ') ?> Ar</b>
+                                    </span>
 
-            <div class="btn-slick">
-                <button class="slick-prev-custom">
-                    <img src="assets/img/arrow.svg" alt="">
-                </button>
-                <button class="slick-next-custom">
-                    <img src="assets/img/arrow.svg" alt="">
-                </button>
+                                    <div class="bouton-produit">
+                                        <a href="etape.php?id=<?= $p['id']; ?>" class="btn-card">Devis</a>
+
+                                        <?php if (!empty($p['reduction'])): ?>
+                                            <span class="reduction">-<?= intval($p['reduction']) ?>%</span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                </div>
+                            <?php endforeach; ?>
+
+                        <?php endif; ?>
+                    </div>
+                <?php endforeach; ?>
+
             </div>
 
         </div>

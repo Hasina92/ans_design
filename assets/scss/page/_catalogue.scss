@@ -212,12 +212,37 @@
         color: $yellow;
       }
     }
+    /* Largeur de la scrollbar */
+    ::-webkit-scrollbar {
+      width: 12px; /* vertical scrollbar */
+      height: 12px; /* horizontal scrollbar */
+    }
 
+    /* Piste de la scrollbar */
+    ::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 6px;
+    }
+
+    /* Bouton de scroll (la "thumb") */
+    ::-webkit-scrollbar-thumb {
+      background-color: #df4d34; /* couleur du curseur */
+      border-radius: 6px;
+      border: 3px solid #f0f0f0; /* pour créer un effet de marge */
+    }
+
+    /* Optionnel : au hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #f5bf2a;
+    }
     .container-catalogue {
       margin-top: 30px;
       @extend %grid;
       @include grid-template-columns(1fr 1fr 1fr 1fr 1fr);
-      gap: 30px;
+      gap: 0;
+      height: 500px;
+      overflow-y: hidden;
+      overflow-y: scroll;
 
       @include breakpoint(sm) {
         @include grid-template-columns(1fr 1fr 1fr);
@@ -231,11 +256,11 @@
         background: $white;
         @include border-radius(20px);
         box-shadow: 0px 0px 7.5px 0px #0000001a;
-        width: 100%;
-        max-width: 246px;
         overflow: hidden;
         border: 1px solid transparent;
         position: relative;
+        min-height: 300px;
+        margin: 10px !important;
         @include breakpoint(xs) {
           max-width: 100%;
         }
@@ -309,6 +334,8 @@
   @extend .overlay;
   .pop-up-container {
     @extend .pop-up-single;
+    max-width: 800px;
+    width: 100%;
     .header-detail-catalogue {
       @extend .flex-sb;
       @include align-items(center);

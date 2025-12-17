@@ -216,6 +216,7 @@ include 'header.php';
                         <p class="avis"><?= nl2br(htmlspecialchars($t['avis'])) ?></p>
                         <span class="nom"><?= htmlspecialchars($t['prenom']) ?></span>
                         <span class="poste"><?= htmlspecialchars($t['poste']) ?></span>
+                        <span class="poste"><?= htmlspecialchars($t['entreprise']) ?></span>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -239,6 +240,7 @@ include 'header.php';
                 <form method="POST" action="temoignages.php" enctype="multipart/form-data" id="form-temoignages">
                     <input type="text" name="prenom" placeholder="Votre prénom" required>
                     <input type="text" name="poste" placeholder="Votre poste">
+                    <input type="text" name="entreprise" placeholder="Votre entreprise">
                     <textarea name="avis" placeholder="Votre avis" required></textarea>
                     <div class="rating">
                         <input type="radio" name="note" id="star5" value="5" /><label for="star5">★</label>
@@ -433,15 +435,19 @@ include 'header.php';
             </div>
 
             <!-- Onglets dynamiques -->
-            <ul class="tabslink tabslink-realisations">
-                <?php foreach ($categories as $index => $cat): ?>
-                    <li>
-                        <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
-                            <?= htmlspecialchars($cat['titre']) ?>
-                        </a>
-                    </li>
-                <?php endforeach; ?>
-            </ul>
+            <div class="container-btn-slick">
+                <button class="slick-prev-custom"><img src="assets/img/arrow.svg" alt=""></button>
+                <ul class="tabslink tabslink-realisations">
+                    <?php foreach ($categories as $index => $cat): ?>
+                        <li>
+                            <a href="#realisation_<?= $cat['id'] ?>" class="<?= $index === 0 ? 'active' : '' ?>">
+                                <?= htmlspecialchars($cat['titre']) ?>
+                            </a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+                <button class="slick-next-custom"><img src="assets/img/arrow.svg" alt=""></button>
+            </div>
 
             <!-- Contenu des réalisations -->
             <div class="container-realisations">
@@ -456,21 +462,33 @@ include 'header.php';
                             foreach ($realisations as $r): ?>
                                 <div class="card-realisation">
                                     <div class="realisation-text">
-                                        <h3><?= htmlspecialchars($r['titre']) ?></h3>
-
-                                        <ul class="liste">
-                                            <?php if (!empty($r['client'])): ?>
-                                                <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
+                                        <div class="logo_realisation">
+                                            <?php if (!empty($r['logo'])): ?>
+                                                <img src="ans-design-backoffice/upload/<?= htmlspecialchars($r['logo']) ?>" alt="">
                                             <?php endif; ?>
+                                        </div>
+                                        <div>
+                                            <h3><?= htmlspecialchars($r['titre']) ?></h3>
 
-                                            <?php if (!empty($r['nombre_ex'])): ?>
-                                                <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
-                                            <?php endif; ?>
+                                            <ul class="liste">
+                                                <?php if (!empty($r['client'])): ?>
+                                                    <li><b>Client :</b> <?= htmlspecialchars($r['client']) ?></li>
+                                                <?php endif; ?>
 
-                                            <?php if (!empty($r['delai_ex'])): ?>
-                                                <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
+                                                <?php if (!empty($r['nombre_ex'])): ?>
+                                                    <li><b>nb d'ex :</b> <?= htmlspecialchars($r['nombre_ex']) ?></li>
+                                                <?php endif; ?>
+
+                                                <?php if (!empty($r['delai_ex'])): ?>
+                                                    <li><b>delai d'ex :</b> <?= htmlspecialchars($r['delai_ex']) ?></li>
+                                                <?php endif; ?>
+                                            </ul>
+                                        </div>
+                                        <div class="date_realisation">
+                                            <?php if (!empty($r['date_realisation'])): ?>
+                                                <span><?= htmlspecialchars($r['date_realisation']) ?></span>
                                             <?php endif; ?>
-                                        </ul>
+                                        </div>
                                     </div>
 
                                     <div class="realisation-img">
@@ -536,7 +554,11 @@ include 'header.php';
     </section>
 
     <!-- POP-UP TECHNOLOGIES -->
-    <?php foreach ($technologies as $tech): ?>
+    <?php
+    $colors = ['#F5BF2A', '#DF4D34']; // rouge, jaune (tu peux ajouter plus de couleurs)
+    foreach ($technologies as $index => $tech):
+        $h3Color = $colors[$index % count($colors)]; // alterner les couleurs
+        ?>
         <section class="popup pop-up-technologie" id="popup-technologie-<?= $tech['id'] ?>">
             <div class="pop-up-container">
                 <div class="header-technologie">
@@ -544,21 +566,20 @@ include 'header.php';
                         <img src="uploads/technologies/<?= htmlspecialchars($tech['image']) ?>"
                             alt="<?= htmlspecialchars($tech['nom']) ?>">
                     </div>
-                    <h3><?= htmlspecialchars($tech['nom']) ?></h3>
+                    <h3 style="color: <?= $h3Color ?>;">
+                        <?= htmlspecialchars($tech['nom']) ?>
+                    </h3>
                     <p><?= htmlspecialchars($tech['description_courte']) ?></p>
                 </div>
                 <div class="body-technologie">
                     <?php
                     $description = $tech['description_longue'] ?: "Aucune information détaillée disponible.";
-
-                    // Convertir les lignes en tableau
                     $lines = preg_split("/\r\n|\n|\r/", $description);
 
                     echo "<ul>";
                     foreach ($lines as $line) {
                         $line = trim($line);
                         if ($line !== '') {
-                            // Mettre en gras le texte avant ":" si présent
                             if (strpos($line, ':') !== false) {
                                 list($key, $value) = explode(':', $line, 2);
                                 echo "<li><b>" . htmlspecialchars($key, ENT_QUOTES) . ":</b>" . htmlspecialchars($value, ENT_QUOTES) . "</li>";
@@ -569,6 +590,12 @@ include 'header.php';
                     }
                     echo "</ul>";
                     ?>
+                    <div class="img_technologie">
+                        <?php if (!empty($tech['image_technologie'])): ?>
+                            <img src="uploads/technologies/<?= htmlspecialchars($tech['image_technologie']) ?>"
+                                alt="<?= htmlspecialchars($tech['nom']) ?>">
+                        <?php endif; ?>
+                    </div>
                 </div>
                 <a href="#close" class="close-popup" id="close-popup-technologie"><img src="assets/img/close.svg"
                         alt="Fermer"></a>
@@ -713,9 +740,7 @@ include 'header.php';
             <div class="inner-title">
                 <p>Les visages derrière la qualité et le service A.N.S. Une synergie de talents à votre écoute.</p>
             </div>
-
             <div class="container-equipe">
-
                 <?php if (empty($members)): ?>
                     <p>Aucun membre pour le moment.</p>
 
@@ -759,7 +784,6 @@ include 'header.php';
                         </div>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
             </div>
         </div>
     </section>
@@ -807,6 +831,9 @@ include 'header.php';
         <div class="wrapper t-center">
             <div class="section-title">
                 <h2>Donnez du pouvoir à votre marque.</h2>
+            </div>
+            <div class="inner-title">
+                <p>Chaque projet est traité avec soin et précision</p>
             </div>
         </div>
     </section>
