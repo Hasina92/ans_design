@@ -239,7 +239,13 @@ include 'header.php';
 
                     <!-- Le lien sera mis à jour : etape.php?id=X -->
                     <a href="" class="btn-card popup-produit-lien">Configurer ce produit</a>
+                    <div class="gallery-product">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                        <img src="" alt="">
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>

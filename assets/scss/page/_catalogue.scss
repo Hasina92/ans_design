@@ -388,6 +388,16 @@
           margin-top: 20px;
         }
       }
+      .gallery-product {
+        @extend .grid-33;
+        margin-top: 20px;
+        img {
+          width: 100px;
+          aspect-ratio: 1/1;
+          background: $red;
+          @include border-radius(30px);
+        }
+      }
     }
   }
 }

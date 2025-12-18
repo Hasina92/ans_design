@@ -1817,7 +1817,7 @@
   .wrapper {
     @extend .flex-sb;
     @include align-items(stretch);
-    max-width: 1078px;
+    max-width: 1200px;
     @include border-radius(60px);
     box-shadow: 0px 0px 7.5px 0px #0000000d;
     padding: 0;
@@ -1836,13 +1836,28 @@
       @include breakpoint(xs) {
         padding: 20px;
       }
+      .container-bouton {
+        @extend %flex;
+        .section-title {
+          max-width: 337px;
+          line-height: 55px;
+          @include breakpoint(xs) {
+            max-width: 100%;
+            line-height: 30px;
+          }
+        }
 
-      .section-title {
-        max-width: 337px;
-        line-height: 55px;
-        @include breakpoint(xs) {
-          max-width: 100%;
-          line-height: 30px;
+        .bouton_connexion {
+          @extend .flex-jc;
+          .btn {
+            box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
+            color: $dark;
+          }
+          .btn-white {
+            background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
+            box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
+            color: $white;
+          }
         }
       }
 
@@ -1860,8 +1875,9 @@
           font-size: 18px;
           color: $gray;
           @include border-radius(20px);
-          border: 1px $gray solid;
+          border: none;
           padding: 10px 20px;
+          box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
         }
         @include breakpoint-up(xs) {
           input[name="nom"],

@@ -1319,9 +1319,15 @@ include 'header.php';
     <section id="formulaire">
         <div class="wrapper">
             <div class="formulaire-text">
-                <div class="section-title">
-                    <h2>Prêt à lancer
-                        Votre projet ?</h2>
+                <div class="container-bouton">
+                    <div class="section-title">
+                        <h2>Prêt à lancer
+                            Votre projet ?</h2>
+                    </div>
+                    <div class="bouton_connexion">
+                        <a href="connexion.php" class="btn">Connexion</a>
+                        <a href="connexion.php" class="btn-white">Inscription</a>
+                    </div>
                 </div>
                 <div class="inner-title">
                     <p>Contactez-nous pour discuter de vos idées ou pour toute demande d'information. Notre

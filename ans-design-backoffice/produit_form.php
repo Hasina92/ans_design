@@ -14,7 +14,9 @@ $caracteristiques = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pdo->beginTransaction();
     try {
-
+        // -------------------
+        // 1. Image principale
+        // -------------------
         $image_name = $produit['image'] ?? null;
 
         if (!empty($_FILES['image']['name'])) {
@@ -25,19 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $file_name = uniqid('prod_') . '.' . $ext;
 
             move_uploaded_file($_FILES['image']['tmp_name'], $upload_dir . $file_name);
-
             $image_name = $file_name;
         }
 
+        // -------------------
+        // 2. Insérer ou Mettre à jour le produit
+        // -------------------
         $produit_id = $_POST['produit_id'] ?? null;
-        
-        // 1. Insérer ou Mettre à jour le produit
+
         if ($produit_id) {
-            $stmt = $pdo->prepare("
-                UPDATE produits 
-                SET nom = ?, description = ?, prix_base = ?, actif = ?, produit_phare = ?, image = ?, categorie_id = ?, reduction = ?
-                WHERE id = ?
-            ");
+            $stmt = $pdo->prepare("UPDATE produits 
+                SET nom = ?, description = ?, prix_base = ?, actif = ?, produit_phare = ?, image = ?, categorie_id = ?, reduction = ? 
+                WHERE id = ?");
             $stmt->execute([
                 $_POST['nom'],
                 $_POST['description'],
@@ -50,10 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $produit_id
             ]);
         } else {
-            $stmt = $pdo->prepare("
-                INSERT INTO produits (nom, description, prix_base, actif, produit_phare, image, categorie_id, reduction) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-            ");
+            $stmt = $pdo->prepare("INSERT INTO produits (nom, description, prix_base, actif, produit_phare, image, categorie_id, reduction) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([
                 $_POST['nom'],
                 $_POST['description'],
@@ -67,8 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $produit_id = $pdo->lastInsertId();
         }
 
-        // 2. Gérer les caractéristiques et options
-        // D'abord, supprimer les anciennes pour simplifier la logique
+        // -------------------
+        // 3. Caractéristiques (inchangé)
+        // -------------------
         $stmt_del_opts = $pdo->prepare("DELETE FROM caracteristique_options WHERE caracteristique_id IN (SELECT id FROM produit_caracteristiques WHERE produit_id = ?)");
         $stmt_del_opts->execute([$produit_id]);
         $stmt_del_chars = $pdo->prepare("DELETE FROM produit_caracteristiques WHERE produit_id = ?");
@@ -76,18 +76,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (isset($_POST['caracteristiques'])) {
             foreach ($_POST['caracteristiques'] as $index => $carac_data) {
-                // Insérer la caractéristique
                 $stmt_char = $pdo->prepare("INSERT INTO produit_caracteristiques (produit_id, nom, ordre) VALUES (?, ?, ?)");
                 $stmt_char->execute([$produit_id, $carac_data['nom'], $index]);
                 $caracteristique_id = $pdo->lastInsertId();
 
-                // Insérer ses options
                 $options = explode(',', $carac_data['options']);
                 $stmt_opt = $pdo->prepare("INSERT INTO caracteristique_options (caracteristique_id, valeur) VALUES (?, ?)");
                 foreach ($options as $option) {
                     $trimmed_option = trim($option);
                     if (!empty($trimmed_option)) {
                         $stmt_opt->execute([$caracteristique_id, $trimmed_option]);
+                    }
+                }
+            }
+        }
+
+        // -------------------
+        // 4. Galerie d'images
+        // -------------------
+        if (isset($_FILES['images'])) {
+            $uploadsDir = __DIR__ . '/../uploads/produits/';
+            if (!is_dir($uploadsDir)) mkdir($uploadsDir, 0777, true);
+
+            foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+                if (!empty($tmp_name)) {
+                    $filename = uniqid('gal_') . '_' . basename($_FILES['images']['name'][$key]);
+                    $targetFile = $uploadsDir . $filename;
+
+                    if (move_uploaded_file($tmp_name, $targetFile)) {
+                        $stmt = $pdo->prepare("INSERT INTO produit_images (produit_id, image_path) VALUES (?, ?)");
+                        $stmt->execute([$produit_id, $targetFile]);
                     }
                 }
             }
@@ -174,6 +192,11 @@ if (isset($_GET['id'])) {
             <img src="../uploads/produits/<?php echo $produit['image']; ?>" 
                 style="max-width:150px; border-radius:5px;">
         <?php endif; ?>
+    </div>
+
+    <div style="margin-top: 15px;">    
+    <label>Ajouter des images :</label>
+    <input type="file" name="images[]" multiple>
     </div>
     <div style="margin-top: 15px;">
         <input type="checkbox" id="actif" name="actif" value="1" <?php echo (isset($produit) && $produit['actif']) || !isset($produit) ? 'checked' : ''; ?>>
