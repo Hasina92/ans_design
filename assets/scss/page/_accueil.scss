@@ -352,8 +352,8 @@
       }
     }
 
-    .slick-prev-custom,
-    .slick-next-custom {
+    .slick-prev-custom-temoignages,
+    .slick-next-custom-temoignages {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -368,13 +368,14 @@
       img {
         width: 25px;
         aspect-ratio: 1/1;
+        transform: rotate(180deg);
       }
     }
-    .slick-prev-custom {
+    .slick-next-custom-temoignages {
       right: 0;
       left: initial;
       img {
-        transform: rotate(180deg);
+        transform: rotate(0deg);
       }
     }
 
@@ -668,7 +669,8 @@
           transform: translateY(-10px);
           li,
           h3,
-          .prix {
+          .prix,
+          .voir-plus {
             color: $white !important;
           }
           b {
@@ -708,19 +710,27 @@
           }
 
           ul.description-pack {
-            @extend %flex;
+            // @extend %flex;
             @include flex-direction(column);
-            gap: 10px;
+            // gap: 10px;
             padding: 0 30px;
             list-style: none;
             margin-bottom: 8px;
             position: relative;
-
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            transition: all 0.3s ease;
+            &.open {
+              -webkit-line-clamp: unset;
+            }
             li {
               text-align: left;
               font-size: 12px;
               font-family: "gilroy-regular";
               color: $gray;
+              margin-bottom: 10px;
               &::before {
                 content: "✔";
                 color: #4caf50;
@@ -731,6 +741,15 @@
                 text-align: center;
               }
             }
+          }
+          .voir-plus {
+            background: transparent;
+            border: none;
+            color: $red;
+            margin-top: -20px;
+            padding: 0 30px;
+            text-align: left;
+            font-family: "gilroy-bold";
           }
         }
         .bouton-pack {
@@ -1363,6 +1382,32 @@
         }
       }
     }
+    .slick-prev-custom-equipe,
+    .slick-next-custom-equipe {
+      position: absolute;
+      top: 65%;
+      transform: translateY(-50%);
+      left: -10px;
+      @include border-radius(50%);
+      background: linear-gradient(#e20e56, #df5531);
+      width: 40px;
+      aspect-ratio: 1/1;
+      @extend .flex-jc;
+      cursor: pointer;
+      border: none;
+      img {
+        width: 25px;
+        aspect-ratio: 1/1;
+        transform: rotate(180deg);
+      }
+    }
+    .slick-next-custom-equipe {
+      right: -10px;
+      left: initial;
+      img {
+        transform: rotate(0deg);
+      }
+    }
   }
 }
 // POPUP EQUIPE
@@ -1420,6 +1465,10 @@
     background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
     @include border-radius(30px);
     padding: 50px 0;
+    @extend %flex;
+    @include flex-direction(column);
+    @include align-items(center);
+    gap: 20px;
 
     @include breakpoint(xs) {
       @include border-radius(0);

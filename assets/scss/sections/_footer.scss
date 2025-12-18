@@ -121,16 +121,6 @@ footer {
         }
       }
     }
-    .fleche-footer {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
-      padding: 10px;
-      img {
-        filter: brightness(10);
-      }
-    }
     ul.social-icon-footer {
       @extend %flex;
       @include flex-direction(column);
@@ -140,6 +130,12 @@ footer {
       right: 10px;
       @include breakpoint(sm) {
         @include flex-direction(row);
+      }
+      li a.fleche-footer {
+        background: $yellow;
+        img {
+          filter: brightness(10) invert(0);
+        }
       }
       li a {
         background: #e12948;

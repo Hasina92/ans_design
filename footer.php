@@ -60,9 +60,6 @@ require_once 'init_user.php';
                 <button type="submit" class="btn-card">Envoyez</button>
             </form>
         </div>
-        <a href=".scrolltop" class="fleche-footer">
-            <img src="assets/img/arrow-up.svg" alt="">
-        </a>
         <ul class="social-icon-footer">
             <li>
                 <a href="" target="_blank"><img src="assets/img/facebook.svg" alt=""></a>
@@ -75,6 +72,11 @@ require_once 'init_user.php';
             </li>
             <li>
                 <a href="" target="_blank"><img src="assets/img/linkedin.svg" alt=""></a>
+            </li>
+            <li>
+                <a href=".scrolltop" class="fleche-footer">
+                    <img src="assets/img/arrow-up.svg" alt="">
+                </a>
             </li>
         </ul>
     </div>

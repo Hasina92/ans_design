@@ -206,11 +206,11 @@ function popupHandler(
   closeSelector,
   beforeOpen = null
 ) {
-  const openBtn = document.querySelector(openSelector);
+  const openBtns = document.querySelectorAll(openSelector); // 👈 ICI
   const popup = document.querySelector(popupSelector);
   const closeBtn = document.querySelector(closeSelector);
 
-  if (!openBtn || !popup || !closeBtn) return;
+  if (!openBtns.length || !popup || !closeBtn) return;
 
   function closeAllPopups() {
     document.querySelectorAll(".popup.active").forEach((p) => {
@@ -218,24 +218,25 @@ function popupHandler(
     });
   }
 
-  // Ouvrir la pop-up
-  openBtn.addEventListener("click", (e) => {
-    // 🔒 Validation AVANT ouverture
-    if (beforeOpen && beforeOpen() === false) {
-      e.preventDefault();
-      return;
-    }
+  // 🔓 OUVERTURE (pour TOUS les boutons)
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      if (beforeOpen && beforeOpen() === false) {
+        e.preventDefault();
+        return;
+      }
 
-    closeAllPopups();
-    popup.classList.add("active");
+      closeAllPopups();
+      popup.classList.add("active");
+    });
   });
 
-  // Fermer via bouton
+  // ❌ FERMETURE via bouton
   closeBtn.addEventListener("click", () => {
     popup.classList.remove("active");
   });
 
-  // Fermer en cliquant à l’extérieur
+  // ❌ FERMETURE clic extérieur
   popup.addEventListener("click", (e) => {
     if (e.target === popup) {
       popup.classList.remove("active");
@@ -316,9 +317,11 @@ $(document).ready(function () {
     slidesToShow: 4,
     slidesToScroll: 1,
     variableWidth: true,
-    arrows: false,
+    arrows: true,
     dots: false,
     centerMode: false,
+    prevArrow: $(".slick-prev-custom-equipe"),
+    nextArrow: $(".slick-next-custom-equipe"),
   });
 });
 
@@ -332,8 +335,8 @@ $(document).ready(function () {
     arrows: true,
     dots: false,
     centerMode: true,
-    prevArrow: $(".slick-prev-custom"),
-    nextArrow: $(".slick-next-custom"),
+    prevArrow: $(".slick-prev-custom-temoignages"),
+    nextArrow: $(".slick-next-custom-temoignages"),
   });
 });
 
@@ -672,6 +675,17 @@ document.addEventListener("click", function (e) {
   ) {
     searchContainer.style.display = "none";
   }
+});
+
+document.querySelectorAll(".voir-plus").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const list = this.previousElementSibling;
+
+    list.classList.toggle("open");
+    this.textContent = list.classList.contains("open")
+      ? "Voir moins"
+      : "Voir plus";
+  });
 });
 
 //RESET PASSWORD

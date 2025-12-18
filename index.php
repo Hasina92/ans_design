@@ -220,8 +220,8 @@ include 'header.php';
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="slick-prev-custom"><img src="assets/img/arrow.svg" alt=""></button>
-            <button class="slick-next-custom"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-prev-custom-temoignages"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-next-custom-temoignages"><img src="assets/img/arrow.svg" alt=""></button>
             <a href="#temoignages" class="btn-gradient" id="open-popup-temoignages">Laissez un avis</a>
         </div>
     </section>
@@ -341,6 +341,7 @@ include 'header.php';
                             <li>Signature email</li>
                             <li>Fichiers PNG/JPG</li>
                         </ul>
+                        <button class="voir-plus">Voir plus</button>
                     </div>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
@@ -358,6 +359,7 @@ include 'header.php';
                             <li>Flyer ou dépliant</li>
                             <li>Fichiers sources (.AI/.PSD)</li>
                         </ul>
+                        <button class="voir-plus">Voir plus</button>
                     </div>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
@@ -376,6 +378,7 @@ include 'header.php';
                             <li>Roll-up ou X-Banner ou Panneaux</li>
                             <li>Kit web : favicon, bannières, boutons</li>
                         </ul>
+                        <button class="voir-plus">Voir plus</button>
                     </div>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
@@ -397,6 +400,7 @@ include 'header.php';
                             <li>Conseils graphiques personnalisés</li>
                             <li>Modifications illimitées</li>
                         </ul>
+                        <button class="voir-plus">Voir plus</button>
                     </div>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
@@ -782,6 +786,8 @@ include 'header.php';
                     <?php endforeach; ?>
                 <?php endif; ?>
             </div>
+            <button class="slick-prev-custom-equipe"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-next-custom-equipe"><img src="assets/img/arrow.svg" alt=""></button>
         </div>
     </section>
 
@@ -832,6 +838,7 @@ include 'header.php';
             <div class="inner-title">
                 <p>Chaque projet est traité avec soin et précision</p>
             </div>
+            <a href="#devis" class="btn-white" id="open-popup-devis">Demande devis</a>
         </div>
     </section>
     <!-- PROCESSUS -->
