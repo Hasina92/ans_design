@@ -1838,6 +1838,7 @@ footer .wrapper ul.social-icon-footer {
   position: fixed;
   bottom: 10px;
   right: 10px;
+  z-index: 99;
 }
 @media (max-width: 768px) {
   footer .wrapper ul.social-icon-footer {
@@ -1951,6 +1952,11 @@ footer .wrapper ul.social-icon-footer li a {
   filter: blur(40px);
   z-index: -1;
 }
+@media (max-width: 600px) {
+  #clients::before {
+    display: none;
+  }
+}
 #clients::after {
   content: "";
   position: fixed;
@@ -1963,6 +1969,11 @@ footer .wrapper ul.social-icon-footer li a {
   background-repeat: no-repeat;
   filter: blur(40px);
   z-index: -1;
+}
+@media (max-width: 600px) {
+  #clients::after {
+    display: none;
+  }
 }
 #clients .wrapper {
   -webkit-flex-direction: column;
@@ -3282,10 +3293,20 @@ footer .wrapper ul.social-icon-footer li a {
   width: 1300px;
   margin-top: 50px;
 }
+@media (max-width: 600px) {
+  #equipe .wrapper .container-equipe {
+    width: 100%;
+  }
+}
 #equipe .wrapper .container-equipe .card-equipe {
   width: 100%;
   max-width: 310px;
   margin: 0 10px;
+}
+@media (max-width: 600px) {
+  #equipe .wrapper .container-equipe .card-equipe {
+    max-width: 100%;
+  }
 }
 #equipe .wrapper .container-equipe .card-equipe:hover .equipe-img::before {
   opacity: 0.5;

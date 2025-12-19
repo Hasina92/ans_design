@@ -226,7 +226,7 @@ require_once 'init_user.php';
             formData.append('produit_nom', produitNom);
             formData.append('produit_prix', produitPrix);
             formData.append('quantite', quantite);
-            
+
             // Demande textuelle
             formData.append('demande', $('#etape-page textarea[name="demande"]').val() || '');
 
