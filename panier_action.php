@@ -7,59 +7,78 @@ if (!isset($_SESSION['panier'])) {
     $_SESSION['panier'] = [];
 }
 
-// --- FONCTION POUR GÉNÉRER LE HTML DU PANIER (Inchangée) ---
-function genererHtmlPanier($panier)
-{
-    if (empty($panier)) {
-        return '<div class="empty-cart-message" style="text-align:center; padding: 20px;"><p>Votre panier est vide.</p></div>';
-    }
-
+// --- FONCTION HTML PANIER ---
+function genererHtmlPanier($panier) {
+    if (empty($panier)) return '<div class="empty-cart-message" style="text-align:center; padding: 20px;"><p>Votre panier est vide.</p></div>';
+    
     $html = '';
     foreach ($panier as $index => $item) {
         $prixTotal = number_format($item['prix_base'] * $item['quantite'], 0, ',', ' ');
         $nom = htmlspecialchars($item['nom']);
-
-        $optionsHtml = '';
+        
+        $optionsHtml = '<ul style="font-size: 0.7em; color: #888; margin-bottom: 5px;">';
         if (isset($item['options']) && is_array($item['options'])) {
-            $optionsHtml .= '<ul style="font-size: 0.7em; color: #888; margin-bottom: 5px;">';
             foreach ($item['options'] as $k => $v) {
-                // On affiche proprement Clé : Valeur
                 $optionsHtml .= '<li>' . htmlspecialchars($k . ': ' . $v) . '</li>';
             }
-            $optionsHtml .= '</ul>';
+        }
+        $optionsHtml .= '</ul>';
+
+        // Affichage fichiers joints
+        $fileInfo = '';
+        if (!empty($item['images'])) {
+            $count = count($item['images']);
+            $fileInfo = '<div style="font-size:0.7em; color:#007bff; margin-top:2px;">📎 ' . $count . ' fichier(s) joint(s)</div>';
+        }
+
+        $demandeInfo = '';
+        if (!empty($item['demande'])) {
+            $demandeInfo = '<div style="font-size:0.7em; color:#d9534f; margin-top:2px;">📝 Note incluse</div>';
         }
 
         $html .= '
         <div class="card-cart">
-            <div class="card-img">
-                <img src="assets/img/dimensions.svg" alt="">
-            </div>
+            <div class="card-img"><img src="assets/img/dimensions.svg" alt=""></div>
             <div class="card-text">
                 <h3 class="name">' . $nom . ' <span style="font-size: 0.8em; color: #666;">(x' . $item['quantite'] . ')</span></h3>
                 ' . $optionsHtml . '
+                ' . $fileInfo . '
+                ' . $demandeInfo . '
                 <span class="price">' . $prixTotal . ' Ar</span>
             </div>
-            <div class="remove" data-index="' . $index . '" style="cursor:pointer;">
-                <img src="assets/img/close.svg" alt="">
-            </div>
+            <div class="remove" data-index="' . $index . '" style="cursor:pointer;"><img src="assets/img/close.svg" alt=""></div>
         </div>';
     }
     return $html;
 }
-// ----------------------------------------------
 
 $action = $_POST['action'] ?? '';
 
-// ACTION : AJOUTER AU PANIER (LOGIQUE MODIFIÉE ICI)
+// --- ACTION : AJOUTER ---
 if ($action === 'add') {
-    if (
-        !isset($_POST['produit_id']) ||
-        !isset($_POST['produit_nom']) ||
-        !isset($_POST['produit_prix']) ||
-        !isset($_POST['quantite'])
-    ) {
-        echo json_encode(['success' => false, 'message' => 'Données manquantes.']);
-        exit;
+    if (!isset($_POST['produit_id']) || !isset($_POST['quantite'])) {
+        echo json_encode(['success' => false, 'message' => 'Données manquantes.']); exit;
+    }
+
+    // 1. TRAITEMENT FICHIERS TEMPORAIRES
+    $cheminsTemporaires = [];
+    if (isset($_FILES['images']) && !empty($_FILES['images']['name'][0])) {
+        $tempDir = 'uploads/temp/'; 
+        if (!is_dir($tempDir)) mkdir($tempDir, 0755, true);
+
+        $totalFiles = count($_FILES['images']['name']);
+        for ($i = 0; $i < $totalFiles; $i++) {
+            $tmpName = $_FILES['images']['tmp_name'][$i];
+            $ext = pathinfo($_FILES['images']['name'][$i], PATHINFO_EXTENSION);
+            
+            // Nom unique temporaire
+            $newFileName = 'temp_' . time() . '_' . uniqid() . '.' . $ext;
+            $targetPath = $tempDir . $newFileName;
+
+            if (move_uploaded_file($tmpName, $targetPath)) {
+                $cheminsTemporaires[] = $targetPath;
+            }
+        }
     }
 
     $nouvelArticle = [
@@ -68,78 +87,63 @@ if ($action === 'add') {
         'prix_base' => floatval($_POST['produit_prix']),
         'quantite' => intval($_POST['quantite']),
         'options' => $_POST['options'] ?? [],
-        'demande' => $_POST['demande'] ?? ''
+        'demande' => $_POST['demande'] ?? '',
+        'images' => $cheminsTemporaires // On stocke le chemin TEMP
     ];
 
-    // --- DÉBUT DE LA LOGIQUE DE REGROUPEMENT ---
+    // 2. REGROUPEMENT (On ne regroupe PAS si fichiers ou demande texte différente)
     $produitTrouve = false;
+    foreach ($_SESSION['panier'] as $index => $art) {
+        $hasFiles = !empty($art['images']) || !empty($nouvelArticle['images']);
+        $memeDemande = ($art['demande'] ?? '') === ($nouvelArticle['demande'] ?? '');
 
-    // On parcourt le panier existant
-    foreach ($_SESSION['panier'] as $index => $articleExistant) {
-        // 1. Est-ce le même ID produit ?
-        if ($articleExistant['id'] == $nouvelArticle['id']) {
-
-            // 2. Est-ce que les options sont EXACTEMENT les mêmes ?
-            // (Ex: Si je prends des Flyers "Mats", c'est différent de Flyers "Brillants", donc on ne regroupe pas)
-            if (
-                $articleExistant['options'] == $nouvelArticle['options'] &&
-                ($articleExistant['demande'] ?? '') == ($nouvelArticle['demande'] ?? '')
-            ) {
-                // C'est exactement le même produit : on additionne la quantité
-                $_SESSION['panier'][$index]['quantite'] += $nouvelArticle['quantite'];
-                $produitTrouve = true;
-                break; // On arrête la boucle car on a trouvé
-            }
+        if ($art['id'] == $nouvelArticle['id'] && $art['options'] == $nouvelArticle['options'] && $memeDemande && !$hasFiles) {
+            $_SESSION['panier'][$index]['quantite'] += $nouvelArticle['quantite'];
+            $produitTrouve = true;
+            break;
         }
     }
 
-    // Si on n'a pas trouvé de produit identique, on l'ajoute comme nouvelle ligne
-    if (!$produitTrouve) {
-        $_SESSION['panier'][] = $nouvelArticle;
-    }
-    // --- FIN DE LA LOGIQUE DE REGROUPEMENT ---
+    if (!$produitTrouve) $_SESSION['panier'][] = $nouvelArticle;
 
     echo json_encode([
         'success' => true,
-        'message' => 'Panier mis à jour !',
-        'cart_count' => count($_SESSION['panier']), // Compte le nombre de lignes (pas la quantité totale)
-        'cart_html' => genererHtmlPanier($_SESSION['panier']),
-        'has_items' => true
+        'message' => 'Ajouté au panier',
+        'cart_count' => count($_SESSION['panier']),
+        'cart_html' => genererHtmlPanier($_SESSION['panier'])
     ]);
     exit;
 }
 
-// ACTION : SUPPRIMER UN ARTICLE
+// --- ACTION : SUPPRIMER (Nettoyage Temp) ---
 if ($action === 'delete') {
     $index = $_POST['index'] ?? -1;
-
-    if ($index >= 0 && isset($_SESSION['panier'][$index])) {
+    if (isset($_SESSION['panier'][$index])) {
+        // Suppression physique des fichiers temporaires
+        if (!empty($_SESSION['panier'][$index]['images'])) {
+            foreach ($_SESSION['panier'][$index]['images'] as $file) {
+                if (file_exists($file)) unlink($file);
+            }
+        }
         array_splice($_SESSION['panier'], $index, 1);
-
-        echo json_encode([
-            'success' => true,
-            'message' => 'Produit retiré.',
-            'cart_count' => count($_SESSION['panier']),
-            'cart_html' => genererHtmlPanier($_SESSION['panier']),
-            'has_items' => count($_SESSION['panier']) > 0
-        ]);
+        echo json_encode(['success' => true, 'cart_html' => genererHtmlPanier($_SESSION['panier']), 'cart_count' => count($_SESSION['panier'])]);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Article introuvable.']);
+        echo json_encode(['success' => false, 'message' => 'Erreur index']);
     }
     exit;
 }
 
-// ACTION : VIDER LE PANIER
+// --- ACTION : VIDER (Nettoyage Temp) ---
 if ($action === 'clear') {
+    foreach ($_SESSION['panier'] as $art) {
+        if (!empty($art['images'])) {
+            foreach ($art['images'] as $file) {
+                if (file_exists($file)) unlink($file);
+            }
+        }
+    }
     $_SESSION['panier'] = [];
-    echo json_encode([
-        'success' => true,
-        'cart_count' => 0,
-        'cart_html' => genererHtmlPanier([]),
-        'has_items' => false
-    ]);
+    echo json_encode(['success' => true, 'cart_html' => genererHtmlPanier([]), 'cart_count' => 0]);
     exit;
 }
-
-echo json_encode(['success' => false, 'message' => 'Action invalide.']);
 ?>

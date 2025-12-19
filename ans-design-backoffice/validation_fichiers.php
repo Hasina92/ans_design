@@ -4,7 +4,7 @@ $currentPage = 'validation';
 require_once 'includes/header.php';
 require_once 'config/db.php';
 
-// LOGIQUE : Traitement du formulaire (Cette partie n'a pas besoin de modification)
+// LOGIQUE : Traitement du formulaire (Inchangé)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['commande_id'])) {
     $commande_id = $_POST['commande_id'];
     $new_status = isset($_POST['valider']) ? 'En production' : 'Annulé';
@@ -30,157 +30,211 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['commande_id'])) {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$new_status, $datetime_estimee, $remarques_generales, $message_client, $commande_id]);
 
-    header("Location: validation_fichiers.php?status=updated");
+    header("Location: validation_fichiers.php?status=updated&commande_id=" . $commande_id);
     exit();
 }
 
-// --- MODIFICATIONS CI-DESSOUS ---
-
-// LOGIQUE : Récupère les détails d'une commande pour affichage (MODIFIÉ)
+// LOGIQUE : Récupère les détails d'une commande (ADAPTÉ)
 $commande_details = null;
+// Tableau pour stocker tous les articles de la commande (car une commande peut avoir plusieurs lignes)
+$articles_commande = []; 
+
 if (isset($_GET['commande_id'])) {
+    // 1. Récupérer les infos générales de la commande + client
     $stmt = $pdo->prepare("
         SELECT 
             c.*, 
-            u.nom, u.prenom,  -- On récupère depuis la table users (u)
-            ca.description as article_desc, 
-            cf.chemin_fichier, 
-            cf.nom_fichier AS nom_fichier_original
+            u.nom, u.prenom
         FROM commandes c
-        JOIN users u ON c.client_id = u.id -- MODIFICATION : Jointure sur users
-        LEFT JOIN commande_articles ca ON c.id = ca.commande_id
-        LEFT JOIN commande_fichiers cf ON c.id = cf.commande_id
+        JOIN users u ON c.client_id = u.id
         WHERE c.id = ?
-        GROUP BY c.id -- S'assure d'avoir une seule ligne même si plusieurs articles/fichiers
     ");
     $stmt->execute([$_GET['commande_id']]);
     $commande_details = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // 2. Récupérer TOUS les articles de cette commande
+    if ($commande_details) {
+        $stmt_articles = $pdo->prepare("
+            SELECT description, quantite, donnees_personnalisees
+            FROM commande_articles
+            WHERE commande_id = ?
+        ");
+        $stmt_articles->execute([$_GET['commande_id']]);
+        $articles_commande = $stmt_articles->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
-// LOGIQUE : Récupère la liste des commandes en attente (MODIFIÉ)
+// LOGIQUE : Récupère la liste des commandes en attente (ADAPTÉ)
+// On sélectionne juste la commande, pas besoin de jointure complexe ici pour l'affichage liste
 $stmt = $pdo->prepare("
-    SELECT c.id, u.nom, u.prenom, ca.description
+    SELECT c.id, u.nom, u.prenom
     FROM commandes c
-    JOIN users u ON c.client_id = u.id -- MODIFICATION : Jointure sur users
-    LEFT JOIN commande_articles ca ON c.id = ca.commande_id
-    WHERE c.statut = 'En validation'
-    GROUP BY c.id -- S'assure que chaque commande n'apparaît qu'une fois dans la liste
+    JOIN users u ON c.client_id = u.id
+    WHERE c.statut = 'En validation' OR c.statut = 'En attente devis'
+    ORDER BY c.date_commande DESC
 ");
 $stmt->execute();
 $commandes_a_valider = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!-- La partie HTML n'a presque pas besoin de changements, sauf une petite correction -->
-
 <div class="page-header">
-    <h1>Validation du commande du client</h1>
+    <h1>Validation commande du client</h1>
 </div>
 
 <div class="main-panels">
+    <!-- PANNEAU GAUCHE : LISTE -->
     <div class="panel-validation">
         <div class="panel-header">
             <h3>Commandes à Valider (<?php echo count($commandes_a_valider); ?>)</h3>
         </div>
         <div class="panel-body">
-    <?php if (empty($commandes_a_valider)): ?>
-        <p style="padding: 15px; color: #555;">Aucune commande en attente de validation.</p>
-    <?php else: ?>
-        <?php foreach ($commandes_a_valider as $cmd): ?>
-            <a href="validation_fichiers.php?commande_id=<?php echo $cmd['id']; ?>" 
-               <?php echo (isset($_GET['commande_id']) && $_GET['commande_id'] == $cmd['id']) ? 'style="background-color:#fcf3cf;"' : ''; ?>>
-                <strong>#<?php echo htmlspecialchars($cmd['id']); ?>
-                    <?php echo htmlspecialchars($cmd['prenom'] . ' ' . $cmd['nom']); ?></strong>
-                <br>
-                <small><?php echo htmlspecialchars($cmd['description']); ?></small>
-            </a>
-        <?php endforeach; ?>
-    <?php endif; ?>
-</div>
+            <?php if (empty($commandes_a_valider)): ?>
+                <p style="padding: 15px; color: #555;">Aucune commande en attente.</p>
+            <?php else: ?>
+                <?php foreach ($commandes_a_valider as $cmd): ?>
+                    <a href="validation_fichiers.php?commande_id=<?php echo $cmd['id']; ?>" 
+                       class="commande-item <?php echo (isset($_GET['commande_id']) && $_GET['commande_id'] == $cmd['id']) ? 'active' : ''; ?>"
+                       style="display:block; padding:10px; border-bottom:1px solid #eee; text-decoration:none; color:#333; <?php echo (isset($_GET['commande_id']) && $_GET['commande_id'] == $cmd['id']) ? 'background-color:#fcf3cf;' : ''; ?>">
+                        <strong>#<?php echo htmlspecialchars($cmd['id']); ?></strong><br>
+                        <?php echo htmlspecialchars($cmd['prenom'] . ' ' . $cmd['nom']); ?>
+                    </a>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </div>
+
+    <!-- PANNEAU DROIT : DÉTAILS -->
     <div class="panel-commande">
         <?php if ($commande_details): ?>
             <div class="panel-header" style="display:flex; justify-content:space-between; align-items:center;">
                 <div>
-                    <h3>Commande #<?php echo htmlspecialchars($commande_details['id']); ?></h3>
-                    <!-- PETITE CORRECTION HTML : Le type de client n'existe plus de la même manière, on peut le retirer -->
+                    <h3>Commande #<?php echo htmlspecialchars($commande_details['numero_commande']); ?></h3>
                     <p class="yellow">
                         <?php echo htmlspecialchars($commande_details['prenom'] . ' ' . $commande_details['nom']); ?>
                     </p>
-                    <p class="gray"><?php echo htmlspecialchars($commande_details['article_desc']); ?></p>
+                    <p class="gray">Statut actuel: <?php echo htmlspecialchars($commande_details['statut']); ?></p>
                 </div>
                 <div class="number">
                     <?php echo number_format($commande_details['total_ttc'], 0, ',', ' '); ?> AR
                 </div>
             </div>
 
-            <!-- Le reste de votre code HTML est parfait et n'a pas besoin d'être modifié -->
-
-            <div class="panel-body" style="display: flex;">
-                <div style="text-align:center; padding:20px; border:1px solid #eee; border-radius:8px; margin-bottom:20px;">
-                    <?php if (!empty($commande_details['chemin_fichier'])): ?>
-                        <img src="<?php echo htmlspecialchars($commande_details['chemin_fichier']); ?>" alt="Aperçu fichier"
-                            style="max-width:300px; max-height:300px; margin-bottom: 20px; display: block; margin-left: auto; margin-right: auto;">
-                        <a href="<?php echo htmlspecialchars($commande_details['chemin_fichier']); ?>"
-                            download="<?php echo htmlspecialchars($commande_details['nom_fichier_original'] ?? 'fichier-client'); ?>"
-                            style="display:inline-block; padding: 12px 25px; background-color: #8E44AD; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; cursor: pointer; border: none;">
-                            ☑ Télécharger le fichier
-                        </a>
+            <div class="panel-body" style="display: flex; gap: 20px;">
+                
+                <!-- COLONNE GAUCHE : VISUALISATION DES FICHIERS -->
+                <div style="flex: 1; min-width: 300px;">
+                    <h4 style="margin-top:0;">Articles & Fichiers</h4>
+                    
+                    <?php if (empty($articles_commande)): ?>
+                        <p>Aucun article trouvé pour cette commande.</p>
                     <?php else: ?>
-                        <p>Aucun fichier associé.</p>
+                        <?php foreach ($articles_commande as $article): ?>
+                            <?php 
+                                // Décodage JSON
+                                $data = json_decode($article['donnees_personnalisees'] ?? '{}', true);
+                                $msg_client = $data['message_client'] ?? '';
+                                $fichiers = $data['fichiers'] ?? [];
+                                $path_prefix = '../'; // Adaptez selon l'emplacement de votre fichier PHP (ex: '../' si dans un sous-dossier)
+                            ?>
+                            
+                            <div class="article-block" style="border:1px solid #ddd; padding:15px; border-radius:8px; margin-bottom:15px; background:#fff;">
+                                <h5 style="margin:0 0 10px 0; color:#333; border-bottom:1px solid #eee; padding-bottom:5px;">
+                                    <?php echo htmlspecialchars($article['description']); ?> (x<?php echo $article['quantite']; ?>)
+                                </h5>
+
+                                <!-- Note Client Spécifique -->
+                                <?php if (!empty($msg_client)): ?>
+                                    <div style="background:#f9f9f9; padding:10px; border-left:3px solid #8E44AD; margin-bottom:10px; font-size:0.9em;">
+                                        <strong>Note client :</strong> <?php echo nl2br(htmlspecialchars($msg_client)); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <!-- Fichiers -->
+                                <?php if (!empty($fichiers)): ?>
+                                    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                                        <?php foreach ($fichiers as $chemin): ?>
+                                            <?php 
+                                                $nom_fichier = basename($chemin);
+                                                $chemin_reel = $path_prefix . $chemin;
+                                                $ext = strtolower(pathinfo($nom_fichier, PATHINFO_EXTENSION));
+                                                $is_img = in_array($ext, ['jpg', 'jpeg', 'png', 'gif', 'webp']);
+                                            ?>
+                                            <div style="text-align:center; width:100px;">
+                                                <a href="<?php echo htmlspecialchars($chemin_reel); ?>" target="_blank">
+                                                    <?php if ($is_img): ?>
+                                                        <img src="<?php echo htmlspecialchars($chemin_reel); ?>" style="width:100px; height:100px; object-fit:cover; border:1px solid #ccc; border-radius:4px;">
+                                                    <?php else: ?>
+                                                        <div style="width:100px; height:100px; background:#eee; display:flex; align-items:center; justify-content:center; border:1px solid #ccc;">📎</div>
+                                                    <?php endif; ?>
+                                                </a>
+                                                <a href="<?php echo htmlspecialchars($chemin_reel); ?>" download="<?php echo htmlspecialchars($nom_fichier); ?>" style="display:block; font-size:11px; margin-top:5px; text-decoration:none; color:#007bff;">⬇ Télécharger</a>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    </div>
+                                <?php else: ?>
+                                    <p style="color:#999; font-style:italic; font-size:0.9em;">Aucun fichier joint.</p>
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-                <form method="POST">
-                    <input type="hidden" name="commande_id" value="<?php echo $commande_details['id']; ?>">
-                    <h4>Message de Retour Client</h4>
-                    <div class="message-retour-client">
-                        <div class="flex">
-                            <div style="flex: 1;">
-                                <label for="date_realisation">Date de Réalisation
-                                    Estimée</label>
-                                <?php $date_value = $commande_details['date_realisation_estimee'] ? date('Y-m-d', strtotime($commande_details['date_realisation_estimee'])) : ''; ?>
-                                <input type="date" id="date_realisation" name="date_realisation"
-                                    value="<?php echo $date_value; ?>"
-                                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                            </div>
-                            <div style="flex: 1;">
-                                <label for="heure_realisation">Heure</label>
-                                <?php $heure_value = $commande_details['date_realisation_estimee'] ? date('H:i', strtotime($commande_details['date_realisation_estimee'])) : ''; ?>
-                                <input type="time" id="heure_realisation" name="heure_realisation"
-                                    value="<?php echo $heure_value; ?>"
-                                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
-                            </div>
-                        </div>
-                        <div class="remarque-clients">
-                            <label for="remarques_generales">Remarques Générales sur la
-                                Commande</label>
-                            <textarea id="remarques_generales" name="remarques_generales" rows="4"
-                                placeholder="Notes générales pour la production (interne)..."><?php echo htmlspecialchars($commande_details['notes_production'] ?? ''); ?></textarea>
-                        </div>
-                        <div class="validation-clients">
-                            <label for="message_client">Message
-                                de Validation/Rectifications pour le Client</label>
-                            <textarea id="message_client" name="message_client" rows="4"
-                                placeholder="Message visible par le client..."><?php echo htmlspecialchars($commande_details['notes_client'] ?? ''); ?></textarea>
-                        </div>
-                        <?php if ($commande_details['statut'] == 'En validation'): ?>
-                            <div class="containair-btn">
-                                <button type="submit" name="rejeter" class="btn-rejeter">Rejeter</button>
-                                <button type="submit" name="valider" class="btn-valider">Valider</button>
-                            </div>
-                        <?php else: ?>
-                            <p style="text-align:right; font-weight:bold;">Cette commande a déjà été traitée (Statut:
-                                <?php echo htmlspecialchars($commande_details['statut']); ?>).
-                            </p>
-                        <?php endif; ?>
-                </form>
-            </div>
-        </div>
-    </div>
 
-<?php else: ?>
-    <p style="text-align:center; padding:50px;">Sélectionnez une commande à gauche pour voir les détails.</p>
-<?php endif; ?>
-</div>
+                <!-- COLONNE DROITE : FORMULAIRE -->
+                <div style="flex: 1;">
+                    <form method="POST">
+                        <input type="hidden" name="commande_id" value="<?php echo $commande_details['id']; ?>">
+                        
+                        <h4 style="margin-top:0;">Traitement Commande</h4>
+                        
+                        <div class="message-retour-client">
+                            <div class="flex" style="display:flex; gap:10px; margin-bottom:15px;">
+                                <div style="flex: 1;">
+                                    <label for="date_realisation">Date de Réalisation Estimée</label>
+                                    <?php $date_value = $commande_details['date_realisation_estimee'] ? date('Y-m-d', strtotime($commande_details['date_realisation_estimee'])) : ''; ?>
+                                    <input type="date" id="date_realisation" name="date_realisation" value="<?php echo $date_value; ?>" style="width: 100%; padding: 8px;">
+                                </div>
+                                <div style="flex: 1;">
+                                    <label for="heure_realisation">Heure</label>
+                                    <?php $heure_value = $commande_details['date_realisation_estimee'] ? date('H:i', strtotime($commande_details['date_realisation_estimee'])) : ''; ?>
+                                    <input type="time" id="heure_realisation" name="heure_realisation" value="<?php echo $heure_value; ?>" style="width: 100%; padding: 8px;">
+                                </div>
+                            </div>
+                            
+                            <div class="remarque-clients" style="margin-bottom:15px;">
+                                <label for="remarques_generales">Remarques Internes (Production)</label>
+                                <textarea id="remarques_generales" name="remarques_generales" rows="4" style="width:100%;" placeholder="Notes pour l'équipe..."><?php echo htmlspecialchars($commande_details['notes_production'] ?? ''); ?></textarea>
+                            </div>
+                            
+                            <div class="validation-clients" style="margin-bottom:20px;">
+                                <label for="message_client">Message pour le Client</label>
+                                <textarea id="message_client" name="message_client" rows="4" style="width:100%;" placeholder="Visible par le client sur son espace..."><?php echo htmlspecialchars($commande_details['notes_client'] ?? ''); ?></textarea>
+                            </div>
+
+                            <?php if ($commande_details['statut'] == 'En validation' || $commande_details['statut'] == 'En attente devis'): ?>
+                                <div class="containair-btn" style="display:flex; justify-content:space-between;">
+                                    <button type="submit" name="rejeter" class="btn-rejeter" style="background:#e74c3c; color:white; border:none; padding:10px 20px; cursor:pointer; border-radius:4px;">Rejeter / Annuler</button>
+                                    <button type="submit" name="valider" class="btn-valider" style="background:#2ecc71; color:white; border:none; padding:10px 20px; cursor:pointer; border-radius:4px;">Valider & Produire</button>
+                                </div>
+                            <?php else: ?>
+                                <div style="padding:10px; background:#e8f8f5; color:#27ae60; text-align:center; border-radius:4px;">
+                                    <strong>Commande déjà traitée</strong><br>
+                                    Statut actuel : <?php echo htmlspecialchars($commande_details['statut']); ?>
+                                </div>
+                                <div style="margin-top:10px; text-align:right;">
+                                    <button type="submit" name="update" style="background:#3498db; color:white; border:none; padding:8px 15px; cursor:pointer; border-radius:4px;">Mettre à jour les notes</button>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        <?php else: ?>
+            <div style="text-align:center; padding:50px; color:#777;">
+                <p>Sélectionnez une commande dans la liste de gauche pour afficher les détails et les fichiers.</p>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
 
 <?php require_once 'includes/footer.php'; ?>

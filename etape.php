@@ -136,7 +136,7 @@ include 'header.php';
                     </div>
                     <div class="demande-spec">
                         <label for="demande">Votre demande personnalisée</label>
-                        <textarea name="demande" id="" placeholder="Ex: Papier cartonné irisé 280g..."></textarea>
+                        <textarea name="demande" id="demande_text" placeholder="Ex: Papier cartonné irisé 280g..."></textarea>
                     </div>
                 </div>
                 <div class="preview-tab">

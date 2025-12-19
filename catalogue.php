@@ -239,17 +239,75 @@ include 'header.php';
 
                     <!-- Le lien sera mis à jour : etape.php?id=X -->
                     <a href="" class="btn-card popup-produit-lien">Configurer ce produit</a>
-                    <div class="gallery-product">
-                        <img src="" alt="">
-                        <img src="" alt="">
-                        <img src="" alt="">
-                    </div>
+                    <div class="gallery-product"></div>
                 </div>
 
             </div>
         </div>
     </section>
 </main>
+
+<script>
+document.querySelectorAll('.open-popup-detail-catalogue').forEach(btn => {
+
+    btn.addEventListener('click', async () => {
+
+        const popup = document.querySelector('.pop-up-detail-catalogue');
+
+        const id = btn.dataset.id;
+        const nom = btn.dataset.nom;
+        const description = btn.dataset.description;
+        const image = btn.dataset.image;
+
+        // Infos principales
+        popup.querySelector('.popup-produit-nom').textContent = nom;
+        popup.querySelector('.popup-produit-description').textContent = description;
+        popup.querySelector('.popup-produit-image').src = image;
+        popup.querySelector('.popup-produit-lien').href = 'etape.php?id=' + id;
+
+        // Galerie
+        const gallery = popup.querySelector('.gallery-product');
+        gallery.innerHTML = '<p>Chargement...</p>';
+
+        try {
+            const response = await fetch('get_product_gallery.php?id=' + id);
+            const images = await response.json();
+
+            gallery.innerHTML = '';
+
+            if (images.length === 0) {
+                gallery.innerHTML = '<p>Aucune image supplémentaire</p>';
+            } else {
+                images.forEach(src => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = nom;
+                    img.style.cursor = 'pointer';
+
+                    // clic = image principale
+                    img.addEventListener('click', () => {
+                        popup.querySelector('.popup-produit-image').src = src;
+                    });
+
+                    gallery.appendChild(img);
+                });
+            }
+
+        } catch (e) {
+            gallery.innerHTML = '<p>Erreur chargement galerie</p>';
+        }
+
+        popup.classList.add('active');
+    });
+});
+
+// fermeture popup
+document.querySelector('.close-popup-detail-catalogue')
+    .addEventListener('click', () => {
+        document.querySelector('.pop-up-detail-catalogue').classList.remove('active');
+    });
+</script>
+
 <!-- FOOTER -->
 <?php
 // On inclut le footer

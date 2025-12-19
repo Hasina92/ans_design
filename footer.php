@@ -187,75 +187,90 @@ require_once 'init_user.php';
 
         // --- 4. AJOUT AU PANIER (LA CORRECTION EST ICI) ---
 
-        // On utilise .off() pour nettoyer les anciens clics et on ajoute un drapeau 'processing'
         $('#open-popup-ajout-panier').off('click').on('click', function (e) {
             e.preventDefault();
-
-            // IMPORTANT : Empêche main.js ou d'autres scripts de s'exécuter en même temps sur ce clic
             e.stopImmediatePropagation();
 
-            // Si une requête est déjà en cours, on ne fait rien (Anti-Double Clic)
+            // Anti-Double Clic
             if ($(this).data('processing')) return;
+            $(this).data('processing', true).css('opacity', '0.5');
 
-            // On verrouille le bouton
-            $(this).data('processing', true);
-            $(this).css('opacity', '0.5'); // Optionnel : effet visuel
-
-            // Récupération des données
+            // 1. Récupération des données basiques
             const sectionProduit = $('#etape-page');
             const produitId = sectionProduit.data('produit-id');
             const produitNom = sectionProduit.data('produit-nom');
             const produitPrix = sectionProduit.data('produit-prix');
             const quantite = $('#etape_quantite input[name="quantite"]').val();
 
-            // Validation Quantité
+            // 2. Validation
             if (!quantite || parseInt(quantite) < 1) {
                 alert('Veuillez spécifier une quantité valide.');
-                $(this).data('processing', false).css('opacity', '1'); // On déverrouille
+                $(this).data('processing', false).css('opacity', '1');
                 return;
             }
 
-            // Validation Options
+            // Validation des options (Vérifie si votre variable selectionUtilisateur est remplie)
             const totalCaracteristiques = $('.config-tab .tabscontent-etape[data-caracteristique-nom]').length;
-            if (Object.keys(selectionUtilisateur).length < totalCaracteristiques) {
+            if (typeof selectionUtilisateur === 'undefined' || Object.keys(selectionUtilisateur).length < totalCaracteristiques) {
                 alert('Veuillez sélectionner une option pour chaque caractéristique.');
-                $(this).data('processing', false).css('opacity', '1'); // On déverrouille
+                $(this).data('processing', false).css('opacity', '1');
                 return;
             }
 
-            // Envoi AJAX
-            var $btn = $(this); // Référence au bouton pour l'utiliser dans ajax
+            // --- 3. PRÉPARATION DE L'ENVOI (FormData) ---
+            var formData = new FormData();
+
+            // Données classiques
+            formData.append('action', 'add');
+            formData.append('produit_id', produitId);
+            formData.append('produit_nom', produitNom);
+            formData.append('produit_prix', produitPrix);
+            formData.append('quantite', quantite);
+            
+            // Demande textuelle
+            formData.append('demande', $('#etape-page textarea[name="demande"]').val() || '');
+
+            // Options (Transformation de l'objet JS en champs POST)
+            for (var key in selectionUtilisateur) {
+                if (selectionUtilisateur.hasOwnProperty(key)) {
+                    formData.append('options[' + key + ']', selectionUtilisateur[key]);
+                }
+            }
+
+            // Fichiers (Images)
+            var fileInput = $('#images')[0];
+            if (fileInput && fileInput.files.length > 0) {
+                for (var i = 0; i < fileInput.files.length; i++) {
+                    formData.append('images[]', fileInput.files[i]);
+                }
+            }
+
+            // --- 4. ENVOI AJAX ---
+            var $btn = $(this);
 
             $.ajax({
                 url: 'panier_action.php',
                 method: 'POST',
-                data: {
-                    action: 'add',
-                    produit_id: produitId,
-                    produit_nom: produitNom,
-                    produit_prix: produitPrix,
-                    quantite: quantite,
-                    options: selectionUtilisateur,
-                    demande: $('#etape-page textarea[name="demande"]').val() || ''
-                },
+                data: formData,        // L'objet contenant les fichiers
+                processData: false,    // IMPORTANT : Ne pas transformer en string
+                contentType: false,    // IMPORTANT : Laisser le navigateur gérer le header
                 dataType: 'json',
                 success: function (response) {
                     if (response.success) {
-                        // On ouvre la popup seulement maintenant que c'est confirmé
                         $('.pop-up-ajout-panier').addClass('active').fadeIn();
-
-                        // On met à jour l'interface
-                        updateCartUI(response);
+                        // Mettre à jour le header si vous avez une fonction pour ça
+                        // updateCartUI(response); 
                     } else {
                         alert(response.message);
                     }
                 },
                 error: function () {
-                    alert('Une erreur est survenue lors de la communication avec le serveur.');
+                    alert('Erreur technique lors de l\'ajout au panier.');
                 },
                 complete: function () {
-                    // QUOI QU'IL ARRIVE (Succès ou Erreur), on déverrouille le bouton
                     $btn.data('processing', false).css('opacity', '1');
+                    // Optionnel : Vider le champ fichier après succès
+                    $('#images').val('');
                 }
             });
         });

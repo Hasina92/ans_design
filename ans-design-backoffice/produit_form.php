@@ -9,6 +9,7 @@ $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $produit = null;
 $caracteristiques = [];
+$galerie_images = [];
 
 // LOGIQUE : Si un formulaire est soumis (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -94,18 +95,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // -------------------
         // 4. Galerie d'images
         // -------------------
-        if (isset($_FILES['images'])) {
-            $uploadsDir = __DIR__ . '/../uploads/produits/';
-            if (!is_dir($uploadsDir)) mkdir($uploadsDir, 0777, true);
+        if (!empty($_FILES['images']['name'][0])) {
+
+            // Dossier galerie
+            $galleryDir = __DIR__ . '/../uploads/galerie/';
+            if (!is_dir($galleryDir)) {
+                mkdir($galleryDir, 0777, true);
+            }
 
             foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
                 if (!empty($tmp_name)) {
-                    $filename = uniqid('gal_') . '_' . basename($_FILES['images']['name'][$key]);
-                    $targetFile = $uploadsDir . $filename;
+
+                    $ext = pathinfo($_FILES['images']['name'][$key], PATHINFO_EXTENSION);
+                    $filename = uniqid('gal_') . '.' . $ext;
+
+                    // Chemin serveur
+                    $targetFile = $galleryDir . $filename;
+
+                    // Chemin web (à stocker en BDD)
+                    $dbPath = 'uploads/galerie/' . $filename;
 
                     if (move_uploaded_file($tmp_name, $targetFile)) {
-                        $stmt = $pdo->prepare("INSERT INTO produit_images (produit_id, image_path) VALUES (?, ?)");
-                        $stmt->execute([$produit_id, $targetFile]);
+                        $stmt = $pdo->prepare(
+                            "INSERT INTO produit_images (produit_id, image_path) VALUES (?, ?)"
+                        );
+                        $stmt->execute([$produit_id, $dbPath]);
                     }
                 }
             }
@@ -140,6 +154,17 @@ if (isset($_GET['id'])) {
         $carac['options'] = implode(', ', $options_db); // Convertir en chaîne pour le textarea
         $caracteristiques[] = $carac;
     }
+    // =========================
+    // CHARGER LES IMAGES GALERIE
+    // =========================
+    $stmt_imgs = $pdo->prepare("
+        SELECT id, image_path
+        FROM produit_images
+        WHERE produit_id = ?
+    ");
+    $stmt_imgs->execute([$produit_id]);
+    $galerie_images = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
+
 }
 ?>
 
@@ -198,6 +223,37 @@ if (isset($_GET['id'])) {
     <label>Ajouter des images :</label>
     <input type="file" name="images[]" multiple>
     </div>
+    <?php if (!empty($galerie_images)): ?>
+        <div style="margin-top: 15px;">
+            <label>Galeries actuelles :</label>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <?php foreach ($galerie_images as $img): ?>
+                    <div style="position:relative;">
+                        <img src="../<?= htmlspecialchars($img['image_path']) ?>"
+                            style="width:90px; height:90px; object-fit:cover; border-radius:8px;">
+
+                        <!-- bouton suppression (optionnel) -->
+                        <button type="button"
+                            class="delete-galerie-image"
+                            data-id="<?= $img['id'] ?>"
+                            style="
+                                position:absolute;
+                                top:-6px;
+                                right:-6px;
+                                background:#e74c3c;
+                                color:#fff;
+                                border:none;
+                                border-radius:50%;
+                                width:22px;
+                                height:22px;
+                                cursor:pointer;
+                            ">×</button>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
     <div style="margin-top: 15px;">
         <input type="checkbox" id="actif" name="actif" value="1" <?php echo (isset($produit) && $produit['actif']) || !isset($produit) ? 'checked' : ''; ?>>
         <label for="actif">Produit actif (visible sur le site)</label>
@@ -238,5 +294,25 @@ if (isset($_GET['id'])) {
         <button type="button" class="remove-caracteristique" style="background: #E74C3C; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 5px;">X</button>
     </div>
 </div>
+
+<script>
+document.querySelectorAll('.delete-galerie-image').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        if (!confirm('Supprimer cette image ?')) return;
+
+        const id = btn.dataset.id;
+
+        const formData = new FormData();
+        formData.append('id', id);
+
+        await fetch('ajax/delete_galerie_image.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        btn.parentElement.remove();
+    });
+});
+</script>
 
 <?php require_once 'includes/footer.php'; ?>
