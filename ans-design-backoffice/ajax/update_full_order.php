@@ -35,10 +35,10 @@ try {
                 notes_sav = ?,
                 publier_avis = ?
             WHERE id = ?";
-            
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
-        $statut, 
+        $statut,
         $avis_client,
         $notes_sav,
         $publier_avis,

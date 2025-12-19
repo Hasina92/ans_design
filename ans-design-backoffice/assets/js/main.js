@@ -144,8 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     </div>
 </div>
-
-
                                             <div class="timeline-item">
                                                 <div class="timeline-icon"></div>
                                                 <div class="timeline-content">

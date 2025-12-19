@@ -86,7 +86,7 @@ include 'header.php';
                             <!-- Méthode de paiement -->
                             <div class="form-group">
                                 <label for="payment">Méthode de paiement <span>*</span></label>
-                                <select id="payment" name="payment" required>
+                                <select id="payment" name="payment">
                                     <option value="">-- Choisir une méthode --</option>
                                     <option value="mobile-money">Mobile Money (Mvola, Orange Money...)</option>
                                     <option value="livraison">Paiement à la livraison</option>

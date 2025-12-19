@@ -633,6 +633,7 @@
 
     .container-pack {
       @extend .grid-25;
+      @include align-items(flex-start);
       margin-top: 50px;
       gap: 30px;
       width: 100%;
@@ -654,6 +655,7 @@
         position: relative;
         overflow: hidden;
         z-index: 1;
+        min-height: 391px;
         &::after {
           content: "";
           position: absolute;
@@ -689,13 +691,24 @@
         &:hover::after {
           opacity: 1;
         }
+
+        .prix {
+          color: $dark;
+          font-family: "gilroy-extrabold";
+          font-size: 20px;
+        }
         .text-pack {
           @extend %flex;
           @include flex-direction(column);
           gap: 20px;
+          img {
+            width: 100%;
+            height: 70px;
+            object-fit: contain;
+          }
           h3 {
-            font-family: "gilroy-regular";
-            color: $gray;
+            color: $dark;
+            font-family: "gilroy-extrabold";
 
             b {
               font-family: "gilroy-extrabold";
@@ -704,15 +717,8 @@
             }
           }
 
-          .prix {
-            color: $dark;
-            font-family: "gilroy-extrabold";
-          }
-
           ul.description-pack {
-            // @extend %flex;
             @include flex-direction(column);
-            // gap: 10px;
             padding: 0 30px;
             list-style: none;
             margin-bottom: 8px;
@@ -731,8 +737,13 @@
               font-family: "gilroy-regular";
               color: $gray;
               margin-bottom: 10px;
+              position: relative;
+              padding-left: 20px;
               &::before {
                 content: "✔";
+                position: absolute;
+                top: 0;
+                left: 0;
                 color: #4caf50;
                 font-weight: bold;
                 margin-right: 8px;
@@ -824,13 +835,30 @@
       }
       .tabscontent-realisations {
         @extend .grid-50;
-        gap: 30px;
+        gap: 20px;
         overflow: hidden;
         @include breakpoint(xs) {
           @include grid-template-columns(1fr);
         }
       }
+      /* Limiter à 2 lignes */
+      .tabscontent-realisations .card-realisation:nth-child(n + 5) {
+        display: none;
+      }
 
+      /* Bouton Voir plus */
+      .voir-plus-btn {
+        grid-column: 1 / -1;
+        justify-self: center;
+        padding: 20px 30px;
+        @include border-radius(30px);
+        width: fit-content;
+        background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
+        color: $white;
+        border: none;
+        font-size: 16px;
+        font-family: "gilroy-bold";
+      }
       .card-realisation {
         @extend .flex-sb;
         @include align-items(stretch);
@@ -1084,7 +1112,7 @@
         }
       }
       .img_technologie {
-        width: 300px;
+        min-width: 300px;
         height: 300px;
         @include border-radius(30px);
         overflow: hidden;
@@ -1530,7 +1558,7 @@
         }
       }
       li {
-        padding: 20px 30px;
+        padding: 20px 40px;
         position: relative;
         z-index: 1;
         a {

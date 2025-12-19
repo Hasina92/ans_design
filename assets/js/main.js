@@ -677,6 +677,7 @@ document.addEventListener("click", function (e) {
   }
 });
 
+//VOIR PLUS PACK LIST
 document.querySelectorAll(".voir-plus").forEach((btn) => {
   btn.addEventListener("click", function () {
     const list = this.previousElementSibling;
@@ -685,6 +686,17 @@ document.querySelectorAll(".voir-plus").forEach((btn) => {
     this.textContent = list.classList.contains("open")
       ? "Voir moins"
       : "Voir plus";
+  });
+});
+
+//VOIR PLUS REALISATION
+document.querySelectorAll(".voir-plus-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const container = btn.closest(".tabscontent-realisations");
+    container.querySelectorAll(".card-realisation").forEach((card) => {
+      card.style.display = "flex";
+    });
+    btn.style.display = "none";
   });
 });
 

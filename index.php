@@ -209,9 +209,27 @@ include 'header.php';
                             <?php endif; ?>
                         </div>
                         <div class="note">
-                            <?php for ($i = 1; $i <= 5; $i++): ?>
-                                <img src="assets/img/star-<?= $i <= $t['note'] ? 'actif' : 'inactif' ?>.svg" alt="">
+                            <?php
+                            // SVG pour chaque note
+                            $stars_active = [
+                                1 => 'assets/img/star_1.svg',
+                                2 => 'assets/img/star_2.svg',
+                                3 => 'assets/img/star_3.svg',
+                                4 => 'assets/img/star_4.svg',
+                                5 => 'assets/img/star_5.svg',
+                            ];
+
+                            // SVG pour étoile inactive
+                            $star_inactive = 'assets/img/star-inactif.svg';
+
+                            $note = $t['note'] ?? 0; // note actuelle (1 à 5)
+                        
+                            for ($i = 1; $i <= 5; $i++):
+                                $src = $i <= $note ? $stars_active[$note] : $star_inactive;
+                                ?>
+                                <img src="<?= $src ?>" alt="Étoile <?= $i ?>">
                             <?php endfor; ?>
+
                         </div>
                         <p class="avis"><?= nl2br(htmlspecialchars($t['avis'])) ?></p>
                         <span class="nom"><?= htmlspecialchars($t['prenom']) ?></span>
@@ -333,8 +351,8 @@ include 'header.php';
             <div class="container-pack">
                 <div class="card-pack">
                     <div class="text-pack">
-                        <h3>PACK SANTATRA <br><b>Starter</b></h3>
-                        <span class="prix">150 000 Ar</span>
+                        <h3>PACK</h3>
+                        <img src="assets/img/pack_santatra.svg" alt="">
                         <ul class="description-pack">
                             <li>Logo simple (1–2 propositions, 1 retouche)</li>
                             <li>Carte de visite</li>
@@ -343,6 +361,7 @@ include 'header.php';
                         </ul>
                         <button class="voir-plus">Voir plus</button>
                     </div>
+                    <span class="prix">150 000 Ar</span>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
                         <span class="reduction">-20%</span>
@@ -350,8 +369,8 @@ include 'header.php';
                 </div>
                 <div class="card-pack">
                     <div class="text-pack">
-                        <h3>PACK SAHY<br><b>Booster / Startup</b></h3>
-                        <span class="prix">350 000 Ar</span>
+                        <h3>PACK</h3>
+                        <img src="assets/img/pack_sahy.svg" alt="">
                         <ul class="description-pack">
                             <li>Logo premium (2–3 propositions, 2–3 retouches)</li>
                             <li>Mini charte graphique (couleurs, typographies, règles d’usage)</li>
@@ -361,6 +380,7 @@ include 'header.php';
                         </ul>
                         <button class="voir-plus">Voir plus</button>
                     </div>
+                    <span class="prix">350 000 Ar</span>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
                         <span class="reduction">-20%</span>
@@ -368,8 +388,8 @@ include 'header.php';
                 </div>
                 <div class="card-pack">
                     <div class="text-pack">
-                        <h3>PACK SIDINA<br><b>Business / PME</b></h3>
-                        <span class="prix">1 200 000 Ar</span>
+                        <h3>PACK</h3>
+                        <img src="assets/img/pack_sidina.svg" alt="">
                         <ul class="description-pack">
                             <li>Logo complet + déclinaisons</li>
                             <li>Charte graphique détaillée</li>
@@ -380,16 +400,16 @@ include 'header.php';
                         </ul>
                         <button class="voir-plus">Voir plus</button>
                     </div>
+                    <span class="prix">1 200 000 Ar</span>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
                         <span class="reduction">-20%</span>
                     </div>
                 </div>
                 <div class="card-pack">
-                    <a href="" class="link-box"></a>
                     <div class="text-pack">
-                        <h3>PACK SANGANY<br><b>Elite / Corporate</b></h3>
-                        <span class="prix">3 500 000 Ar</span>
+                        <h3>PACK</h3>
+                        <img src="assets/img/pack_sangany.svg" alt="">
                         <ul class="description-pack">
                             <li>Audit & stratégie de marque</li>
                             <li>Refonte totale ou création d’identité</li>
@@ -402,6 +422,7 @@ include 'header.php';
                         </ul>
                         <button class="voir-plus">Voir plus</button>
                     </div>
+                    <span class="prix">3 500 000 Ar</span>
                     <div class="bouton-pack">
                         <a href="" class="btn-card">Devis</a>
                         <span class="reduction">-20%</span>
@@ -500,6 +521,9 @@ include 'header.php';
                                 </div>
                             <?php endforeach;
                         } ?>
+                        <?php if (count($realisations) > 4): ?>
+                            <button class="voir-plus-btn">Voir plus</button>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -645,6 +669,7 @@ include 'header.php';
             <svg id="timeline" class="separateur-historique" version="1.1" id="Calque_1"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 159.8 948.8" style="enable-background:new 0 0 159.8 948.8;" xml:space="preserve">
+
                 <style type="text/css">
                     .st0 {
                         fill: none;
