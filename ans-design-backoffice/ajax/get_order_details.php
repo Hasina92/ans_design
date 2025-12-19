@@ -21,7 +21,8 @@ $stmt = $pdo->prepare("
         c.notes_production,
         c.notes_sav,
         c.publier_avis,
-        c.ville, -- ✅ adapte si le nom est différent
+        c.methode_paiement,
+        c.ville,
         u.nom,
         u.prenom,
         u.societe,
