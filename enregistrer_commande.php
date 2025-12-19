@@ -17,11 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit();
 }
 
-$city = trim($_POST['city'] ?? '');
-
-if (empty($city)) {
-    die("Ville obligatoire.");
-}
 
 $pdo->beginTransaction();
 
@@ -52,14 +47,13 @@ try {
     $statut_initial = 'En attente'; // Ou 'En attente de validation', comme vous préférez
 
     $stmt_commande = $pdo->prepare(
-        "INSERT INTO commandes (client_id, statut, total_ttc, ville)
+        "INSERT INTO commandes (client_id, statut, total_ttc)
          VALUES (?, ?, ?, ?)"
     );
     $stmt_commande->execute([
         $client_id,
         $statut_initial,
         $total_ttc,
-        $city
     ]);
 
     $commande_id = $pdo->lastInsertId();

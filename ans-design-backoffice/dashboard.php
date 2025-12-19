@@ -33,6 +33,13 @@ $stmt = $pdo->prepare("SELECT COUNT(*) as count FROM commandes WHERE statut = 'A
 $stmt->execute();
 $avis_valider = $stmt->fetch(PDO::FETCH_ASSOC)['count'] ?? 0;
 
+//SATISFACTIOIN CLIENTS
+$stmt = $pdo->query("SELECT AVG(note) AS note_moyenne FROM temoignages");
+$noteGlobale = $stmt->fetchColumn();
+
+// Arrondi (au choix)
+$noteGlobale = round($noteGlobale, 1); // 3.0 / 5 ou 3.4 / 5
+
 //PLANNING
 $stmt = $pdo->prepare("
     SELECT c.id AS commande_id, ca.description, c.date_realisation_estimee
@@ -123,6 +130,22 @@ $totalAvis = $row['total_avis'] ?? 0;
 
 // Arrondir à 1 ou 2 décimales
 $noteMoyenne = round($noteMoyenne, 1);
+
+//TOP VILLES
+
+// Exemple de récupération top 5 (comme avant)
+$stmt = $pdo->query("
+    SELECT ville, COUNT(*) AS total_commandes
+    FROM commandes
+    GROUP BY ville
+    ORDER BY total_commandes DESC
+    LIMIT 5
+");
+$topVilles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Calcul du maximum pour dimensionner les barres
+$maxCommandes = max(array_column($topVilles, 'total_commandes'));
+
 
 ?>
 
@@ -227,9 +250,9 @@ $noteMoyenne = round($noteMoyenne, 1);
         $noteMoyenne = 4.2; // exemple, ta variable déjà calculée
         $nombreEtoiles = 5;
         ?>
-
         <div style="display:flex; align-items:center; gap:10px; font-family:'gilroy',sans-serif;">
-            <span style="font-size:30px; font-family: 'gilroy-extrabold';"><?php echo $noteMoyenne; ?> / 5</span>
+            <span style="font-size:30px; font-family: 'gilroy-extrabold';"><?php echo $noteGlobale . " / 5";
+            ?></span>
             <span style="display:flex; gap:3px;">
                 <?php
                 for ($i = 1; $i <= $nombreEtoiles; $i++) {
@@ -307,6 +330,29 @@ $noteMoyenne = round($noteMoyenne, 1);
         <span style="font-size:24px; font-weight:bold;"><?php echo $commandesRetard; ?> /
             <?php echo $totalCommandes; ?></span> <br>
         <span style="font-size: 18px; font-family: 'gilroy-regular';">Basé sur dates promises</span>
+    </div>
+    <div
+        style="background:#fff; border-radius:15px; padding:20px; box-shadow:0 4px 15px rgba(0,0,0,0.1); font-family:'gilroy',sans-serif; width: 400px;">
+        <span
+            style="font-family: 'gilroy-extrabold'; font-size: 20px; color: #E62F6D; margin-bottom: 15px; display:block;">
+            Top Villes
+        </span>
+        <?php foreach ($topVilles as $ville):
+            // Largeur de la barre proportionnelle au nombre de commandes
+            $widthPercent = ($ville['total_commandes'] / $maxCommandes) * 100;
+            ?>
+            <div style="margin-bottom:10px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:5px;">
+                    <span style="font-weight:600; color:#333;"><?php echo htmlspecialchars($ville['ville']); ?></span>
+                    <span style="font-weight:600; color:#666;"><?php echo $ville['total_commandes']; ?> commandes</span>
+                </div>
+                <div style="background:#eee; border-radius:10px; height:20px; overflow:hidden;">
+                    <div
+                        style="width:<?php echo $widthPercent; ?>%; background: linear-gradient(90deg, #E62F6D, #F5BF2A); height:100%; border-radius:10px;">
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
 <?php require_once 'includes/footer.php'; ?>
