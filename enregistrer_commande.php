@@ -3,7 +3,7 @@
 
 session_start();
 require_once '../ans-design-backoffice/config/db.php'; // Adaptez le chemin
-require_once 'init_user.php'; 
+require_once 'init_user.php';
 
 // 1. Vérifier si le client est connecté et si le panier n'est pas vide
 if (!isset($_SESSION['client_id']) || empty($_SESSION['panier'])) {
@@ -15,6 +15,12 @@ if (!isset($_SESSION['client_id']) || empty($_SESSION['panier'])) {
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: validation-commande.php');
     exit();
+}
+
+$city = trim($_POST['city'] ?? '');
+
+if (empty($city)) {
+    die("Ville obligatoire.");
 }
 
 $pdo->beginTransaction();
@@ -46,10 +52,16 @@ try {
     $statut_initial = 'En attente'; // Ou 'En attente de validation', comme vous préférez
 
     $stmt_commande = $pdo->prepare(
-        "INSERT INTO commandes (client_id, statut, total_ttc) VALUES (?, ?, ?)"
+        "INSERT INTO commandes (client_id, statut, total_ttc, ville)
+         VALUES (?, ?, ?, ?)"
     );
-    $stmt_commande->execute([$client_id, $statut_initial, $total_ttc]);
-    
+    $stmt_commande->execute([
+        $client_id,
+        $statut_initial,
+        $total_ttc,
+        $city
+    ]);
+
     $commande_id = $pdo->lastInsertId();
 
     // 5. Insérer chaque article dans VOTRE table `commande_articles`

@@ -44,7 +44,7 @@ $stmt = $pdo->prepare("
 $stmt->execute();
 $commandes_articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//MEILLEURS VENTES
+// MEILLEURS VENTES
 $stmt = $pdo->prepare("
     SELECT ca.description AS produit, SUM(ca.quantite) AS total_vendu
     FROM commande_articles ca
@@ -58,6 +58,18 @@ $topProduits = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Trouver la quantité maximale pour normaliser les barres
 $maxQuantite = max(array_column($topProduits, 'total_vendu'));
 
+//RETARD LIVRAISON
+// Total des commandes
+$stmt = $pdo->prepare("SELECT COUNT(*) as total_commandes FROM commandes");
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$totalCommandes = $row['total_commandes'] ?? 0;
+
+// Commandes en retard
+$stmt = $pdo->prepare("SELECT COUNT(*) as retard_commandes FROM commandes WHERE date_realisation_estimee < CURDATE()");
+$stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+$commandesRetard = $row['retard_commandes'] ?? 0;
 
 
 // --- Requêtes modifiées ---
@@ -271,7 +283,8 @@ $noteMoyenne = round($noteMoyenne, 1);
 <div class="statistique" style="margin-top: 40px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 20px;">
     <div
         style="background:#fff; border-radius:15px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); font-family:'gilroy',sans-serif;">
-        <span style="font-family: 'gilroy-extrabold'; font-size: 20px; color: #E62F6D;">Meilleures ventes</span>
+        <span style="font-family: 'gilroy-extrabold'; font-size: 20px; color: #E62F6D; margin-bottom: 10px;">Meilleures
+            ventes</span>
         <br>
         <?php foreach ($topProduits as $produit):
             $pourcentage = ($produit['total_vendu'] / $maxQuantite) * 100;
@@ -285,6 +298,15 @@ $noteMoyenne = round($noteMoyenne, 1);
                 </div>
             </div>
         <?php endforeach; ?>
+    </div>
+    <div
+        style="background:#fff; border-radius:15px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.1); font-family:'gilroy',sans-serif;">
+        <span style="font-family: 'gilroy-extrabold'; font-size: 20px;color: #F47C2C;margin-bottom: 10px;">Livraisons
+            en retard</span>
+        <br>
+        <span style="font-size:24px; font-weight:bold;"><?php echo $commandesRetard; ?> /
+            <?php echo $totalCommandes; ?></span> <br>
+        <span style="font-size: 18px; font-family: 'gilroy-regular';">Basé sur dates promises</span>
     </div>
 </div>
 <?php require_once 'includes/footer.php'; ?>

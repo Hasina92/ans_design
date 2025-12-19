@@ -74,8 +74,34 @@ include 'header.php';
 
                             <div class="form-group">
                                 <label for="city">Ville <span>*</span></label>
-                                <input type="text" id="city" name="city" placeholder="Antananarivo, Toamasina..."
-                                    required>
+                                <select id="city" name="city" required>
+                                    <option value="">-- Sélectionnez une ville --</option>
+                                    <option value="Antananarivo">Antananarivo</option>
+                                    <option value="Toamasina">Toamasina</option>
+                                    <option value="Antsirabe">Antsirabe</option>
+                                    <option value="Fianarantsoa">Fianarantsoa</option>
+                                    <option value="Mahajanga">Mahajanga</option>
+                                    <option value="Toliara">Toliara</option>
+                                    <option value="Antsiranana">Antsiranana</option>
+                                    <option value="Ambanja">Ambanja</option>
+                                    <option value="Ambatondrazaka">Ambatondrazaka</option>
+                                    <option value="Moramanga">Moramanga</option>
+                                    <option value="Maroantsetra">Maroantsetra</option>
+                                    <option value="Nosy Be">Nosy Be</option>
+                                    <option value="Manakara">Manakara</option>
+                                    <option value="Mananjary">Mananjary</option>
+                                    <option value="Sambava">Sambava</option>
+                                    <option value="Vatomandry">Vatomandry</option>
+                                    <option value="Betafo">Betafo</option>
+                                    <option value="Ambositra">Ambositra</option>
+                                    <option value="Ihosy">Ihosy</option>
+                                    <option value="Farafangana">Farafangana</option>
+                                    <option value="Amparafaravola">Amparafaravola</option>
+                                    <option value="Fénérive-Est">Fénérive-Est</option>
+                                    <option value="Andapa">Andapa</option>
+                                    <option value="Ihosy">Ihosy</option>
+                                    <!-- Ajoute d'autres villes si nécessaire -->
+                                </select>
                             </div>
 
                             <div class="form-group">
