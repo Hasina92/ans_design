@@ -68,8 +68,8 @@ include 'header.php';
                             <!-- Adresse de livraison -->
                             <div class="form-group">
                                 <label for="address">Adresse de livraison <span>*</span></label>
-                                <textarea id="address" name="address" rows="3" placeholder="Votre adresse complète"
-                                    required></textarea>
+                                <textarea id="address" name="adresse_livraison" rows="3"
+                                    placeholder="Votre adresse complète" required></textarea>
                             </div>
 
                             <div class="form-group">
@@ -106,7 +106,7 @@ include 'header.php';
 
                             <div class="form-group">
                                 <label for="postal">Code postal</label>
-                                <input type="text" id="postal" name="postal" placeholder="Ex: 101">
+                                <input type="text" id="postal" name="code_postal" placeholder="" required>
                             </div>
 
                             <!-- Méthode de paiement -->

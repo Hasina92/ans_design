@@ -3306,6 +3306,7 @@ footer .wrapper ul.social-icon-footer li a {
 @media (max-width: 600px) {
   #equipe .wrapper .container-equipe .card-equipe {
     max-width: 100%;
+    width: 100%;
   }
 }
 #equipe .wrapper .container-equipe .card-equipe:hover .equipe-img::before {
@@ -3375,7 +3376,7 @@ footer .wrapper ul.social-icon-footer li a {
 #equipe .wrapper .slick-prev-custom-equipe,
 #equipe .wrapper .slick-next-custom-equipe {
   position: absolute;
-  top: 65%;
+  top: 62%;
   transform: translateY(-50%);
   left: -10px;
   border-radius: 50%;

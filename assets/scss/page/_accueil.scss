@@ -1353,6 +1353,7 @@
         margin: 0 10px;
         @include breakpoint(xs) {
           max-width: 100%;
+          width: 100%;
         }
         &:hover {
           .equipe-img {
@@ -1425,7 +1426,7 @@
     .slick-prev-custom-equipe,
     .slick-next-custom-equipe {
       position: absolute;
-      top: 65%;
+      top: 62%;
       transform: translateY(-50%);
       left: -10px;
       @include border-radius(50%);

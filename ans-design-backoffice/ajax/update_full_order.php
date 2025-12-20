@@ -18,6 +18,12 @@ $statut = $data['statut'] ?? null;
 $avis_client = $data['avis_client'] ?? ''; // -> avis_client
 $notes_sav = $data['notes_sav'] ?? ''; // -> notes_sav
 $publier_avis = isset($data['publier_avis']) && $data['publier_avis'] ? 1 : 0;
+// Ajouter les valeurs récupérées à ton tableau de données pour la popup
+$adresse_livraison = $data['adresse_livraison'] ?? '';
+$code_postal = $data['code_postal'] ?? '';
+$ville = $data['city'] ?? '';
+
+
 
 if (!$commande_id || !$statut) {
     http_response_code(400);
@@ -33,7 +39,7 @@ try {
                 statut = ?, 
                 avis_client = ?,
                 notes_sav = ?,
-                publier_avis = ?
+                publier_avis = ?,
             WHERE id = ?";
 
     $stmt = $pdo->prepare($sql);
@@ -42,7 +48,10 @@ try {
         $avis_client,
         $notes_sav,
         $publier_avis,
-        $commande_id
+        $commande_id,
+        $adresse_livraison,
+        $code_postal,
+        $ville,
     ]);
 
     echo json_encode(['success' => true, 'message' => 'Commande mise à jour avec succès.']);

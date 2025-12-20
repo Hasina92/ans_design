@@ -29,6 +29,14 @@ if (empty($ville)) {
     exit();
 }
 
+$adresse_livraison = trim($_POST['adresse_livraison'] ?? '');
+$code_postal = trim($_POST['code_postal'] ?? '');
+
+if (empty($adresse_livraison) || empty($code_postal)) {
+    die("Champs obligatoires manquants");
+}
+
+
 try {
     $pdo->beginTransaction();
 
@@ -66,9 +74,9 @@ try {
     /* ------------------ INSERT COMMANDE ------------------ */
     $stmt_commande = $pdo->prepare(
         "INSERT INTO commandes 
-        (client_id, numero_commande, ville, total_ttc, notes_production, statut, methode_paiement, details_paiement)
+        (client_id, numero_commande, ville, total_ttc, notes_production, statut, methode_paiement, details_paiement, adresse_livraison, code_postal)
         VALUES 
-        (:client_id, :numero, :ville, :total, :notes, :statut, :paiement, :details)"
+        (:client_id, :numero, :ville, :total, :notes, :statut, :paiement, :details, :adresse_livraison, :code_postal)"
     );
 
     $stmt_commande->execute([
@@ -79,7 +87,9 @@ try {
         ':notes' => $notes_production,
         ':statut' => $la_commande_est_sur_devis ? 'En attente devis' : 'En validation',
         ':paiement' => $_POST['payment'],
-        ':details' => $details_paiement
+        ':details' => $details_paiement,
+        ':adresse_livraison' => $adresse_livraison,
+        ':code_postal' => $code_postal,
     ]);
 
     $commande_id = $pdo->lastInsertId();

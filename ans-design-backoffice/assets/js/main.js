@@ -144,12 +144,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     </div>
 </div>
+
                                             <div class="timeline-item">
                                                 <div class="timeline-icon"></div>
                                                 <div class="timeline-content">
                                                     <strong>Préparation fichier PAO</strong>
                                                 </div>
                                             </div>
+                                              <h4 class="modal-subtitle">Adresse de livraison</h4>
+                                            <div class="timeline-item">
+    <p><strong>Adresse :</strong> ${data.adresse_livraison || "Non définie"}</p>
+    <p><strong>Code postal :</strong> ${data.code_postal || "Non défini"}</p>
+    <p><strong>Ville :</strong> ${data.ville || "Non défini"}</p>
+</div>
                                         </div>
                                     </div>
                                     

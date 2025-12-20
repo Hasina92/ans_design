@@ -316,7 +316,7 @@ $(document).ready(function () {
     infinite: true,
     slidesToShow: 4,
     slidesToScroll: 1,
-    variableWidth: true,
+    // variableWidth: true,
     arrows: true,
     dots: false,
     centerMode: false,
