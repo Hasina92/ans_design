@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
                                     
                                     <!-- MODIFICATION ICI : Liste détaillée au lieu du résumé -->
                                     <div style="grid-column: span 2; margin-top:5px;">
-                                        <span style="font-weight:bold; color:#555;">Détails Articles :</span>
+                                        <span style="color:#555;">Détails Articles :</span>
                                         ${renderArticlesList(
                                           data.articles_detailed_list
                                         )}
