@@ -60,10 +60,6 @@ if (isset($_SESSION['user_id'])) {
                     <li class="<?= ($page == 'blog') ? 'current-menu-item' : '' ?>">
                         <a href="blog.php">Blog</a>
                     </li>
-
-                    <li class="<?= ($page == 'devis') ? 'current-menu-item' : '' ?>">
-                        <a href="devis.php">Devis</a>
-                    </li>
                 </ul>
 
             </nav>

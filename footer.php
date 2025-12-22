@@ -40,19 +40,16 @@ require_once 'init_user.php';
             </div>
             <ul class="menu-footer">
                 <li>
-                    <a href="">A propos</a>
+                    <a href="index.php">Accueil</a>
                 </li>
                 <li>
-                    <a href="">Services</a>
+                    <a href="catalogue.php">Catalogue</a>
                 </li>
                 <li>
-                    <a href="">Portfolio</a>
+                    <a href="portfolio.php">Portfolio</a>
                 </li>
                 <li>
-                    <a href="">Blog</a>
-                </li>
-                <li>
-                    <a href="">Devis</a>
+                    <a href="blog.php">Blog</a>
                 </li>
             </ul>
             <form action="" method="post" class="subscribe">
