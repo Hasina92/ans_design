@@ -2597,25 +2597,6 @@ footer .wrapper ul.social-icon-footer li a {
 #packs .wrapper .container-pack .card-pack:hover {
   transform: translateY(-10px);
 }
-#packs .wrapper .container-pack .card-pack:hover li,
-#packs .wrapper .container-pack .card-pack:hover h3,
-#packs .wrapper .container-pack .card-pack:hover .prix,
-#packs .wrapper .container-pack .card-pack:hover .voir-plus {
-  color: #fff !important;
-}
-#packs .wrapper .container-pack .card-pack:hover b {
-  color: #f5bf2a !important;
-}
-#packs .wrapper .container-pack .card-pack:hover .bouton-pack a {
-  background: #fff;
-  color: #df4d34;
-}
-#packs .wrapper .container-pack .card-pack:hover .bouton-pack .reduction {
-  color: #f5bf2a;
-}
-#packs .wrapper .container-pack .card-pack:hover::after {
-  opacity: 1;
-}
 #packs .wrapper .container-pack .card-pack .prix {
   color: #170303;
   font-family: "gilroy-extrabold";
@@ -3882,7 +3863,7 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 20px;
   background-clip: padding-box;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 20px;
   box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
 }
 @media (min-width: 600px) {
