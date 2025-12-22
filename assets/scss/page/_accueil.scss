@@ -1879,6 +1879,10 @@
       }
       .container-bouton {
         @extend %flex;
+        @include breakpoint(xs) {
+          @include flex-direction(column);
+          gap: 20px;
+        }
         .section-title {
           max-width: 337px;
           line-height: 55px;
