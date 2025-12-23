@@ -35,7 +35,12 @@ if (isset($_SESSION['user_id'])) {
     <link rel="stylesheet" type="text/css" href="assets/css/fancybox.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>ANS Design</title>
-    <link rel="icon" href="assets/img/favicon.svg" type="image/x-icon">
+    <link rel="icon" href="assets/img/favicon.png" type="image/x-icon">
+
+    <!-- Optionnel mais recommandé -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon.png">
+
 </head>
 
 <body>
