@@ -207,14 +207,16 @@ document.addEventListener("DOMContentLoaded", function () {
                                     
                                     <div class="timeline-item">
                                         <div class="timeline-content">
-                                            <strong>Adresse de livraison</strong><br>
-                                            <p style="margin:5px 0;">${
+                                            <p style="margin:5px 0;"><strong>Adresse de livraison : </strong>${
                                               data.adresse_livraison ||
                                               "Non définie"
                                             }</p>
-                                            <small>${data.code_postal || ""} ${
-              data.ville || ""
-            }</small>
+                                            <p style="margin:5px 0;"><strong>Code postal : </strong>${
+                                              data.code_postal || "Non définie"
+                                            }</p>
+                                            <p style="margin:5px 0;"><strong>Ville : </strong>${
+                                              data.ville || "Non définie"
+                                            }
                                         </div>
                                     </div>
                                 </div>
