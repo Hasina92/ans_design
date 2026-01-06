@@ -94,7 +94,6 @@ if (isset($_SESSION['user_id'])) {
                         <img src="assets/img/hamburger.svg" alt="" class="burgerIcon">
                         <img src="assets/img/close.svg" alt="" class="closeIcon">
                     </a>
-
                     <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] !== 'admin'): ?>
                         <a href="ans-design-backoffice/logout.php" class="logout-btn">
                             <img src="assets/img/log_out.svg" alt="Déconnexion" title="Se déconnecter" style="width:24px;">

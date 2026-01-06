@@ -368,6 +368,21 @@ $(document).ready(function () {
   });
 });
 
+//SLICK PRODUITS PHARES
+$(document).ready(function () {
+  $(".tabscontent-produits").slick({
+    infinite: true,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    arrows: true,
+    dots: false,
+    autoplay: false,
+    variableWidth: true,
+    prevArrow: $(".slick-prev-custom-produits"),
+    nextArrow: $(".slick-next-custom-produits"),
+  });
+});
+
 //SLICK TABSLINK REALISATION
 $(document).ready(function () {
   $(".tabslink-realisations").slick({

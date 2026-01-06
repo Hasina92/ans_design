@@ -97,7 +97,38 @@
     background: transparent;
     padding: 40px;
     overflow: hidden;
-
+    position: relative;
+    background: $white;
+    @include border-radius(30px);
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 15%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 15%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+      transform: rotate(180deg);
+    }
     @include breakpoint(xs) {
       @include border-radius(0);
     }
@@ -232,6 +263,7 @@
           font-family: "gilroy-bold";
           font-size: 20px;
           color: $gray;
+          white-space: nowrap;
         }
       }
     }
@@ -306,13 +338,12 @@
         @include align-items(center);
         max-width: 390px;
         width: 100% !important;
-        // height: 400px;
+        min-height: 450px;
         padding: 30px;
         margin: 50px 0;
         @include border-radius(20px);
         box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
         background: $white;
-        opacity: 0.5;
         @include breakpoint(xs) {
           max-width: 300px;
         }
@@ -321,7 +352,7 @@
         }
         .profil {
           width: 100px;
-          aspect-ratio: 1/1;
+          height: 100px;
           background: $yellow;
           @include border-radius(50%);
           overflow: hidden;
@@ -513,15 +544,9 @@
     .container-produit {
       margin-top: 50px;
       width: 100%;
+      position: relative;
 
       .tabscontent-produits {
-        @extend .grid-25;
-        gap: 30px;
-        @include breakpoint(xs) {
-          @include grid-template-columns(1fr);
-          gap: 20px;
-          width: 100%;
-        }
       }
 
       .card-produit {
@@ -530,12 +555,16 @@
         @include justify-content(space-between);
         gap: 10px;
         padding: 30px 20px;
-        box-shadow: 0px 0px 20px 0px #0000001a;
+        // box-shadow: 0px 0px 20px 0px #0000001a;
+        border: 1px #f8f8f8 solid;
         @include border-radius(20px);
-        min-width: 246px;
+        max-width: 300px;
         width: 100%;
+        min-height: 351px;
         position: relative;
         overflow: hidden;
+        // margin: 15px;
+        margin: 15px 30px 15px 0;
         &::after {
           content: "";
           position: absolute;
@@ -605,6 +634,32 @@
             color: $red;
           }
         }
+      }
+    }
+    .slick-prev-custom-produits,
+    .slick-next-custom-produits {
+      position: absolute;
+      top: 74%;
+      transform: translateY(-50%);
+      left: -10px;
+      @include border-radius(50%);
+      background: linear-gradient(#e20e56, #df5531);
+      width: 40px;
+      aspect-ratio: 1/1;
+      @extend .flex-jc;
+      cursor: pointer;
+      border: none;
+      img {
+        width: 25px;
+        aspect-ratio: 1/1;
+        transform: rotate(180deg);
+      }
+    }
+    .slick-next-custom-produits {
+      right: 0;
+      left: initial;
+      img {
+        transform: rotate(0deg);
       }
     }
   }
@@ -960,6 +1015,9 @@
       }
 
       .card-realisation:nth-child(even) {
+        &:hover {
+          background: $red;
+        }
         .realisation-text {
           h3 {
             color: $red;
@@ -974,6 +1032,7 @@
 .stats-2 {
   .wrapper {
     gap: 30px !important;
+    @include align-items(stretch !important);
     background: linear-gradient(
       90deg,
       #e94f35 26.25%,
@@ -982,6 +1041,7 @@
     .card-stat {
       @extend %flex;
       @include flex-direction(column);
+      @include justify-content(flex-start !important);
       max-width: 350px !important;
       @include breakpoint-up(sm) {
         &:not(:last-child) {

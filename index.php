@@ -335,7 +335,8 @@ include 'header.php';
                 <?php endforeach; ?>
 
             </div>
-
+            <button class="slick-prev-custom-produits"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-next-custom-produits"><img src="assets/img/arrow.svg" alt=""></button>
         </div>
     </section>
 
