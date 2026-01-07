@@ -33,10 +33,10 @@ require_once 'init_user.php';
                     dernières technologies de sécurité.</p>
             </div>
             <div class="img-payement">
-                <img src="assets/img/mvola.png" alt="">
-                <img src="assets/img/airtel-money.png" alt="">
                 <img src="assets/img/orange-money.svg" alt="">
-                <img src="assets/img/visa.png" alt="">
+                <img src="assets/img/airtel.svg" alt="">
+                <img src="assets/img/mvola.svg" alt="">
+                <img src="assets/img/visa.svg" alt="">
             </div>
             <ul class="menu-footer">
                 <li>

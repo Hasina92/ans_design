@@ -57,38 +57,38 @@
   padding: 0;
   overflow: visible;
 
-  &::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: -150px;
-    width: 300px;
-    height: 300px;
-    background-image: url("assets/img/ellipse_client_red.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(40px);
-    z-index: -1;
-    @include breakpoint(xs) {
-      display: none;
-    }
-  }
-  &::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    right: -150px;
-    width: 300px;
-    height: 300px;
-    background-image: url("assets/img/ellipse_client_yellow.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    filter: blur(40px);
-    z-index: -1;
-    @include breakpoint(xs) {
-      display: none;
-    }
-  }
+  // &::before {
+  //   content: "";
+  //   position: fixed;
+  //   top: 0;
+  //   left: -150px;
+  //   width: 300px;
+  //   height: 300px;
+  //   background-image: url("assets/img/ellipse_client_red.svg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   filter: blur(40px);
+  //   z-index: -1;
+  //   @include breakpoint(xs) {
+  //     display: none;
+  //   }
+  // }
+  // &::after {
+  //   content: "";
+  //   position: fixed;
+  //   bottom: 0;
+  //   right: -150px;
+  //   width: 300px;
+  //   height: 300px;
+  //   background-image: url("assets/img/ellipse_client_yellow.svg");
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   filter: blur(40px);
+  //   z-index: -1;
+  //   @include breakpoint(xs) {
+  //     display: none;
+  //   }
+  // }
 
   .wrapper {
     @extend .flex-jc;
@@ -316,7 +316,6 @@
 // TEMOIGNAGES
 #temoignages {
   position: relative;
-  z-index: -2;
   // background: $white;
   .wrapper {
     @extend .flex-jc;
@@ -757,33 +756,33 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
+          background: $yellow;
           z-index: -1;
           opacity: 0;
         }
         &:hover {
           transform: translateY(-10px);
-          // li,
-          // h3,
-          // .prix,
-          // .voir-plus {
-          //   color: $white !important;
-          // }
-          // b {
-          //   color: $yellow !important;
-          // }
-          // .bouton-pack {
-          //   a {
-          //     background: $white;
-          //     color: $red;
-          //   }
-          //   .reduction {
-          //     color: $yellow;
-          //   }
-          // }
+          li,
+          h3,
+          .prix,
+          .voir-plus {
+            color: $white !important;
+          }
+          b {
+            color: $yellow !important;
+          }
+          .bouton-pack {
+            a {
+              background: $white;
+              color: $red;
+            }
+            .reduction {
+              color: $red;
+            }
+          }
         }
         &:hover::after {
-          // opacity: 1;
+          opacity: 1;
         }
 
         .prix {
@@ -1417,6 +1416,36 @@
 //EQUIPE
 #equipe {
   .wrapper {
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+      transform: rotate(180deg);
+    }
     .section-title {
       h2 {
         color: $red;
@@ -1525,6 +1554,7 @@
       @extend .flex-jc;
       cursor: pointer;
       border: none;
+      z-index: 98;
       img {
         width: 25px;
         aspect-ratio: 1/1;
