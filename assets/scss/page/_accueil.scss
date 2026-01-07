@@ -316,6 +316,7 @@
 // TEMOIGNAGES
 #temoignages {
   position: relative;
+  z-index: -2;
   // background: $white;
   .wrapper {
     @extend .flex-jc;
@@ -1045,11 +1046,7 @@
           @include flex-direction(column);
         }
       }
-
-      .card-realisation:nth-child(even) {
-        &:hover {
-          background: $red;
-        }
+      .card-realisation:nth-child(3n + 1) {
         .realisation-text {
           h3 {
             color: $red;

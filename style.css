@@ -2219,6 +2219,7 @@ footer .wrapper ul.social-icon-footer li a {
 
 #temoignages {
   position: relative;
+  z-index: -2;
 }
 #temoignages .wrapper {
   -webkit-flex-direction: column;
@@ -2962,10 +2963,7 @@ footer .wrapper ul.social-icon-footer li a {
     flex-direction: column;
   }
 }
-#realisations .wrapper .container-realisations .card-realisation:nth-child(even):hover {
-  background: #df4d34;
-}
-#realisations .wrapper .container-realisations .card-realisation:nth-child(even) .realisation-text h3 {
+#realisations .wrapper .container-realisations .card-realisation:nth-child(3n+1) .realisation-text h3 {
   color: #df4d34;
 }
 

@@ -670,20 +670,12 @@ include 'header.php';
             <svg id="timeline" class="separateur-historique" version="1.1" id="Calque_1"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 159.8 948.8" style="enable-background:new 0 0 159.8 948.8;" xml:space="preserve">
-                <defs>
-                    <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="#E12948" stop-opacity="1" />
-                        <stop offset="100%" stop-color="#F5BF2A" stop-opacity="1" />
-                    </linearGradient>
-                </defs>
 
                 <style type="text/css">
                     .st0 {
                         fill: none;
-                        stroke: url(#lineGradient);
+                        stroke: #E12948;
                         stroke-width: 2;
-                        stroke-linecap: round;
-                        stroke-linejoin: round;
                     }
 
                     .st1 {

@@ -710,11 +710,20 @@ document.addEventListener("click", function (e) {
 document.querySelectorAll(".voir-plus").forEach((btn) => {
   btn.addEventListener("click", function () {
     const list = this.previousElementSibling;
+    const isOpen = list.classList.contains("open");
 
-    list.classList.toggle("open");
-    this.textContent = list.classList.contains("open")
-      ? "Voir moins"
-      : "Voir plus";
+    // 🔒 Fermer tous les autres blocs
+    document.querySelectorAll(".voir-plus").forEach((otherBtn) => {
+      const otherList = otherBtn.previousElementSibling;
+      otherList.classList.remove("open");
+      otherBtn.textContent = "Voir plus";
+    });
+
+    // 🔓 Ouvrir uniquement celui cliqué (s’il n’était pas déjà ouvert)
+    if (!isOpen) {
+      list.classList.add("open");
+      this.textContent = "Voir moins";
+    }
   });
 });
 
