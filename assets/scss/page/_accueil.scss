@@ -316,11 +316,42 @@
 // TEMOIGNAGES
 #temoignages {
   position: relative;
+  // background: $white;
   .wrapper {
     @extend .flex-jc;
     @include flex-direction(column);
     gap: 40px;
     overflow: hidden !important;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 30%;
+      height: 100%;
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0)
+      );
+      z-index: 2;
+      transform: rotate(180deg);
+    }
     .section-title {
       h2 {
         color: $yellow;
@@ -402,6 +433,7 @@
       @extend .flex-jc;
       cursor: pointer;
       border: none;
+      z-index: 98;
       img {
         width: 25px;
         aspect-ratio: 1/1;
@@ -1762,6 +1794,38 @@
       height: 450px;
       overflow-y: hidden;
       overflow-y: scroll;
+      position: relative;
+      &::before {
+        content: "";
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 2;
+        display: block;
+      }
+      &::after {
+        content: "";
+        position: sticky;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 2;
+        transform: rotate(180deg);
+        display: block;
+      }
       .accordeon-content {
         padding: 30px 40px;
         background: $white;
@@ -1858,6 +1922,38 @@
 
       @include breakpoint(xs) {
         @include grid-template-columns(1fr);
+      }
+
+      &::before {
+        content: "";
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 2;
+        display: block;
+      }
+      &::after {
+        content: "";
+        position: sticky;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 20%;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+        z-index: 2;
+        transform: rotate(180deg);
+        display: block;
       }
 
       .card-conseil {

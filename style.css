@@ -2227,6 +2227,28 @@ footer .wrapper ul.social-icon-footer li a {
   flex-direction: column;
   gap: 40px;
   overflow: hidden !important;
+  position: relative;
+}
+#temoignages .wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+}
+#temoignages .wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(to right, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+  transform: rotate(180deg);
 }
 #temoignages .wrapper .section-title h2 {
   color: #f5bf2a;
@@ -2318,6 +2340,7 @@ footer .wrapper ul.social-icon-footer li a {
   aspect-ratio: 1/1;
   cursor: pointer;
   border: none;
+  z-index: 98;
 }
 #temoignages .wrapper .slick-prev-custom-temoignages img,
 #temoignages .wrapper .slick-next-custom-temoignages img {
@@ -3718,6 +3741,30 @@ footer .wrapper ul.social-icon-footer li a {
   height: 450px;
   overflow-y: hidden;
   overflow-y: scroll;
+  position: relative;
+}
+#faq .wrapper .accordeon::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+  display: block;
+}
+#faq .wrapper .accordeon::after {
+  content: "";
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+  transform: rotate(180deg);
+  display: block;
 }
 #faq .wrapper .accordeon .accordeon-content {
   padding: 30px 40px;
@@ -3808,6 +3855,29 @@ footer .wrapper ul.social-icon-footer li a {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
+}
+#conseils .wrapper .container-conseils::before {
+  content: "";
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+  display: block;
+}
+#conseils .wrapper .container-conseils::after {
+  content: "";
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 20%;
+  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
+  z-index: 2;
+  transform: rotate(180deg);
+  display: block;
 }
 #conseils .wrapper .container-conseils .card-conseil {
   position: relative;
