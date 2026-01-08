@@ -53,6 +53,59 @@ header {
       width: 100%;
     }
 
+    .demande-devis {
+      position: fixed;
+      top: 80px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      @extend .flex-jc;
+      @include border-radius(50px);
+      z-index: 1;
+      cursor: pointer;
+
+      &::before {
+        content: "Demande devis";
+        position: absolute;
+        top: 50%;
+        left: -150px;
+        white-space: nowrap;
+        transform: translateY(-50%);
+        color: $red;
+        height: 40px;
+        @extend %flex;
+        @include justify-content(start);
+        @include align-items(center);
+        width: 180px;
+        padding-left: 20px;
+        opacity: 0;
+        z-index: 1;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 40px;
+        height: 40px;
+        background: $white;
+        z-index: -1;
+        @include border-radius(20px);
+        transform-origin: right;
+      }
+      &:hover {
+        &::after {
+          width: 190px;
+        }
+        &::before {
+          opacity: 1;
+        }
+      }
+      img {
+        width: 20px;
+      }
+    }
+
     #menu {
       @extend %flex;
       gap: 70px;
