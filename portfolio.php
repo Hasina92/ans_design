@@ -113,6 +113,9 @@ include 'header.php';
                 </div>
               <?php endforeach;
             } ?>
+            <?php if (count($realisations) > 4): ?>
+              <button class="voir-plus-btn">Voir plus</button>
+            <?php endif; ?>
           </div>
         <?php endforeach; ?>
       </div>
@@ -120,88 +123,7 @@ include 'header.php';
   </section>
 </main>
 <!-- FOOTER -->
-<footer>
-  <div class="wrapper">
-    <div class="container-information">
-      <div class="card-information mail">
-        <img src="assets/img/mail.svg" alt="" />
-        <a href="mailto:ans.designprint.annexe@gmail.com">ans.designprint.annexe@gmail.com</a>
-        <a href="mailto:ans.designprint.annexe@gmail.com">ans.designprint.annexe@gmail.com</a>
-      </div>
-      <div class="card-information phone">
-        <img src="assets/img/phone.svg" alt="" />
-        <a href="tel:+261346324272">+261 34 63 242 72</a>
-        <a href="tel:+261346324272">+261 34 63 242 72</a>
-      </div>
-      <div class="card-information maps">
-        <img src="assets/img/location.svg" alt="" />
-        <a href="">Ambanidia, Rond Point Hazo tokana</a>
-        <a href="">Ambanidia, Rond Point Hazo tokana</a>
-      </div>
-      <img src="assets/img/fond.png" alt="" class="bg-image" />
-    </div>
-    <div class="container-additional-information">
-      <div class="text-payement">
-        <h3>Payement sécurisé</h3>
-        <p class="small">
-          Grâce à nos solutions de paiement en ligne sécurisées, vous
-          bénéficiez d'une expérience d'achat fluide et flexible, accessible
-          24h/24, avec la possibilité de choisir parmi plusieurs options de
-          règlement, tout en ayant l'assurance que vos transactions sont
-          protégées par les dernières technologies de sécurité.
-        </p>
-      </div>
-      <div class="img-payement">
-        <img src="assets/img/mvola.png" alt="" />
-        <img src="assets/img/airtel-money.png" alt="" />
-        <img src="assets/img/orange-money.svg" alt="" />
-        <img src="assets/img/visa.png" alt="" />
-      </div>
-      <ul class="menu-footer">
-        <li>
-          <a href="">A propos</a>
-        </li>
-        <li>
-          <a href="">Services</a>
-        </li>
-        <li>
-          <a href="">Portfolio</a>
-        </li>
-        <li>
-          <a href="">Blog</a>
-        </li>
-        <li>
-          <a href="">Devis</a>
-        </li>
-      </ul>
-      <form action="" method="post" class="subscribe">
-        <textarea name="" id="" placeholder="Votre message ..."></textarea>
-        <button type="submit" class="btn-card">Envoyez</button>
-      </form>
-      <ul class="social-icon">
-        <li>
-          <a href="" target="_blank"><img src="assets/img/facebook.svg" alt="" /></a>
-        </li>
-        <li>
-          <a href="" target="_blank"><img src="assets/img/whatsapp.svg" alt="" /></a>
-        </li>
-        <li>
-          <a href="" target="_blank"><img src="assets/img/instagram.svg" alt="" /></a>
-        </li>
-        <li>
-          <a href="" target="_blank"><img src="assets/img/linkedin.svg" alt="" /></a>
-        </li>
-      </ul>
-    </div>
-    <a href=".scrolltop" class="fleche-footer">
-      <img src="assets/img/fleche-footer.svg" alt="" />
-    </a>
-  </div>
-</footer>
-<script src="assets/libs/jquery/jquery.min.js"></script>
-<script src="assets/libs/fancybox/fancybox.min.js"></script>
-<script src="assets/libs/slick/slick.min.js"></script>
-<script src="assets/js/main.js"></script>
-</body>
-
-</html>
+<?php
+// On inclut le footer
+include 'footer.php';
+?>
