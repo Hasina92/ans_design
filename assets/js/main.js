@@ -767,6 +767,32 @@ document.querySelectorAll(".tabscontent-realisations").forEach((tab) => {
   });
 });
 
+//ANIMATION SEPARATEUR PROCESSUS
+document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const path = document.querySelector(".separateur-processus .st0");
+  const length = path.getTotalLength();
+
+  // Masquer le path au départ
+  path.style.strokeDasharray = length;
+  path.style.strokeDashoffset = length;
+
+  // Animation continue à l'entrée de la section
+  ScrollTrigger.create({
+    trigger: ".separateur-processus",
+    start: "top 80%", // quand la section arrive dans le viewport
+    onEnter: () => {
+      // déclenche une seule fois
+      gsap.to(path, {
+        strokeDashoffset: 0,
+        duration: 3, // durée de l’animation
+        ease: "power1.inOut", // fluide
+      });
+    },
+  });
+});
+
 //RESET PASSWORD
 document
   .getElementById("resetPassword")

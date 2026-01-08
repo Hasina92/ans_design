@@ -476,7 +476,7 @@ p.small {
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .livraison-resume-produit .info-resume-produit .text-resume-produit, #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .card-resume-produit .info-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .total-resume-produit .info-resume-produit,
 #checkout .wrapper .container-checkout .resume-produit .container-resume-produit .livraison-resume-produit .info-resume-produit, #banner-reset-password .wrapper .container-reset-password form, #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion .lost-password .remember, #banner-connexion .wrapper .container-connexion-text .container-connexion-form .tabscontent-connexion form, #banner-connexion .wrapper .container-connexion-text, #mon-compte .wrapper .historique-des-commandes .accordeon, #etape-page .wrapper .container-config-preview .preview-tab .quote-preview-container, #etape-page .wrapper .container-config-preview .config-tab .demande-spec,
-#etape-page .wrapper .container-config-preview .config-tab .fichier-spec, #etape-page .wrapper .container-config-preview .config-tab .quantite, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape, #etape-page .wrapper .title, #formulaire .wrapper .formulaire-text .container-bouton, #formulaire .wrapper .formulaire-text, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper ul.tabslink-processus, #marque .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe .nom_poste, #equipe .wrapper .container-equipe .card-equipe .equipe-img .info-membre, #container-historique .wrapper .card-historique, .pop-up-technologie .pop-up-container .body-technologie, .stats-2 .wrapper .card-stat, #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste, #realisations .wrapper .container-realisations .card-realisation .realisation-text, #realisations .wrapper .container-btn-slick, #packs .wrapper .container-pack .card-pack .text-pack, #packs .wrapper .container-pack .card-pack, #produits-phares .wrapper .container-produit .card-produit, .pop-up-temoignages .pop-up-container .body-devis-temoignages form .rating, .pop-up-temoignages .pop-up-container .body-devis-temoignages form, #temoignages .wrapper .container-temoignages .card-temoignage, #stats .wrapper, #atouts .wrapper .container-atouts, #banner .wrapper .banner-text .banner-btn, #banner .wrapper .banner-text, footer .wrapper ul.social-icon-footer, footer .wrapper .container-additional-information ul.menu-footer, .pop-up-devis-commande .pop-up-container .body-devis-commande form, #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail a, #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape, #overlay .pop-up-suivi-commande .body-suivi-commande .etape, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information, #overlay .wrapper .body-mini-cart #panier .card-cart .card-text, #overlay .wrapper .body-mini-cart #panier, header .wrapper .menu-social .notification, header .wrapper .menu-social .my-account, header .wrapper .menu-social, header .wrapper #menu, header .wrapper .demande-devis::before, .slick-dots, .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
+#etape-page .wrapper .container-config-preview .config-tab .fichier-spec, #etape-page .wrapper .container-config-preview .config-tab .quantite, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape, #etape-page .wrapper .title, #formulaire .wrapper .formulaire-text .container-bouton, #formulaire .wrapper .formulaire-text, #processus .wrapper .container-tabslink-processus ul.tabslink-processus li a, #processus .wrapper .container-tabslink-processus ul.tabslink-processus, #marque .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe .nom_poste, #equipe .wrapper .container-equipe .card-equipe .equipe-img .info-membre, #container-historique .wrapper .card-historique, .pop-up-technologie .pop-up-container .body-technologie, .stats-2 .wrapper .card-stat, #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste, #realisations .wrapper .container-realisations .card-realisation .realisation-text, #realisations .wrapper .container-btn-slick, #packs .wrapper .container-pack .card-pack .text-pack, #packs .wrapper .container-pack .card-pack, #produits-phares .wrapper .container-produit .card-produit, .pop-up-temoignages .pop-up-container .body-devis-temoignages form .rating, .pop-up-temoignages .pop-up-container .body-devis-temoignages form, #temoignages .wrapper .container-temoignages .card-temoignage, #stats .wrapper, #atouts .wrapper .container-atouts, #banner .wrapper .banner-text .banner-btn, #banner .wrapper .banner-text, footer .wrapper ul.social-icon-footer, footer .wrapper .container-additional-information ul.menu-footer, .pop-up-devis-commande .pop-up-container .body-devis-commande form, #overlay .pop-up-detail-commande .body-detail-commande .bouton-detail a, #overlay .pop-up-detail-commande .body-detail-commande .paiement .card-paiement, #overlay .pop-up-suivi-commande .body-suivi-commande .etape .card-etape, #overlay .pop-up-suivi-commande .body-suivi-commande .etape, #overlay .wrapper .body-mini-cart #mon_compte .personal-information .container-personal-information, #overlay .wrapper .body-mini-cart #panier .card-cart .card-text, #overlay .wrapper .body-mini-cart #panier, header .wrapper .menu-social .notification, header .wrapper .menu-social .my-account, header .wrapper .menu-social, header .wrapper #menu, header .wrapper .demande-devis::before, .slick-dots, .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
 #produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #formulaire .wrapper .formulaire-text .container-bouton .bouton_connexion, #conseils .wrapper, #faq .wrapper, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .slick-prev-custom-equipe,
 #equipe .wrapper .slick-next-custom-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper .container-btn-slick .slick-prev-custom,
 #realisations .wrapper .container-btn-slick .slick-next-custom, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper .slick-prev-custom-produits,
@@ -513,7 +513,7 @@ p.small {
   align-items: center;
 }
 .flex-jc, .banner-single-blog .wrapper, .pop-up-validation-commande .pop-up-container .header-validation-commande, .pop-up-reset-password .pop-up-container .header-reset-password, #banner-reset-password .wrapper, #banner-reset-password, .pop-up-ajout-panier .pop-up-container .header-ajout-panier, #etape-page .wrapper .container-config-preview .preview-tab a.btn-yellow, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape .card-img, #etape-page .wrapper .container-config-preview .config-tab .tabscontent-etape:not(.quantite) .card-etape, #etape-page .wrapper .container-config-preview .config-tab ul.tabslink-etape li a, #catalogue .wrapper .container-catalogue .card-catalogue .view-detail-popup, #catalogue .wrapper .container-catalogue .card-catalogue .card-icon-catalogue, #produits-phares-catalogue .wrapper .btn-slick .slick-prev-custom,
-#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #formulaire .wrapper .formulaire-text .container-bouton .bouton_connexion, #conseils .wrapper, #faq .wrapper, #processus .wrapper ul.tabslink-processus li a, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .slick-prev-custom-equipe,
+#produits-phares-catalogue .wrapper .btn-slick .slick-next-custom, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares .produits-phrares_img, #produits-phares-catalogue .wrapper .container-produits_phares .card-produits-phares, #produits-phares-catalogue .wrapper, #etapes .wrapper .card-etapes, #etapes .wrapper, #banner-catalogue .wrapper, #formulaire .wrapper .formulaire-text .container-bouton .bouton_connexion, #conseils .wrapper, #faq .wrapper, #processus .wrapper .container-tabslink-processus ul.tabslink-processus li a, #processus .wrapper, .pop-up-info-equipe .pop-up-container .header-info-equipe, #equipe .wrapper .slick-prev-custom-equipe,
 #equipe .wrapper .slick-next-custom-equipe, #equipe .wrapper .container-equipe .card-equipe .equipe-img, #historique .wrapper, .pop-up-technologie .pop-up-container .header-technologie, #technologies .wrapper .container-technologie .card-technologie, #technologies .wrapper, #realisations .wrapper .container-btn-slick .slick-prev-custom,
 #realisations .wrapper .container-btn-slick .slick-next-custom, #realisations .wrapper, #packs .wrapper, #produits-phares .wrapper .slick-prev-custom-produits,
 #produits-phares .wrapper .slick-next-custom-produits, #produits-phares .wrapper, .pop-up-temoignages .pop-up-container .header-devis-temoignages, #temoignages .wrapper .slick-dots, #temoignages .wrapper .slick-prev-custom-temoignages,
@@ -3118,6 +3118,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 
 .pop-up-technologie .pop-up-container {
+  max-width: 800px;
   background: #f8f9fa;
   padding: 50px 20px;
 }
@@ -3176,7 +3177,8 @@ footer .wrapper ul.social-icon-footer li a {
   color: #170303;
 }
 .pop-up-technologie .pop-up-container .body-technologie .img_technologie {
-  min-width: 300px;
+  max-width: 300px;
+  width: 100%;
   height: 300px;
   border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -3654,37 +3656,35 @@ footer .wrapper ul.social-icon-footer li a {
   max-width: 664px;
   margin: auto;
 }
-#processus .wrapper ul.tabslink-processus {
+#processus .wrapper .container-tabslink-processus {
   margin-top: 60px;
+  position: relative;
+}
+#processus .wrapper .container-tabslink-processus .separateur-processus {
+  position: absolute;
+  top: 0;
+  width: 0;
+  width: 1300px;
+}
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus {
   gap: 0;
   background: transparent;
   position: relative;
   width: 1300px;
   cursor: grab;
+  margin-top: 0;
 }
 @media (max-width: 600px) {
-  #processus .wrapper ul.tabslink-processus {
+  #processus .wrapper .container-tabslink-processus ul.tabslink-processus {
     width: 100%;
   }
 }
-#processus .wrapper ul.tabslink-processus::before {
-  content: url("assets/img/separateur-processus.svg");
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1300px;
-}
-@media (max-width: 600px) {
-  #processus .wrapper ul.tabslink-processus::before {
-    display: none;
-  }
-}
-#processus .wrapper ul.tabslink-processus li {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li {
   padding: 20px 40px;
   position: relative;
   z-index: 1;
 }
-#processus .wrapper ul.tabslink-processus li a {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a {
   font-size: 18px;
   padding: 15px;
   color: #707070;
@@ -3698,7 +3698,7 @@ footer .wrapper ul.social-icon-footer li a {
   width: 228px;
 }
 @media (max-width: 600px) {
-  #processus .wrapper ul.tabslink-processus li a {
+  #processus .wrapper .container-tabslink-processus ul.tabslink-processus li a {
     width: 50px;
     border-radius: 0;
     -webkit-border-radius: 0;
@@ -3706,25 +3706,25 @@ footer .wrapper ul.social-icon-footer li a {
     background-clip: padding-box;
   }
 }
-#processus .wrapper ul.tabslink-processus li a:hover {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a:hover {
   transform: translateY(-10px);
 }
-#processus .wrapper ul.tabslink-processus li a.active {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a.active {
   background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
   color: #fff;
 }
-#processus .wrapper ul.tabslink-processus li a.active img {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a.active img {
   filter: brightness(10);
 }
-#processus .wrapper ul.tabslink-processus li a span {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a span {
   font-family: inherit;
 }
 @media (max-width: 600px) {
-  #processus .wrapper ul.tabslink-processus li a span {
+  #processus .wrapper .container-tabslink-processus ul.tabslink-processus li a span {
     display: none;
   }
 }
-#processus .wrapper ul.tabslink-processus li a img {
+#processus .wrapper .container-tabslink-processus ul.tabslink-processus li a img {
   width: 24px;
 }
 #processus .wrapper .tabscontent-processus {

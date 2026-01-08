@@ -889,30 +889,52 @@ include 'header.php';
             <div class="inner-title">
                 <p>Chaque projet est traité avec soin et précision</p>
             </div>
-            <ul class="tabslink-processus">
-                <li>
-                    <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Écoute</span> </a>
-                </li>
-                <li>
-                    <a href="#prix"> <img src="assets/img/price.svg" alt=""> <span>Prix</span> </a>
-                </li>
-                <li>
-                    <a href="#validation"> <img src="assets/img/creation.svg" alt=""> <span>Validation</span> </a>
-                </li>
-                <li>
-                    <a href="#verification"> <img src="assets/img/verification.svg" alt=""> <span>Vérification</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#fabrication"> <img src="assets/img/production.svg" alt=""> <span>Fabrication</span> </a>
-                </li>
-                <li>
-                    <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> <span>Finition</span></a>
-                </li>
-                <li>
-                    <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Transport</span></a>
-                </li>
-            </ul>
+            <div class="container-tabslink-processus">
+                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" class="separateur-processus"
+                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1380.4 132.7"
+                    style="enable-background:new 0 0 1380.4 132.7;" xml:space="preserve">
+
+                    <defs>
+                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="66.35" x2="1380.4"
+                            y2="66.35">
+                            <stop offset="0" stop-color="#E12948" />
+                            <stop offset="1" stop-color="#EFAC2D" />
+                        </linearGradient>
+                    </defs>
+
+                    <path class="st0" d="M1375.4,66c0-28.1-27-61-60.3-61h-222c-33.3,0-60.3,32.9-60.3,61v-0.3c0,28.1-27,61-60.3,61h-222
+c-33.3,0-60.3-32.9-60.3-61l0,1.3c0-28.1-27-61-60.3-61h-222c-33.3,0-60.3,32.9-60.3,61v-0.3c0,28.1-27,61-60.3,61h-222
+C32,127.7,5,94.8,5,66.7" fill="none" stroke="url(#SVGID_1_)" stroke-width="10" stroke-linecap="round"
+                        stroke-miterlimit="10" />
+                </svg>
+
+                <ul class="tabslink-processus">
+                    <li>
+                        <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Écoute</span> </a>
+                    </li>
+                    <li>
+                        <a href="#prix"> <img src="assets/img/price.svg" alt=""> <span>Prix</span> </a>
+                    </li>
+                    <li>
+                        <a href="#validation"> <img src="assets/img/creation.svg" alt=""> <span>Validation</span> </a>
+                    </li>
+                    <li>
+                        <a href="#verification"> <img src="assets/img/verification.svg" alt="">
+                            <span>Vérification</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#fabrication"> <img src="assets/img/production.svg" alt=""> <span>Fabrication</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> <span>Finition</span></a>
+                    </li>
+                    <li>
+                        <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Transport</span></a>
+                    </li>
+                </ul>
+            </div>
             <div class="tabscontent-processus" id="ecoute">
                 <div class="processus-text">
                     <div class="section-title">
