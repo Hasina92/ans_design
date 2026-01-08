@@ -356,15 +356,25 @@ $(document).ready(function () {
 
 //SLICK IMAGE PASSION
 $(document).ready(function () {
-  $(".slick-image").slick({
+  const $slider = $(".slick-image");
+
+  if (!$slider.length) return;
+
+  $slider.slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     dots: false,
-    speed: 1000,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    autoplay: false,
+  });
+
+  // IMPORTANT : clic sur le slide (pas seulement img)
+  $slider.on("click", ".slick-slide", function (e) {
+    // Empêche le clic sur les clones
+    if ($(this).hasClass("slick-cloned")) return;
+
+    $slider.slick("slickNext");
   });
 });
 

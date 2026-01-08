@@ -5,7 +5,8 @@ header {
   left: 0;
   width: 100%;
   z-index: 99;
-  background: $white;
+  background: #ffffffdf;
+  backdrop-filter: blur(10px);
 
   .wrapper {
     @extend .flex-sb;
