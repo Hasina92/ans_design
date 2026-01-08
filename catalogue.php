@@ -129,6 +129,10 @@ include 'header.php';
                 <h2>Nos Produits Phares</h2>
             </div>
 
+            <div class="inner-title">
+                <p>Nous utilisons des équipements de pointe pour un résultat impeccable à chaque impression.</p>
+            </div>
+
             <!-- ONGLES PAPETERIES (CATÉGORIES) -->
             <ul class="tabslink-produits">
                 <?php foreach ($categories as $index => $cat): ?>
@@ -180,7 +184,8 @@ include 'header.php';
                 <?php endforeach; ?>
 
             </div>
-
+            <button class="slick-prev-custom-produits"><img src="assets/img/arrow.svg" alt=""></button>
+            <button class="slick-next-custom-produits"><img src="assets/img/arrow.svg" alt=""></button>
         </div>
     </section>
 
@@ -248,64 +253,64 @@ include 'header.php';
 </main>
 
 <script>
-document.querySelectorAll('.open-popup-detail-catalogue').forEach(btn => {
+    document.querySelectorAll('.open-popup-detail-catalogue').forEach(btn => {
 
-    btn.addEventListener('click', async () => {
+        btn.addEventListener('click', async () => {
 
-        const popup = document.querySelector('.pop-up-detail-catalogue');
+            const popup = document.querySelector('.pop-up-detail-catalogue');
 
-        const id = btn.dataset.id;
-        const nom = btn.dataset.nom;
-        const description = btn.dataset.description;
-        const image = btn.dataset.image;
+            const id = btn.dataset.id;
+            const nom = btn.dataset.nom;
+            const description = btn.dataset.description;
+            const image = btn.dataset.image;
 
-        // Infos principales
-        popup.querySelector('.popup-produit-nom').textContent = nom;
-        popup.querySelector('.popup-produit-description').textContent = description;
-        popup.querySelector('.popup-produit-image').src = image;
-        popup.querySelector('.popup-produit-lien').href = 'etape.php?id=' + id;
+            // Infos principales
+            popup.querySelector('.popup-produit-nom').textContent = nom;
+            popup.querySelector('.popup-produit-description').textContent = description;
+            popup.querySelector('.popup-produit-image').src = image;
+            popup.querySelector('.popup-produit-lien').href = 'etape.php?id=' + id;
 
-        // Galerie
-        const gallery = popup.querySelector('.gallery-product');
-        gallery.innerHTML = '<p>Chargement...</p>';
+            // Galerie
+            const gallery = popup.querySelector('.gallery-product');
+            gallery.innerHTML = '<p>Chargement...</p>';
 
-        try {
-            const response = await fetch('get_product_gallery.php?id=' + id);
-            const images = await response.json();
+            try {
+                const response = await fetch('get_product_gallery.php?id=' + id);
+                const images = await response.json();
 
-            gallery.innerHTML = '';
+                gallery.innerHTML = '';
 
-            if (images.length === 0) {
-                gallery.innerHTML = '<p>Aucune image supplémentaire</p>';
-            } else {
-                images.forEach(src => {
-                    const img = document.createElement('img');
-                    img.src = src;
-                    img.alt = nom;
-                    img.style.cursor = 'pointer';
+                if (images.length === 0) {
+                    gallery.innerHTML = '<p>Aucune image supplémentaire</p>';
+                } else {
+                    images.forEach(src => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = nom;
+                        img.style.cursor = 'pointer';
 
-                    // clic = image principale
-                    img.addEventListener('click', () => {
-                        popup.querySelector('.popup-produit-image').src = src;
+                        // clic = image principale
+                        img.addEventListener('click', () => {
+                            popup.querySelector('.popup-produit-image').src = src;
+                        });
+
+                        gallery.appendChild(img);
                     });
+                }
 
-                    gallery.appendChild(img);
-                });
+            } catch (e) {
+                gallery.innerHTML = '<p>Erreur chargement galerie</p>';
             }
 
-        } catch (e) {
-            gallery.innerHTML = '<p>Erreur chargement galerie</p>';
-        }
-
-        popup.classList.add('active');
+            popup.classList.add('active');
+        });
     });
-});
 
-// fermeture popup
-document.querySelector('.close-popup-detail-catalogue')
-    .addEventListener('click', () => {
-        document.querySelector('.pop-up-detail-catalogue').classList.remove('active');
-    });
+    // fermeture popup
+    document.querySelector('.close-popup-detail-catalogue')
+        .addEventListener('click', () => {
+            document.querySelector('.pop-up-detail-catalogue').classList.remove('active');
+        });
 </script>
 
 <!-- FOOTER -->
