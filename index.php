@@ -669,40 +669,53 @@ include 'header.php';
         <div class="wrapper">
             <svg id="timeline" class="separateur-historique" version="1.1" id="Calque_1"
                 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                viewBox="0 0 159.8 948.8" style="enable-background:new 0 0 159.8 948.8;" xml:space="preserve">
-
+                viewBox="0 0 167.8 956.8" style="enable-background:new 0 0 167.8 956.8;" xml:space="preserve">
                 <style type="text/css">
                     .st0 {
                         fill: none;
-                        stroke: #E12948;
-                        stroke-width: 2;
+                        stroke: url(#SVGID_1_);
+                        stroke-width: 10;
+                        stroke-linecap: round;
                     }
 
                     .st1 {
-                        fill: #F5BF2A;
+                        fill: #E12948;
                     }
 
                     .st2 {
-                        fill: #E12948;
+                        fill: #E44043;
+                    }
+
+                    .st3 {
+                        fill: #E9623D;
+                    }
+
+                    .st4 {
+                        fill: #EE8D34;
+                    }
+
+                    .st5 {
+                        fill: #F3AD2E;
                     }
                 </style>
-                <g id="Calque_2_00000149362559753874967320000007765458246492120224_">
-                    <g id="Calque_1-2">
-                        <path class="st0" d="M79.9,1C36.3,1,1,36.4,1,80c0,32.1,19.5,61,49.3,73.1c9.6,3.9,19.9,5.8,30.3,5.8v0
-            c43.6,0.4,78.6,36,78.2,79.6c-0.3,38-27.7,70.3-65,76.9l-1.9,0.3l-1.9,0.2l-1.9,0.2l-1.9,0.1l-1.9,0.1c-0.7,0-1.3,0-1.9,0.1
-            l-3.9,0.1l2.3-0.1c-10.4-0.1-20.7,1.9-30.3,5.8C9.9,338.7-9.5,384.7,6.9,425.1c12.1,29.7,40.9,49.2,73,49.2v0.1
-            c43.6,0,78.9,35.4,78.9,79c0,32.1-19.5,61-49.3,73.1c-9.6,3.9-19.9,5.8-30.3,5.8l0,0C35.6,632.6,0.6,668.3,1,711.8
-            c0.4,37.9,27.7,70.3,65,76.9l1.9,0.3l1.9,0.2l1.9,0.2l1.9,0.2l1.9,0.2c0.7,0,1.3,0,1.9,0.1l3.9,0.1l-2.3,0
-            c10.4-0.1,20.7,1.9,30.3,5.8c40.4,16.4,59.8,62.4,43.5,102.8c-12.1,29.7-40.9,49.2-73,49.2" />
-                    </g>
+                <g>
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="83.9" y1="956.8" x2="83.9"
+                        y2="-9.094947e-13">
+                        <stop offset="0" style="stop-color:#F5BF2A" />
+                        <stop offset="1" style="stop-color:#E12948" />
+                    </linearGradient>
+                    <path class="st0" d="M83.9,951.8c43.6,0,78.9-35.3,78.9-78.9c0-43.6-35.3-78.9-78.9-78.9S5,758.7,5,715.1
+        c0-43.6,35.3-78.9,78.9-78.9l0,0c43.6,0,78.9-35.3,78.9-78.9c0-43.6-35.3-78.9-78.9-78.9S5,443.1,5,399.5s35.3-78.9,78.9-78.9
+        s78.9-35.3,78.9-78.9s-35.3-78.9-78.9-78.9S5,127.5,5,83.9S40.3,5,83.9,5" />
+                    <circle class="st1" cx="84.9" cy="84.9" r="61.1" />
+                    <circle class="st1" cx="84.9" cy="240.4" r="61.1" />
+                    <circle class="st2" cx="84.9" cy="400" r="61.1" />
+                    <circle class="st3" cx="84.9" cy="557.6" r="61.1" />
+                    <circle class="st4" cx="84.9" cy="715.1" r="61.1" />
+                    <circle class="st5" cx="84.9" cy="873.7" r="61.1" />
                 </g>
-                <circle class="st1" cx="79.9" cy="79.3" r="61.4" />
-                <circle class="st2" cx="79.9" cy="236.1" r="61.4" />
-                <circle class="st1" cx="79.9" cy="393" r="61.4" />
-                <circle class="st2" cx="79.9" cy="549.8" r="61.4" />
-                <circle class="st1" cx="79.9" cy="706.7" r="61.4" />
-                <circle class="st2" cx="79.9" cy="863.5" r="61.4" />
             </svg>
+
             <div class="card-historique">
                 <div class="card-historique_item">
                     <h3>2018</h3>
