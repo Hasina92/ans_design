@@ -71,7 +71,7 @@ header {
         left: -150px;
         white-space: nowrap;
         transform: translateY(-50%);
-        color: $red;
+        color: $white;
         height: 40px;
         @extend %flex;
         @include justify-content(start);
@@ -88,7 +88,7 @@ header {
         right: 0;
         width: 40px;
         height: 40px;
-        background: $white;
+        background: $yellow;
         z-index: -1;
         @include border-radius(20px);
         transform-origin: right;

@@ -959,7 +959,7 @@ header .wrapper .demande-devis::before {
   left: -150px;
   white-space: nowrap;
   transform: translateY(-50%);
-  color: #df4d34;
+  color: #fff;
   height: 40px;
   -webkit-justify-content: start;
   -moz-justify-content: start;
@@ -983,7 +983,7 @@ header .wrapper .demande-devis::after {
   right: 0;
   width: 40px;
   height: 40px;
-  background: #fff;
+  background: #f5bf2a;
   z-index: -1;
   border-radius: 20px;
   -webkit-border-radius: 20px;
