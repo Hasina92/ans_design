@@ -245,6 +245,20 @@ body {
   -webkit-font-smoothing: antialiased;
   margin: 0;
   padding: 0;
+  background: #fff;
+}
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("assets/img/bg_body.png");
+  background-position: center center;
+  background-size: contain;
+  z-index: -1;
+  opacity: 0.02;
 }
 
 section {
@@ -2183,6 +2197,7 @@ footer .wrapper ul.social-icon-footer li a {
 
 #temoignages {
   position: relative;
+  background: #fff;
 }
 #temoignages .wrapper {
   -webkit-flex-direction: column;
@@ -2449,7 +2464,7 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-pack: space-between;
   gap: 10px;
   padding: 30px 20px;
-  border: 1px #f8f8f8 solid;
+  border: 1px #fff solid;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
@@ -2460,6 +2475,7 @@ footer .wrapper ul.social-icon-footer li a {
   position: relative;
   overflow: hidden;
   margin: 15px 30px 15px 0;
+  background: #fff;
 }
 #produits-phares .wrapper .container-produit .card-produit::after {
   content: "";
@@ -3016,7 +3032,7 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-border-radius: 20px;
   background-clip: padding-box;
   position: relative;
-  border: 1px #fff solid;
+  background: #fff;
 }
 #technologies .wrapper .container-technologie .card-technologie:hover {
   transform: translateY(-10px);
@@ -3132,9 +3148,8 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  background: rgba(112, 112, 112, 0.0509803922);
+  background: #f5f5f5;
   padding: 50px 70px;
-  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.1607843137);
   backdrop-filter: blur(50px);
   gap: 50px;
 }
@@ -3329,6 +3344,9 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 
+#equipe {
+  background: #fff;
+}
 #equipe .wrapper {
   position: relative;
 }
@@ -3698,7 +3716,7 @@ footer .wrapper ul.social-icon-footer li a {
   -moz-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  background: rgba(112, 112, 112, 0.0509803922);
+  background: #f5f5f5;
   border-radius: 120px;
   -webkit-border-radius: 120px;
   -moz-border-radius: 120px;
@@ -3755,7 +3773,7 @@ footer .wrapper ul.social-icon-footer li a {
   left: 0;
   width: 100%;
   height: 20%;
-  background: linear-gradient(to bottom, #f8f8f8, rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, #f5f5f5, rgba(255, 255, 255, 0));
   z-index: 2;
   display: block;
 }
@@ -3766,7 +3784,7 @@ footer .wrapper ul.social-icon-footer li a {
   right: 0;
   width: 100%;
   height: 20%;
-  background: linear-gradient(to bottom, #f8f8f8, rgba(255, 255, 255, 0));
+  background: linear-gradient(to bottom, #f5f5f5, rgba(255, 255, 255, 0));
   z-index: 2;
   transform: rotate(180deg);
   display: block;
@@ -3861,29 +3879,6 @@ footer .wrapper ul.social-icon-footer li a {
     grid-template-columns: 1fr;
   }
 }
-#conseils .wrapper .container-conseils::before {
-  content: "";
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-  z-index: 2;
-  display: block;
-}
-#conseils .wrapper .container-conseils::after {
-  content: "";
-  position: sticky;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 20%;
-  background: linear-gradient(to bottom, rgb(255, 255, 255), rgba(255, 255, 255, 0));
-  z-index: 2;
-  transform: rotate(180deg);
-  display: block;
-}
 #conseils .wrapper .container-conseils .card-conseil {
   position: relative;
   padding: 0;
@@ -3895,6 +3890,7 @@ footer .wrapper ul.social-icon-footer li a {
   overflow: hidden;
   height: 315px;
   margin: 0 20px;
+  background: #fff;
 }
 #conseils .wrapper .container-conseils .card-conseil .conseil-img {
   width: 100%;
@@ -3943,6 +3939,7 @@ footer .wrapper ul.social-icon-footer li a {
   box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
   padding: 0;
   gap: 30px;
+  background: #fff;
 }
 @media (max-width: 600px) {
   #formulaire .wrapper {

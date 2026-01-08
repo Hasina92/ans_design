@@ -316,7 +316,7 @@
 // TEMOIGNAGES
 #temoignages {
   position: relative;
-  // background: $white;
+  background: $white;
   .wrapper {
     @extend .flex-jc;
     @include flex-direction(column);
@@ -588,7 +588,7 @@
         gap: 10px;
         padding: 30px 20px;
         // box-shadow: 0px 0px 20px 0px #0000001a;
-        border: 1px #f8f8f8 solid;
+        border: 1px $white solid;
         @include border-radius(20px);
         max-width: 300px;
         width: 100%;
@@ -597,6 +597,7 @@
         overflow: hidden;
         // margin: 15px;
         margin: 15px 30px 15px 0;
+        background: $white;
         &::after {
           content: "";
           position: absolute;
@@ -1119,7 +1120,8 @@
         padding: 20px 10px;
         @include border-radius(20px);
         position: relative;
-        border: 1px $white solid;
+        // border: 1px $white solid;
+        background: $white;
         &:hover {
           transform: translateY(-10px);
           background: $yellow;
@@ -1231,9 +1233,9 @@
     @extend .flex-sb;
     @include border-radius(120px);
     @include align-items(center);
-    background: #7070700d;
+    background: #f5f5f5;
     padding: 50px 70px;
-    box-shadow: 0px 0px 3px 0px #00000029;
+    // box-shadow: 0px 0px 3px 0px #00000029;
     backdrop-filter: blur(50px);
     gap: 50px;
 
@@ -1415,6 +1417,7 @@
 
 //EQUIPE
 #equipe {
+  background: $white;
   .wrapper {
     position: relative;
     &::before {
@@ -1773,7 +1776,7 @@
   .wrapper {
     @extend .flex-jc;
     @include flex-direction(column);
-    background: #7070700d;
+    background: #f5f5f5;
     @include border-radius(120px);
     padding: 75px 140px;
     @include breakpoint(xs) {
@@ -1829,7 +1832,7 @@
         left: 0;
         width: 100%;
         height: 20%;
-        background: linear-gradient(to bottom, #f8f8f8, rgba(255, 255, 255, 0));
+        background: linear-gradient(to bottom, #f5f5f5, rgba(255, 255, 255, 0));
         z-index: 2;
         display: block;
       }
@@ -1840,7 +1843,7 @@
         right: 0;
         width: 100%;
         height: 20%;
-        background: linear-gradient(to bottom, #f8f8f8, rgba(255, 255, 255, 0));
+        background: linear-gradient(to bottom, #f5f5f5, rgba(255, 255, 255, 0));
         z-index: 2;
         transform: rotate(180deg);
         display: block;
@@ -1942,39 +1945,6 @@
       @include breakpoint(xs) {
         @include grid-template-columns(1fr);
       }
-
-      &::before {
-        content: "";
-        position: sticky;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 20%;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 1),
-          rgba(255, 255, 255, 0)
-        );
-        z-index: 2;
-        display: block;
-      }
-      &::after {
-        content: "";
-        position: sticky;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 20%;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 1),
-          rgba(255, 255, 255, 0)
-        );
-        z-index: 2;
-        transform: rotate(180deg);
-        display: block;
-      }
-
       .card-conseil {
         position: relative;
         padding: 0;
@@ -1983,7 +1953,7 @@
         overflow: hidden;
         height: 315px;
         margin: 0 20px;
-
+        background: $white;
         .conseil-img {
           width: 100%;
           height: 178px;
@@ -2038,6 +2008,7 @@
     box-shadow: 0px 0px 7.5px 0px #0000000d;
     padding: 0;
     gap: 30px;
+    background: $white;
     @include breakpoint(xs) {
       @include border-radius(0);
       @include flex-direction(column);
