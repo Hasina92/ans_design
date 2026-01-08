@@ -935,10 +935,6 @@
           @include grid-template-columns(1fr);
         }
       }
-      /* Limiter à 2 lignes */
-      .tabscontent-realisations .card-realisation:nth-child(n + 5) {
-        display: none;
-      }
 
       /* Bouton Voir plus */
       .voir-plus-btn {
@@ -954,6 +950,7 @@
         font-family: "gilroy-bold";
       }
       .card-realisation {
+        // display: none;
         @extend .flex-sb;
         @include align-items(stretch);
         gap: 50px;

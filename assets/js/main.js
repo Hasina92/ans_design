@@ -727,14 +727,33 @@ document.querySelectorAll(".voir-plus").forEach((btn) => {
   });
 });
 
-//VOIR PLUS REALISATION
-document.querySelectorAll(".voir-plus-btn").forEach((btn) => {
+// VOIR PLUS REALISATIONS – affichage 4 par 4
+document.querySelectorAll(".tabscontent-realisations").forEach((tab) => {
+  const cards = tab.querySelectorAll(".card-realisation");
+  const btn = tab.querySelector(".voir-plus-btn");
+
+  let visibleCount = 4;
+
+  // Affiche les 4 premières
+  cards.forEach((card, index) => {
+    card.style.display = index < visibleCount ? "flex" : "none";
+  });
+
+  if (!btn || cards.length <= 4) return;
+
   btn.addEventListener("click", () => {
-    const container = btn.closest(".tabscontent-realisations");
-    container.querySelectorAll(".card-realisation").forEach((card) => {
-      card.style.display = "flex";
+    visibleCount += 4;
+
+    cards.forEach((card, index) => {
+      if (index < visibleCount) {
+        card.style.display = "flex";
+      }
     });
-    btn.style.display = "none";
+
+    // Si tout est affiché → cacher le bouton
+    if (visibleCount >= cards.length) {
+      btn.style.display = "none";
+    }
   });
 });
 
