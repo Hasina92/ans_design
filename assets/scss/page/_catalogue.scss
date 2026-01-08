@@ -205,6 +205,9 @@
 //CATALOGUE
 #catalogue {
   .wrapper {
+    background: $white;
+    @include border-radius(30px);
+    padding: 80px 20px;
     .section-title {
       text-align: center;
 
@@ -259,7 +262,7 @@
         overflow: hidden;
         border: 1px solid transparent;
         position: relative;
-        min-height: 300px;
+        min-height: 250px;
         margin: 10px !important;
         @include breakpoint(xs) {
           max-width: 100%;

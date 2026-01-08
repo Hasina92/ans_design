@@ -94,7 +94,6 @@
     @extend .flex-jc;
     @include flex-direction(column);
     gap: 50px;
-    background: transparent;
     padding: 40px;
     overflow: hidden;
     position: relative;

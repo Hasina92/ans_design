@@ -2022,7 +2022,6 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-direction: column;
   flex-direction: column;
   gap: 50px;
-  background: transparent;
   padding: 40px;
   overflow: hidden;
   position: relative;
@@ -4313,6 +4312,12 @@ footer .wrapper ul.social-icon-footer li a {
 }
 
 #catalogue .wrapper {
+  background: #fff;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  background-clip: padding-box;
+  padding: 80px 20px;
   /* Largeur de la scrollbar */
   /* Piste de la scrollbar */
   /* Bouton de scroll (la "thumb") */
@@ -4371,7 +4376,7 @@ footer .wrapper ul.social-icon-footer li a {
   overflow: hidden;
   border: 1px solid transparent;
   position: relative;
-  min-height: 300px;
+  min-height: 250px;
   margin: 10px !important;
 }
 @media (max-width: 600px) {
