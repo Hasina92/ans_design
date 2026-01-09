@@ -6,7 +6,7 @@ header {
   width: 100%;
   z-index: 99;
   background: #ffffffdf;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
 
   .wrapper {
     @extend .flex-sb;

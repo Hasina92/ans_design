@@ -884,7 +884,7 @@ header {
   width: 100%;
   z-index: 99;
   background: rgba(255, 255, 255, 0.8745098039);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(50px);
 }
 header .wrapper {
   padding: 20px 40px;
