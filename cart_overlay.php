@@ -35,9 +35,12 @@ if (isset($_SESSION['user_id'])) {
                     ?>
                     <a href="#panier">Panier <span class="number">(<?php echo $count; ?>)</span></a>
                 </li>
-                <li>
-                    <a href="#mon_compte">Mon compte</a>
-                </li>
+
+                <?php if (isset($_SESSION['user_id'])): ?>
+                    <li>
+                        <a href="#mon_compte">Mon compte</a>
+                    </li>
+                <?php endif; ?>
             </ul>
             <div class="container-nav-cart">
                 <div class="tabscontent-cart" id="panier">

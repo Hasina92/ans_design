@@ -1186,8 +1186,8 @@ header .wrapper .menu-social .no-result {
   }
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li {
-  width: 50%;
   text-align: center;
+  width: 100%;
 }
 #overlay .wrapper .body-mini-cart ul.tabslink-cart li a {
   padding: 10px 35px;
@@ -1726,7 +1726,7 @@ header .wrapper .menu-social .no-result {
 @media (max-width: 768px) {
   .pop-up-devis-commande .pop-up-container {
     min-width: 90%;
-    padding: 20px;
+    padding: 50px 20px 20px 20px;
   }
 }
 .pop-up-devis-commande .pop-up-container .header-devis-commande h3 {
