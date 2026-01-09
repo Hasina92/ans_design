@@ -9,6 +9,7 @@ footer {
       padding: 40px 140px;
       @extend .shape-top;
       @include border-radius(30px 30px 0 0);
+      // background: $white;
 
       @include breakpoint(sm) {
         @include flex-direction(column);
@@ -41,6 +42,7 @@ footer {
       @extend .flex-sb;
       gap: 50px;
       padding: 40px;
+      background: $white;
 
       @include breakpoint(sm) {
         @include flex-direction(column);

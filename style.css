@@ -1812,6 +1812,7 @@ footer .wrapper .container-information .card-information a:not(:last-of-type) {
 footer .wrapper .container-additional-information {
   gap: 50px;
   padding: 40px;
+  background: #fff;
 }
 @media (max-width: 768px) {
   footer .wrapper .container-additional-information {
@@ -2299,6 +2300,9 @@ footer .wrapper ul.social-icon-footer li a {
   z-index: 2;
   transform: rotate(180deg);
 }
+#temoignages .wrapper .section-title {
+  z-index: 3;
+}
 #temoignages .wrapper .section-title h2 {
   color: #f5bf2a;
   text-align: center;
@@ -2425,6 +2429,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #temoignages .wrapper #open-popup-temoignages {
   margin-bottom: 20px;
+  z-index: 3;
 }
 
 .pop-up-temoignages .pop-up-container {
@@ -3308,11 +3313,11 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #container-historique .wrapper {
   background: rgba(255, 255, 255, 0.5803921569);
-  border-radius: 120px;
-  -webkit-border-radius: 120px;
-  -moz-border-radius: 120px;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
   background-clip: padding-box;
-  padding: 40px 140px;
+  padding: 100px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1607843137);
   backdrop-filter: blur(50px);
   position: relative;
@@ -3362,7 +3367,7 @@ footer .wrapper ul.social-icon-footer li a {
 #container-historique .wrapper .card-historique_item {
   background: #fff;
   width: 100%;
-  max-width: 425px;
+  max-width: 500px;
   padding: 30px 20px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
   border-radius: 20px;
@@ -3838,7 +3843,7 @@ footer .wrapper ul.social-icon-footer li a {
   top: 0;
   left: 0;
   width: 100%;
-  height: 40%;
+  height: 80px;
   background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 50%, rgba(255, 255, 255, 0) 100%);
   z-index: 2;
   display: block;
@@ -3849,7 +3854,7 @@ footer .wrapper ul.social-icon-footer li a {
   bottom: 0;
   right: 0;
   width: 100%;
-  height: 40%;
+  height: 80px;
   background: linear-gradient(to bottom, #f5f5f5 0%, #f5f5f5 50%, rgba(255, 255, 255, 0) 100%);
   z-index: 2;
   transform: rotate(180deg);

@@ -366,7 +366,6 @@ $(document).ready(function () {
     slidesToScroll: 1,
     arrows: false,
     dots: false,
-    autoplay: false,
   });
 
   // IMPORTANT : clic sur le slide (pas seulement img)
