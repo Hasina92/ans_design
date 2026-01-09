@@ -765,6 +765,7 @@ header {
     padding: 50px;
     @include breakpoint(sm) {
       min-width: 90%;
+      padding: 20px;
     }
     .header-devis-commande {
       @extend .flex-jc;

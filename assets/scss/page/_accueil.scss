@@ -696,6 +696,9 @@
       cursor: pointer;
       border: none;
       z-index: 3;
+      @include breakpoint(xs) {
+        left: 0;
+      }
       img {
         width: 25px;
         aspect-ratio: 1/1;
@@ -912,7 +915,7 @@
         width: 1300px;
         margin: 0;
         @include breakpoint(xs) {
-          width: 100%;
+          width: 100vw;
         }
       }
 
@@ -974,6 +977,9 @@
         box-shadow: 0px 0px 7.5px 0px #0000001a;
         position: relative;
         margin: 20px;
+        @include breakpoint(sm) {
+          margin: 0;
+        }
         &:hover {
           transform: translateY(-10px);
           background: $yellow;
@@ -1179,6 +1185,9 @@
       @extend .flex-jc;
       @include flex-direction(column);
       gap: 10px;
+      @include breakpoint(xs) {
+        display: none;
+      }
       .icone-img {
         width: 60px;
         aspect-ratio: 1/1;
@@ -1584,6 +1593,9 @@
       cursor: pointer;
       border: none;
       z-index: 98;
+      @include breakpoint(xs) {
+        left: 0;
+      }
       img {
         width: 25px;
         aspect-ratio: 1/1;
@@ -1593,6 +1605,9 @@
     .slick-next-custom-equipe {
       right: -10px;
       left: initial;
+      @include breakpoint(xs) {
+        right: 0;
+      }
       img {
         transform: rotate(0deg);
       }
@@ -1714,7 +1729,7 @@
         cursor: grab;
         margin-top: 0;
         @include breakpoint(xs) {
-          width: 100%;
+          width: 100vw;
         }
         li {
           padding: 20px 40px;
@@ -2085,6 +2100,9 @@
 
         .bouton_connexion {
           @extend .flex-jc;
+          @include breakpoint(xs) {
+            display: none;
+          }
           .btn {
             box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.0509803922);
             color: $dark;

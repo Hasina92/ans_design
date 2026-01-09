@@ -433,6 +433,20 @@ $(document).ready(function () {
     autoplay: false,
     prevArrow: $(".slick-prev-custom"),
     nextArrow: $(".slick-next-custom"),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   });
 });
 
