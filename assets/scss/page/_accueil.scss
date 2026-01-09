@@ -296,9 +296,15 @@
       @include breakpoint(xs) {
         max-width: 100%;
       }
-
-      img {
-        height: 37px;
+      .icone_stat {
+        background: $white;
+        @include border-radius(50%);
+        width: 60px;
+        height: 60px;
+        @extend .flex-jc;
+        img {
+          height: 30px;
+        }
       }
 
       .nombre {

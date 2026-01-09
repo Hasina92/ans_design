@@ -165,22 +165,30 @@ include 'header.php';
     <section id="stats">
         <div class="wrapper">
             <div class="card-stat t-center">
-                <img src="assets/img/icone_stat.svg" alt="">
+                <div class="icone_stat">
+                    <img src="assets/img/icone_stat.svg" alt="">
+                </div>
                 <span class="nombre">10 000+ </span>
                 <p class="small">Cartes de visite produites quotidiennement</p>
             </div>
             <div class="card-stat t-center">
-                <img src="assets/img/icone_stat_2.svg" alt="">
+                <div class="icone_stat">
+                    <img src="assets/img/icone_stat_2.svg" alt="">
+                </div>
                 <span class="nombre">3 000+ </span>
                 <p class="small">Projets réalisés avec succès et livrés</p>
             </div>
             <div class="card-stat t-center">
-                <img src="assets/img/icone_stat_3.svg" alt="">
+                <div class="icone_stat">
+                    <img src="assets/img/icone_stat_3.svg" alt="">
+                </div>
                 <span class="nombre">8</span>
                 <p class="small">Ans d’expertise au service de vos impressions</p>
             </div>
             <div class="card-stat t-center">
-                <img src="assets/img/icone_stat_4.svg" alt="">
+                <div class="icone_stat">
+                    <img src="assets/img/icone_stat_4.svg" alt="">
+                </div>
                 <span class="nombre">2 500+</span>
                 <p class="small">Clients fidèles qui nous font confiance</p>
             </div>
