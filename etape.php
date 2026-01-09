@@ -150,10 +150,29 @@ include 'header.php';
                         <span><?php echo number_format($produit['prix_base'], 0, ',', ' '); ?> AR</span>
                         <span>Sur Devis</span>
                     </div>
-                    <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
+                    <!-- <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
                         <img src="assets/img/cart.svg" alt="">
                         Ajouter au panier
-                    </a>
+                    </a> -->
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
+                            <img src="assets/img/cart.svg" alt="">
+                            Ajouter au panier
+                        </a>
+                    <?php else: ?>
+                        <a href="#" class="btn-yellow" onclick="alert('Veuillez vous connecter pour ajouter au panier')">
+                            <img src="assets/img/cart.svg" alt="">
+                            Ajouter au panier
+                        </a>
+                    <?php endif; ?>
+                    <!-- Message en bas (non connecté) -->
+                    <?php if (!isset($_SESSION['user_id'])): ?>
+                        <div class="login-warning">
+                            <strong>Veuillez vous connecter</strong>
+                            <p>Connectez-vous pour ajouter des produits au panier.</p>
+                            <a href="mon-compte.php" class="btn-red">Se connecter</a>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
