@@ -776,7 +776,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Masquer le path au départ
   path.style.strokeDasharray = length;
-  path.style.strokeDashoffset = length;
+  path.style.strokeDashoffset = -length; // 👈 inversion ici
 
   // Animation continue à l'entrée de la section
   ScrollTrigger.create({
