@@ -308,8 +308,15 @@ header {
         @include breakpoint(xs) {
           margin: 10px;
         }
+        .cart-items-wrapper {
+          @extend %flex;
+          @include flex-direction(column);
+          gap: 20px;
+        }
         .card-cart {
-          @extend .flex-sb;
+          @extend %flex;
+          @include justify-content(start);
+          gap: 20px;
           padding: 20px;
           background: $white;
           box-shadow: 0px 3px 3px 0px rgba(0, 0, 0, 0.0705882353);

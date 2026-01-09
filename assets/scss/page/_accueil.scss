@@ -344,6 +344,9 @@
         rgba(255, 255, 255, 0) 100%
       );
       z-index: 2;
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
     &::after {
       content: "";
@@ -360,6 +363,9 @@
       );
       z-index: 2;
       transform: rotate(180deg);
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
     .section-title {
       z-index: 3;
@@ -589,24 +595,19 @@
       width: 100%;
       position: relative;
 
-      .tabscontent-produits {
-      }
-
       .card-produit {
         @extend %flex;
         @include flex-direction(column);
         @include justify-content(space-between);
         gap: 10px;
         padding: 30px 20px;
-        // box-shadow: 0px 0px 20px 0px #0000001a;
-        border: 1px $white solid;
+        // border: 1px $white solid;
         @include border-radius(20px);
         max-width: 300px;
         width: 100%;
         min-height: 351px;
         position: relative;
         overflow: hidden;
-        // margin: 15px;
         margin: 15px 30px 15px 0;
         background: $white;
         &::after {
@@ -644,7 +645,8 @@
         }
 
         @include breakpoint(xs) {
-          min-width: 100%;
+          max-width: 90vw;
+          width: 100%;
         }
 
         img {
@@ -693,6 +695,7 @@
       @extend .flex-jc;
       cursor: pointer;
       border: none;
+      z-index: 3;
       img {
         width: 25px;
         aspect-ratio: 1/1;
@@ -1221,6 +1224,9 @@
         height: 300px;
         @include border-radius(30px);
         overflow: hidden;
+        @include breakpoint(sm) {
+          display: none;
+        }
         img {
           height: 100%;
           width: 100%;
@@ -1283,6 +1289,9 @@
 
         &::before {
           content: url("assets/img/befor-passion.svg");
+          @include breakpoint(xs) {
+            display: none;
+          }
         }
 
         span {
@@ -1443,6 +1452,9 @@
         rgba(255, 255, 255, 0) 100%
       );
       z-index: 2;
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
     &::after {
       content: "";
@@ -1459,6 +1471,9 @@
       );
       z-index: 2;
       transform: rotate(180deg);
+      @include breakpoint(sm) {
+        display: none;
+      }
     }
     .section-title {
       h2 {
@@ -1854,6 +1869,9 @@
         );
         z-index: 2;
         display: block;
+        @include breakpoint(sm) {
+          display: none;
+        }
       }
       &::after {
         content: "";
@@ -1871,6 +1889,9 @@
         z-index: 2;
         transform: rotate(180deg);
         display: block;
+        @include breakpoint(sm) {
+          display: none;
+        }
       }
       .accordeon-content {
         padding: 30px 40px;

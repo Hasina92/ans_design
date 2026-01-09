@@ -87,11 +87,9 @@ if (isset($_SESSION['user_id'])) {
                         <img src="assets/img/icone_my_account.svg" alt="">
                     </a>
 
-                    <!-- On affiche les icônes coeur et panier seulement si l'utilisateur est connecté -->
-                    <?php if (isset($_SESSION['user_id'])): ?>
-                        <a href="#mini-cart" class="open-button"><img src="assets/img/pannier-header-icon.svg"
-                                alt="Panier"></a>
-                    <?php endif; ?>
+                    <a href="#mini-cart" class="open-button">
+                        <img src="assets/img/pannier-header-icon.svg" alt="Panier">
+                    </a>
 
                     <a href="#" id="burgerMenu">
                         <img src="assets/img/hamburger.svg" alt="" class="burgerIcon">

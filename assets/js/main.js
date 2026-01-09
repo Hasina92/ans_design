@@ -351,6 +351,20 @@ $(document).ready(function () {
     centerMode: true,
     prevArrow: $(".slick-prev-custom-temoignages"),
     nextArrow: $(".slick-next-custom-temoignages"),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   });
 });
 
@@ -389,6 +403,21 @@ $(document).ready(function () {
     variableWidth: true,
     prevArrow: $(".slick-prev-custom-produits"),
     nextArrow: $(".slick-next-custom-produits"),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+        },
+      },
+    ],
   });
 });
 

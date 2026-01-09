@@ -32,6 +32,7 @@
           box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
           padding: 20px;
           @include border-radius(20px);
+          background: $white;
           &.active .accordeon-content-compte {
             opacity: 1;
             max-height: 1000px;

@@ -164,7 +164,7 @@ include 'header.php';
 
 
                             <!-- Bouton -->
-                            <button type="submit" class="btn-red">Valider la
+                            <button type="submit" class="btn-red" style="font-size:18px">Valider la
                                 commande</button>
                         </form>
                     </section>
