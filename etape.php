@@ -150,21 +150,10 @@ include 'header.php';
                         <span><?php echo number_format($produit['prix_base'], 0, ',', ' '); ?> AR</span>
                         <span>Sur Devis</span>
                     </div>
-                    <!-- <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
+                    <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
                         <img src="assets/img/cart.svg" alt="">
                         Ajouter au panier
-                    </a> -->
-                    <?php if (isset($_SESSION['user_id'])): ?>
-                        <a href="#ajout_panier" id="open-popup-ajout-panier" class="btn-yellow">
-                            <img src="assets/img/cart.svg" alt="">
-                            Ajouter au panier
-                        </a>
-                    <?php else: ?>
-                        <a href="#" class="btn-yellow" onclick="alert('Veuillez vous connecter pour ajouter au panier')">
-                            <img src="assets/img/cart.svg" alt="">
-                            Ajouter au panier
-                        </a>
-                    <?php endif; ?>
+                    </a>
                     <!-- Message en bas (non connecté) -->
                     <?php if (!isset($_SESSION['user_id'])): ?>
                         <div class="login-warning">
@@ -187,7 +176,11 @@ include 'header.php';
                 </h3>
             </div>
             <div class="body-ajout-panier">
-                <a href="validation-commande.php" class="btn-red">Valider la commande</a>
+                <a href="<?php echo isset($_SESSION['user_id'])
+                    ? 'validation-commande.php'
+                    : 'mon-compte.php?redirect_back=validation-commande.php'; ?>" class="btn-red">
+                    Valider la commande
+                </a>
                 <a href="#mini-cart" class="btn open-button">Voir le panier</a>
             </div>
             <a href="#close" id="close-popup-ajout-panier"><img src="assets/img/close.svg" alt=""></a>
