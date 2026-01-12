@@ -24,6 +24,7 @@
     width: 100%;
     background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
     color: $white;
+    @include border-radius(10px);
   }
 
   &-white {

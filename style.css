@@ -763,6 +763,10 @@ p.small {
   width: 100%;
   background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
   color: #fff;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  background-clip: padding-box;
 }
 .btn-white, #produits-phares-catalogue .wrapper .container-produits_phares .slick-current a {
   background: #fff;
@@ -2612,7 +2616,7 @@ footer .wrapper ul.social-icon-footer li a {
   justify-content: space-between;
   -ms-flex-pack: space-between;
   gap: 10px;
-  padding: 30px 20px;
+  padding: 20px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;

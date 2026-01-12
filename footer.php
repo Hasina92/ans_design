@@ -51,6 +51,9 @@ require_once 'init_user.php';
                 <li>
                     <a href="blog.php">Blog</a>
                 </li>
+                <li>
+                    <a href="#" id="open-popup-devis">Devis</a>
+                </li>
             </ul>
             <form action="" method="post" class="subscribe">
                 <textarea name="" id="" placeholder="Votre message ..."></textarea>
