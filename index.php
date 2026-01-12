@@ -653,6 +653,7 @@ include 'header.php';
                     <li><span>Matériaux supérieurs – Rendu impeccable</span></li>
                     <li><span>Accompagnement personnalisé – Chaque projet est unique</span></li>
                 </ul>
+                <a href="#passion" class="btn-red" id="open-popup-devis">Démarrer un projet</a>
             </div>
             <div class="passion-img slick-image">
                 <img src="assets/img/banner_mon_compte.png" alt="">

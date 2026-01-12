@@ -1,11 +1,11 @@
 // BANNER
 #banner {
-  margin: 100px auto;
+  margin: 100px auto 0 auto;
   padding: 0;
   .wrapper {
     @extend .flex-sb;
     position: relative;
-    padding: 70px 70px 80px 70px;
+    padding: 70px;
     @extend .shape-bottom;
     overflow: hidden;
     @include border-radius(30px);
@@ -57,38 +57,38 @@
   padding: 0;
   overflow: visible;
 
-  // &::before {
-  //   content: "";
-  //   position: fixed;
-  //   top: 0;
-  //   left: -150px;
-  //   width: 300px;
-  //   height: 300px;
-  //   background-image: url("assets/img/ellipse_client_red.svg");
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   filter: blur(40px);
-  //   z-index: -1;
-  //   @include breakpoint(xs) {
-  //     display: none;
-  //   }
-  // }
-  // &::after {
-  //   content: "";
-  //   position: fixed;
-  //   bottom: 0;
-  //   right: -150px;
-  //   width: 300px;
-  //   height: 300px;
-  //   background-image: url("assets/img/ellipse_client_yellow.svg");
-  //   background-size: cover;
-  //   background-repeat: no-repeat;
-  //   filter: blur(40px);
-  //   z-index: -1;
-  //   @include breakpoint(xs) {
-  //     display: none;
-  //   }
-  // }
+  &::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: -150px;
+    width: 300px;
+    height: 300px;
+    background-image: url("assets/img/ellipse_client_red.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40px);
+    z-index: -1;
+    @include breakpoint(xs) {
+      display: none;
+    }
+  }
+  &::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    right: -150px;
+    width: 300px;
+    height: 300px;
+    background-image: url("assets/img/ellipse_client_yellow.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(40px);
+    z-index: -1;
+    @include breakpoint(xs) {
+      display: none;
+    }
+  }
 
   .wrapper {
     @extend .flex-jc;
@@ -219,7 +219,7 @@
       .card-atout {
         padding: 40px;
         @include border-radius(20px);
-        box-shadow: 0px 0px 20px 0px #00000026;
+        box-shadow: 0px 0px 10px 0px #00000026;
         @extend .flex-jc;
         @include flex-direction(column);
         gap: 10px;
@@ -731,7 +731,7 @@
 
     .section-title {
       h2 {
-        color: $yellow;
+        color: $red;
       }
     }
 
@@ -754,7 +754,7 @@
       }
 
       .card-pack {
-        padding: 30px 15px;
+        padding: 15px;
         box-shadow: 0px 0px 20px 0px #0000000d;
         @include border-radius(20px);
         background: $white;
@@ -774,7 +774,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: $yellow;
+          background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
           z-index: -1;
           opacity: 0;
         }
@@ -844,7 +844,7 @@
             }
             li {
               text-align: left;
-              font-size: 12px;
+              font-size: 15px;
               font-family: "gilroy-regular";
               color: $gray;
               margin-bottom: 10px;
@@ -877,7 +877,6 @@
         .bouton-pack {
           @extend .flex-sb;
           width: 100%;
-
           .reduction {
             font-family: "gilroy-bold";
             font-size: 18px;
@@ -1022,7 +1021,7 @@
             margin-top: 10px;
 
             li {
-              font-size: 12px;
+              font-size: 14px;
               color: $gray;
               font-family: "gilroy-regular";
             }
@@ -1309,6 +1308,12 @@
           font-size: 18px;
         }
       }
+    }
+
+    a {
+      text-align: center;
+      margin-top: 20px;
+      width: fit-content;
     }
 
     .passion-img {

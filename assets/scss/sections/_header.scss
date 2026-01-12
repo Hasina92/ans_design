@@ -106,6 +106,21 @@ header {
         width: 20px;
       }
     }
+    .demande-devis.automatique {
+      top: 140px;
+      &::before {
+        content: "Devis automatique";
+        left: -180px;
+      }
+      &::after {
+        background: $red;
+      }
+      &:hover {
+        &::after {
+          width: 220px;
+        }
+      }
+    }
 
     #menu {
       @extend %flex;

@@ -1,8 +1,5 @@
 <?php
 session_start();
-
-$redirectBack = $_GET['redirect_back'] ?? '';
-
 require_once 'ans-design-backoffice/config/db.php';
 
 if (!isset($_SESSION['user_id'])) {

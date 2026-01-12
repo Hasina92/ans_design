@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!empty($_GET['redirect_back'])) {
+    $_SESSION['redirect_back'] = $_GET['redirect_back'];
+}
+
+$redirect_back = $_SESSION['redirect_back'] ?? '';
+
 require_once 'ans-design-backoffice/config/db.php';
 
 $error = '';
@@ -11,7 +17,11 @@ if (isset($_SESSION['user_id'])) {
     if ($_SESSION['role'] === 'admin') {
         header('Location: ans-design-backoffice/dashboard.php');
     } else {
-        header('Location: mon-compte.php');
+        if (!empty($redirect_back) && strpos($redirect_back, 'http') === false) {
+            header('Location: ' . $redirect_back);
+        } else {
+            header('Location: mon-compte.php');
+        }
     }
     exit;
 }
@@ -53,7 +63,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($user['role'] === 'admin') {
                     header("Location: ans-design-backoffice/dashboard.php");
                 } else {
-                    header("Location: mon-compte.php");
+                    if (!empty($_SESSION['redirect_back']) && strpos($_SESSION['redirect_back'], 'http') === false) {
+                        $redirect = $_SESSION['redirect_back'];
+                        unset($_SESSION['redirect_back']); // IMPORTANT
+                        header("Location: $redirect");
+                    } else {
+                        header("Location: mon-compte.php");
+                    }
+                    exit;
                 }
                 exit;
 
@@ -126,8 +143,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['adresse'] = $adresse;
                 $_SESSION['role'] = 'client';
 
-                header("Location: mon-compte.php");
+                if (!empty($_SESSION['redirect_back']) && strpos($_SESSION['redirect_back'], 'http') === false) {
+                    $redirect = $_SESSION['redirect_back'];
+                    unset($_SESSION['redirect_back']); // IMPORTANT
+                    header("Location: $redirect");
+                } else {
+                    header("Location: mon-compte.php");
+                }
                 exit;
+
             }
         }
     }
@@ -165,6 +189,9 @@ include 'header.php';
                     <!-- CONNEXION -->
                     <div class="tabscontent-connexion" id="connexion">
                         <form action="connexion.php" method="post">
+                            <input type="hidden" name="redirect_back"
+                                value="<?php echo htmlspecialchars($redirect_back); ?>">
+
                             <input type="email" name="email" placeholder="Votre email" required>
                             <input type="password" name="password" placeholder="Votre mot de passe" required>
                             <button type="submit" name="login_submit" class="btn-yellow">Se connecter</button>
@@ -177,11 +204,14 @@ include 'header.php';
                     <!-- INSCRIPTION -->
                     <div class="tabscontent-connexion" id="inscription">
                         <form action="connexion.php" method="post">
+                            <input type="hidden" name="redirect_back"
+                                value="<?php echo htmlspecialchars($redirect_back); ?>">
+
                             <input type="text" name="nom" placeholder="Votre nom" required>
                             <input type="text" name="prenom" placeholder="Votre prénom" required>
                             <input type="email" name="email_register" placeholder="Votre email" required>
-                            <input type="text" name="phone_register" placeholder="Votre numéro de téléphone">
-                            <input type="text" name="adresse_register" placeholder="Votre adresse">
+                            <input type="text" name="phone_register" placeholder="Votre numéro de téléphone" required>
+                            <input type="text" name="adresse_register" placeholder="Votre adresse" required>
                             <input type="text" name="societe_register" placeholder="Votre société">
                             <input type="password" name="password_register" placeholder="Votre mot de passe" required>
                             <input type="password" name="password_confirm" placeholder="Confirmez votre mot de passe"

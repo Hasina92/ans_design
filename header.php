@@ -50,6 +50,9 @@ if (isset($_SESSION['user_id'])) {
             <div class="demande-devis" id="open-popup-devis">
                 <img src="assets/img/calculator.svg" alt="">
             </div>
+            <a href="catalogue.php" class="demande-devis automatique">
+                <img src="assets/img/calculator.svg" alt="">
+            </a>
             <a href="index.php" class="custom-logo-link logo"><img src="assets/img/logo.svg" alt="logo"></a>
             <nav class="nav-menu">
                 <ul id="menu">

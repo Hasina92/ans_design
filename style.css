@@ -737,9 +737,9 @@ p.small {
 
 [class^=btn] {
   padding: 20px 30px;
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
   background-clip: padding-box;
   font-family: "gilroy-bold";
   border: none;
@@ -1001,6 +1001,19 @@ header .wrapper .demande-devis:hover::before {
 }
 header .wrapper .demande-devis img {
   width: 20px;
+}
+header .wrapper .demande-devis.automatique {
+  top: 140px;
+}
+header .wrapper .demande-devis.automatique::before {
+  content: "Devis automatique";
+  left: -180px;
+}
+header .wrapper .demande-devis.automatique::after {
+  background: #df4d34;
+}
+header .wrapper .demande-devis.automatique:hover::after {
+  width: 220px;
 }
 header .wrapper #menu {
   gap: 70px;
@@ -1867,7 +1880,7 @@ footer .wrapper .container-additional-information .text-payement p {
   }
 }
 footer .wrapper .container-additional-information .img-payement img {
-  height: 50px;
+  height: 100px;
   width: 100%;
   object-fit: contain;
 }
@@ -1960,12 +1973,12 @@ footer .wrapper ul.social-icon-footer li a {
 }
 
 #banner {
-  margin: 100px auto;
+  margin: 100px auto 0 auto;
   padding: 0;
 }
 #banner .wrapper {
   position: relative;
-  padding: 70px 70px 80px 70px;
+  padding: 70px;
   overflow: hidden;
   border-radius: 30px;
   -webkit-border-radius: 30px;
@@ -2032,6 +2045,42 @@ footer .wrapper ul.social-icon-footer li a {
   position: relative;
   padding: 0;
   overflow: visible;
+}
+#clients::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background-image: url("assets/img/ellipse_client_red.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(40px);
+  z-index: -1;
+}
+@media (max-width: 600px) {
+  #clients::before {
+    display: none;
+  }
+}
+#clients::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  background-image: url("assets/img/ellipse_client_yellow.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(40px);
+  z-index: -1;
+}
+@media (max-width: 600px) {
+  #clients::after {
+    display: none;
+  }
 }
 #clients .wrapper {
   -webkit-flex-direction: column;
@@ -2165,7 +2214,7 @@ footer .wrapper ul.social-icon-footer li a {
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
   background-clip: padding-box;
-  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1490196078);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1490196078);
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
   -ms-flex-direction: column;
@@ -2697,7 +2746,7 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #packs .wrapper .section-title h2 {
-  color: #f5bf2a;
+  color: #df4d34;
 }
 #packs .wrapper .inner-title p {
   max-width: 936px;
@@ -2721,7 +2770,7 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #packs .wrapper .container-pack .card-pack {
-  padding: 30px 15px;
+  padding: 15px;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.0509803922);
   border-radius: 20px;
   -webkit-border-radius: 20px;
@@ -2751,7 +2800,7 @@ footer .wrapper ul.social-icon-footer li a {
   left: 0;
   width: 100%;
   height: 100%;
-  background: #f5bf2a;
+  background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
   z-index: -1;
   opacity: 0;
 }
@@ -2823,7 +2872,7 @@ footer .wrapper ul.social-icon-footer li a {
 }
 #packs .wrapper .container-pack .card-pack .text-pack ul.description-pack li {
   text-align: left;
-  font-size: 12px;
+  font-size: 15px;
   font-family: "gilroy-regular";
   color: #707070;
   margin-bottom: 10px;
@@ -3022,7 +3071,7 @@ footer .wrapper ul.social-icon-footer li a {
   margin-top: 10px;
 }
 #realisations .wrapper .container-realisations .card-realisation .realisation-text ul.liste li {
-  font-size: 12px;
+  font-size: 14px;
   color: #707070;
   font-family: "gilroy-regular";
 }
@@ -3317,6 +3366,11 @@ footer .wrapper ul.social-icon-footer li a {
   padding-left: 6px;
   font-family: "gilroy-bold";
   font-size: 18px;
+}
+#passion .wrapper a {
+  text-align: center;
+  margin-top: 20px;
+  width: fit-content;
 }
 #passion .wrapper .passion-img {
   width: 100%;
