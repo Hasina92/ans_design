@@ -936,33 +936,35 @@ c-33.3,0-60.3-32.9-60.3-61l0,1.3c0-28.1-27-61-60.3-61h-222c-33.3,0-60.3,32.9-60.
 C32,127.7,5,94.8,5,66.7" fill="none" stroke="url(#SVGID_1_)" stroke-width="10" stroke-linecap="round"
                         stroke-miterlimit="10" />
                 </svg>
-
+                <button class="slick-next-custom-processus"><img src="assets/img/arrow.svg" alt=""></button>
                 <ul class="tabslink-processus">
                     <li>
-                        <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Écoute</span> </a>
+                        <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Briefing</span> </a>
                     </li>
                     <li>
                         <a href="#prix"> <img src="assets/img/price.svg" alt=""> <span>Prix</span> </a>
                     </li>
                     <li>
-                        <a href="#validation"> <img src="assets/img/creation.svg" alt=""> <span>Validation</span> </a>
+                        <a href="#validation"> <img src="assets/img/creation.svg" alt=""> <span>BAT</span> </a>
                     </li>
                     <li>
                         <a href="#verification"> <img src="assets/img/verification.svg" alt="">
-                            <span>Vérification</span>
+                            <span>Preparation</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#fabrication"> <img src="assets/img/production.svg" alt=""> <span>Fabrication</span>
+                        <a href="#fabrication"> <img src="assets/img/production.svg" alt=""> <span>Production</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> <span>Finition</span></a>
+                        <a href="#finition"> <img src="assets/img/livraison.svg" alt=""> <span>Controle
+                                qualité</span></a>
                     </li>
                     <li>
-                        <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Transport</span></a>
+                        <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Livraison</span></a>
                     </li>
                 </ul>
+                <button class="slick-prev-custom-processus"><img src="assets/img/arrow.svg" alt=""></button>
             </div>
             <div class="tabscontent-processus" id="ecoute">
                 <div class="processus-text">

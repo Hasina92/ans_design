@@ -471,8 +471,10 @@ $(document).ready(function () {
     infinite: false,
     slidesToShow: 4, // 4 étapes visibles
     slidesToScroll: 1,
-    arrows: false,
+    arrows: true,
     dots: false,
+    prevArrow: $(".slick-next-custom-processus"),
+    nextArrow: $(".slick-prev-custom-processus"),
     speed: 700,
   });
 
