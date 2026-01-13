@@ -104,6 +104,22 @@ $avis_a_valider_count = $stmt_avis->fetch(PDO::FETCH_ASSOC)['count'] ?? 0;
                                 Témoignages
                             </a>
                         </li>
+                        </li>
+                        <li>
+                            <a href="banner_edit.php" class="<?= ($currentPage == 'banner_edit') ? 'active' : ''; ?>">
+                                Bannière
+                            </a>
+                        </li>
+                        <li>
+                            <a href="stats_edit.php" class="<?= ($currentPage == 'stats_edit') ? 'active' : ''; ?>">
+                                Statistique 1
+                            </a>
+                        </li>
+                        <li>
+                            <a href="stats2_edit.php" class="<?= ($currentPage == 'stats2_edit') ? 'active' : ''; ?>">
+                                Statistique 2
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

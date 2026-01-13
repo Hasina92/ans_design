@@ -63,6 +63,19 @@ foreach ($categories as $cat) {
     $produitsParCategorie[$cat['id']] = $stmtProd->fetchAll(PDO::FETCH_ASSOC);
 }
 
+//BANNER
+$stmt = $pdo->prepare("SELECT * FROM banner LIMIT 1");
+$stmt->execute();
+$banner = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//STATS 1
+$stmt = $pdo->query("SELECT valeur FROM stats ORDER BY id ASC");
+$stats = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+//STATS 2
+$stmt = $pdo->query("SELECT valeur FROM stats_2 ORDER BY id ASC");
+$stats2 = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
 // Inclure le header
 include 'header.php';
 ?>
@@ -72,18 +85,21 @@ include 'header.php';
     <!-- BANNER -->
     <section id="banner" class="scrolltop">
         <div class="wrapper">
-            <img src="assets/img/fond.png" alt="" class="bg-image">
+            <img src="assets/img/<?php echo htmlspecialchars($banner['image_fond']); ?>" alt="" class="bg-image">
             <div class="banner-text">
-                <h1>#<span class="white">Vouloir la </span> différence</h1>
-                <p class="medium white">Votre image mérite l’excellence. Avec A.N.S Design Print, chaque projet devient
-                    une réussite sûre et professionnelle.</p>
+                <h1>
+                    <?php echo $banner['titre']; ?>
+                </h1>
+                <p class="medium white">
+                    <?php echo htmlspecialchars($banner['sous_titre']); ?>
+                </p>
                 <div class="banner-btn">
                     <a href="catalogue.php" class="btn-gradient">Nos Services</a>
                     <a href="#devis" class="btn-white" id="open-popup-devis">Nos Prestations</a>
                 </div>
             </div>
             <div class="banner-QR">
-                <img src="assets/img/qr-code.png" alt="">
+                <img src="assets/img/<?php echo htmlspecialchars($banner['image_qr']); ?>" alt="">
             </div>
         </div>
     </section>
@@ -168,28 +184,28 @@ include 'header.php';
                 <div class="icone_stat">
                     <img src="assets/img/icone_stat.svg" alt="">
                 </div>
-                <span class="nombre">10 000+ </span>
+                <span class="nombre"><?php echo htmlspecialchars($stats[0]); ?></span>
                 <p class="small">Cartes de visite produites quotidiennement</p>
             </div>
             <div class="card-stat t-center">
                 <div class="icone_stat">
                     <img src="assets/img/icone_stat_2.svg" alt="">
                 </div>
-                <span class="nombre">3 000+ </span>
+                <span class="nombre"><?php echo htmlspecialchars($stats[1]); ?></span>
                 <p class="small">Projets réalisés avec succès et livrés</p>
             </div>
             <div class="card-stat t-center">
                 <div class="icone_stat">
                     <img src="assets/img/icone_stat_3.svg" alt="">
                 </div>
-                <span class="nombre">8</span>
+                <span class="nombre"><?php echo htmlspecialchars($stats[2]); ?></span>
                 <p class="small">Ans d’expertise au service de vos impressions</p>
             </div>
             <div class="card-stat t-center">
                 <div class="icone_stat">
                     <img src="assets/img/icone_stat_4.svg" alt="">
                 </div>
-                <span class="nombre">2 500+</span>
+                <span class="nombre"><?php echo htmlspecialchars($stats[3]); ?></span>
                 <p class="small">Clients fidèles qui nous font confiance</p>
             </div>
         </div>
@@ -542,19 +558,23 @@ include 'header.php';
     <section id="stats" class="stats-2">
         <div class="wrapper">
             <div class="card-stat t-center">
-                <span class="nombre">98 %</span>
+                <span class="nombre">
+                    <?php echo htmlspecialchars($stats2[0]); ?>
+                </span>
                 <h3>Projets Livrés à Temps</h3>
                 <p class="small">Priorité à votre planning : nous garantissons chaque échéance.
                 </p>
             </div>
             <div class="card-stat t-center">
-                <span class="nombre">50</span>
+                <span class="nombre">
+                    <?php echo htmlspecialchars($stats2[1]); ?>
+                </span>
                 <h3>Partenaires de Confiance</h3>
                 <p class="small">Nos partenaires privilégient notre expertise pour une communication efficace.
                 </p>
             </div>
             <div class="card-stat t-center">
-                <span class="nombre">100 %</span>
+                <span class="nombre"><?php echo htmlspecialchars($stats2[2]); ?></span>
                 <h3>Solutions sur Mesure</h3>
                 <p class="small">Chaque projet bénéficie d'une solution unique et optimisée.
                 </p>
