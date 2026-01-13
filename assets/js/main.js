@@ -678,41 +678,49 @@ document.addEventListener("DOMContentLoaded", () => {
 //COMPTEUR
 gsap.registerPlugin(ScrollTrigger);
 
-function animateCounter(element) {
-  let finalValue = parseInt(element.textContent.replace(/\D/g, ""));
-  let hasPlus = element.textContent.includes("+");
-  let hasSpace = element.textContent.includes(" ");
+function animateCountersInSection(section) {
+  const counters = section.querySelectorAll(".nombre");
 
-  gsap.fromTo(
-    element,
-    { innerText: 0 },
-    {
-      innerText: finalValue,
-      duration: 2,
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: element, // déclenchement quand le compteur entre dans la vue
-        start: "top 90%", // quand le haut du compteur atteint 90% de la fenêtre
-        toggleActions: "play none none none", // s'active une seule fois
-      },
-      snap: { innerText: 1 },
-      onUpdate: function () {
-        let val = Math.floor(element.innerText);
-        if (hasSpace) {
-          val = val.toLocaleString("fr-FR");
+  // Crée un ScrollTrigger pour cette section
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 80%",
+    onEnter: () => startCounters(),
+    onEnterBack: () => startCounters(),
+  });
+
+  function startCounters() {
+    counters.forEach((el) => {
+      let finalValue = parseInt(el.textContent.replace(/\D/g, ""));
+      const hasPlus = el.textContent.includes("+");
+      const hasSpace = el.textContent.includes(" ");
+
+      // reset à 0 avant chaque animation
+      el.textContent = "0";
+
+      gsap.fromTo(
+        el,
+        { innerText: 0 },
+        {
+          innerText: finalValue,
+          duration: 2,
+          ease: "power1.out",
+          snap: { innerText: 1 },
+          onUpdate: function () {
+            let val = Math.floor(el.innerText);
+            if (hasSpace) val = val.toLocaleString("fr-FR");
+            if (hasPlus) val += "+";
+            el.textContent = val;
+          },
         }
-        if (hasPlus) {
-          val += "+";
-        }
-        element.textContent = val;
-      },
-    }
-  );
+      );
+    });
+  }
 }
 
-// On sélectionne tous les compteurs
-document.querySelectorAll(".nombre").forEach((num) => {
-  animateCounter(num);
+// Sélectionne toutes les sections que tu veux animer
+document.querySelectorAll("#stats, #stats-2").forEach((section) => {
+  animateCountersInSection(section);
 });
 
 //SEARCH TRIGGER
