@@ -820,3 +820,189 @@ header {
     }
   }
 }
+
+.popup.popup-etat-commande {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  @include align-items(center);
+  @include justify-content(center);
+  z-index: 999;
+  .popup-content {
+    background: #fff;
+    padding: 25px;
+    width: 320px;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    min-width: 500px;
+    h3 {
+      font-size: 24px;
+      color: $dark;
+      font-weight: 700;
+      @include breakpoint(sm) {
+        font-size: 18px;
+      }
+    }
+    .etape {
+      padding-left: 70px;
+    }
+  }
+
+  .close-popup {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  /* Reprise de tes statuts */
+  .etat-popup {
+    margin: 20px auto;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    display: inline-block;
+  }
+
+  .etat.en-attente {
+    background: #f1c40f;
+    color: #000;
+  }
+  .etat.en-production {
+    background: #3498db;
+    color: #fff;
+  }
+  .etat.validation {
+    background: #9b59b6;
+    color: #fff;
+  }
+  .etat.livree {
+    background: #2ecc71;
+    color: #fff;
+  }
+  .etat.annule {
+    background: #e74c3c;
+    color: #fff;
+  }
+
+  .popup-date {
+    font-size: 0.9em;
+    color: #666;
+  }
+  .timeline-etapes {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0 10px;
+    @extend %flex;
+    @include flex-direction(column);
+    @include align-items(flex-start);
+    gap: 50px;
+  }
+
+  .timeline-etapes .etape {
+    opacity: 1;
+  }
+
+  .timeline-etapes .etape:last-child .dot::after {
+    display: none;
+  }
+
+  /* états */
+  .etape {
+    opacity: 1;
+    position: relative;
+    &::before {
+      content: url("assets/img/progress.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      @include border-radius(50%);
+    }
+  }
+  .etape.done {
+    opacity: 1;
+    position: relative;
+    &::before {
+      content: url("assets/img/success.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      background: #8eff4d;
+      @include border-radius(50%);
+    }
+  }
+  .etape[data-step="recu"].active {
+    &::before {
+      content: url("assets/img/recu.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      background: $red;
+      @include border-radius(50%);
+    }
+  }
+
+  .etape[data-step="verification"].active {
+    &::before {
+      content: url("assets/img/success.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      background: $red;
+      @include border-radius(50%);
+    }
+  }
+
+  .etape[data-step="production"].active {
+    &::before {
+      content: url("assets/img/action.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      background: $red;
+      @include border-radius(50%);
+    }
+  }
+
+  .etape[data-step="expedition"].active {
+    &::before {
+      content: url("assets/img/livraison_suivi.svg");
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      @extend .flex-jc;
+      background: $red;
+      @include border-radius(50%);
+    }
+  }
+}
+
+.popup-etat-commande.open {
+  display: flex;
+}

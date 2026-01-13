@@ -174,15 +174,15 @@ function mini_cart() {
   });
 
   // 🔥 CLIC EN DEHORS DU PANIER
-  mini_cart.addEventListener("click", (e) => {
-    if (!wrapper_mini_cart.contains(e.target)) {
-      wrapper_mini_cart.classList.remove("active");
+  // mini_cart.addEventListener("click", (e) => {
+  //   if (!wrapper_mini_cart.contains(e.target)) {
+  //     wrapper_mini_cart.classList.remove("active");
 
-      setTimeout(() => {
-        mini_cart.classList.remove("active");
-      }, 500);
-    }
-  });
+  //     setTimeout(() => {
+  //       mini_cart.classList.remove("active");
+  //     }, 500);
+  //   }
+  // });
 }
 
 mini_cart();
@@ -855,6 +855,89 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
   });
+});
+
+// POPUP SUIVI COMMANDE + ÉTAPES
+document.querySelectorAll(".open-popup-suivi-trigger").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const ref = btn.dataset.ref;
+    const statut = btn.dataset.statut;
+    const date = btn.dataset.date;
+
+    // Mapping statut → classe CSS
+    const statutClasses = {
+      "En attente": "en-attente",
+      Validation: "validation",
+      "En production": "en-production",
+      Livrée: "livree",
+      Annulé: "annule",
+    };
+
+    // Injection des infos dans la popup
+    document.getElementById("popup-ref").textContent = "#" + ref;
+    document.getElementById("popup-statut").textContent = statut;
+    document.getElementById("popup-date").textContent = date;
+
+    const etatDiv = document.getElementById("popup-etat");
+    etatDiv.className =
+      "etat etat-popup " + (statutClasses[statut] || "en-attente");
+
+    // Mise à jour des étapes
+    updateEtapesCommande(statut);
+
+    // Ouverture popup
+    document.getElementById("popup-etat-commande").classList.add("open");
+  });
+});
+
+// Fermeture popup
+document.getElementById("close-popup-etat")?.addEventListener("click", () => {
+  document.getElementById("popup-etat-commande").classList.remove("open");
+});
+
+/* ===============================
+   GESTION DES ÉTAPES COMMANDE
+================================ */
+function updateEtapesCommande(statut) {
+  const etapes = document.querySelectorAll(".timeline-etapes .etape");
+
+  // Ordre logique des statuts
+  const statutIndex = {
+    "En attente": 0, // Commande reçue
+    Validation: 1, // Vérification fichiers
+    "En production": 2, // Production
+    Livrée: 3, // Expédition terminée
+    Annulé: -1,
+  };
+
+  const current = statutIndex[statut];
+
+  etapes.forEach((etape, index) => {
+    etape.classList.remove("done", "active", "cancelled");
+
+    // Cas annulé
+    if (statut === "Annulé") {
+      etape.classList.add("cancelled");
+      return;
+    }
+
+    // Étapes terminées
+    if (index < current) {
+      etape.classList.add("done");
+    }
+
+    // Étape en cours
+    if (index === current) {
+      etape.classList.add("active");
+    }
+  });
+}
+
+// Fermeture
+document.getElementById("close-popup-etat").addEventListener("click", () => {
+  document.getElementById("popup-etat-commande").classList.remove("open");
 });
 
 //RESET PASSWORD

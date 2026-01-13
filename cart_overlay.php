@@ -143,7 +143,7 @@ if (isset($_SESSION['user_id'])) {
                                             <span><?php echo htmlspecialchars($cmd['titre_produit']); ?></span>
                                             <span><?php echo number_format($cmd['total_ttc'], 0, ',', ' '); ?> Ar</span>
                                         </div>
-                                        <!-- <div class="bouton-product">
+                                        <div class="bouton-product">
                                             <a href="#suivi" class="open-popup-suivi-trigger"
                                                 data-id="<?php echo $cmd['id']; ?>"
                                                 data-ref="<?php echo htmlspecialchars($cmd['numero_commande'] ?? $cmd['id']); ?>"
@@ -155,7 +155,7 @@ if (isset($_SESSION['user_id'])) {
                                                 data-id="<?php echo $cmd['id']; ?>">
                                                 Voir les détails
                                             </a>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -170,42 +170,37 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-    <!-- SUIVI COMMANDE (POPUP GÉNÉRIQUE) -->
-    <div class="popup pop-up-suivi-commande">
-        <div class="header-suivi-commande">
-            <h3>Suivi de la commande #<span id="suivi-ref"></span></h3>
-            <img src="assets/img/close.svg" alt="" id="close-popup-suivi">
-        </div>
-        <div class="body-suivi-commande">
-            <ul class="etape">
-                <!-- On ajoute des IDs pour les cibler en JS -->
-                <li class="card-etape" id="etape-recu">
-                    <div class="etape-img"><img src="assets/img/success.svg" alt=""></div>
-                    <div class="etape-title">
-                        <h4>Commande reçue</h4><span class="date" id="date-recu">--/--/--</span>
-                    </div>
+    <!-- POPUP ÉTAT COMMANDE SIMPLE -->
+    <div class="popup popup-etat-commande" id="popup-etat-commande">
+        <div class="popup-content">
+            <span class="close-popup" id="close-popup-etat">&times;</span>
+
+            <h3>Commande <span id="popup-ref"></span></h3>
+
+            <div class="etat etat-popup" id="popup-etat">
+                <span id="popup-statut"></span>
+            </div>
+
+            <p class="popup-date">
+                Commandée le <span id="popup-date"></span>
+            </p>
+            <ul class="timeline-etapes">
+                <li class="etape" data-step="recu">
+                    <span class="label">Commande reçue</span>
                 </li>
-                <li class="card-etape" id="etape-verification">
-                    <div class="etape-img"><img src="assets/img/success.svg" alt=""></div>
-                    <div class="etape-title">
-                        <h4>Vérification</h4><span class="date">--/--/--</span>
-                    </div>
+                <li class="etape" data-step="verification">
+                    <span class="label">Vérification des fichiers</span>
                 </li>
-                <li class="card-etape" id="etape-production">
-                    <div class="etape-img"><img src="assets/img/en-production.svg" alt=""></div>
-                    <div class="etape-title">
-                        <h4>En production</h4><span class="date">--/--/--</span>
-                    </div>
+                <li class="etape" data-step="production">
+                    <span class="label">En production</span>
                 </li>
-                <li class="card-etape" id="etape-expedition">
-                    <div class="etape-img"><img src="assets/img/expedition.svg" alt=""></div>
-                    <div class="etape-title">
-                        <h4>Expédition</h4><span class="date">--/--/--</span>
-                    </div>
+                <li class="etape" data-step="expedition">
+                    <span class="label">Expédition</span>
                 </li>
             </ul>
         </div>
     </div>
+
 
     <!-- DETAILS COMMANDE (POPUP GÉNÉRIQUE) -->
     <div class="popup pop-up-detail-commande">
