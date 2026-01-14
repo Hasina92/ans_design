@@ -58,6 +58,7 @@ try {
     echo json_encode([
         'success' => true,
         'commande' => [
+            'id' => $commande['id'], // <-- ajouter cette ligne
             'numero' => $ref_commande,
             'date' => date('d/m/Y', strtotime($commande['date_commande'])),
             'statut' => $commande['statut'],

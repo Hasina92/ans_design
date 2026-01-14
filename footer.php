@@ -329,7 +329,7 @@ require_once 'init_user.php';
 <!-- SCRIPT JS POUR GERER LES POPUPS DYNAMIQUES -->
 <script>
     $(document).ready(function () {
-        // --- 2. POPUP DETAILS (AJAX) ---
+        // --- POPUP DETAILS (AJAX) ---
         $(document).on('click', '.open-popup-detail-trigger', function (e) {
             e.preventDefault();
             var id = $(this).data('id');
@@ -339,7 +339,7 @@ require_once 'init_user.php';
             $('#detail-loading').show();
             $('#detail-content').hide();
 
-            console.log("Envoi requête AJAX pour ID: " + id); // LOG 1
+            console.log("Envoi requête AJAX pour ID: " + id);
 
             // Appel AJAX vers api_commande.php
             $.ajax({
@@ -348,57 +348,68 @@ require_once 'init_user.php';
                 data: { id: id },
                 dataType: 'json',
                 success: function (response) {
-                    console.log("Réponse reçue :", response); // LOG 2
+                    console.log("Réponse reçue :", response);
 
                     if (response.success) {
                         var cmd = response.commande;
 
+                        // Infos principales
                         $('#detail-ref').text(cmd.numero);
-
                         if (response.articles.length > 0) {
                             $('#detail-nom-produit').text(response.articles[0].description);
                         } else {
                             $('#detail-nom-produit').text("Article divers");
                         }
-
                         $('#detail-prix').text(cmd.total + ' Ar');
 
                         // Livraison
                         $('#detail-livraison-nom').text(cmd.livraison_nom);
-                        $('#detail-livraison-adresse').text(
-                            cmd.adresse_livraison + ' – ' + cmd.code_postal
-                        );
+                        $('#detail-livraison-adresse').text(cmd.adresse_livraison + ' – ' + cmd.code_postal);
 
-                        // Récap
+                        // Récapitulatif
                         $('#detail-sous-total').text(cmd.sous_total + ' Ar');
                         $('#detail-tva').text(cmd.tva + ' Ar');
                         $('#detail-total-ttc').text(cmd.total + ' Ar');
 
+                        // Mettre l'ID de la commande dans le bouton "Facture"
+                        $('#btn-facture').attr('data-id', cmd.id);
+
+                        // Afficher le contenu
                         $('#detail-loading').hide();
                         $('#detail-content').fadeIn();
-                    }
-                    else {
+                    } else {
                         alert('Erreur API : ' + response.message);
                         $('.pop-up-detail-commande').fadeOut();
                     }
                 },
                 error: function (xhr, status, error) {
-                    // AFFICHER L'ERREUR RÉELLE
                     console.error("Erreur AJAX :", status, error);
                     console.log("Réponse serveur :", xhr.responseText);
-
                     alert('Erreur de connexion (Voir console F12 pour détails).\nStatus: ' + status);
                     $('.pop-up-detail-commande').fadeOut();
                 }
             });
         });
 
+        // --- Bouton Facture dynamique ---
+        $('#btn-facture').off('click').on('click', function (e) {
+            e.preventDefault();
+            var id = $(this).data('id');
+            if (id) {
+                window.open('facture_pdf.php?id=' + id, '_blank');
+            } else {
+                alert("ID commande introuvable !");
+            }
+        });
+
+        // --- Fermeture popup ---
         $('#close-popup-detail').on('click', function () {
             $('.pop-up-detail-commande').removeClass('active').fadeOut();
         });
 
     });
 </script>
+
 
 <script>
     document.querySelector("#form-devis").addEventListener("submit", function (e) {
