@@ -255,12 +255,14 @@ header {
 
   //MINI CART
   .wrapper {
-    background: #ebebeb;
+    background: #ffffff7e;
+    backdrop-filter: blur(50px);
     width: 462px;
-    height: 100vh;
+    height: 95vh;
     float: right;
     padding: 0;
     transform: translateX(100%);
+    @include border-radius(0 0 0 30px);
     overflow-y: scroll !important;
 
     @include breakpoint(sm) {
@@ -276,7 +278,7 @@ header {
       width: 100%;
       padding: 15px 25px;
       h2 {
-        font-family: "gilroy-regular";
+        font-family: "gilroy-extrabold";
         font-size: 28px;
         color: $red;
       }
@@ -394,7 +396,7 @@ header {
       }
       #mon_compte {
         .personal-information {
-          background: $red;
+          background: #df4e3474;
           padding: 15px 30px;
           @extend .flex-sb;
           @include align-items(center);
@@ -448,11 +450,17 @@ header {
           }
         }
         #mes_commandes {
+          margin: 50px 40px 0 40px;
+          @extend %flex;
+          @include flex-direction(column);
+          background: #efefef;
+          @include border-radius(20px);
+          gap: 20px;
+          padding: 20px;
           .card-commande {
             @extend .flex-sb;
             @include border-radius(10px);
             background: $white;
-            margin: 50px;
             padding: 15px;
             box-shadow: 0px 3px 3px 0px #00000012;
             @include breakpoint(xs) {

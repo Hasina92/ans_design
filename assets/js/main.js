@@ -172,17 +172,6 @@ function mini_cart() {
       mini_cart.classList.remove("active");
     }, 500);
   });
-
-  // 🔥 CLIC EN DEHORS DU PANIER
-  // mini_cart.addEventListener("click", (e) => {
-  //   if (!wrapper_mini_cart.contains(e.target)) {
-  //     wrapper_mini_cart.classList.remove("active");
-
-  //     setTimeout(() => {
-  //       mini_cart.classList.remove("active");
-  //     }, 500);
-  //   }
-  // });
 }
 
 mini_cart();

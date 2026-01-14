@@ -171,7 +171,7 @@ if (isset($_SESSION['user_id'])) {
     </div>
 
     <!-- POPUP ÉTAT COMMANDE SIMPLE -->
-    <div class="popup popup-etat-commande" id="popup-etat-commande">
+    <div class="popup popup-etat-commande internal-popup" id="popup-etat-commande">
         <div class="popup-content">
             <span class="close-popup" id="close-popup-etat">&times;</span>
 
@@ -203,7 +203,7 @@ if (isset($_SESSION['user_id'])) {
 
 
     <!-- DETAILS COMMANDE (POPUP GÉNÉRIQUE) -->
-    <div class="popup pop-up-detail-commande">
+    <div class="popup pop-up-detail-commande internal-popup">
         <div class="header-detail-commande">
             <h3>Détail de la commande #<span id="detail-ref"></span></h3>
             <img src="assets/img/close.svg" alt="" id="close-popup-detail">
