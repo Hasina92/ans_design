@@ -1325,23 +1325,27 @@ include 'header.php';
                 <p>Chaque projet est traité avec soin et précision</p>
             </div>
             <div class="container-tabslink-processus">
-                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" class="separateur-processus"
+                <svg class="separateur-processus" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1380.4 132.7"
                     style="enable-background:new 0 0 1380.4 132.7;" xml:space="preserve">
-
-                    <defs>
-                        <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="0" y1="66.35" x2="1380.4"
-                            y2="66.35">
-                            <stop offset="0" stop-color="#E12948" />
-                            <stop offset="1" stop-color="#EFAC2D" />
-                        </linearGradient>
-                    </defs>
-
-                    <path class="st0" d="M1375.4,66c0-28.1-27-61-60.3-61h-222c-33.3,0-60.3,32.9-60.3,61v-0.3c0,28.1-27,61-60.3,61h-222
-c-33.3,0-60.3-32.9-60.3-61l0,1.3c0-28.1-27-61-60.3-61h-222c-33.3,0-60.3,32.9-60.3,61v-0.3c0,28.1-27,61-60.3,61h-222
-C32,127.7,5,94.8,5,66.7" fill="none" stroke="url(#SVGID_1_)" stroke-width="10" stroke-linecap="round"
-                        stroke-miterlimit="10" />
+                    <style type="text/css">
+                        .st0 {
+                            fill: none;
+                            stroke: url(#SVGID_1_);
+                            stroke-width: 10;
+                            stroke-miterlimit: 10;
+                        }
+                    </style>
+                    <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="1037.8" y1="127.7" x2="-342.6001"
+                        y2="127.7" gradientTransform="matrix(-1 0 0 -1 1037.8 194.4)">
+                        <stop offset="0" style="stop-color:#E12948" />
+                        <stop offset="1" style="stop-color:#EFAC2D" />
+                    </linearGradient>
+                    <path class="st0" d="M1375.4,66.7c0-28.1-4-61-37.3-61h-269c-33.3,0-36.3,32.9-36.3,61v-0.3V67v-0.3c0,28.1-3,61-36.3,61h-269
+    c-33.3,0-37.3-32.9-37.3-61l0,0c0-28.1-4-61-37.3-61h-269c-33.3,0-36.3,32.9-36.3,61v-0.3V67v-0.3c0,28.1-3,61-36.3,61h-269
+    C9,127.7,5,94.8,5,66.7" />
                 </svg>
+
                 <button class="slick-next-custom-processus"><img src="assets/img/arrow.svg" alt=""></button>
                 <ul class="tabslink-processus">
                     <li>

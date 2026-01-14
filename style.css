@@ -4065,6 +4065,7 @@ footer .wrapper ul.social-icon-footer li a {
   width: 1300px;
   cursor: grab;
   margin-top: 0;
+  transform: translateY(6px);
 }
 @media (max-width: 600px) {
   #processus .wrapper .container-tabslink-processus ul.tabslink-processus {

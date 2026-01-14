@@ -664,7 +664,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Cercles invisibles au départ
   gsap.set(circles, { opacity: 0, scale: 0.4, transformOrigin: "center" });
   // Icônes invisibles au départ
-  gsap.set(icones, { opacity: 0, scale: 0, transformOrigin: "center" });
+  gsap.set(icones, { opacity: 0, transformOrigin: "center" });
 
   // Animation des cercles
   gsap.to(circles, {
@@ -675,7 +675,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ease: "power1.out",
     scrollTrigger: {
       trigger: "#timeline",
-      start: "top 70%",
+      start: "top 100%",
       end: "bottom 20%",
       scrub: 1.5,
     },
@@ -684,16 +684,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Animation des icônes
   gsap.to(icones, {
     opacity: 1,
-    scale: 1,
     duration: 0.5,
     stagger: 0.3,
-    ease: "back.out(1.7)",
+    ease: "power1.out",
     scrollTrigger: {
       trigger: "#timeline",
       start: "top 100%",
       end: "bottom 50%",
       scrub: 1.5,
-      markers: true,
     },
   });
 });
