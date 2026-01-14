@@ -664,7 +664,9 @@ header {
     }
     .body-detail-commande {
       .card-recapitulation {
-        @extend .flex-sb;
+        @extend %flex;
+        @include justify-content(flex-start);
+        @include align-items(center);
         background: #e9f5e9;
         padding: 18px;
         @include border-radius(7px);

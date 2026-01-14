@@ -329,46 +329,6 @@ require_once 'init_user.php';
 <!-- SCRIPT JS POUR GERER LES POPUPS DYNAMIQUES -->
 <script>
     $(document).ready(function () {
-
-        // --- 1. POPUP SUIVI ---
-        $('.open-popup-suivi-trigger').on('click', function (e) {
-            e.preventDefault();
-
-            // Récupérer les données du bouton cliqué
-            var ref = $(this).data('ref');
-            var statut = $(this).data('statut'); // ex: 'en_attente', 'production'
-            var date = $(this).data('date');
-
-            // Remplir la popup
-            $('#suivi-ref').text(ref);
-            $('#date-recu').text(date);
-
-            // Reset des étapes (enlever les styles "active" ou images)
-            $('.card-etape').css('opacity', '0.5'); // Exemple visuel : tout grisé par défaut
-
-            // Logique simple pour activer les étapes selon le statut
-            // Adaptez les 'case' selon les vrais statuts de votre BDD
-            $('#etape-recu').css('opacity', '1'); // Toujours actif
-
-            if (statut === 'verification' || statut === 'production' || statut === 'expedition' || statut === 'livre') {
-                $('#etape-verification').css('opacity', '1');
-            }
-            if (statut === 'production' || statut === 'expedition' || statut === 'livre') {
-                $('#etape-production').css('opacity', '1');
-            }
-            if (statut === 'expedition' || statut === 'livre') {
-                $('#etape-expedition').css('opacity', '1');
-            }
-
-            // Afficher la popup
-            $('.pop-up-suivi-commande').addClass('active').fadeIn();
-        });
-
-        $('#close-popup-suivi').on('click', function () {
-            $('.pop-up-suivi-commande').removeClass('active').fadeOut();
-        });
-
-
         // --- 2. POPUP DETAILS (AJAX) ---
         $(document).on('click', '.open-popup-detail-trigger', function (e) {
             e.preventDefault();
@@ -402,15 +362,22 @@ require_once 'init_user.php';
                         }
 
                         $('#detail-prix').text(cmd.total + ' Ar');
-                        $('#detail-livraison-nom').text(cmd.livraison_nom);
 
+                        // Livraison
+                        $('#detail-livraison-nom').text(cmd.livraison_nom);
+                        $('#detail-livraison-adresse').text(
+                            cmd.adresse_livraison + ' – ' + cmd.code_postal
+                        );
+
+                        // Récap
                         $('#detail-sous-total').text(cmd.sous_total + ' Ar');
                         $('#detail-tva').text(cmd.tva + ' Ar');
                         $('#detail-total-ttc').text(cmd.total + ' Ar');
 
                         $('#detail-loading').hide();
                         $('#detail-content').fadeIn();
-                    } else {
+                    }
+                    else {
                         alert('Erreur API : ' + response.message);
                         $('.pop-up-detail-commande').fadeOut();
                     }
