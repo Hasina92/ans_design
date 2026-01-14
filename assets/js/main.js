@@ -659,20 +659,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Animation des cercles
   const circles = document.querySelectorAll("#timeline circle");
+  const icones = document.querySelectorAll(".icone");
 
+  // Cercles invisibles au départ
   gsap.set(circles, { opacity: 0, scale: 0.4, transformOrigin: "center" });
+  // Icônes invisibles au départ
+  gsap.set(icones, { opacity: 0, scale: 0, transformOrigin: "center" });
 
+  // Animation des cercles
   gsap.to(circles, {
     opacity: 1,
     scale: 1,
     duration: 0.6,
-    stagger: 0.3, // décalage entre chaque cercle
+    stagger: 0.3,
     ease: "power1.out",
     scrollTrigger: {
       trigger: "#timeline",
       start: "top 70%",
       end: "bottom 20%",
       scrub: 1.5,
+    },
+  });
+
+  // Animation des icônes
+  gsap.to(icones, {
+    opacity: 1,
+    scale: 1,
+    duration: 0.5,
+    stagger: 0.3,
+    ease: "back.out(1.7)",
+    scrollTrigger: {
+      trigger: "#timeline",
+      start: "top 100%",
+      end: "bottom 50%",
+      scrub: 1.5,
+      markers: true,
     },
   });
 });

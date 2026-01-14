@@ -237,8 +237,9 @@ if (isset($_SESSION['user_id'])) {
                 </div>
                 <!-- Boutons actions (inchangés) -->
                 <div class="bouton-detail">
-                    <a href="#" id="btn-facture"><img src="assets/img/upload.svg" alt=""> Facture</a>
-                    <a href=""><img src="assets/img/support.svg" alt=""> Support</a>
+                    <a href="#" id="btn-facture"><img src="assets/img/upload.svg" alt=""> Télécharger la facture</a>
+                    <a href="mailto:ans.designprint.annexe@gmail.com"><img src="assets/img/support.svg" alt="">
+                        Contacter le support</a>
                 </div>
             </div>
         </div>
