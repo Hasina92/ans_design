@@ -4044,6 +4044,7 @@ footer .wrapper ul.social-icon-footer li a {
   top: 50%;
   left: 0;
   transform: translateY(-50%);
+  display: none !important;
 }
 #processus .wrapper .container-tabslink-processus .slick-prev-custom-processus img,
 #processus .wrapper .container-tabslink-processus .slick-next-custom-processus img {
@@ -4065,7 +4066,7 @@ footer .wrapper ul.social-icon-footer li a {
   width: 1300px;
   cursor: grab;
   margin-top: 0;
-  transform: translateY(6px);
+  transform: translateY(5px);
 }
 @media (max-width: 600px) {
   #processus .wrapper .container-tabslink-processus ul.tabslink-processus {
@@ -4083,9 +4084,9 @@ footer .wrapper ul.social-icon-footer li a {
   color: #707070;
   background: #fff;
   box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
-  border-radius: 30px;
-  -webkit-border-radius: 30px;
-  -moz-border-radius: 30px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
   background-clip: padding-box;
   gap: 10px;
   width: 228px;
