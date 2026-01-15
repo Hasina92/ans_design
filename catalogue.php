@@ -90,7 +90,7 @@ include 'header.php';
                 unique pour une
                 impression de qualité et des services créatifs. </p>
             <div class="banner-btn">
-                <a href="" class="btn-yellow">Voir tous les produits</a>
+                <a href="#catalogue" class="btn-yellow">Voir tous les produits</a>
             </div>
         </div>
     </section>
