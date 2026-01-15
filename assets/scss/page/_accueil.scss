@@ -774,7 +774,7 @@
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, #e50051 26.25%, #e40134 84.96%);
+          background: #f7a62c;
           z-index: -1;
           opacity: 0;
         }
@@ -959,7 +959,7 @@
         grid-column: 1 / -1;
         justify-self: center;
         padding: 20px 30px;
-        @include border-radius(30px);
+        @include border-radius(20px);
         width: fit-content;
         background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
         color: $white;

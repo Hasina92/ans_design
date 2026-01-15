@@ -38,45 +38,131 @@ ob_start();
 
 <head>
     <meta charset="UTF-8">
+
     <style>
+        @font-face {
+            font-family: 'Gilroy';
+            src: url('fonts/Gilroy-Regular.ttf') format('truetype');
+            font-weight: normal;
+        }
+
+        @font-face {
+            font-family: 'Gilroy';
+            src: url('fonts/Gilroy-Bold.ttf') format('truetype');
+            font-weight: bold;
+        }
+
         body {
-            font-family: DejaVu Sans, sans-serif;
+            font-family: 'Gilroy', sans-serif;
             font-size: 12px;
+            color: #333;
+        }
+
+        .header {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .header-left {
+            float: left;
+        }
+
+        .header-right {
+            float: right;
+            text-align: right;
+        }
+
+        .clear {
+            clear: both;
         }
 
         h1 {
-            text-align: center;
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .box {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-top: 15px;
         }
 
         .table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
-        .table th,
+        .table th {
+            background: #f5f5f5;
+            font-weight: bold;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
         .table td {
-            border: 1px solid #000;
-            padding: 6px;
+            padding: 10px;
+            border: 1px solid #ddd;
         }
 
-        .total {
+        .table td:last-child,
+        .table th:last-child {
             text-align: right;
+        }
+
+        .totaux {
+            width: 40%;
+            float: right;
             margin-top: 20px;
+        }
+
+        .totaux table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .totaux td {
+            padding: 8px;
+        }
+
+        .totaux tr:last-child td {
+            font-weight: bold;
+            font-size: 14px;
+            border-top: 2px solid #000;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            text-align: center;
+            font-size: 10px;
+            color: #777;
+            width: 100%;
         }
     </style>
 </head>
 
 <body>
-    <h1>Facture</h1>
 
-    <p>
-        <strong>Commande :</strong> #<?= $commande['numero_commande'] ?? $commande['id'] ?><br>
-        <strong>Date :</strong> <?= date('d/m/Y', strtotime($commande['date_commande'])) ?><br>
-        <strong>Client :</strong> <?= htmlspecialchars($user_info['nom_complet'] ?? 'Client') ?><br>
-        <strong>Adresse :</strong> <?= htmlspecialchars($adresse) ?><br>
-        <strong>Code postal :</strong> <?= htmlspecialchars($code_postal) ?>
-    </p>
+    <div class="header">
+        <div class="header-left">
+            <h1>FACTURE</h1>
+            <p>
+                <strong>Commande :</strong> #<?= $commande['numero_commande'] ?? $commande['id'] ?><br>
+                <strong>Date :</strong> <?= date('d/m/Y', strtotime($commande['date_commande'])) ?>
+            </p>
+        </div>
+
+        <div class="header-right">
+            <p>
+                <strong><?= htmlspecialchars($user_info['nom_complet'] ?? 'Client') ?></strong><br>
+                <?= htmlspecialchars($adresse) ?><br>
+                <?= htmlspecialchars($code_postal) ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="clear"></div>
 
     <table class="table">
         <thead>
@@ -97,15 +183,31 @@ ob_start();
         </tbody>
     </table>
 
-    <div class="total">
-        <p>Sous-total : <?= number_format(($commande['total_ttc'] * 0.8) ?? 0, 0, ',', ' ') ?> Ar</p>
-        <p>TVA (20%) : <?= number_format(($commande['total_ttc'] * 0.2) ?? 0, 0, ',', ' ') ?> Ar</p>
-        <h3>Total : <?= number_format($commande['total_ttc'] ?? 0, 0, ',', ' ') ?> Ar</h3>
+    <div class="totaux">
+        <table>
+            <tr>
+                <td>Sous-total</td>
+                <td><?= number_format(($commande['total_ttc'] * 0.8) ?? 0, 0, ',', ' ') ?> Ar</td>
+            </tr>
+            <tr>
+                <td>TVA (20%)</td>
+                <td><?= number_format(($commande['total_ttc'] * 0.2) ?? 0, 0, ',', ' ') ?> Ar</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td><?= number_format($commande['total_ttc'] ?? 0, 0, ',', ' ') ?> Ar</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        Merci pour votre confiance – Facture générée automatiquement
     </div>
 
 </body>
 
 </html>
+
 <?php
 $html = ob_get_clean();
 
