@@ -608,10 +608,15 @@ include 'header.php';
     </section>
 
     <!-- POP-UP TECHNOLOGIES -->
-    <?php
-    $colors = ['#F5BF2A', '#DF4D34']; // rouge, jaune (tu peux ajouter plus de couleurs)
-    foreach ($technologies as $index => $tech):
-        $h3Color = $colors[$index % count($colors)]; // alterner les couleurs
+    <?php foreach ($technologies as $index => $tech): ?>
+
+        <?php
+        $cycle = $index % 8;
+        if (in_array($cycle, [0, 2, 5, 7])) {
+            $h3Color = '#F5BF2A'; // jaune
+        } else {
+            $h3Color = '#DF4D34'; // rouge
+        }
         ?>
         <section class="popup pop-up-technologie" id="popup-technologie-<?= $tech['id'] ?>">
             <div class="pop-up-container">

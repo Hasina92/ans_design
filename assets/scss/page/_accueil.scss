@@ -1153,7 +1153,17 @@
           aspect-ratio: 1/1;
         }
 
-        &:nth-child(even) {
+        // &:nth-child(even) {
+        //   h3 {
+        //     color: $red;
+        //   }
+        // }
+
+        /* 5 - rouge */
+        &:nth-child(8n + 2),
+        &:nth-child(8n + 4),
+        &:nth-child(8n + 5),
+        &:nth-child(8n + 7) {
           h3 {
             color: $red;
           }

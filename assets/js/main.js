@@ -154,6 +154,16 @@ function mini_cart() {
 
   if (!mini_cart || !close_button || !wrapper_mini_cart) return;
 
+  // Popups internes
+  const internal_popups = document.querySelectorAll(".internal-popup");
+
+  function closeAllInternalPopups() {
+    internal_popups.forEach((popup) => popup.classList.remove("active"));
+  }
+
+  /* ===============================
+     OUVERTURE MINI CART
+  =============================== */
   open_buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
       mini_cart.classList.add("active");
@@ -164,13 +174,84 @@ function mini_cart() {
     });
   });
 
-  // Bouton de fermeture
-  close_button.addEventListener("click", () => {
-    wrapper_mini_cart.classList.remove("active");
+  /* ===============================
+     FERMETURE MINI CART (X)
+  =============================== */
+  close_button.addEventListener("click", (e) => {
+    e.stopPropagation();
 
+    closeAllInternalPopups(); // 🔒 sécurité
+
+    wrapper_mini_cart.classList.remove("active");
     setTimeout(() => {
       mini_cart.classList.remove("active");
     }, 500);
+  });
+
+  /* ===============================
+     CLIC SUR OVERLAY
+  =============================== */
+  mini_cart.addEventListener("click", (e) => {
+    if (wrapper_mini_cart.contains(e.target)) return;
+
+    const internalOpen = Array.from(internal_popups).some((popup) =>
+      popup.classList.contains("active")
+    );
+
+    if (!internalOpen) {
+      wrapper_mini_cart.classList.remove("active");
+      setTimeout(() => {
+        mini_cart.classList.remove("active");
+      }, 500);
+    }
+  });
+
+  /* ===============================
+     BLOQUER LES CLICS DANS LES POPUPS INTERNES
+  =============================== */
+  internal_popups.forEach((popup) => {
+    popup.addEventListener("click", (e) => e.stopPropagation());
+  });
+
+  /* ===============================
+     OUVERTURE POPUPS INTERNES (UNE SEULE À LA FOIS)
+  =============================== */
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest(
+      ".open-popup-detail-trigger, .open-popup-suivi-trigger"
+    );
+
+    if (!trigger) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    closeAllInternalPopups(); // ✅ clé de la solution
+
+    if (trigger.classList.contains("open-popup-detail-trigger")) {
+      document
+        .querySelector(".pop-up-detail-commande")
+        ?.classList.add("active");
+    }
+
+    if (trigger.classList.contains("open-popup-suivi-trigger")) {
+      document.querySelector("#popup-etat-commande")?.classList.add("active");
+    }
+  });
+
+  /* ===============================
+     BOUTONS CLOSE DES POPUPS INTERNES
+  =============================== */
+  document.addEventListener("click", (e) => {
+    if (
+      e.target.id === "close-popup-detail" ||
+      e.target.id === "close-popup-etat" ||
+      e.target.classList.contains("close-popup")
+    ) {
+      e.stopPropagation();
+      const popup = e.target.closest(".internal-popup");
+      if (popup) popup.classList.remove("active");
+    }
   });
 }
 

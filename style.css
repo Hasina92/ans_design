@@ -3424,6 +3424,7 @@ footer .wrapper ul.social-icon-footer li a {
   background-clip: padding-box;
   position: relative;
   background: #fff;
+  /* 5 - rouge */
 }
 #technologies .wrapper .container-technologie .card-technologie:hover {
   transform: translateY(-10px);
@@ -3437,7 +3438,7 @@ footer .wrapper ul.social-icon-footer li a {
   width: 40px;
   aspect-ratio: 1/1;
 }
-#technologies .wrapper .container-technologie .card-technologie:nth-child(even) h3 {
+#technologies .wrapper .container-technologie .card-technologie:nth-child(8n+2) h3, #technologies .wrapper .container-technologie .card-technologie:nth-child(8n+4) h3, #technologies .wrapper .container-technologie .card-technologie:nth-child(8n+5) h3, #technologies .wrapper .container-technologie .card-technologie:nth-child(8n+7) h3 {
   color: #df4d34;
 }
 #technologies .wrapper .container-technologie .card-technologie h3 {
