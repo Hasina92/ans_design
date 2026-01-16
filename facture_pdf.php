@@ -1,6 +1,6 @@
 <?php
 require_once 'init_user.php';
-// require_once 'ans-design-backoffice/dompdf/autoload.inc.php';
+require_once 'ans-design-backoffice/dompdf/autoload.inc.php';
 
 use Dompdf\Dompdf;
 
