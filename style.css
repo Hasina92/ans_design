@@ -2070,7 +2070,8 @@ footer .wrapper .container-information .card-information a:not(:last-of-type) {
 footer .wrapper .container-additional-information {
   gap: 50px;
   padding: 40px;
-  background: #fff;
+  position: relative;
+  backdrop-filter: blur(100px);
 }
 @media (max-width: 768px) {
   footer .wrapper .container-additional-information {

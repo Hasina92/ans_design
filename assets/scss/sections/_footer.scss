@@ -42,7 +42,8 @@ footer {
       @extend .flex-sb;
       gap: 50px;
       padding: 40px;
-      background: $white;
+      position: relative;
+      backdrop-filter: blur(100px);
 
       @include breakpoint(sm) {
         @include flex-direction(column);

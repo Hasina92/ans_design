@@ -25,6 +25,7 @@ require_once 'init_user.php';
             <img src="assets/img/fond.png" alt="" class="bg-image">
         </div>
         <div class="container-additional-information">
+            <img src="assets/img/fond-footer.png" alt="" class="bg-image">
             <div class="text-payement">
                 <h3>Paiement sécurisé – Transactions protégées et options flexibles 24h/24</h3>
                 <p class="small">Grâce à nos solutions de paiement en ligne sécurisées, vous bénéficiez d'une expérience
