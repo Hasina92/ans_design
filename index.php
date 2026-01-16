@@ -1192,7 +1192,7 @@ include 'header.php';
                 <div class="card-historique_item">
                     <h3>2024</h3>
                     <span>Expansion, goodies, modernisation des équipements</span>
-                    <p>Annexe goodies, lancement de MisiTiako et modernisation de nos équipements.</p>
+                    <p>Annexe goodies, lancement de MisiTiako et <br> modernisation de nos équipements.</p>
                 </div>
             </div>
             <div class="card-historique">

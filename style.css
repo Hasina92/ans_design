@@ -2564,7 +2564,6 @@ footer .wrapper ul.social-icon-footer li a {
 
 #temoignages {
   position: relative;
-  background: #fff;
 }
 #temoignages .wrapper {
   -webkit-flex-direction: column;
@@ -2574,6 +2573,12 @@ footer .wrapper ul.social-icon-footer li a {
   gap: 40px;
   overflow: hidden !important;
   position: relative;
+  background: #fff;
+  padding: 50px 0;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  background-clip: padding-box;
 }
 #temoignages .wrapper::before {
   content: "";
@@ -3416,7 +3421,7 @@ footer .wrapper ul.social-icon-footer li a {
   -ms-flex-direction: column;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0px 0px 7.5px 0px rgba(0, 0, 0, 0.1019607843);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1019607843);
   padding: 20px 10px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
