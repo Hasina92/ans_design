@@ -1,8 +1,9 @@
 <?php
 $page = 'accueil';
 
-require_once 'ans-design-backoffice/config/db.php';
-require_once 'init_user.php';
+require_once __DIR__ . '/ans-design-backoffice/config/db.php';
+require_once __DIR__ . '/init_user.php';
+;
 
 /* ==========================================
    PRODUITS PHARES (via checkbox backoffice)
