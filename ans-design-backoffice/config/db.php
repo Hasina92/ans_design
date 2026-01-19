@@ -1,16 +1,27 @@
 <?php
-$host = '127.0.0.1';
-$dbname = 'ans_design';
-$user = 'root';
-$pass = '';
+
+// Sécurité : empêche l'accès direct
+if (!defined('APP_INIT')) {
+    die('Accès interdit');
+}
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'nemo5160_ans_design');      // OK
+define('DB_USER', 'nemo5160_ans_design-admin');      // ⚠️ sans tiret
+define('DB_PASS', ')96.4XY_1Sit');       // vrai mot de passe
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    // Définir le mode d'erreur PDO sur Exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Empêcher les requêtes préparées émulées pour une meilleure sécurité
-    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $pdo = new PDO(
+        "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4",
+        DB_USER,
+        DB_PASS,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_EMULATE_PREPARES => false,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
+    );
 } catch (PDOException $e) {
-    die("Erreur de connexion à la base de données : " . $e->getMessage());
+    error_log('[DB ERROR] ' . $e->getMessage());
+    die('Erreur de connexion à la base de données.');
 }
-?>
