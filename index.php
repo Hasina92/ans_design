@@ -1,9 +1,13 @@
 <?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $page = 'accueil';
 
-require_once __DIR__ . '/ans-design-backoffice/config/db.php';
-require_once __DIR__ . '/init_user.php';
-;
+require_once 'ans-design-backoffice/config/db.php';
+require_once 'init_user.php';
 
 /* ==========================================
    PRODUITS PHARES (via checkbox backoffice)
