@@ -1,9 +1,5 @@
+<!-- ONLINE -->
 <?php
-
-// Sécurité : empêche l'accès direct
-// if (!defined('APP_INIT')) {
-//     die('Accès interdit');
-// }
 
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'nemo5160_ans_design');      // OK
@@ -25,3 +21,4 @@ try {
     error_log('[DB ERROR] ' . $e->getMessage());
     die('Erreur de connexion à la base de données.');
 }
+?>

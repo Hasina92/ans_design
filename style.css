@@ -624,6 +624,7 @@ p.small {
 @media (max-width: 600px) {
   [class^=tabslink]:not(.tabslink-etape) li a {
     width: 100%;
+    font-size: 16px;
   }
 }
 [class^=tabslink]:not(.tabslink-etape) li a.active {
@@ -2035,10 +2036,6 @@ footer .wrapper .container-information {
     -ms-flex-direction: column;
     flex-direction: column;
     gap: 50px;
-    border-radius: 50px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    background-clip: padding-box;
   }
 }
 footer .wrapper .container-information .card-information {
@@ -2083,7 +2080,7 @@ footer .wrapper .container-additional-information {
 }
 @media (max-width: 600px) {
   footer .wrapper .container-additional-information {
-    padding: 40px 0;
+    padding: 40px 20px;
   }
 }
 footer .wrapper .container-additional-information .text-payement h3 {
@@ -2157,9 +2154,9 @@ footer .wrapper .container-additional-information form.subscribe textarea {
   color: #707070;
   height: 132px;
   padding: 15px 20px;
-  border-radius: 23px 23px 23px 0;
-  -webkit-border-radius: 23px 23px 23px 0;
-  -moz-border-radius: 23px 23px 23px 0;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
   background-clip: padding-box;
   border: none;
   background: #fff;
@@ -4546,6 +4543,10 @@ footer .wrapper ul.social-icon-footer li a {
   font-family: "gilroy-bold";
   font-size: 18px;
   background: linear-gradient(90deg, #e94f35 26.25%, #e50051 84.96%);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  background-clip: padding-box;
 }
 #formulaire .wrapper .formulaire-img {
   min-width: 404px;

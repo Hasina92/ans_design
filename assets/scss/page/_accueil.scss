@@ -2227,6 +2227,7 @@
           font-family: "gilroy-bold";
           font-size: 18px;
           background: linear-gradient(90deg, #e94f35 26.25%, #e50051 84.96%);
+          @include border-radius(20px);
         }
       }
     }

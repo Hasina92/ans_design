@@ -132,6 +132,7 @@
     @include border-radius(30px);
     @include breakpoint(xs) {
       width: 100%;
+      font-size: 16px;
     }
     &.active {
       background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
