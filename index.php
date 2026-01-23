@@ -1331,7 +1331,7 @@ include 'header.php';
                 <p>Chaque projet est traité avec soin et précision</p>
             </div>
             <div class="container-tabslink-processus">
-                <svg class="separateur-processus" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
+                <!-- <svg class="separateur-processus" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1380.4 132.7"
                     style="enable-background:new 0 0 1380.4 132.7;" xml:space="preserve">
                     <style type="text/css">
@@ -1351,8 +1351,7 @@ include 'header.php';
                     <path class="st0" d="M1375.4,66.7c0-28.1-4-61-37.3-61h-269c-33.3,0-36.3,32.9-36.3,61v-0.3V67v-0.3c0,28.1-3,61-36.3,61h-269
 c-33.3,0-37.3-32.9-37.3-61l0,0c0-28.1-4-61-37.3-61h-269c-33.3,0-36.3,32.9-36.3,61v-0.3V67v-0.3c0,28.1-3,61-36.3,61h-269
 C9,127.7,5,94.8,5,66.7" stroke="url(#SVGID_1_)" />
-                </svg>
-                <button class="slick-next-custom-processus"><img src="assets/img/arrow.svg" alt=""></button>
+                </svg> -->
                 <ul class="tabslink-processus">
                     <li>
                         <a href="#ecoute"> <img src="assets/img/idea.svg" alt=""> <span>Briefing</span> </a>
@@ -1380,7 +1379,9 @@ C9,127.7,5,94.8,5,66.7" stroke="url(#SVGID_1_)" />
                         <a href="#transport"> <img src="assets/img/livraison_3.svg" alt=""> <span>Livraison</span></a>
                     </li>
                 </ul>
-                <button class="slick-prev-custom-processus"><img src="assets/img/arrow.svg" alt=""></button>
+                <div class="processus-progress">
+                    <div class="processus-progress-bar"></div>
+                </div>
             </div>
             <div class="tabscontent-processus" id="ecoute">
                 <div class="processus-text">
@@ -1809,10 +1810,14 @@ C9,127.7,5,94.8,5,66.7" stroke="url(#SVGID_1_)" />
                         </div>
 
                         <div class="conseil-text">
-                            <h3><?= htmlspecialchars($a['titre']) ?></h3>
+                            <h3>
+                                    <?= htmlspecialchars($a['titre']) ?>
+                            </h3>
 
                             <!-- Extrait -->
-                            <p><?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...</p>
+                            <p>
+                                    <?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...
+                            </p>
 
                             <a href="single-blog.php?id=<?= $a['id'] ?>">Lire la suite →</a>
                         </div>

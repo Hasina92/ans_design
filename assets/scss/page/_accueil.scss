@@ -41,7 +41,7 @@
 
     .banner-QR {
       width: 100%;
-      max-width: 250px;
+      max-width: 350px;
       @include border-radius(20px);
       overflow: hidden;
       @include breakpoint(xs) {
@@ -1744,7 +1744,6 @@
     .container-tabslink-processus {
       margin-top: 60px;
       position: relative;
-      @extend .flex-sb;
       .separateur-processus {
         position: absolute;
         top: 0;
@@ -1767,6 +1766,7 @@
         transform: translateY(-50%);
         display: none !important;
         img {
+          @extend .bo;
           width: 25px;
           aspect-ratio: 1/1;
           transform: rotate(180deg);
@@ -1795,6 +1795,13 @@
           padding: 20px 40px;
           position: relative;
           z-index: 1;
+          // &:not(:last-child)::after {
+          //   content: url("assets/img/arrow_processus.svg");
+          //   position: absolute;
+          //   top: 52%;
+          //   right: -5px;
+          //   transform: translateY(-50%) scale(1.5);
+          // }
           a {
             font-size: 18px;
             padding: 15px;
@@ -1834,6 +1841,20 @@
               width: 24px;
             }
           }
+        }
+      }
+      .processus-progress {
+        width: 100%;
+        height: 10px;
+        background: rgba(0, 0, 0, 0.1);
+        @include border-radius(20px);
+        margin-top: 20px;
+        overflow: hidden;
+        .processus-progress-bar {
+          height: 100%;
+          width: 0%;
+          background: linear-gradient(90deg, #e50051 26.25%, #e94f35 84.96%);
+          transition: width 0.4s ease;
         }
       }
     }

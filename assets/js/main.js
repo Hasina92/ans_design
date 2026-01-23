@@ -532,29 +532,45 @@ $(document).ready(function () {
   });
 });
 
-//SLICK TABSLINK PROCESSUS
+// SLICK TABSLINK PROCESSUS
 $(document).ready(function () {
-  // INITIALISATION SLICK
   var $processus = $(".tabslink-processus");
+  var $progressBar = $(".processus-progress-bar");
+  var totalSlides = $processus.find("li").length;
 
   $processus.slick({
     infinite: false,
-    slidesToShow: 4, // 4 étapes visibles
+    slidesToShow: 4,
     slidesToScroll: 1,
-    arrows: true,
+    arrows: false,
     dots: false,
-    prevArrow: $(".slick-next-custom-processus"),
-    nextArrow: $(".slick-prev-custom-processus"),
     speed: 700,
   });
 
-  // CLIC SUR UNE ÉTAPE
-  $(".tabslink-processus li").on("click", function (e) {
-    e.preventDefault(); // empêche le scroll vers les ancres
+  function updateProgressBarByClick(index) {
+    var progress = ((index + 1) / totalSlides) * 100;
+    $progressBar.css("width", progress + "%");
+  }
 
-    let index = $(this).index(); // position de l'étape cliquée
+  // Initialisation
+  updateProgressBarByClick(0);
 
+  // ✅ Progress bar UNIQUEMENT via clic
+  $processus.on("click", "li", function (e) {
+    e.preventDefault();
+
+    var index = $(this).data("slick-index"); // IMPORTANT
+    if (index === undefined) return;
+
+    // Scroll visuel
     $processus.slick("slickGoTo", index);
+
+    // 🔥 Progression basée sur le clic
+    updateProgressBarByClick(index);
+
+    // (optionnel) état actif
+    $processus.find("li").removeClass("active");
+    $(this).addClass("active");
   });
 });
 

@@ -34,7 +34,7 @@ require_once 'init_user.php';
                     dernières technologies de sécurité.</p>
             </div>
             <div class="img-payement">
-                <img src="assets/img/orange-money.svg" alt="">
+                <img src="assets/img/orange_money.svg" alt="">
                 <img src="assets/img/airtel.svg" alt="">
                 <img src="assets/img/mvola.svg" alt="">
                 <img src="assets/img/visa.svg" alt="">
