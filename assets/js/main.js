@@ -1044,10 +1044,3 @@ function updateEtapesCommande(statut) {
 document.getElementById("close-popup-etat").addEventListener("click", () => {
   document.getElementById("popup-etat-commande").classList.remove("open");
 });
-
-//RESET PASSWORD
-document
-  .getElementById("resetPassword")
-  .addEventListener("submit", function (e) {
-    e.preventDefault();
-  });
