@@ -1394,7 +1394,7 @@
     .separateur-historique {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) scale(1.05);
       width: 100%;
       max-width: 140px;
       @include breakpoint(sm) {
@@ -1792,16 +1792,10 @@
           width: 100vw;
         }
         li {
-          padding: 20px 40px;
+          padding: 20px 0;
+          margin: 0 40px;
           position: relative;
           z-index: 1;
-          // &:not(:last-child)::after {
-          //   content: url("assets/img/arrow_processus.svg");
-          //   position: absolute;
-          //   top: 52%;
-          //   right: -5px;
-          //   transform: translateY(-50%) scale(1.5);
-          // }
           a {
             font-size: 18px;
             padding: 15px;

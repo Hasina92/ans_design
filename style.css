@@ -3686,7 +3686,7 @@ footer .wrapper ul.social-icon-footer li a {
 #container-historique .wrapper .separateur-historique {
   position: absolute;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(1.05);
   width: 100%;
   max-width: 140px;
 }
@@ -4111,7 +4111,8 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #processus .wrapper .container-tabslink-processus ul.tabslink-processus li {
-  padding: 20px 40px;
+  padding: 20px 0;
+  margin: 0 40px;
   position: relative;
   z-index: 1;
 }

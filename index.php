@@ -1811,12 +1811,12 @@ C9,127.7,5,94.8,5,66.7" stroke="url(#SVGID_1_)" />
 
                         <div class="conseil-text">
                             <h3>
-                                    <?= htmlspecialchars($a['titre']) ?>
+                                <?= htmlspecialchars($a['titre']) ?>
                             </h3>
 
                             <!-- Extrait -->
                             <p>
-                                    <?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...
+                                <?= htmlspecialchars(substr($a['extrait'], 0, 200)) ?>...
                             </p>
 
                             <a href="single-blog.php?id=<?= $a['id'] ?>">Lire la suite →</a>

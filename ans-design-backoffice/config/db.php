@@ -2,9 +2,9 @@
 <?php
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'nemo5160_ans_design'); 
+define('DB_NAME', 'nemo5160_ans_design');
 define('DB_USER', 'nemo5160_ans_design-admin');
-define('DB_PASS', ')96.4XY_1Sit');  
+define('DB_PASS', ')96.4XY_1Sit');
 
 try {
     $pdo = new PDO(
