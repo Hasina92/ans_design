@@ -145,9 +145,9 @@ header {
       gap: 40px;
       .my-account {
         @extend %flex;
-        color: #b2b2b2;
+        color: #707070;
         img {
-          filter: brightness(10) invert(0.7);
+          width: 23px;
         }
         @include breakpoint(md) {
           display: none;

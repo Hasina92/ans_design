@@ -1046,10 +1046,10 @@ header .wrapper .menu-social {
   /* Les résultats */
 }
 header .wrapper .menu-social .my-account {
-  color: #b2b2b2;
+  color: #707070;
 }
 header .wrapper .menu-social .my-account img {
-  filter: brightness(10) invert(0.7);
+  width: 23px;
 }
 @media (max-width: 1024px) {
   header .wrapper .menu-social .my-account {
