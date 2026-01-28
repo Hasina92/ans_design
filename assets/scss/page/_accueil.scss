@@ -4,6 +4,7 @@
   padding: 0;
   .wrapper {
     @extend .flex-sb;
+    gap: 50px;
     position: relative;
     padding: 70px;
     @extend .shape-bottom;

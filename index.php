@@ -89,7 +89,8 @@ include 'header.php';
             <img src="assets/img/<?php echo htmlspecialchars($banner['image_fond']); ?>" alt="" class="bg-image">
             <div class="banner-text">
                 <h1>
-                    <?php echo $banner['titre']; ?>
+                    <span><?php echo $banner['titre']; ?></span>
+                    <span><?php echo $banner['titre_2']; ?></span>
                 </h1>
                 <p class="medium white">
                     <?php echo htmlspecialchars($banner['sous_titre']); ?>

@@ -23,11 +23,14 @@ if (!$banner) {
 <div class="panel">
     <form class="formulaire_ajout" action="banner_update.php" method="POST" enctype="multipart/form-data">
 
-        <label>Titre (HTML autorisé)</label>
-        <input type="text" name="titre" value="<?php echo htmlspecialchars($banner['titre']); ?>">
+        <label>Titre Ligne 1</label>
+        <input type="text" name="titre" value="<?= htmlspecialchars($banner['titre']) ?>">
+
+        <label>Titre Ligne 2</label>
+        <input type="text" name="titre_2" value="<?= htmlspecialchars($banner['titre_2']) ?>">
 
         <label>Sous-titre</label>
-        <textarea name="sous_titre" rows="4"><?php echo htmlspecialchars($banner['sous_titre']); ?></textarea>
+        <textarea name="sous_titre" rows="4"><?= htmlspecialchars($banner['sous_titre']) ?></textarea>
 
         <label>Image de fond</label>
         <input type="file" name="image_fond">

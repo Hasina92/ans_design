@@ -2207,6 +2207,7 @@ footer .wrapper ul.social-icon-footer li a {
   padding: 0;
 }
 #banner .wrapper {
+  gap: 50px;
   position: relative;
   padding: 70px;
   overflow: hidden;
