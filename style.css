@@ -2230,7 +2230,6 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #banner .wrapper .banner-text {
-  max-width: 530px;
   width: 100%;
   -webkit-flex-direction: column;
   -moz-flex-direction: column;
@@ -2257,8 +2256,7 @@ footer .wrapper ul.social-icon-footer li a {
   }
 }
 #banner .wrapper .banner-QR {
-  width: 100%;
-  max-width: 400px;
+  width: 70%;
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;

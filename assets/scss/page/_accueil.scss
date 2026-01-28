@@ -16,7 +16,7 @@
       @include border-radius(0);
     }
     .banner-text {
-      max-width: 530px;
+      // max-width: 550px;
       width: 100%;
       @extend %flex;
       @include flex-direction(column);
@@ -40,8 +40,8 @@
     }
 
     .banner-QR {
-      width: 100%;
-      max-width: 400px;
+      width: 70%;
+      // max-width: 400px;
       @include border-radius(20px);
       overflow: hidden;
       @include breakpoint(xs) {
