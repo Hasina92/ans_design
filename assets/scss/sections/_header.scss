@@ -683,6 +683,7 @@ header {
           aspect-ratio: 1/1;
           @include border-radius(10px);
           background: $white;
+          @extend .flex-jc;
         }
         .text-recapitulation {
           #nom,
